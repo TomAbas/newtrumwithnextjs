@@ -17,12 +17,12 @@ import * as yup from "yup";
 // import Editor from "ckeditor5-custom-build/build/ckeditor";
 // import { CKEditor } from "@ckeditor/ckeditor5-react";
 import axios from "axios";
-import { urlAddContributor } from "../../../../../react-project/trumwebversion1/src/Api/Api";
+
 import { useEffect } from "react";
 import { useState } from "react";
 import { useMemo } from "react";
 import { urlDeleteContributor } from "../../ApiUrl/Api";
-
+import { urlAddContributor } from "../../ApiUrl/Api";
 const schema = yup.object().shape({
   contributorName: yup.string(),
   contributorRole: yup.string(),

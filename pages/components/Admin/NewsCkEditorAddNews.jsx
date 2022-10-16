@@ -3,7 +3,8 @@ import React from "react";
 // import { CKEditor } from "@ckeditor/ckeditor5-react";
 import axios from "axios";
 import { Button } from "@mui/material";
-import { urlNews } from "../../../../../react-project/trumwebversion1/src/Api/Api";
+import { urlNews } from "../../ApiUrl/Api";
+
 import { useEffect, useRef } from "react";
 import { useState } from "react";
 import styles from "../../../styles/Admin.module.css";

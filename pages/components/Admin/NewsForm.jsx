@@ -23,13 +23,14 @@ import IconButton from "@mui/material/IconButton";
 
 //
 import axios from "axios";
+
 import {
   urlDeleteNewsId,
   urlEditNewsId,
   urlListContributorIdPost,
   urlNews,
   urlNewsId,
-} from "../../../../../react-project/trumwebversion1/src/Api/Api";
+} from "../../ApiUrl/Api";
 import { useEffect } from "react";
 import { useState } from "react";
 import NewsEditor from "./NewsEditor";
@@ -50,7 +51,7 @@ const NewsForm = () => {
   const [reDelete, setReDelete] = useState(true);
   const [contributorList, setContributorList] = useState([0]);
   const [didNotSubmitHeadForm, setDidNotSubmitHeadForm] = useState(true);
- 
+
   const deleteNews = async (id) => {
     await axios
       .post(`${urlDeleteNewsId}/${id}`)
@@ -291,7 +292,7 @@ const NewsForm = () => {
                 setNewContent2={setNewContent2}
                 submitNewsCKEditor={submitNewsCKEditor}
                 didNotSubmitHeadForm={didNotSubmitHeadForm}
-              />           
+              />
             </div>
           </div>
         </div>

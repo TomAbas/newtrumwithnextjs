@@ -7,7 +7,8 @@ import Box from "@mui/material/Box";
 import LandingPageForm from "../components/Admin/LandingPageForm";
 import NewsForm from "../components/Admin/NewsForm";
 import AddNews from "../components/Admin/AddNews";
-import { urlAbout } from "../../../../react-project/trumwebversion1/src/Api/Api";
+
+import { urlAbout } from "../ApiUrl/Api";
 import axios from "axios";
 import { useState } from "react";
 // import logo from "../../imgs/logo.png";

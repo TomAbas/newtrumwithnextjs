@@ -5,10 +5,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
-import {
-  editAbout,
-  urlAbout,
-} from "../../../../../react-project/trumwebversion1/src/Api/Api";
+
+import { editAbout,urlAbout } from "../../ApiUrl/Api";
 import { useEffect } from "react";
 import { Button } from "@mui/material";
 const schema = yup.object().shape({

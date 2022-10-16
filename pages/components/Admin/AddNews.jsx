@@ -5,7 +5,8 @@ import NewsEditor from "./NewsEditor";
 import NewsCkEditor from "./NewsCkEditor";
 import axios from "axios";
 import styles from "../../../styles/Admin.module.css";
-import { urlAddNews } from "../../../../../react-project/trumwebversion1/src/Api/Api";
+
+import { urlAddNews } from "../../ApiUrl/Api";
 import NewsCkEditorAddNews from "./NewsCkEditorAddNews";
 const AddNews = ({ isAddNews }) => {
   const [newNewsHeadContent, setNewNewsHeadContent] = useState();
