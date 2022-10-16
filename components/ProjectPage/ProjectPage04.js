@@ -12,7 +12,6 @@ import Link from "next/link";
 const ProjectPage04 = ({
   subTitle1,
   content1,
-
   img1,
   img2,
   img3,
@@ -43,6 +42,7 @@ const ProjectPage04 = ({
         } else {
           b = a[converToNum + 1].postId;
         }
+        console.log(b);
         setCurrentIdxNews(b);
       }
     });
@@ -329,7 +329,7 @@ const ProjectPage04 = ({
 
   useEffect(() => {
     getListNews();
-  }, []);
+  }, [projectsidx]);
   useEffect(() => {
     fetchNextNews();
   }, [currentIdxNews]);
@@ -419,17 +419,17 @@ const ProjectPage04 = ({
         <div className={styles.newsNextNews}>
           <p>Next project</p>
           <div className={styles.nextNewsBackground}>
-            <div className={styles.newsBackground}>
-              {nextNews && (
-                <Link href={`/projects/${nextNews.postId}`}>
+            {nextNews && (
+              <Link href={`/projects/${nextNews.postId}`}>
+                <div className={styles.newsBackground}>
                   <div className={styles.headlineNextNews}>
                     <h1>{nextNews.title}</h1>
                     <h1>{nextNews.title1}</h1>
                     <p>{nextNews.category}</p>
                   </div>
-                </Link>
-              )}
-            </div>
+                </div>
+              </Link>
+            )}
           </div>
         </div>
       </div>

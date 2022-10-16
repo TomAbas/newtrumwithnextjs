@@ -5,6 +5,13 @@ body {
   font-family: "galano", "montserrat";
   background-color: #131313;
 }
+.container {
+  background-color: #131313;
+  width: min(90%, 1600px);
+  /* position: relative; */
+  margin-inline: auto;
+  font-family: "galano", "montserrat";
+}
 
 a {
   color: inherit;

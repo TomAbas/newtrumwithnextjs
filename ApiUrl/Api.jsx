@@ -17,3 +17,16 @@ export const urlAddContributor =
   "https://pagesmanagementapi.com/api/admin/create/contributor";
 export const urlDeleteContributor =
   "https://pagesmanagementapi.com/api/admin/delete/contributor";
+export const urlListJobs =
+  "https://pagesmanagementapi.com/api/index/recruitment";
+export const urlJobId = "https://pagesmanagementapi.com/api/read/recruitment";
+export const urlAddJob =
+  "https://pagesmanagementapi.com/api/admin/create/recruitment";
+export const urlDeleteJob =
+  "https://pagesmanagementapi.com/api/admin/delete/recruitment";
+export const urlEditJob =
+  "https://pagesmanagementapi.com/api/admin/update/recruitment";
+export const urlCompanyInfo =
+  "https://pagesmanagementapi.com/api/index/com-info";
+export const urlEditCompanyInfo =
+  "https://pagesmanagementapi.com/api/admin/update/com-info";

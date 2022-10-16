@@ -111,6 +111,7 @@
 }
 
 .newsEditorForm {
+  height: 420vh;
   display: flex;
   width: fit-content;
   position: relative;
@@ -136,7 +137,7 @@
 
   width: 800px;
   transition: all 0.5s ease;
-  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+  /* box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px; */
 }
 
 .btnGroup {

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from '../../styles/Admin.module.css'
+import styles from "../../styles/Admin.module.css";
 //mui
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -51,7 +51,7 @@ const NewsForm = () => {
   const [reDelete, setReDelete] = useState(true);
   const [contributorList, setContributorList] = useState([0]);
   const [didNotSubmitHeadForm, setDidNotSubmitHeadForm] = useState(true);
-
+  const [trigger1, setTrigger1] = useState();
   const deleteNews = async (id) => {
     await axios
       .post(`${urlDeleteNewsId}/${id}`)
@@ -257,6 +257,7 @@ const NewsForm = () => {
                   isAddContributor={isAddContributor}
                   contributorList={contributorList}
                   setDidNotSubmitHeadForm={setDidNotSubmitHeadForm}
+                  setContributorList={setContributorList}
                 />
               </>
             ) : isAddContributor ? (
@@ -269,6 +270,7 @@ const NewsForm = () => {
                   isAddContributor={isAddContributor}
                   contributorList={contributorList}
                   setDidNotSubmitHeadForm={setDidNotSubmitHeadForm}
+                  setContributorList={setContributorList}
                 />
               </>
             ) : (

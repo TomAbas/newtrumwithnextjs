@@ -1,5 +1,5 @@
 import React from "react";
-import styles from '../../styles/Admin.module.css'
+import styles from "../../styles/Admin.module.css";
 //mui
 import { Button } from "@mui/material";
 import List from "@mui/material/List";
@@ -22,7 +22,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useMemo } from "react";
 import { urlDeleteContributor } from "../../ApiUrl/Api";
-import { urlAddContributor } from "../../ApiUrl/Api";
+import { urlAddContributor, urlListContributorIdPost } from "../../ApiUrl/Api";
 const schema = yup.object().shape({
   contributorName: yup.string(),
   contributorRole: yup.string(),
@@ -55,6 +55,7 @@ const NewsEditor = ({
   contributorList,
   setDidNotSubmitHeadForm,
   setDidNotSubmitHeadForm2,
+  setContributorList,
 }) => {
   // console.log(isAddContributor);
 
@@ -90,16 +91,28 @@ const NewsEditor = ({
         role: data.contributorRole,
         postId: newsIdx,
       })
-      .then((res) => {
+      .then(async (res) => {
         console.log(res);
+        await axios
+          .get(`${urlListContributorIdPost}/${newsIdx}`)
+          .then(({ data }) => {
+            console.log(data);
+            setContributorList(data);
+          });
       })
       .catch((error) => {
         console.log(error);
       });
   };
   const deleteContributor = async (id) => {
-    await axios.get(`${urlDeleteContributor}/${id}`).then((res) => {
+    await axios.post(`${urlDeleteContributor}/${id}`).then(async (res) => {
       console.log(res);
+      await axios
+        .get(`${urlListContributorIdPost}/${newsIdx}`)
+        .then(({ data }) => {
+          console.log(data);
+          setContributorList(data);
+        });
     });
   };
   useEffect(() => {

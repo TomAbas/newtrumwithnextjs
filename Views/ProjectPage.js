@@ -10,7 +10,7 @@ import ProjectPage03 from "../components/ProjectPage/ProjectPage03";
 import ProjectPage04 from "../components/ProjectPage/ProjectPage04";
 import ProjectPage002 from "../components/ProjectPage/ProjectPage002";
 const ProjectPage = ({ projectsidx }) => {
-  console.log(projectsidx);
+  // console.log(projectsidx);
   const [newsBigTitle, setNewsBigTitle] = useState();
   const [newsBigTitle1, setNewsBigTitle1] = useState();
   const [openTitle, setOpenTitle] = useState();

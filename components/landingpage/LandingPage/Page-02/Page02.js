@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-
+import { useRouter } from "next/router";
 import arrowLeft from "../../../../public/imgs/arrowLeft.svg";
 import arrowRight from "../../../../public/imgs/arrowRight.svg";
 import plusicon from "../../../../public/imgs/plusicon.svg";
@@ -12,6 +12,7 @@ import Image from "next/future/image";
 import axios from "axios";
 import Link from "next/link";
 const Page02 = () => {
+  const router = useRouter();
   const [isDown, setIsDown] = useState(false);
   const [walk, setWalk] = useState(0);
   const [render, setRender] = useState(false);
@@ -46,25 +47,26 @@ const Page02 = () => {
   const createSlideItems = () => {
     let b = arrayListJob.map((job, idx) => {
       return (
-        <Link href={`/projects/${job.postId}`}>
-          <div
-            key={idx}
-            className={styles.slideItem}
-            ref={refItem0}
-            style={{
-              background: `url(${job.banner}) no-repeat center center/cover`,
-            }}
-          >
-            <div className={styles.item}>
-              <h1>{job.title}</h1>
-            </div>
-            {job.title1 && (
-              <div className={styles.item}>
-                <h1>{job.title1}</h1>
-              </div>
-            )}
+        // <Link href={`/projects/${job.postId}`}>
+        <div
+          key={idx}
+          className={styles.slideItem}
+          ref={refItem0}
+          style={{
+            background: `url(${job.banner}) no-repeat center center/cover`,
+          }}
+          onDoubleClick={() => router.push(`/projects/${job.postId}`)}
+        >
+          <div className={styles.item}>
+            <h1>{job.title}</h1>
           </div>
-        </Link>
+          {job.title1 && (
+            <div className={styles.item}>
+              <h1>{job.title1}</h1>
+            </div>
+          )}
+        </div>
+        // </Link>
       );
     });
     return b;
@@ -337,7 +339,7 @@ const Page02 = () => {
         >
           <div className={styles.plusIconBox} ref={plusBoxRef}>
             <div>
-              <img src={plusicon} alt='+' className={styles.plusImg} />
+              <Image src={plusicon} alt='+' className={styles.plusImg} />
             </div>
           </div>
           <div className={styles.sliderContainer}>

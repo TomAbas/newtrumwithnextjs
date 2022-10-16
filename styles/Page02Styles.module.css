@@ -56,7 +56,7 @@
   text-align: center;
   color: #fff;
   font-size: 1.2rem;
-  /* pointer-events: all; */
+  pointer-events: fill !important;
   /* transform: rotate(4deg) translateY(5%) scale(1); */
   transition: 1.1s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
@@ -177,7 +177,7 @@
   z-index: 999;
 }
 
-.slide-pagination::after {
+.slidePagination::after {
   content: "";
   position: absolute;
   width: 70%;
@@ -197,9 +197,9 @@
   background: url(/pages/components/imgs/img1.png) no-repeat center center/cover;
 }
 
-/* .item {
-  pointer-events: auto;
-} */
+.item {
+  pointer-events: none;
+}
 .item h1 {
   transition: transform ease-in-out 0.5s;
 }

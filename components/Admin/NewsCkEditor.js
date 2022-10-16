@@ -8,7 +8,7 @@ import { urlNews } from "../../ApiUrl/Api";
 import { useEffect, useRef } from "react";
 import { useState } from "react";
 
-import styles from '../../styles/Admin.module.css'
+import styles from "../../styles/Admin.module.css";
 const NewsCkEditor = ({
   currentContent1,
   currentContent2,
@@ -56,16 +56,15 @@ const NewsCkEditor = ({
                   <CKEditor
                     className={styles.ckEditor}
                     editor={ClassicEditor}
-                    data='<p>Hello from CKEditor 5!</p>'
+                    data=''
                     onReady={(editor) => {
                       // You can store the "editor" and use when it is needed.
                       console.log("Editor is ready to use!", editor);
                     }}
                     onChange={(event, editor) => {
                       const data = editor.getData();
-                      isAddNews
-                        ? setNewNewsContent1(data)
-                        : setNewContent1(data);
+
+                      setNewContent1(data);
                       console.log({ event, editor, data });
                     }}
                   />
@@ -111,16 +110,15 @@ const NewsCkEditor = ({
                   <CKEditor
                     className={styles.ckEditor}
                     editor={ClassicEditor}
-                    data='<p>Hello from CKEditor 5!</p>'
+                    data=''
                     onReady={(editor) => {
                       // You can store the "editor" and use when it is needed.
                       console.log("Editor is ready to use!", editor);
                     }}
                     onChange={(event, editor) => {
                       const data = editor.getData();
-                      isAddNews
-                        ? setNewNewsContent2(data)
-                        : setNewContent2(data);
+
+                      setNewContent2(data);
                       console.log({ event, editor, data });
                     }}
                   />

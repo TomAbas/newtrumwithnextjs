@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import Layout from '../components/Layout.js'
+import Layout from "../components/Layout.js";
 
 function MyApp({ Component, pageProps, ...appProps }) {
   const getContent = () => {
@@ -7,9 +7,11 @@ function MyApp({ Component, pageProps, ...appProps }) {
       return <Component {...pageProps} />;
 
     return (
-      <Layout>
-        <Component {...pageProps} />{" "}
-      </Layout>
+   
+        <Layout>
+          <Component {...pageProps} />{" "}
+        </Layout>
+  
     );
   };
   return (

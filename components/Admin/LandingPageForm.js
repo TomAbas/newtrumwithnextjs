@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import styles from '../../styles/Admin.module.css'
+import React, { useState, useMemo } from "react";
+import styles from "../../styles/Admin.module.css";
 //hook form
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -49,10 +49,13 @@ const LandingPageForm = ({ preLoadValue }) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-    defaultValues: preLoadValue,
+    defaultValues: useMemo(() => {
+      return preLoadValue;
+    }, [preLoadValue]),
   });
 
   const submitNewsEditor = (data) => {
@@ -74,12 +77,7 @@ const LandingPageForm = ({ preLoadValue }) => {
       .catch((error) => {
         console.log(error);
       });
-    // const objBanner = {
-    //   firstLine: data.title1,
-    //   secondLine: data.title2,
-    //   thirdLine: data.title3,
-    // };
-    // axios.post(`${editAbout}/1`, objBanner);
+
     const objSection1 = {
       firstLine: data.content1Line1,
       secondLine: data.content1Line2,
@@ -121,19 +119,7 @@ const LandingPageForm = ({ preLoadValue }) => {
       .catch((error) => {
         console.log(error);
       });
-    // const objSection3 = {
-    //   firstLine: data.content3Line1,
-    //   secondLine: data.content3Line2,
-    //   thirdLine: data.content3Line3,
-    //   fourthLine: data.content3Line4,
-    //   fifthLine: data.content3Line5,
-    //   sixthLine: data.content3Line6,
-    //   seventhLine: data.content3Line7,
-    //   eighthLine: data.content3Line8,
-    //   ninthLine: data.content3Line9,
-    //   tenthLine: data.content3Line10,
-    // };
-    // axios.post(`${editAbout}/4`, objSection3);
+
     const objSection4 = {
       firstLine: data.content4Line1,
       secondLine: data.content4Line2,
@@ -149,7 +135,9 @@ const LandingPageForm = ({ preLoadValue }) => {
     };
     axios.post(`${editAbout}/6`, objSection5);
   };
-
+  useEffect(() => {
+    reset(preLoadValue);
+  }, [preLoadValue]);
   return (
     <>
       <div className={styles.landingpageformContainer}>
