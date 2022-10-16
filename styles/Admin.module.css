@@ -22,12 +22,7 @@
 .titleForm {
   margin-bottom: 50px;
 }
-.row1 {
-  /* display: flex; */
-  /* border: 2px solid red; */
-  /* width: fit-content; */
-  /* gap: 100px; */
-}
+
 .row1 h3 {
   font-weight: 300;
 }

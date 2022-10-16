@@ -44,9 +44,7 @@
 .project {
   font-family: "Times New Roman", Times, serif !important;
 }
-.listJobOuterBox {
-  /* border: 2px solid white; */
-}
+
 
 .listJobBox {
   /* border: 2px solid red; */
@@ -177,8 +175,5 @@
   .innerBox p {
     font-size: 1rem;
   }
-  .outer-move {
-    /* border: 2px solid white; */
-    /* transform: translateY(40%); */
-  }
+
 }

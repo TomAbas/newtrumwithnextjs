@@ -8,6 +8,7 @@ import ProjectPage01 from "../components/ProjectPage/ProjectPage01";
 import ProjectPage02 from "../components/ProjectPage/ProjectPage02";
 import ProjectPage03 from "../components/ProjectPage/ProjectPage03";
 import ProjectPage04 from "../components/ProjectPage/ProjectPage04";
+import ProjectPage002 from "../components/ProjectPage/ProjectPage002";
 const ProjectPage = ({ projectsidx }) => {
   console.log(projectsidx);
   const [newsBigTitle, setNewsBigTitle] = useState();
@@ -73,10 +74,10 @@ const ProjectPage = ({ projectsidx }) => {
     <>
       <Head>
         <link rel='icon' href='/favicon.ico' />
-        <link
+        {/* <link
           href='https://fonts.googleapis.com/css?family=Montserrat'
           rel='stylesheet'
-        />
+        /> */}
         {/* metatag google  */}
         <meta name='description' content={openTitle} />
         <meta
@@ -98,35 +99,42 @@ const ProjectPage = ({ projectsidx }) => {
         <meta property='og:image:height' content='630' />
         <title>{newsBigTitle + " " + newsBigTitle1}</title>
       </Head>
-      <ProjectPage01
-        title={newsBigTitle}
-        title1={newsBigTitle1}
-        category={category}
-        bannerImg={bannerImg}
-      />
-      <div className={styles.container}>
-        <ProjectPage02
-          tagLine={tagLine}
-          tagLine1={tagLine1}
-          projectsidx={projectsidx}
+      <div>
+        <ProjectPage01
+          title={newsBigTitle}
+          title1={newsBigTitle1}
+          category={category}
+          bannerImg={bannerImg}
         />
-        <ProjectPage03
-          openTitle={openTitle}
-          subTitle={subTitle}
-          youtubeUrl={youtubeUrl}
-          content={content}
-          img={img}
-        />
-        <ProjectPage04
-          subTitle1={subTitle1}
-          content1={content1}
-          img1={img1}
-          img2={img2}
-          img3={img3}
-          img4={img4}
-          img5={img5}
-          projectsidx={projectsidx}
-        />
+        <div className={styles.container}>
+          {/* <ProjectPage002
+            tagLine={tagLine}
+            tagLine1={tagLine1}
+            projectsidx={projectsidx}
+          /> */}
+          <ProjectPage02
+            tagLine={tagLine}
+            tagLine1={tagLine1}
+            projectsidx={projectsidx}
+          />
+          <ProjectPage03
+            openTitle={openTitle}
+            subTitle={subTitle}
+            youtubeUrl={youtubeUrl}
+            content={content}
+            img={img}
+          />
+          <ProjectPage04
+            subTitle1={subTitle1}
+            content1={content1}
+            img1={img1}
+            img2={img2}
+            img3={img3}
+            img4={img4}
+            img5={img5}
+            projectsidx={projectsidx}
+          />
+        </div>
       </div>
     </>
   );

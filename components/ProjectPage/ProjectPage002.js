@@ -1,13 +1,12 @@
 import React from "react";
-// import styles from "../../styles/ProjectPage02Styles.module.css";
-import styles from "../../styles/ProjectPage002Styles.module.css";
+
 import { useInView } from "framer-motion";
 import { useState } from "react";
 import { useEffect, useRef } from "react";
 import axios from "axios";
 import { urlListContributorIdPost } from "../../ApiUrl/Api";
 import { useRouter } from "next/router";
-const ProjectPage02 = ({ tagLine, tagLine1, projectsidx }) => {
+const ProjectPage002 = ({ tagLine, tagLine1, projectsidx }) => {
   // const router = useRouter();
   // const { projectsidx } = router.query;
   const [line1, setLine1] = useState([]);
@@ -40,38 +39,6 @@ const ProjectPage02 = ({ tagLine, tagLine1, projectsidx }) => {
       }
     }
   };
-  const animationWords = () => {
-    // console.log(line1);
-    let b = line1.map((word, idx) => {
-      let delay = { animationDelay: `${idx / 5 + 0.5}s ` };
-      return (
-        <h1
-          className={isArrWordIn ? `${styles.fadeInUp10}` : " "}
-          style={delay}
-          key={idx}
-        >
-          {word}
-        </h1>
-      );
-    });
-    return b;
-  };
-  const animationWords1 = () => {
-    // console.log(line2);
-    let b = line2.map((word, idx) => {
-      let delay = { animationDelay: `${idx / 5 + 1}s` };
-      return (
-        <h1
-          className={isArrWordIn1 ? `${styles.fadeInUp10}` : " "}
-          style={delay}
-          key={idx}
-        >
-          {word}
-        </h1>
-      );
-    });
-    return b;
-  };
   const contributorList = () => {
     let b = contributorArr.map((contributor) => {
       return (
@@ -89,7 +56,7 @@ const ProjectPage02 = ({ tagLine, tagLine1, projectsidx }) => {
 
   return (
     <>
-      <div className={styles.newsPage02Box}>
+      {/* <div className={styles.newsPage02Box}>
         <div className={styles.newsTitleBox}>
           <div className={styles.newsTitle}>
             <div className={styles.newsTitleH1} ref={arrWordRef}>
@@ -109,9 +76,9 @@ const ProjectPage02 = ({ tagLine, tagLine1, projectsidx }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
 
-export default ProjectPage02;
+export default ProjectPage002;

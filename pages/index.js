@@ -8,10 +8,10 @@ export default function Home() {
       <Head>
         <title>Trum Agency</title>
         <link rel='icon' href='/favicon.ico' />
-        <link
+        {/* <link
           href="https://fonts.googleapis.com/css?family=Montserrat"
           rel='stylesheet'
-        />
+        /> */}
         {/* metatag google  */}
         <meta
           name='description'
