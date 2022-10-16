@@ -74,10 +74,10 @@ const ProjectPage = ({ projectsidx }) => {
     <>
       <Head>
         <link rel='icon' href='/favicon.ico' />
-        {/* <link
+        <link
           href='https://fonts.googleapis.com/css?family=Montserrat'
           rel='stylesheet'
-        /> */}
+        />
         {/* metatag google  */}
         <meta name='description' content={openTitle} />
         <meta
