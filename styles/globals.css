@@ -2,8 +2,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "galano", "montserrat";
+  background-color: #131313;
 }
 
 a {
@@ -11,8 +11,24 @@ a {
   text-decoration: none;
 }
 
+#__next {
+  background-color: #131313;
+  overflow: hidden;
+}
+@font-face {
+  font-family: "galano_grotesque_altblack";
+  src: url("https://http://trumagency.com/font/galanogrotesquealtblack-webfont.woff2")
+      format("woff2"),
+    url("https://http://trumagency.com/font/galanogrotesquealtblack-webfont.woff")
+      format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 * {
+  margin: 0px;
+  padding: 0px;
   box-sizing: border-box;
+  font-family: "galano", "montserrat";
 }
 
 @media (prefers-color-scheme: dark) {

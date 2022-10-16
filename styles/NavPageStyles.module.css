@@ -1,0 +1,106 @@
+/* * {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "galano", "montserrat";
+} */
+/* :root {
+  --width-containers: 90%;
+} */
+/* biggest container */
+
+/* #root {
+  background-color: #131313;
+  overflow: hidden;
+} */
+@font-face {
+  font-family: "galano_grotesque_altblack";
+  src: url("https://http://trumagency.com/font/galanogrotesquealtblack-webfont.woff2")
+      format("woff2"),
+    url("https://http://trumagency.com/font/galanogrotesquealtblack-webfont.woff")
+      format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+.container {
+  background-color: #131313;
+  width: min(90%, 1600px);
+  /* position: relative; */
+  margin-inline: auto;
+  font-family: "galano", "montserrat";
+}
+.navContainer {
+  /* border: 2px solid white; */
+  /* width: var(--width-containers); */
+  position: fixed;
+  margin: 0px auto;
+  z-index: 1;
+  /* border: 2px solid wheat; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  left: 2%;
+  right: 2%;
+}
+.navBrandLogo img {
+  width: 50px;
+  height: auto;
+}
+.navProject {
+  color: #fff;
+  text-align: center;
+  font-size: 7px;
+}
+.projectLogo {
+  width: 20px;
+}
+@media (min-width: 425px) {
+  .navBrandLogo img {
+    width: 80px;
+  }
+  .projectLogo {
+    width: 20px;
+  }
+  .navProject{
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: min(90%, 1400px);
+  }
+  .navBrandLogo img {
+    width: 90px;
+  }
+  .projectLogo {
+    width: 25px;
+  }
+  .navProject{
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .navBrandLogo img {
+    width: 110px;
+  }
+  .projectLogo {
+    width: 27px;
+  }
+  .navProject{
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1440px) {
+  /* .container{
+      max-width: ;
+    } */
+  .navBrandLogo img {
+    width: 125px;
+  }
+  .projectLogo {
+    width: 30px;
+  }
+}

@@ -1,0 +1,205 @@
+.landingpageformContainer {
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 50px 0px;
+}
+.landingpageform {
+  /* border: 1px solid; */
+  position: relative;
+  padding: 70px 30px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: auto;
+  border-radius: 5px;
+  resize: both;
+
+  /* border-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3ClinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23cffffe' /%3E%3Cstop offset='25%25' stop-color='%23f9f7d9' /%3E%3Cstop offset='50%25' stop-color='%23fce2ce' /%3E%3Cstop offset='100%25' stop-color='%23ffc1f3' /%3E%3C/linearGradient%3E %3Cpath d='M1.5 1.5 l97 0l0 97l-97 0 l0 -97' stroke-linecap='square' stroke='url(%23g)' stroke-width='3'/%3E %3C/svg%3E")
+      1; */
+}
+.titleForm {
+  margin-bottom: 50px;
+}
+.row1 {
+  /* display: flex; */
+  /* border: 2px solid red; */
+  /* width: fit-content; */
+  /* gap: 100px; */
+}
+.row1 h3 {
+  font-weight: 300;
+}
+.titleEdit {
+  margin-bottom: 20px;
+  /* width: 50%; */
+  width: 40vw;
+  position: relative;
+}
+
+.inputField {
+  width: 100%;
+  height: 40px;
+  /* border: none; */
+  margin: 10px 0px;
+  /* padding-left: 10px; */
+  /* border: 1px solid black; */
+  border: 1px solid #ccc;
+  padding: 10px 10px;
+  transition: 0.4s;
+}
+.inputField:focus {
+  border: 1px solid black;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.btnSubmit {
+  position: absolute;
+  background-color: rgb(46, 111, 240);
+  width: 100px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 15px;
+  right: 5%;
+  bottom: 1%;
+}
+.btnSubmit:active {
+  outline: none;
+  transform: scale(0.9);
+}
+
+.bannerBanner {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid gainsboro;
+}
+
+.bannerEdit {
+  border-bottom: 1.5px solid #fff;
+  padding: 30px 0px;
+}
+
+.content1Edit {
+  border-bottom: 1.5px solid #fff;
+  padding: 30px 0px;
+}
+
+.content2Edit {
+  border-bottom: 1.5px solid #fff;
+  padding: 30px 0px;
+}
+
+.content3Edit {
+  border-bottom: 1.5px solid #fff;
+  padding: 30px 0px;
+}
+
+.content4Edit {
+  border-bottom: 1.5px solid #fff;
+  padding: 30px 0px;
+}
+
+.content5Edit {
+  border-bottom: 1.5px solid #fff;
+  padding: 30px 0px;
+}
+
+.ckEditor {
+  margin-top: 15px !important;
+  /* width: 50% !important; */
+}
+
+.newsEditorForm {
+  display: flex;
+  width: fit-content;
+  position: relative;
+}
+.formNews {
+  width: 100%;
+  transition: all 0.5s ease;
+}
+.listNews {
+  flex: 40%;
+}
+
+/* .form-news {
+    flex: 60%;
+  } */
+
+.formNewsSubmit {
+  width: 40vw;
+  margin: 0 auto;
+}
+.formCk {
+  /* flex: 60% 1; */
+
+  width: 800px;
+  transition: all 0.5s ease;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+}
+
+.btnGroup {
+  display: flex;
+  gap: 5px;
+  justify-content: space-around;
+}
+.btnContributor {
+  width: fit-content;
+  border: 2px solid red;
+  background-color: blue;
+  padding: 5px 10px;
+}
+
+.btnEditNews {
+  width: fit-content;
+  border: 2px solid red;
+  background-color: blue;
+  padding: 5px 10px;
+}
+
+.addNewsBox {
+  border: 1px solid black;
+}
+
+.addNewsBtn {
+  padding: 10px 20px;
+  text-align: center;
+  background: rgb(96, 96, 234);
+  width: fit-content;
+  margin: 0 auto;
+}
+.addNewsBtn:active {
+  transform: scale(0.9);
+}
+
+.itemNews {
+  border: 1px solid #ccc;
+  padding: 4px 10px;
+}
+
+.waitingForm {
+  padding: 10px 20px;
+}
+
+.logoImgEdit img {
+  width: 100px;
+  height: auto;
+}
+
+.logoImgEdit {
+  position: absolute;
+  top: -3%;
+  right: 0px;
+}
+
+.currentContent {
+  /* border: 1px solid #ccc; */
+  margin: 20px auto;
+  padding: 10px 0px;
+}

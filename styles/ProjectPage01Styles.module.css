@@ -1,0 +1,133 @@
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+
+    -webkit-transform: translateY(7%);
+    -ms-transform: translateY(7%);
+    transform: translateY(7%);
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+    display: block;
+  }
+}
+.fadeInUp0 {
+  animation: fadeInUp 0.8s ease forwards;
+  display: block !important;
+  /* border: 2px solid white; */
+  transform: translateY(100%);
+  margin-right: 10px;
+}
+@keyframes runLeftIn {
+  0% {
+    transform: translateX(100%);
+    transform: scale(1.2);
+  }
+  100% {
+    transform: translateX(0%);
+    transform: scale(1);
+  }
+}
+@keyframes test {
+  0% {
+    transform: scale(0.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.headlineNewsBox {
+  /* border: 2px solid white; */
+  /* background: url("../../../imgs/landingpagepic.png") no-repeat center
+    center/cover; */
+  font-family: "montserrat";
+}
+
+.headlineContent {
+  /* border: 2px solid red; */
+  height: 70vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.headlineWordBox {
+  /* border: 2px solid white; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.headlineWord {
+  /* transform: translateX(100%); */
+  transition: 1s ease;
+  overflow: hidden;
+  margin-right: 10px;
+  opacity: 0;
+  font-size: 2.2rem;
+  /* animation: scaleIn1 1s ease 0.2s forwards; */
+}
+.wrapperText h1:last-child {
+  margin-right: 0px;
+}
+.wrapperText {
+  /* border: 2px solid red; */
+  border-radius: 5%;
+  overflow: hidden;
+  /* animation: fadeInUpS 1s ease forwards; */
+  display: flex;
+}
+@media (min-width: 425px) {
+  .headlineContent {
+    max-height: 100vh;
+  }
+  .headlineWord {
+    font-size: 2.4rem;
+  }
+}
+
+@media (min-width: 600px) {
+  .headlineWord {
+    font-size: 3.5rem;
+  }
+}
+@media (min-width: 768px) {
+  .headlineWord {
+    font-size: 4rem;
+  }
+}
+@media (min-width: 1024px) {
+  .headlineWord {
+    font-size: 5rem;
+  }
+  .fadeInUp0 {
+    margin-right: 17px;
+  }
+}
+
+@media (min-width: 1224px) {
+  .headlineWord {
+    font-size: 5.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .headlineWord {
+    font-size: 6rem;
+  }
+}
+@media (min-width: 1800px) {
+  .headlineWord {
+    font-size: 8rem;
+  }
+}
