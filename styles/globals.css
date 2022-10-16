@@ -15,7 +15,7 @@ a {
   background-color: #131313;
   overflow: hidden;
 }
-@font-face {
+/* @font-face {
   font-family: "galano_grotesque_altblack";
   src: url("https://http://trumagency.com/font/galanogrotesquealtblack-webfont.woff2")
       format("woff2"),
@@ -23,7 +23,7 @@ a {
       format("woff");
   font-weight: normal;
   font-style: normal;
-}
+} */
 * {
   margin: 0px;
   padding: 0px;

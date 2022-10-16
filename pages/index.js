@@ -1,17 +1,17 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import LandingPage from "./Views/LandingPage";
+import LandingPage from "../Views/LandingPage";
 export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
         <title>Trum Agency</title>
         <link rel='icon' href='/favicon.ico' />
-        {/* <link
-          href={`https://fonts.googleapis.com/css2?family=Monserat:wght@300;400;500;900&display=swap`}
+        <link
+          href="https://fonts.googleapis.com/css?family=Montserrat"
           rel='stylesheet'
-        /> */}
+        />
         {/* metatag google  */}
         <meta
           name='description'

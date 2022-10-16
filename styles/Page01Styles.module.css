@@ -72,7 +72,7 @@
   background-repeat: no-repeat;
   background-size: 80%;
   animation: animate 3s ease 1 forwards;
-  /* -webkit-background-clip: text; */
+  -webkit-background-clip: text;
   -webkit-text-fill-color: rgba(255, 255, 255, 0);
   margin-right: 10px;
 }
