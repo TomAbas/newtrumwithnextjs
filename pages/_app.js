@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import Layout from '../components/Layout.jsx'
+import Layout from '../components/Layout.js'
 
 function MyApp({ Component, pageProps, ...appProps }) {
   const getContent = () => {
