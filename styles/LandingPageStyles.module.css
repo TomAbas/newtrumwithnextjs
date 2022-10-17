@@ -146,6 +146,7 @@
   bottom: 0;
   object-fit: cover;
   background-attachment: fixed;
+  background-size: contain;
 }
 .landingPagePic {
   width: 98.5vw;
