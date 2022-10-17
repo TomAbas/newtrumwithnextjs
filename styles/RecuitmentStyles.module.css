@@ -1,6 +1,6 @@
 .bigContainer {
   /* border: 2px solid red; */
-  padding: 10% 15%;
+  padding: 20% 15%;
   color: #fff;
   /* margin-bottom: 120px; */
 }
@@ -31,7 +31,7 @@
   font-size: 3.5rem;
   font-weight: 600;
   text-transform: capitalize;
-  padding-right: 10px;
+  /* padding-right: 10px; */
 }
 
 .titleSm {
@@ -64,6 +64,7 @@
 }
 .textHolder p {
   padding: 20px 0px;
+  font-size: 0.7rem;
 }
 .iconBox {
   /* padding-left: 48%; */
@@ -107,6 +108,7 @@
   padding-top: 20px;
   padding-bottom: 20px;
   color: #858585;
+  font-size: 0.8rem;
 }
 .itemHolder .item img {
   float: right;
@@ -132,6 +134,7 @@
   display: inline-block;
   padding-right: 8px;
   color: #858585;
+  font-size: 0.6rem;
 }
 .bottomWidget ul :last-child {
   padding-right: 0px;
@@ -150,37 +153,74 @@
 .link {
   cursor: pointer;
 }
-@media (max-width: 420px) {
-  .titleMd {
-    font-size: 2.2rem;
-  }
-}
 
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-  }
-}
-
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
-  }
+.titleMd {
+  font-size: 1.5rem;
 }
 
 @media (min-width: 768px) {
-  .container {
-    width: 750px;
+  .bigContainer {
+    padding: 15% 15%;
+  }
+  .titleMd {
+    font-size: 1.7rem;
+  }
+  .textHolder p {
+    font-size: 0.8rem;
+  }
+  .email p {
+    font-size: 0.9rem;
+  }
+  .bottomWidget ul li {
+    font-size: 0.8rem;
+  }
+  .itemHolder .item {
+    font-size: 1rem;
+  }
+  .titleXs {
+    font-size: 0.7rem;
+  }
+  /* .recruitInfoText {
+   font-size: 11rem;
+  } */
+}
+@media (min-width: 1024px) {
+  .titleMd {
+    font-size: 2rem;
+  }
+  .textHolder p {
+    font-size: 0.9rem;
+  }
+  .email p {
+    font-size: 1rem;
+  }
+  .bottomWidget ul li {
+    font-size: 0.9rem;
+  }
+  .itemHolder .item {
+    font-size: 1.2rem;
+  }
+  .titleXs {
+    font-size: 0.9rem;
   }
 }
-
-@media (min-width: 1400px) {
-  .container,
-  .containerLg,
-  .containerMd,
-  .containerSm,
-  .containerXl,
-  .containerXxl {
-    max-width: 1320px;
+@media (min-width: 1440px) {
+  .titleMd {
+    font-size: 2.2rem;
+  }
+  .textHolder p {
+    font-size: 1rem;
+  }
+  .email p {
+    font-size: 1.1rem;
+  }
+  .bottomWidget ul li {
+    font-size: 1rem;
+  }
+  .itemHolder .item {
+    font-size: 1.3rem;
+  }
+  .titleXs {
+    font-size: 1rem;
   }
 }

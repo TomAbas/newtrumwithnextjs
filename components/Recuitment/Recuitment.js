@@ -83,32 +83,7 @@ const Recuitment = () => {
                 <p className={styles.recruitInfoText}>{companyInfo.content}</p>
               </div>
               <ul className={styles.itemHolder}>
-                {/* <li className={styles.item}>
-                  <p>
-                    item 1{" "}
-                    <a className='btn'>
-                      
-                    </a>
-                  </p>
-                  <div className={`${styles.subContent} ${styles.textHolder}`}>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Est ipsum, tempora praesentium inventore, ut asperiores,
-                    adipisci a rem deserunt odit nam esse doloribus consectetur?
-                    Harum at explicabo nulla? Quas, accusantium.
-                  </div>
-                </li> */}
-                {/* <li className={styles.item}>
-                  <p>item 1</p>
-                </li>
-                <li className={styles.item}>
-                  <p>item 1</p>
-                </li>
-                <li className={styles.item}>
-                  <p>item 1</p>
-                </li>
-                <li className={styles.item}>
-                  <p>item 1</p>
-                </li> */}
+                
                 {createListJobItem()}
               </ul>
             </div>
