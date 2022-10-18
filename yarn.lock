@@ -4434,6 +4434,18 @@
   "resolved" "https://registry.npmjs.org/char-regex/-/char-regex-2.0.1.tgz"
   "version" "2.0.1"
 
+"check-node-version@^4.2.1":
+  "integrity" "sha512-YYmFYHV/X7kSJhuN/QYHUu998n/TRuDe8UenM3+m5NrkiH670lb9ILqHIvBencvJc4SDh+XcbXMR4b+TtubJiw=="
+  "resolved" "https://registry.npmjs.org/check-node-version/-/check-node-version-4.2.1.tgz"
+  "version" "4.2.1"
+  dependencies:
+    "chalk" "^3.0.0"
+    "map-values" "^1.0.1"
+    "minimist" "^1.2.0"
+    "object-filter" "^1.0.2"
+    "run-parallel" "^1.1.4"
+    "semver" "^6.3.0"
+
 "check-types@^11.1.1":
   "integrity" "sha512-tzWzvgePgLORb9/3a0YenggReLKAIb2owL03H2Xdoe5pKcUyWRSEQ8xfCar8t2SIAuEDwtmx2da1YB52YuHQMQ=="
   "resolved" "https://registry.npmjs.org/check-types/-/check-types-11.1.2.tgz"
@@ -7834,6 +7846,11 @@
   dependencies:
     "tmpl" "1.0.5"
 
+"map-values@^1.0.1":
+  "integrity" "sha512-BbShUnr5OartXJe1GeccAWtfro11hhgNJg6G9/UtWKjVGvV5U4C09cg5nk8JUevhXODaXY+hQ3xxMUKSs62ONQ=="
+  "resolved" "https://registry.npmjs.org/map-values/-/map-values-1.0.1.tgz"
+  "version" "1.0.1"
+
 "mdn-data@2.0.14":
   "integrity" "sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow=="
   "resolved" "https://registry.npmjs.org/mdn-data/-/mdn-data-2.0.14.tgz"
@@ -8139,6 +8156,11 @@
   "integrity" "sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg=="
   "resolved" "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz"
   "version" "4.1.1"
+
+"object-filter@^1.0.2":
+  "integrity" "sha512-NahvP2vZcy1ZiiYah30CEPw0FpDcSkSePJBMpzl5EQgCmISijiGuJm3SPYp7U+Lf2TljyaIw3E5EgkEx/TNEVA=="
+  "resolved" "https://registry.npmjs.org/object-filter/-/object-filter-1.0.2.tgz"
+  "version" "1.0.2"
 
 "object-hash@^3.0.0":
   "integrity" "sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw=="
@@ -9690,7 +9712,7 @@
   optionalDependencies:
     "fsevents" "~2.3.2"
 
-"run-parallel@^1.1.9":
+"run-parallel@^1.1.4", "run-parallel@^1.1.9":
   "integrity" "sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA=="
   "resolved" "https://registry.npmjs.org/run-parallel/-/run-parallel-1.2.0.tgz"
   "version" "1.2.0"

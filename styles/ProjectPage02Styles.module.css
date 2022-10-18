@@ -18,7 +18,7 @@
   }
 }
 
-.fadeInUp0 {
+.fadeInUp10 {
   animation: fadeInUp 0.8s ease forwards;
   display: block !important;
   transform: translateY(100%);

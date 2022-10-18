@@ -25,6 +25,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/ckeditor__ckeditor5-core": "^33.0.3",
     "axios": "^0.27.2",
+    "check-node-version": "^4.2.1",
     "ckeditor5-custom-build": "file:ckeditor5",
     "framer-motion": "^7.3.6",
     "locomotive-scroll": "^4.1.4",
