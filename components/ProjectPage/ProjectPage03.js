@@ -21,7 +21,11 @@ const ProjectPage03 = ({ openTitle, subTitle, youtubeUrl, content, img }) => {
     let b = subTitleAr.map((word, idx) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s` };
       return (
-        <h1 className={isArrWordIn ? "fadeInUp0 " : " "} style={delay}>
+        <h1
+          className={isArrWordIn ? `${styles.fadeInUp0}` : " "}
+          style={delay}
+          ref={arrWordRef}
+        >
           {word}
         </h1>
       );

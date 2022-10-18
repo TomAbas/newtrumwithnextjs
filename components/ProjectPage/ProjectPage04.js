@@ -92,7 +92,7 @@ const ProjectPage04 = ({
       return (
         <h1
           key={idx}
-          className={isArrWordIn ? "fadeInUp0 " : " "}
+          className={isArrWordIn ? `${styles.fadeInUp0}` : " "}
           style={delay}
         >
           {word}
