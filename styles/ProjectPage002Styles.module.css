@@ -22,7 +22,7 @@
   animation: fadeInUp 0.8s ease forwards;
   display: block !important;
   transform: translateY(100%);
-  margin-right: 10px;
+  margin-right: 13px;
 }
 
 .newsTitleBox {

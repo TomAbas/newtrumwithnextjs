@@ -46,7 +46,7 @@ const ProjectPage02 = ({ tagLine, tagLine1, projectsidx }) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s ` };
       return (
         <h1
-          className={isArrWordIn ? `${styles.fadeInUp10}` : " "}
+          className={isArrWordIn && `${styles.fadeInUp0}`}
           style={delay}
           key={idx}
         >
@@ -62,7 +62,7 @@ const ProjectPage02 = ({ tagLine, tagLine1, projectsidx }) => {
       let delay = { animationDelay: `${idx / 5 + 1}s` };
       return (
         <h1
-          className={isArrWordIn1 ? `${styles.fadeInUp10}` : " "}
+          className={isArrWordIn1 && `${styles.fadeInUp0}`}
           style={delay}
           key={idx}
         >
