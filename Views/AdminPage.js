@@ -128,9 +128,11 @@ export default function BasicTabs() {
   }, []);
 
   return (
-    <Box sx={{ width: "100%", background: "white" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+    <Box sx={{ width: "100%", background: "white", overflow: "scroll" }}>
+      <Box sx={{ borderBottom: 1, borderColor: "divider", overflow: "scroll" }}>
         <Tabs
+          // variant=' scrollable'
+          // sx={{ overflow: "scroll" }}
           value={value}
           onChange={handleChange}
           aria-label='basic tabs example'

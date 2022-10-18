@@ -152,8 +152,8 @@ const NewsForm = () => {
     return (
       <List
         sx={{
-          width: "100%",
-          maxWidth: 280,
+          // width: "100%",
+          maxWidth: "1000px",
           border: "1px solid #ccc",
           bgcolor: "background.paper",
           position: "relative",
@@ -166,7 +166,7 @@ const NewsForm = () => {
       >
         <li key={`section-${1}`}>
           <div className={styles.itemNews}>
-            <ul>
+            <ul className={styles.ulList}>
               {arrNews.map((item, idx) => (
                 <div style={{ display: item.deleted === "1" && "none" }}>
                   <div className={styles.itemNews}>

@@ -111,7 +111,7 @@
 }
 
 .newsEditorForm {
-  height: 420vh;
+  height: 450vh;
   display: flex;
   width: fit-content;
   position: relative;
@@ -198,4 +198,38 @@
   /* border: 1px solid #ccc; */
   margin: 20px auto;
   padding: 10px 0px;
+}
+
+@media(max-width : 700px){
+
+  .titleEdit{
+    width: 100%;
+  }
+  .formNewsSubmit{
+    width: 100%;
+  }
+}
+
+@media(max-width: 1000px){
+  .inputField{
+    width: 100%;
+  }
+  .formCk{
+    min-width: 400px;
+    width: 100%;
+  }
+  .newsEditorForm{
+    display: block;
+    width: 100%;
+  }
+  .formNewsSubmit{
+    width: 100%;
+  }
+  .titleEdit{
+    width: 100%;
+  }
+  .ulList{
+    display: flex;
+   
+  }
 }

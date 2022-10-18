@@ -24,14 +24,14 @@
   display: block !important;
   /* border: 2px solid white; */
   transform: translateY(100%);
-  margin-right: 10px;
+  margin-right: 5px;
 }
 .fadeInUp1 {
   animation: fadeInUp 1.5s ease forwards;
   display: block !important;
   /* border: 2px solid white; */
   transform: translateY(100%);
-  margin-right: 10px;
+  margin-right: 5px;
 }
 .h1Word {
   opacity: 0;
@@ -184,14 +184,14 @@
     display: block !important;
     /* border: 2px solid white; */
     transform: translateY(100%);
-    margin-right: 17px;
+    margin-right: 13px;
   }
   .fadeInUp1 {
     animation: fadeInUp 1s ease forwards;
     display: block !important;
     /* border: 2px solid white; */
     transform: translateY(100%);
-    margin-right: 17px;
+    margin-right: 13px;
   }
   .page01Container {
     height: 75vh;
