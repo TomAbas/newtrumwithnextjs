@@ -98,7 +98,7 @@
 /* effect end */
 .page01Container {
   /* outline: 2px solid white; */
-  height: 50vh;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -140,7 +140,7 @@
 }
 @media (min-width: 425px) {
   .page01Container {
-    height: 50vh;
+    height: 60vh;
   }
   .topText h1 {
     font-size: 1.2rem;
@@ -194,7 +194,7 @@
     margin-right: 13px;
   }
   .page01Container {
-    height: 75vh;
+    height: 80vh;
   }
   .page01Content {
     max-width: 1180px;
