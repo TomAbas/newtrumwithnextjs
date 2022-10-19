@@ -1,6 +1,6 @@
 .bigContainer {
   /* border: 2px solid red; */
-  padding: 20% 15%;
+  padding: 20% 5%;
   color: #fff;
   /* margin-bottom: 120px; */
 }
@@ -103,7 +103,7 @@
   padding: 0;
 }
 .itemHolder .item {
-  border-top: 0.1px solid rgba(128, 128, 128, 0.298);
+  /* border-top: 0.1px solid rgba(128, 128, 128, 0.298); */
   padding-right: 10px;
   padding-top: 20px;
   padding-bottom: 20px;

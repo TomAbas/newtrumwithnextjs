@@ -211,6 +211,11 @@
 }
 
 @media(max-width: 1000px){
+  .itemNews{
+    /* width: fit-content; */
+    padding: 0px 0px;
+    overflow: auto;
+  }
   .inputField{
     width: 100%;
   }
@@ -232,4 +237,25 @@
     display: flex;
    
   }
+  .ulList > div{
+   min-width: 200px;
+   text-align: center;
+  }
+  /* .ulList :nth-child(2){
+   
+    flex: 20%;
+  }
+  .ulList :nth-child(3){
+   
+    flex: 20%;
+  }
+  .ulList :nth-child(4){
+   
+    flex: 20%;
+  }
+  .ulList :nth-child(5){
+    flex: 20%;
+   
+  } */
+ 
 }
