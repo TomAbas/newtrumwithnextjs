@@ -46,7 +46,7 @@
 .test {
   /* outline: 2px solid red; */
   position: relative;
-  height: 40vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -174,7 +174,7 @@
 }
 @media (min-width: 425px) {
   .test {
-    height: 60vh;
+    height: 100vh;
   }
   .loganContainer h1 {
     margin-bottom: 10px;
@@ -191,7 +191,7 @@
 
 @media (min-width: 768px) {
   .test {
-    height: 65vh;
+    height: 100vh;
   }
   .loganContainer h1 {
     font-size: 3.8rem !important;
