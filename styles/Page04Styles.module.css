@@ -135,7 +135,8 @@
 .textBox {
   padding-top: 3%;
   width: fit-content;
-  margin-inline: auto;
+  /* margin-inline: auto; */
+  margin: 0 auto;
 }
 .textBox p {
   font-size: 0.7rem;

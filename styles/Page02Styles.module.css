@@ -18,7 +18,8 @@
   position: relative;
   width: 100%;
   /* border: 2px solid blue; */
-  margin-inline: auto;
+  /* margin-inline: auto; */
+  margin: 0 auto;
 }
 
 .sliderContainer {
@@ -28,7 +29,8 @@
   position: relative;
   pointer-events: none;
   width: 100%;
-  margin-inline: auto;
+  /* margin-inline: auto; */
+  margin: 0 auto;
 }
 .sliderItems {
   /* border: 2px solid green; */
@@ -164,7 +166,8 @@
   /* border: 2px solid white; */
   width: 15%;
   margin-top: 20px;
-  margin-inline: auto;
+  /* margin-inline: auto; */
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;

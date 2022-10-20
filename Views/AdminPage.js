@@ -132,7 +132,7 @@ export default function BasicTabs() {
       <Box sx={{ borderBottom: 1, borderColor: "divider", overflow: "scroll" }}>
         <Tabs
           // variant=' scrollable'
-          // sx={{ overflow: "scroll" }}
+          sx={{ overflow: "scroll" }}
           value={value}
           onChange={handleChange}
           aria-label='basic tabs example'

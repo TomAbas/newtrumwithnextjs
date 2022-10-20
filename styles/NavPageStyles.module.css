@@ -13,7 +13,7 @@
   background-color: #131313;
   overflow: hidden;
 } */
-/* @font-face {
+@font-face {
   font-family: "galano_grotesque_altblack";
   src: url("https://http://trumagency.com/font/galanogrotesquealtblack-webfont.woff2")
       format("woff2"),
@@ -21,12 +21,13 @@
       format("woff");
   font-weight: normal;
   font-style: normal;
-} */
+}
 .container {
   background-color: #131313;
   width: min(90%, 1600px);
   /* position: relative; */
-  margin-inline: auto;
+  /* margin-inline: auto; */
+  margin: 0 auto;
   font-family: "galano", "montserrat";
 }
 .navContainer {
