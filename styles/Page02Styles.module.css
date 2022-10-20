@@ -226,22 +226,40 @@
   .page02Slider {
     width: 80%;
   }
-  .slider-container {
+
+  .sliderContainer {
     height: 40vw;
-    max-height: 1120px;
+   
   }
 }
 @media (min-width: 1200px) {
+  .sliderContainer {
+    height: 40vw;
+   
+  }
   .slideItem {
     font-size: 3.3rem;
   }
 }
 @media (min-width: 1440px) {
+  /* .sliderContainer{
+    height: 60vh;
+  } */
   .slideItem {
     font-size: 4rem;
   }
 }
+@media (min-width: 1900px){
+  .sliderContainer {
+    height: 40vw;
+   
+  }
+}
 @media (min-width: 2000px) {
+  .sliderContainer {
+    height: 35vw;
+   
+  }
   .gridPic {
     top: 0%;
   }

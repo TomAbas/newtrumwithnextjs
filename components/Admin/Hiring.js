@@ -91,7 +91,7 @@ const Hiring = () => {
       <List
         sx={{
           width: "100%",
-          maxWidth: 280,
+          maxWidth: "1000px",
           border: "1px solid #ccc",
           bgcolor: "background.paper",
           position: "relative",
@@ -104,7 +104,7 @@ const Hiring = () => {
       >
         <li key={`section-${1}`}>
           <div className={styles.itemNews}>
-            <div className={styles.btnGroup}>
+            {/* <div className={styles.btnGroup}>
               <div>
                 <Button
                   onClick={async () => {
@@ -123,10 +123,10 @@ const Hiring = () => {
                   </IconButton>
                 </Button>
               </div>
-            </div>
-            <ul>
+            </div> */}
+            <ul className={styles.ulList}>
               {arrNews.map((item, idx) => (
-                <div>
+                <div key={idx}>
                   <div className={styles.itemNews}>
                     <List>
                       <ListItem>

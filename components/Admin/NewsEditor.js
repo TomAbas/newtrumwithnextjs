@@ -135,7 +135,7 @@ const NewsEditor = ({
                 {contributorList &&
                   contributorList.map((item, idx) => {
                     return (
-                      <ListItem sx={{ borderBottom: " 2px solid #ccc" }}>
+                      <ListItem sx={{ borderBottom: " 2px solid #ccc" }} key={idx}>
                         <p>
                           {item.contributorName} : {item.role}{" "}
                         </p>{" "}

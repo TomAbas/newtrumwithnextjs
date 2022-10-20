@@ -131,11 +131,12 @@ export default function BasicTabs() {
     <Box sx={{ width: "100%", background: "white", overflow: "scroll" }}>
       <Box sx={{ borderBottom: 1, borderColor: "divider", overflow: "scroll" }}>
         <Tabs
-          // variant=' scrollable'
-          sx={{ overflow: "scroll" }}
+         
+          variant="scrollable"
+        scrollButtons="auto"
+        aria-label="scrollable auto tabs example"
           value={value}
           onChange={handleChange}
-          aria-label='basic tabs example'
         >
           <Tab label='Landing Page' onClick={() => {}} />
           <Tab
