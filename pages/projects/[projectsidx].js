@@ -10,7 +10,7 @@ export async function getServerSideProps ({params}){
   let res
   if(params.projectsidx !== 'undefined' && params.projectsidx !== 'requestProvider.js.map'){
      res = await axios.get(`${urlNewsId}/${params.projectsidx}`).then(({ data }) => {
-      console.log(data[0])
+      // console.log(data[0])
       return data[0]
     })
     .catch((error) => {
@@ -38,7 +38,7 @@ const projectsidx0 = ({res}) => {
       {" "}
       <Head>
 
-        <link rel='icon' href='/favicon.ico' />
+        <link rel='icon' href='/logo.ico' />
         <link
           rel='stylesheet'
           href='https://fonts.googleapis.com/css?family=Montserrat'

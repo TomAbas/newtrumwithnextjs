@@ -7,7 +7,7 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>Trum Agency</title>
-        <link rel='icon' href='/favicon.ico' />
+        <link rel='icon' href='/logo.ico' />
         <link
           href="https://fonts.googleapis.com/css?family=Montserrat"
           rel='stylesheet'

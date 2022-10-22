@@ -39,11 +39,7 @@ const Page03 = ({ page3Data }) => {
         setLine04(arrayWords3);
         let arrayWords4 = fifthLine.replace(/"/g, "").split(" ");
         setLine05(arrayWords4);
-        // console.log(arrayWords);
-        // console.log(arrayWords1);
-        // console.log(arrayWords2);
-        // console.log(arrayWords3);
-        // console.log(arrayWords4);
+
       }
     }
   };

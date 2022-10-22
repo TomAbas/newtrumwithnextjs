@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useInView } from "framer-motion";
-// import styles from '../../../../styles/Page01Styles.module.css'
+
 import styles from '../../../../styles/Page01Styles.module.css'
 import { useRef } from "react";
 import { useEffect } from "react";
@@ -43,12 +43,7 @@ const Page01 = ({ page1Data }) => {
         setLine05(arrayWords4);
         let arrayWords5 = sixthLine.replace(/"/g, "").split(" ");
         setLine06(arrayWords5);
-        // console.log(arrayWords1);
-        // console.log(arrayWords2);
-        // console.log(arrayWords3);
-        // console.log(arrayWords4);
-        // console.log(arrayWords5);
-        // console.log(arrayWords);
+
       }
     }
   };

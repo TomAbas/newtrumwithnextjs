@@ -138,7 +138,7 @@
   }
 
   .jobBox {
-    height: 20vw;
+    height: 18vw;
     width: 34vw;
   }
   .outerMove {
@@ -179,4 +179,9 @@
     font-size: 1rem;
   }
 
+}
+@media(min-width: 2000px){
+  .jobBox{
+    height: 16vw;
+  }
 }

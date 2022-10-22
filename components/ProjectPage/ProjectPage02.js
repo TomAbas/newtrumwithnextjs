@@ -1,15 +1,14 @@
 import React from "react";
-// import styles from "../../styles/ProjectPage02Styles.module.css";
+
 import styles from "../../styles/ProjectPage002Styles.module.css";
 import { useInView } from "framer-motion";
 import { useState } from "react";
 import { useEffect, useRef } from "react";
 import axios from "axios";
 import { urlListContributorIdPost } from "../../ApiUrl/Api";
-import { useRouter } from "next/router";
+
 const ProjectPage02 = ({ tagLine, tagLine1, projectsidx }) => {
-  // const router = useRouter();
-  // const { projectsidx } = router.query;
+ 
   const [line1, setLine1] = useState([]);
   const [line2, setLine2] = useState([]);
   const [contributorArr, setContributorArr] = useState([]);

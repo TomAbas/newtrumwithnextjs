@@ -71,12 +71,14 @@
   margin-bottom: 10px;
   font-size: 1.7rem !important;
   opacity: 0;
+  font-weight: 500;
 }
 .wrapperEffect h1 {
   font-size: 1.7rem !important;
 }
 .wrapperEffect span {
   font-size: 1.7rem !important;
+  font-weight: bolder;
 }
 .loganContainer span {
   color: #fff;

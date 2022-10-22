@@ -6,8 +6,7 @@ import { useRef, useState, useEffect } from "react";
 import Image from "next/future/image";
 
 const Page04 = ({ page4Data, page44Data, page444Data }) => {
-  const arrWord = ["WHO", "WE", "ARE"];
-  const arrWord1 = ["WHO", "WE", "DO", "IT", "FOR"];
+
   const [line01A, setLine01A] = useState();
   const [line02A, setLine02A] = useState();
   const [line03A, setLine03A] = useState();
