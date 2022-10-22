@@ -137,6 +137,7 @@
   width: fit-content;
   /* margin-inline: auto; */
   margin: 0 auto;
+  word-spacing: 1px;
 }
 .textBox p {
   font-size: 0.7rem;
@@ -149,14 +150,13 @@
   margin-bottom: 170px;
 }
 
-
-
 .contentText2 h1 {
   font-size: 2rem;
   padding-bottom: 15px;
 }
 .textBox1 {
   font-size: 0.7rem;
+  word-spacing: 1px;
 }
 .textBox1 p {
   padding-bottom: 15px;
@@ -251,10 +251,10 @@
   .contentText2 h1 {
     font-size: 4rem;
   }
-  .textBox1 p{
+  .textBox1 p {
     font-size: 0.82rem;
   }
-  .fadeInUpS{
+  .fadeInUpS {
     margin-right: 20px;
   }
 }
@@ -275,7 +275,7 @@
   .contentText2 h1 {
     font-size: 5.2rem;
   }
-  .textBox1 p{
+  .textBox1 p {
     font-size: 1.05rem;
   }
 }

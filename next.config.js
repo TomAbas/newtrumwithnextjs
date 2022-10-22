@@ -10,6 +10,7 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  experimental: { images: { allowFutureImage: true } },
 };
 
 module.exports = nextConfig;
