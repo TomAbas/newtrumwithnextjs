@@ -75,7 +75,7 @@ const ProjectPage04 = ({
   const createSlideItems = () => {
     let b = imgArr.map((img, idx) => {
       return (
-        <div
+        <div key={idx}
           className={styles.slideItem}
           ref={refItem0}
           style={{ background: `url(${img}) no-repeat center center/cover` }}
@@ -90,7 +90,7 @@ const ProjectPage04 = ({
     let b = subTitleAr1.map((word, idx) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s` };
       return (
-        <h1
+        <h1 
           key={idx}
           className={isArrWordIn ? `${styles.fadeInUp0}` : " "}
           style={delay}

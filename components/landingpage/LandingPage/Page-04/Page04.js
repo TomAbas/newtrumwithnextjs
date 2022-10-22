@@ -112,7 +112,7 @@ const Page04 = ({ page4Data, page44Data, page444Data }) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s` };
       return (
         <h1
-          // className={inViewH1ref1 ? "fadeInUpS h1-word" : " h1-word"}
+        key={idx}
           className={
             inViewH1ref1
               ? `${styles.fadeInUpS} ${styles.h1Word}`
@@ -132,6 +132,7 @@ const Page04 = ({ page4Data, page44Data, page444Data }) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s` };
       return (
         <h1
+        key={idx}
           className={
             inViewH1ref2
               ? `${styles.fadeInUpS} ${styles.h1Word}`

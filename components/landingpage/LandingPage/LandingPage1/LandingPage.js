@@ -27,8 +27,8 @@ const LandingPage = ({ landingPageData }) => {
   const animationWords = () => {
     let b = line01.map((word, idx) => {
       let delay = { animationDelay: `${idx / 8 + 0.5}s` };
-      return (
-        <h1 className={styles.fadeInUp0} style={delay} ref={refWord0}>
+      return ( 
+        <h1  key={idx} className={styles.fadeInUp0} style={delay} ref={refWord0}>
           {word}
         </h1>
       );
@@ -40,7 +40,7 @@ const LandingPage = ({ landingPageData }) => {
     let b = line02.map((word, idx) => {
       let delay = { animationDelay: `${idx / 12 + 1.3}s` };
       return (
-        <h1 className={styles.fadeInUp0} style={delay} ref={refWord0}>
+        <h1 key={idx} className={styles.fadeInUp0} style={delay} ref={refWord0}>
           {idx === 0 ? <span>{word}</span> : word}
         </h1>
       );
@@ -51,7 +51,7 @@ const LandingPage = ({ landingPageData }) => {
     let b = line03.map((word, idx) => {
       let delay = { animationDelay: `${idx / 15 + 1.6}s` };
       return (
-        <h1 className={styles.fadeInUp0} style={delay} ref={refWord0}>
+        <h1 key={idx} className={styles.fadeInUp0} style={delay} ref={refWord0}>
           {idx === 1 ? (
             <span>{word}</span>
           ) : idx === 2 ? (

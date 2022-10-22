@@ -57,7 +57,7 @@ const Page01 = ({ page1Data }) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s` };
       return (
         <h1
-          
+        key={idx}
           className={
             isArrWordIn1
               ? `${styles.fadeInUp0} ${styles.h1Word}`
@@ -76,7 +76,7 @@ const Page01 = ({ page1Data }) => {
       let delay = { animationDelay: `${idx / 5 + 1.2}s` };
       return (
         <h1
-          
+        key={idx}
           className={
             isArrWordIn1
               ? `${styles.fadeInUp1} ${styles.h1Word}`
@@ -95,7 +95,7 @@ const Page01 = ({ page1Data }) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s` };
       return (
         <h1
-          // className={isArrWordIn4 ? "fadeInUp1 h1-word" : " h1-word"}
+        key={idx}
           className={
             isArrWordIn4
               ? `${styles.fadeInUp1} ${styles.h1Word}`
@@ -114,7 +114,7 @@ const Page01 = ({ page1Data }) => {
       let delay = { animationDelay: `${idx / 5 + 1.2}s` };
       return (
         <h1
-          // className={isArrWordIn4 ? "fadeInUp1 h1-word" : " h1-word"}
+        key={idx}
           className={
             isArrWordIn4
               ? `${styles.fadeInUp1} ${styles.h1Word}`

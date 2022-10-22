@@ -28,7 +28,7 @@ const ProjectPage01 = ({ title, title1, category, bannerImg }) => {
         // console.log("123");
         let delay = { animationDelay: `${idx / 5 + 0.5}s` };
         return (
-          <h1
+          <h1 key={idx}
             className={
               isHeadLineIn
                 ? `${styles.headlineWord} ${styles.fadeInUp0}`
@@ -48,7 +48,7 @@ const ProjectPage01 = ({ title, title1, category, bannerImg }) => {
       let b = headline1.map((word, idx) => {
         let delay = { animationDelay: `${idx / 5 + 0.9}s` };
         return (
-          <h1
+          <h1 key={idx}
             className={
               isHeadLineIn1
                 ? `${styles.headlineWord} ${styles.fadeInUp0}`

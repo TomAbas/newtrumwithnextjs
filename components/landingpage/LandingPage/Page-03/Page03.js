@@ -51,6 +51,7 @@ const Page03 = ({ page3Data }) => {
     let b = line01.map((word, idx) => {
       return (
         <h2
+        key={idx}
           className={
             inViewSpan
               ? `${styles.textContent} ${styles.effect}`
@@ -69,6 +70,7 @@ const Page03 = ({ page3Data }) => {
     let b = line02.map((word, idx) => {
       return (
         <h2
+        key={idx}
           className={
             inViewSpan1
               ? `${styles.textContent} ${styles.effect}`
@@ -87,6 +89,7 @@ const Page03 = ({ page3Data }) => {
     let b = line03.map((word, idx) => {
       return (
         <h2
+        key={idx}
           className={
             inViewSpan2
               ? `${styles.textContent} ${styles.effect}`
@@ -105,6 +108,7 @@ const Page03 = ({ page3Data }) => {
     let b = line04.map((word, idx) => {
       return (
         <h2
+        key={idx}
           className={
             inViewSpan3
               ? `${styles.textContent} ${styles.effect}`
@@ -123,6 +127,7 @@ const Page03 = ({ page3Data }) => {
     let b = line05.map((word, idx) => {
       return (
         <h2
+        key={idx}
           className={
             inViewSpan4
               ? `${styles.textContent} ${styles.effect}`
