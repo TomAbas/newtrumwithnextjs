@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from "react";
 import styles from "../../styles/Admin.module.css";
+import { toast } from "react-toastify";
 //hook form
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -72,9 +73,11 @@ const LandingPageForm = ({ preLoadValue }) => {
       data: newFormBanner,
     })
       .then((res) => {
+        toast.success("Update info successfully")
         console.log(res);
       })
       .catch((error) => {
+        toast.error("something went wrong, please try again")
         console.log(error);
       });
 

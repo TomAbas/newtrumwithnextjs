@@ -1,8 +1,9 @@
 import React from "react";
-import { useEffect } from "react";
+import { toast } from "react-toastify";
+// import { useEffect } from "react";
 import { useState } from "react";
 import NewsEditor from "./NewsEditor";
-import NewsCkEditor from "./NewsCkEditor";
+// import NewsCkEditor from "./NewsCkEditor";
 import axios from "axios";
 import styles from '../../styles/Admin.module.css'
 import { urlAddNews } from "../../ApiUrl/Api";
@@ -48,9 +49,11 @@ const AddNews = ({ isAddNews }) => {
         data: newForm,
       })
         .then((res) => {
+          toast.success("Update content successfully")
           console.log(res);
         })
         .catch((error) => {
+          toast.error("something went wrong, please try again")
           console.log(error);
         });
     }

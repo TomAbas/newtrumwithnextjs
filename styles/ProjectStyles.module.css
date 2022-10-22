@@ -129,21 +129,24 @@
     font-size: 0.5rem;
   }
   .listJobContainer {
-    height: 400vh;
+    height: 800vh;
   }
   .listJobBox {
     flex-direction: row;
-    /* justify-content: center; */
+    /* justify-content: space-between; */
+    justify-content: center;
+
     gap: 100px;
   }
 
   .jobBox {
     height: 18vw;
-    width: 34vw;
+    width: 600px;
+   /* flex: 50%; */
   }
   .outerMove {
     /* border: 2px solid white; */
-    transform: translateY(500%);
+    transform: translateY(200%);
   }
 }
 @media (min-width: 1024px) {

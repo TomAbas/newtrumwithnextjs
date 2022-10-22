@@ -4,7 +4,7 @@ import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 const ListJobPage = ({ arrayListJob, amountJob }) => {
-  // console.log(arrayListJob);
+  console.log(arrayListJob);
   const createItem = () => {
     let b = arrayListJob.map((job, idxo) => {
       // console.log(job);

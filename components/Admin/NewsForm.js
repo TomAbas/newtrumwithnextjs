@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../../styles/Admin.module.css";
+import { toast } from "react-toastify";
 //mui
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -13,9 +14,9 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
+// import ListItemIcon from "@mui/material/ListItemIcon";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import EditIcon from "@mui/icons-material/Edit";
+// import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import IconButton from "@mui/material/IconButton";
 // import InboxIcon from "@mui/icons-material/MoveToInbox";
@@ -58,9 +59,11 @@ const NewsForm = () => {
       .then((res) => {
         console.log(res);
         setReDelete(!reDelete);
+        toast.success("Update info successfully")
       })
       .catch((error) => {
         console.log(error);
+        toast.error("something went wrong, please try again")
       });
   };
   const fetchListNews = async () => {
@@ -135,11 +138,13 @@ const NewsForm = () => {
       })
         .then((res) => {
           console.log(res);
+          toast.success("Update info successfully")
           setNewsHeadContent([]);
           setCurrentContent1("");
           setCurrentContent2("");
         })
         .catch((error) => {
+          toast.error("something went wrong, please try again")
           console.log(error);
         });
     }

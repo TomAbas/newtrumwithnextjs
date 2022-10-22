@@ -1,14 +1,16 @@
 import React from "react";
 import styles from "../../styles/Admin.module.css";
+//toast
+import { toast } from 'react-toastify';
 //mui
 import { Button } from "@mui/material";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import IconButton from "@mui/material/IconButton";
+// import List from "@mui/material/List";
+// import ListItem from "@mui/material/ListItem";
+// import ListItemText from "@mui/material/ListItemText";
+// import ListItemButton from "@mui/material/ListItemButton";
+// import ListItemIcon from "@mui/material/ListItemIcon";
+// import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+// import IconButton from "@mui/material/IconButton";
 //form
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -17,7 +19,6 @@ import * as yup from "yup";
 // import Editor from "ckeditor5-custom-build/build/ckeditor";
 // import { CKEditor } from "@ckeditor/ckeditor5-react";
 import axios from "axios";
-
 import { useEffect } from "react";
 import { useState } from "react";
 import { useMemo } from "react";
@@ -48,9 +49,11 @@ const AddHiring = ({ newsIdx, preLoadValue, setTrigger, trigger }) => {
       .post(urlAddJob, dataSubmit)
       .then((res) => {
         // console.log(res);
+        toast.success("Update info successfully")
         setTrigger(!trigger);
       })
       .catch((error) => {
+        toast.error("something went wrong, please try again")
         console.log(error);
       });
   };
