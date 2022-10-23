@@ -90,7 +90,7 @@ const Hiring = () => {
     return (
       <List
         sx={{
-          width: "100%",
+          width: "350px",
           maxWidth: "1000px",
           border: "1px solid #ccc",
           bgcolor: "background.paper",

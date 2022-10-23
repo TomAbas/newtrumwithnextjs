@@ -33,7 +33,7 @@ export default function Home({ res }) {
     <div className={styles.container}>
       <Head>
         <title>Trum Agency</title>
-        <link rel='icon' href='/logo.ico' />
+        <link rel='icon' href='/logo300px.ico' />
         <link
           href='https://fonts.googleapis.com/css?family=Montserrat'
           rel='stylesheet'

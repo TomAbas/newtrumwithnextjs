@@ -7,7 +7,7 @@ const recuitment = () => {
    
     <Head>
         <title>Contact</title>
-        <link rel='icon' href='/logo.ico' />
+        <link rel='icon' href='/logo300px.ico' />
         <link
           href="https://fonts.googleapis.com/css?family=Montserrat"
           rel='stylesheet'
@@ -29,7 +29,7 @@ const recuitment = () => {
         <meta property='og:title' content='We are hiring' />
         <meta
           property='og:description'
-          content='We are hring'
+          content='We are hiring'
         />
         <meta
           property='og:image'

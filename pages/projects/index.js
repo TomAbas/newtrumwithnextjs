@@ -8,7 +8,7 @@ const index = () => {
     <div className={styles.container}>
       <Head>
         <title>Trum's Projects</title>
-        <link rel='icon' href='/logo.ico' />
+        <link rel='icon' href='/logo300px.ico' />
         <link
           href="https://fonts.googleapis.com/css?family=Montserrat"
           rel='stylesheet'

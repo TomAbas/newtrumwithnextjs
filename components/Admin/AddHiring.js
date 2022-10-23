@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "../../styles/Admin.module.css";
-//toast
-import { toast } from 'react-toastify';
+
 //mui
 import { Button } from "@mui/material";
 // import List from "@mui/material/List";
@@ -49,11 +48,11 @@ const AddHiring = ({ newsIdx, preLoadValue, setTrigger, trigger }) => {
       .post(urlAddJob, dataSubmit)
       .then((res) => {
         // console.log(res);
-        toast.success("Update info successfully")
+      
         setTrigger(!trigger);
       })
       .catch((error) => {
-        toast.error("something went wrong, please try again")
+     
         console.log(error);
       });
   };

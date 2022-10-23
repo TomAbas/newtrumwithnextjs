@@ -38,7 +38,7 @@ const projectsidx0 = ({res}) => {
       {" "}
       <Head>
 
-        <link rel='icon' href='/logo.ico' />
+        <link rel='icon' href='/logo300px.ico' />
         <link
           rel='stylesheet'
           href='https://fonts.googleapis.com/css?family=Montserrat'

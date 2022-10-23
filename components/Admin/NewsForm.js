@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../styles/Admin.module.css";
-import { toast } from "react-toastify";
+
 //mui
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -59,11 +59,11 @@ const NewsForm = () => {
       .then((res) => {
         console.log(res);
         setReDelete(!reDelete);
-        toast.success("Update info successfully")
+       
       })
       .catch((error) => {
         console.log(error);
-        toast.error("something went wrong, please try again")
+        
       });
   };
   const fetchListNews = async () => {
@@ -138,13 +138,13 @@ const NewsForm = () => {
       })
         .then((res) => {
           console.log(res);
-          toast.success("Update info successfully")
+          
           setNewsHeadContent([]);
           setCurrentContent1("");
           setCurrentContent2("");
         })
         .catch((error) => {
-          toast.error("something went wrong, please try again")
+          
           console.log(error);
         });
     }

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../styles/Admin.module.css";
-import { toast } from "react-toastify";
+
 //mui
 import { Button } from "@mui/material";
 import List from "@mui/material/List";
@@ -98,12 +98,12 @@ const NewsEditor = ({
           .get(`${urlListContributorIdPost}/${newsIdx}`)
           .then(({ data }) => {
             console.log(data);
-            toast.success("Update info successfully")
+          
             setContributorList(data);
           });
       })
       .catch((error) => {
-        toast.error("something went wrong, please try again")
+       
         console.log(error);
       });
   };
@@ -114,10 +114,10 @@ const NewsEditor = ({
         .get(`${urlListContributorIdPost}/${newsIdx}`)
         .then(({ data }) => {
           console.log(data);
-          toast.success("Update info successfully")
+         
           setContributorList(data);
         }).catch((error)=>{
-          toast.error("something went wrong, please try again")
+         
           console.log(error)
         });
     });
