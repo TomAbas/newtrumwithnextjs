@@ -7,7 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
 
-import { editAbout, urlAbout, urlEditCompanyInfo } from "../../ApiUrl/Api";
+import {  urlEditCompanyInfo } from "../../ApiUrl/Api";
 import { useEffect } from "react";
 import { Button } from "@mui/material";
 const schema = yup.object().shape({

@@ -4,7 +4,6 @@ import React from "react";
 import axios from "axios";
 import { Button } from "@mui/material";
 
-import { urlNews } from "../../ApiUrl/Api";
 import { useEffect, useRef } from "react";
 import { useState } from "react";
 

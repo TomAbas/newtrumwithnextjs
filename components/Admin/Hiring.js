@@ -25,11 +25,6 @@ import IconButton from "@mui/material/IconButton";
 import axios from "axios";
 
 import {
-  urlDeleteNewsId,
-  urlEditNewsId,
-  urlListContributorIdPost,
-  urlNews,
-  urlNewsId,
   urlListJobs,
   urlJobId,
   urlDeleteJob,
@@ -136,7 +131,7 @@ const Hiring = () => {
                             await fetchJobId(item.id);
                             setNewsIdx(item.id);
                             setAddNewJob(false);
-                            // console.log(`${urlNewsId}/${newsIdx}`);
+                          
                           }}
                         >
                           <ListItemText

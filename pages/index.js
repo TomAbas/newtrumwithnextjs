@@ -1,33 +1,24 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import LandingPage from "../Views/LandingPage";
-import { urlAbout } from "../ApiUrl/Api";
-import axios from "axios";
-export async function getServerSideProps() {
-  let res;
-
-  res = await axios
-    .get(`${urlAbout}`)
-    .then(({ data }) => {
-      // console.log(data[0]);
-      return data;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-
+import { getInfoLandingPage } from "../ApiUrl/infoApi/infoApi";
+export async function getServerSideProps({ req, resNext }) {
+  let res = await getInfoLandingPage();
   if (!res) {
     return {
       notFound: true,
     };
   }
+  resNext.setHead(
+    "Cache-Control",
+    "public, s-maxage=10, stale-while-revalidate=59"
+  );
   return {
     props: { res }, // will be passed to the page component as props
   };
 }
 
 export default function Home({ res }) {
-  console.log(res);
   return (
     <div className={styles.container}>
       <Head>
