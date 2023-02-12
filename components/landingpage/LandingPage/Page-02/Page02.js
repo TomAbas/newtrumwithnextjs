@@ -192,9 +192,7 @@ const Page02 = () => {
         plusBoxRef.current.style.transform = `translate3d(${offsetX}px,${offsetY}px,0)`;
         arrowLeftBoxRef.current.style.display = "none";
         arrowRightBoxRef.current.style.display = "none";
-        // itemWordRef.current.style.transform = "scale(1.2)";
-        // itemWordRef1.current.style.transform = "scale(1.2)";
-        // itemWordRef2.current.style.transform = "scale(1.2)";
+
       }
     }
   };
@@ -209,9 +207,7 @@ const Page02 = () => {
         arrowLeftBoxRef.current.style.display = "inline-block";
         arrowLeftBoxRef.current.style.left = `${offsetX - 70}px`;
         arrowLeftBoxRef.current.style.top = `${offsetY - 50}px`;
-        // itemWordRef.current.style.transform = "scale(1)";
-        // itemWordRef1.current.style.transform = "scale(1)";
-        // itemWordRef2.current.style.transform = "scale(1)";
+
       }
 
       if (offsetX - sliderContainer.current.offsetLeft > 0) {
@@ -288,9 +284,7 @@ const Page02 = () => {
     fetchListJob();
   }, []);
   useEffect(() => {
-    // console.log(count.current);
-    // slider.current.style.left = `${count.current * (widthOfItem + 120)}px`;
-    // slider.current.style.left = `${walk}px`;
+
     adjustSlideItem();
     activeRender();
     checkClientWidth();
@@ -344,21 +338,7 @@ const Page02 = () => {
           </div>
           <div className={styles.sliderContainer}>
             <div className={styles.sliderItems} ref={slider}>
-              {/* <div className={styles.slideItem} ref={refItem0}>
-                <div className={styles.item}>
-                  <h1 ref={itemWordRef}>some text .1..</h1>
-                </div>
-              </div>
-              <div className={styles.slideItem}>
-                <div className={styles.item}>
-                  <h1 ref={itemWordRef1}>some text .2..</h1>
-                </div>
-              </div>
-              <div className={styles.slideItem}>
-                <div className={styles.item}>
-                  <h1 ref={itemWordRef2}>some text .3..</h1>
-                </div>
-              </div> */}
+             
               {createSlideItems()}
             </div>
           </div>

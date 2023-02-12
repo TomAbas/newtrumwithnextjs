@@ -147,7 +147,8 @@
 
   .newsContent01Img {
     width: 50%;
-    height: 30vw;
+    /* height: 30vw; */
+    max-height: 500px;
   }
   .brandImg {
     width: 100%;
