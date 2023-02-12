@@ -1,13 +1,12 @@
 import React from "react";
 import styles from "../../../../styles/Page04Styles.module.css";
-import faceImg from "../../../../public/imgs/facepic.png";
+
 import { useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Image from "next/future/image";
 
 const Page04 = ({ page4Data, page44Data, page444Data }) => {
-  const arrWord = ["WHO", "WE", "ARE"];
-  const arrWord1 = ["WHO", "WE", "DO", "IT", "FOR"];
+
   const [line01A, setLine01A] = useState();
   const [line02A, setLine02A] = useState();
   const [line03A, setLine03A] = useState();
@@ -18,6 +17,7 @@ const Page04 = ({ page4Data, page44Data, page444Data }) => {
   const [line08A, setLine08A] = useState();
   const [line09A, setLine09A] = useState();
   const [line10A, setLine10A] = useState();
+  const [page04Img,setPage04Img] = useState();
   const [line01B, setLine01B] = useState([]);
   const [line02B, setLine02B] = useState();
   const [line03B, setLine03B] = useState();
@@ -68,6 +68,7 @@ const Page04 = ({ page4Data, page44Data, page444Data }) => {
         setLine09A(arrayWords8);
         let arrayWords9 = tenthLine.replace(/"/g, "");
         setLine10A(arrayWords9);
+        setPage04Img(page4Data.img);
       }
     }
     if (page44Data) {
@@ -177,7 +178,11 @@ const Page04 = ({ page4Data, page44Data, page444Data }) => {
           </div>
           <div className={styles.page04Img}>
             <div className={styles.imgBox}>
-              <Image src={faceImg} alt='facee' />
+              <Image  
+              layout='responsive'
+                width={1000}
+                height={1000} 
+                src={page04Img} alt='facee' />
             </div>
           </div>
         </div>

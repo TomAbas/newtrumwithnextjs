@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "../../styles/Admin.module.css";
+
 //mui
 import { Button } from "@mui/material";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
+// import ListItemText from "@mui/material/ListItemText";
+// import ListItemButton from "@mui/material/ListItemButton";
+// import ListItemIcon from "@mui/material/ListItemIcon";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import IconButton from "@mui/material/IconButton";
 //form
@@ -97,10 +98,12 @@ const NewsEditor = ({
           .get(`${urlListContributorIdPost}/${newsIdx}`)
           .then(({ data }) => {
             console.log(data);
+          
             setContributorList(data);
           });
       })
       .catch((error) => {
+       
         console.log(error);
       });
   };
@@ -111,7 +114,11 @@ const NewsEditor = ({
         .get(`${urlListContributorIdPost}/${newsIdx}`)
         .then(({ data }) => {
           console.log(data);
+         
           setContributorList(data);
+        }).catch((error)=>{
+         
+          console.log(error)
         });
     });
   };

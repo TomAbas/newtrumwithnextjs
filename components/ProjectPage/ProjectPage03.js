@@ -60,14 +60,16 @@ const ProjectPage03 = ({ openTitle, subTitle, youtubeUrl, content, img }) => {
           </div>
           <div className={styles.newsContent01}>
             <div className={styles.newsContent01Img}>
-              <Image
+              {img && 
+               <Image
                 src={img}
                 alt='brand-img'
                 className={styles.brandImg}
                 layout='responsive'
                 width={1000}
                 height={1000}
-              />
+              />}
+             
               {/* <img src={pic0} alt='brand-img' className={styles.brandImg} /> */}
             </div>
             <div className={styles.newsContent01Text}>
