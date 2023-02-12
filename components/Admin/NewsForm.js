@@ -29,13 +29,12 @@ import {
   urlDeleteNewsId,
   urlEditNewsId,
   urlListContributorIdPost,
-  urlNews,
-  urlNewsId,
 } from "../../ApiUrl/Api";
 import { useEffect } from "react";
 import { useState } from "react";
 import NewsEditor from "./NewsEditor";
 import NewsCkEditor from "./NewsCkEditor";
+import { getAllPosts, getPost } from "../../ApiUrl/newsApi/newsApi";
 
 const drawerWidth = 240;
 const NewsForm = () => {
@@ -59,43 +58,37 @@ const NewsForm = () => {
       .then((res) => {
         console.log(res);
         setReDelete(!reDelete);
-       
       })
       .catch((error) => {
         console.log(error);
-        
       });
   };
   const fetchListNews = async () => {
-    await axios
-      .get(urlNews)
-      .then(({ data }) => {
-        // console.log(data);
-        setArrNews(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    await getAllPosts().then((data) => {
+      setArrNews(data);
+    });
   };
   const fetchNewsId = async (id) => {
-    await axios.get(`${urlNewsId}/${id}`).then(({ data }) => {
-      // console.log(data);
+    try {
+      let post = await getPost(id);
       let preLoadValue = {
-        title1: data[0].title,
-        title2: data[0].title2,
-        headLine1: data[0].tagline11,
-        headLine2: data[0].tagline12,
-        subHeadLine: data[0].tagline21,
-        tagLine1: data[0].subtitle,
-        tagLine2: data[0].subtitle2,
-        category: data[0].category,
-        youtubeUrl: data[0].youtubeLink,
+        title1: post[0].title,
+        title2: post[0].title2,
+        headLine1: post[0].tagline11,
+        headLine2: post[0].tagline12,
+        subHeadLine: post[0].tagline21,
+        tagLine1: post[0].subtitle,
+        tagLine2: post[0].subtitle2,
+        category: post[0].category,
+        youtubeUrl: post[0].youtubeLink,
       };
       setDefaultValues(preLoadValue);
       setCurrentContent1(data[0].content);
       setCurrentContent2(data[0].contetn2);
       setTrigger(true);
-    });
+    } catch (error) {
+      console.log(error);
+    }
   };
   const fetchListContributorId = async (id) => {
     await axios.get(`${urlListContributorIdPost}/${id}`).then(({ data }) => {
@@ -138,13 +131,12 @@ const NewsForm = () => {
       })
         .then((res) => {
           console.log(res);
-          
+
           setNewsHeadContent([]);
           setCurrentContent1("");
           setCurrentContent2("");
         })
         .catch((error) => {
-          
           console.log(error);
         });
     }
@@ -173,7 +165,10 @@ const NewsForm = () => {
           <div className={styles.itemNews}>
             <ul className={styles.ulList}>
               {arrNews.map((item, idx) => (
-                <div style={{ display: item.deleted === "1" && "none" }} key={idx}>
+                <div
+                  style={{ display: item.deleted === "1" && "none" }}
+                  key={idx}
+                >
                   <div className={styles.itemNews}>
                     <List>
                       <ListItem>

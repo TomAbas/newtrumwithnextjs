@@ -7,9 +7,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
 
-import { editAbout, urlAbout } from "../../ApiUrl/Api";
+import { editAbout } from "../../ApiUrl/Api";
 import { useEffect } from "react";
 import { Button } from "@mui/material";
+import { editInfoLandingPage } from "../../ApiUrl/infoApi/infoApi";
 const schema = yup.object().shape({
   title1: yup.string(),
   title2: yup.string(),
@@ -66,20 +67,8 @@ const LandingPageForm = ({ preLoadValue }) => {
     newFormBanner.append("secondLine", data.title2);
     newFormBanner.append("thirdLine", data.title3);
     newFormBanner.append("img", data.image1[0]);
-    axios({
-      url: `${editAbout}/1`,
-      method: "POST",
-      headers: { "Content-Type": "multipart/form-data" },
-      data: newFormBanner,
-    })
-      .then((res) => {
-   
-        console.log(res);
-      })
-      .catch((error) => {
-       
-        console.log(error);
-      });
+    //if not success add to headers: { "Content-Type": "multipart/form-data" },
+    editInfoLandingPage(1, newFormBanner);
 
     const objSection1 = {
       firstLine: data.content1Line1,
@@ -89,7 +78,7 @@ const LandingPageForm = ({ preLoadValue }) => {
       fifthLine: data.content1Line5,
       sixthLine: data.content1Line6,
     };
-    axios.post(`${editAbout}/2`, objSection1);
+    editInfoLandingPage(2, objSection1);
     const objSection2 = {
       firstLine: data.content2Line1,
       secondLine: data.content2Line2,
@@ -97,7 +86,7 @@ const LandingPageForm = ({ preLoadValue }) => {
       fourthLine: data.content2Line4,
       fifthLine: data.content2Line5,
     };
-    axios.post(`${editAbout}/3`, objSection2);
+    editInfoLandingPage(3, objSection2);
     const newFormObjecSection3 = new FormData();
     newFormObjecSection3.append("firstLine", data.content3Line1);
     newFormObjecSection3.append("secondLine", data.content3Line2);
@@ -110,19 +99,8 @@ const LandingPageForm = ({ preLoadValue }) => {
     newFormObjecSection3.append("ninthLine", data.content3Line9);
     newFormObjecSection3.append("tenthLine", data.content3Line10);
     newFormObjecSection3.append("img", data.image2[0]);
-    axios({
-      url: `${editAbout}/4`,
-      method: "POST",
-      headers: { "Content-Type": "multipart/form-data" },
-      data: newFormObjecSection3,
-    })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
 
+    editInfoLandingPage(4, newFormObjecSection3);
     const objSection4 = {
       firstLine: data.content4Line1,
       secondLine: data.content4Line2,
@@ -130,13 +108,13 @@ const LandingPageForm = ({ preLoadValue }) => {
       fourthLine: data.content4Line4,
       fifthLine: data.content4Line5,
     };
-    axios.post(`${editAbout}/5`, objSection4);
+    editInfoLandingPage(5, objSection4);
     const objSection5 = {
       firstLine: data.content5Line1,
       secondLine: data.content5Line2,
       thirdLine: data.content5Line3,
     };
-    axios.post(`${editAbout}/6`, objSection5);
+    editInfoLandingPage(6, objSection5);
   };
   useEffect(() => {
     reset(preLoadValue);

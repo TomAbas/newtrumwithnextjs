@@ -1,9 +1,7 @@
 import React from "react";
-// import Editor from "ckeditor5-custom-build/build/ckeditor";
-// import { CKEditor } from "@ckeditor/ckeditor5-react";
 import axios from "axios";
 import { Button } from "@mui/material";
-import { urlNews } from "../../ApiUrl/Api";
+
 
 import { useEffect, useRef } from "react";
 import { useState } from "react";
