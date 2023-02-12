@@ -409,6 +409,10 @@
     height: 40vw;
     max-height: 1120px;
   }
+  .sliderContainer {
+    height: 40vw;
+   
+  }
 }
 @media (min-width: 1200px) {
   .slideItem {
@@ -423,5 +427,9 @@
 @media (min-width: 2000px) {
   .gridPic {
     top: 0%;
+  }
+  .sliderContainer {
+    height: 30vw;
+   
   }
 }

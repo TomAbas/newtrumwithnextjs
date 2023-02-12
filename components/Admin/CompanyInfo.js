@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useRef } from "react";
 import styles from "../../styles/Admin.module.css";
+
 //hook form
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -54,8 +55,10 @@ const CompanyInfo = ({ defaultValuesCom }) => {
       .post(`${urlEditCompanyInfo}/1`, submitData)
       .then((res) => {
         console.log(res);
+        
       })
       .catch((error) => {
+     
         console.log(error);
       });
   };

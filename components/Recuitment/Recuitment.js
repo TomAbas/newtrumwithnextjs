@@ -11,8 +11,7 @@ import List from '@mui/material/List';
 import ListItemText from '@mui/material/ListItemText';
 
 import Collapse from '@mui/material/Collapse';
-import ExpandLess from "@mui/icons-material/ExpandLess";
-import ExpandMore from "@mui/icons-material/ExpandMore";
+
 import { ListItemButton, ListItemIcon } from "@mui/material";
 const Recuitment = () => {
   const [activeSelectOption, setActiveSelectOption] = useState(false);
@@ -44,44 +43,29 @@ const Recuitment = () => {
     // console.log(e)
 		switch (e.currentTarget.dataset.idx) {
 			case '0':
-        // console.log(0)
+     
         setActiveSelectOption(!activeSelectOption)
-				// setActiveSelectOption1(false);
-				// setActiveSelectOption2(false);
-				// setActiveSelectOption3(false);
-				// setActiveSelectOption4(false);
+			
 				break;
 			case '1':
-        // console.log(1)
+     
 				setActiveSelectOption1(!activeSelectOption1);
-        // setActiveSelectOption(false)
-				// setActiveSelectOption2(false);
-				// setActiveSelectOption3(false);
-				// setActiveSelectOption4(false);
+      
 				break;
 			case '2':
-        // console.log(2)
+       
 				setActiveSelectOption2(!activeSelectOption2);
-        // setActiveSelectOption(false)
-				// setActiveSelectOption1(false);
-				// setActiveSelectOption3(false);
-				// setActiveSelectOption4(false);
+      
 				break;
 			case '3':
-        // console.log(3)
+      
 				setActiveSelectOption3(!activeSelectOption3);
-        // setActiveSelectOption(false)
-				// setActiveSelectOption2(false);
-				// setActiveSelectOption4(false);
-				// setActiveSelectOption1(false);
+        
 				break;
         case '4':
-          // console.log(4)
+          
           setActiveSelectOption4(!activeSelectOption4);
-          // setActiveSelectOption(false)
-          // setActiveSelectOption2(false);
-          // setActiveSelectOption3(false);
-          // setActiveSelectOption1(false);
+         
           break;
 			default:
         setActiveSelectOption(false)

@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from "react";
 import styles from "../../styles/Admin.module.css";
+
 //hook form
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -59,7 +60,7 @@ const LandingPageForm = ({ preLoadValue }) => {
   });
 
   const submitNewsEditor = (data) => {
-    console.log(data);
+    // console.log(data);
     const newFormBanner = new FormData();
     newFormBanner.append("firstLine", data.title1);
     newFormBanner.append("secondLine", data.title2);
@@ -72,9 +73,11 @@ const LandingPageForm = ({ preLoadValue }) => {
       data: newFormBanner,
     })
       .then((res) => {
+   
         console.log(res);
       })
       .catch((error) => {
+       
         console.log(error);
       });
 
