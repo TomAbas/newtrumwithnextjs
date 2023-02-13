@@ -2,21 +2,21 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import LandingPage from "../Views/LandingPage";
 import { getInfoLandingPage } from "../ApiUrl/infoApi/infoApi";
-export async function getServerSideProps({ req, resNext }) {
-  let res = await getInfoLandingPage();
-  if (!res) {
-    return {
-      notFound: true,
-    };
-  }
-  resNext.setHead(
-    "Cache-Control",
-    "public, s-maxage=10, stale-while-revalidate=59"
-  );
-  return {
-    props: { res }, // will be passed to the page component as props
-  };
-}
+// export async function getServerSideProps({ req, resNext }) {
+//   let res = await getInfoLandingPage();
+//   if (!res) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+//   resNext.setHead(
+//     "Cache-Control",
+//     "public, s-maxage=10, stale-while-revalidate=59"
+//   );
+//   return {
+//     props: { res }, // will be passed to the page component as props
+//   };
+// }
 
 export default function Home({ res }) {
   return (
@@ -31,9 +31,9 @@ export default function Home({ res }) {
         {/* metatag google  */}
         <meta
           name='description'
-          content={
-            res[0].firstLine + " " + res[0].secondLine + " " + res[0].thirdLine
-          }
+          // content={
+          //   res[0].firstLine + " " + res[0].secondLine + " " + res[0].thirdLine
+          // }
         />
         <meta
           name='keywords'
@@ -47,9 +47,9 @@ export default function Home({ res }) {
         <meta property='og:title' content='Trum Agency' />
         <meta
           property='og:description'
-          content={
-            res[0].firstLine + " " + res[0].secondLine + " " + res[0].thirdLine
-          }
+          // content={
+          //   res[0].firstLine + " " + res[0].secondLine + " " + res[0].thirdLine
+          // }
         />
         <meta
           property='og:image'
