@@ -27,9 +27,8 @@ const LandingPage = ({ data }) => {
 
   return (
     <>
-      {<h1>{data}</h1>}
-      {/* <LandingPage0 landingPageData={landingPageData} />
-      <Page01 page1Data={page1Data} />
+      <LandingPage0 landingPageData={landingPageData} />
+      {/* <Page01 page1Data={page1Data} />
       <Page02 />
       <Page03 page3Data={page3Data} />
       <Page04
