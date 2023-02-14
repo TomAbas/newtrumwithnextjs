@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "../../../../styles/Page04Styles.module.css";
-
+import facePic from "../../../../public/imgs/facepic.png";
+import ncc from "../../../../public/imgs/ncc.jpg";
 import { useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Image from "next/future/image";
 
 const Page04 = ({ page4Data, page44Data, page444Data }) => {
-
   const [line01A, setLine01A] = useState();
   const [line02A, setLine02A] = useState();
   const [line03A, setLine03A] = useState();
@@ -17,7 +17,7 @@ const Page04 = ({ page4Data, page44Data, page444Data }) => {
   const [line08A, setLine08A] = useState();
   const [line09A, setLine09A] = useState();
   const [line10A, setLine10A] = useState();
-  const [page04Img,setPage04Img] = useState();
+  const [page04Img, setPage04Img] = useState();
   const [line01B, setLine01B] = useState([]);
   const [line02B, setLine02B] = useState();
   const [line03B, setLine03B] = useState();
@@ -37,73 +37,92 @@ const Page04 = ({ page4Data, page44Data, page444Data }) => {
   const inViewH1ref2 = useInView(h1Ref2);
   const produceArray = () => {
     if (page4Data) {
-      let firstLine = JSON.stringify(page4Data.firstLine);
-      let secondLine = JSON.stringify(page4Data.secondLine);
-      let thirdLine = JSON.stringify(page4Data.thirdLine);
-      let fourthLine = JSON.stringify(page4Data.fourthLine);
-      let fifthLine = JSON.stringify(page4Data.fifthLine);
-      let sixthLine = JSON.stringify(page4Data.sixthLine);
-      let seventhLine = JSON.stringify(page4Data.seventhLine);
-      let eighthLine = JSON.stringify(page4Data.eighthLine);
-      let ninthLine = JSON.stringify(page4Data.ninthLine);
-      let tenthLine = JSON.stringify(page4Data.tenthLine);
+      // let firstLine = JSON.stringify(page4Data.firstLine);
+      // let secondLine = JSON.stringify(page4Data.secondLine);
+      // let thirdLine = JSON.stringify(page4Data.thirdLine);
+      // let fourthLine = JSON.stringify(page4Data.fourthLine);
+      // let fifthLine = JSON.stringify(page4Data.fifthLine);
+      // let sixthLine = JSON.stringify(page4Data.sixthLine);
+      // let seventhLine = JSON.stringify(page4Data.seventhLine);
+      // let eighthLine = JSON.stringify(page4Data.eighthLine);
+      // let ninthLine = JSON.stringify(page4Data.ninthLine);
+      // let tenthLine = JSON.stringify(page4Data.tenthLine);
+      let firstLine = "International recognition";
+      let secondLine =
+        "  Our projects have been featured at major events like the Venice Film Festival and SXSW, on streets and in museums around the world. You may even have experienced them at home.";
+      // let thirdLine = JSON.stringify(page4Data.thirdLine);
+      // let fourthLine = JSON.stringify(page4Data.fourthLine);
+      // let fifthLine = JSON.stringify(page4Data.fifthLine);
+      // let sixthLine = JSON.stringify(page4Data.sixthLine);
+      // let seventhLine = JSON.stringify(page4Data.seventhLine);
+      // let eighthLine = JSON.stringify(page4Data.eighthLine);
+      // let ninthLine = JSON.stringify(page4Data.ninthLine);
+      // let tenthLine = JSON.stringify(page4Data.tenthLine);
       if (firstLine) {
         let arrayWords = firstLine.replace(/"/g, "");
         setLine01A(arrayWords);
         let arrayWords1 = secondLine.replace(/"/g, "");
         setLine02A(arrayWords1);
-        let arrayWords2 = thirdLine.replace(/"/g, "");
-        setLine03A(arrayWords2);
-        let arrayWords3 = fourthLine.replace(/"/g, "");
-        setLine04A(arrayWords3);
-        let arrayWords4 = fifthLine.replace(/"/g, "");
-        setLine05A(arrayWords4);
-        let arrayWords5 = sixthLine.replace(/"/g, "");
-        setLine06A(arrayWords5);
-        let arrayWords6 = seventhLine.replace(/"/g, "");
-        setLine07A(arrayWords6);
-        let arrayWords7 = eighthLine.replace(/"/g, "");
-        setLine08A(arrayWords7);
-        let arrayWords8 = ninthLine.replace(/"/g, "");
-        setLine09A(arrayWords8);
-        let arrayWords9 = tenthLine.replace(/"/g, "");
-        setLine10A(arrayWords9);
-        setPage04Img(page4Data.img);
+        // let arrayWords2 = thirdLine.replace(/"/g, "");
+        // setLine03A(arrayWords2);
+        // let arrayWords3 = fourthLine.replace(/"/g, "");
+        // setLine04A(arrayWords3);
+        // let arrayWords4 = fifthLine.replace(/"/g, "");
+        // setLine05A(arrayWords4);
+        // let arrayWords5 = sixthLine.replace(/"/g, "");
+        // setLine06A(arrayWords5);
+        // let arrayWords6 = seventhLine.replace(/"/g, "");
+        // setLine07A(arrayWords6);
+        // let arrayWords7 = eighthLine.replace(/"/g, "");
+        // setLine08A(arrayWords7);
+        // let arrayWords8 = ninthLine.replace(/"/g, "");
+        // setLine09A(arrayWords8);
+        // let arrayWords9 = tenthLine.replace(/"/g, "");
+        // setLine10A(arrayWords9);
+        // setPage04Img(page4Data.img);
       }
     }
     if (page44Data) {
-      let firstLine = JSON.stringify(page44Data.firstLine);
-      let secondLine = JSON.stringify(page44Data.secondLine);
-      let thirdLine = JSON.stringify(page44Data.thirdLine);
-      let fourthLine = JSON.stringify(page44Data.fourthLine);
-      let fifthLine = JSON.stringify(page44Data.fifthLine);
+      // let firstLine = JSON.stringify(page44Data.firstLine);
+      // let secondLine = JSON.stringify(page44Data.secondLine);
+      // let thirdLine = JSON.stringify(page44Data.thirdLine);
+      // let fourthLine = JSON.stringify(page44Data.fourthLine);
+      // let fifthLine = JSON.stringify(page44Data.fifthLine);
+      let firstLine = "Who we are";
+      let secondLine =
+        "Our TRUM Crew have a wealth of experience as well as budding youth that completes a knowledgeable and energetic team. With a host of awards among us, we’re always striving for the best and don’t settle for anything less.";
+      // let thirdLine = JSON.stringify(page44Data.thirdLine);
+      // let fourthLine = JSON.stringify(page44Data.fourthLine);
+      // let fifthLine = JSON.stringify(page44Data.fifthLine);
       if (firstLine) {
         let arrayWords = firstLine.replace(/"/g, "").split(" ");
         setLine01B(arrayWords);
         let arrayWords1 = secondLine.replace(/"/g, "");
         setLine02B(arrayWords1);
-        let arrayWords2 = thirdLine.replace(/"/g, "");
-        setLine03B(arrayWords2);
-        let arrayWords3 = fourthLine.replace(/"/g, "");
-        setLine04B(arrayWords3);
-        let arrayWords4 = fifthLine.replace(/"/g, "");
-        setLine05B(arrayWords4);
+        // let arrayWords2 = thirdLine.replace(/"/g, "");
+        // setLine03B(arrayWords2);
+        // let arrayWords3 = fourthLine.replace(/"/g, "");
+        // setLine04B(arrayWords3);
+        // let arrayWords4 = fifthLine.replace(/"/g, "");
+        // setLine05B(arrayWords4);
         // console.log(arrayWords);
       }
     }
     if (page444Data) {
-      let firstLine = JSON.stringify(page444Data.firstLine);
-      let secondLine = JSON.stringify(page444Data.secondLine);
-      let thirdLine = JSON.stringify(page444Data.thirdLine);
+      // let firstLine = JSON.stringify(page444Data.firstLine);
+      // let secondLine = JSON.stringify(page444Data.secondLine);
+      // let thirdLine = JSON.stringify(page444Data.thirdLine);
+      let firstLine = "Who we do it for";
+      let secondLine =
+        "The experiences we imagine are made for everyone. Everyone. You. Your mom, your dad. Your brothers and sisters. Your friends and colleagues. Everyone with a bit of imagination, curiosity and the desire to open and explore new worlds.";
 
       if (firstLine) {
         let arrayWords = firstLine.replace(/"/g, "").split(" ");
         setLine01C(arrayWords);
         let arrayWords1 = secondLine.replace(/"/g, "");
         setLine02C(arrayWords1);
-        let arrayWords2 = thirdLine.replace(/"/g, "");
-        setLine03C(arrayWords2);
-
+        // let arrayWords2 = thirdLine.replace(/"/g, "");
+        // setLine03C(arrayWords2);
         // console.log(arrayWords);
       }
     }
@@ -113,7 +132,7 @@ const Page04 = ({ page4Data, page44Data, page444Data }) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s` };
       return (
         <h1
-        key={idx}
+          key={idx}
           className={
             inViewH1ref1
               ? `${styles.fadeInUpS} ${styles.h1Word}`
@@ -133,7 +152,7 @@ const Page04 = ({ page4Data, page44Data, page444Data }) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s` };
       return (
         <h1
-        key={idx}
+          key={idx}
           className={
             inViewH1ref2
               ? `${styles.fadeInUpS} ${styles.h1Word}`
@@ -178,11 +197,14 @@ const Page04 = ({ page4Data, page44Data, page444Data }) => {
           </div>
           <div className={styles.page04Img}>
             <div className={styles.imgBox}>
-              <Image  
-              layout='responsive'
+              <Image
+                layout='responsive'
                 width={1000}
-                height={1000} 
-                src={page04Img} alt='facee' />
+                height={1000}
+                // src={page04Img}
+                src={facePic}
+                alt='facee'
+              />
             </div>
           </div>
         </div>

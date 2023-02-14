@@ -28,14 +28,14 @@ const LandingPage = ({ data }) => {
   return (
     <>
       <LandingPage0 landingPageData={landingPageData} />
-      {/* <Page01 page1Data={page1Data} />
+      <Page01 page1Data={page1Data} />
       <Page02 />
       <Page03 page3Data={page3Data} />
       <Page04
         page4Data={page4Data}
         page44Data={page44Data}
         page444Data={page444Data}
-      /> */}
+      />
     </>
   );
 };

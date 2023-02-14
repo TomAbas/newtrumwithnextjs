@@ -3,14 +3,18 @@ import { useRouter } from "next/router";
 import arrowLeft from "../../../../public/imgs/arrowLeft.svg";
 import arrowRight from "../../../../public/imgs/arrowRight.svg";
 import plusicon from "../../../../public/imgs/plusicon.svg";
-
 import styles from "../../../../styles/Page02Styles.module.css";
 import gridpic from "../../../../public/imgs/grid.svg";
 import { urlNews } from "../../../../ApiUrl/Api";
 import { useInView } from "framer-motion";
 import Image from "next/future/image";
 import axios from "axios";
-import Link from "next/link";
+//img
+import slidePic from "../../../../public/imgs/img1.png";
+import slidePic1 from "../../../../public/imgs/img2.png";
+import slidePic2 from "../../../../public/imgs/img3.png";
+import slidePic3 from "../../../../public/imgs/img4.png";
+
 const Page02 = () => {
   const router = useRouter();
   const [isDown, setIsDown] = useState(false);
@@ -37,12 +41,20 @@ const Page02 = () => {
     setRender(!render);
   };
   const fetchListJob = async () => {
-    await axios.get(urlNews).then(({ data }) => {
-      let a = data.filter((data) => {
-        return data.deleted === "0";
-      });
-      setArrayListJob(a);
-    });
+    //fetch data from api temporeti cmt for local data
+    // await axios.get(urlNews).then(({ data }) => {
+    //   let a = data.filter((data) => {
+    //     return data.deleted === "0";
+    //   });
+    //   setArrayListJob(a);
+    // });
+    //
+    setArrayListJob([
+      { banner: slidePic, title: "test", title1: "123", postId: "1" },
+      { banner: slidePic1, title: "test", title1: "123", postId: "1" },
+      { banner: slidePic2, title: "test", title1: "123", postId: "1" },
+      { banner: slidePic3, title: "test", title1: "123", postId: "1" },
+    ]);
   };
   const createSlideItems = () => {
     let b = arrayListJob.map((job, idx) => {
@@ -53,6 +65,7 @@ const Page02 = () => {
           className={styles.slideItem}
           ref={refItem0}
           style={{
+            backgroundColor: "blue",
             background: `url(${job.banner}) no-repeat center center/cover`,
           }}
           onDoubleClick={() => router.push(`/projects/${job.postId}`)}
@@ -192,7 +205,6 @@ const Page02 = () => {
         plusBoxRef.current.style.transform = `translate3d(${offsetX}px,${offsetY}px,0)`;
         arrowLeftBoxRef.current.style.display = "none";
         arrowRightBoxRef.current.style.display = "none";
-
       }
     }
   };
@@ -207,7 +219,6 @@ const Page02 = () => {
         arrowLeftBoxRef.current.style.display = "inline-block";
         arrowLeftBoxRef.current.style.left = `${offsetX - 70}px`;
         arrowLeftBoxRef.current.style.top = `${offsetY - 50}px`;
-
       }
 
       if (offsetX - sliderContainer.current.offsetLeft > 0) {
@@ -271,6 +282,7 @@ const Page02 = () => {
         }
       }
     }
+    activeRender();
   };
   const checkClientWidth = () => {
     // console.log(document.body.clientWidth);
@@ -281,13 +293,14 @@ const Page02 = () => {
     }
   };
   useEffect(() => {
+    checkClientWidth();
+  }, []);
+  useEffect(() => {
     fetchListJob();
   }, []);
   useEffect(() => {
-
     adjustSlideItem();
-    activeRender();
-    checkClientWidth();
+    // activeRender();
   }, [walk, count]);
 
   return (
@@ -338,7 +351,6 @@ const Page02 = () => {
           </div>
           <div className={styles.sliderContainer}>
             <div className={styles.sliderItems} ref={slider}>
-             
               {createSlideItems()}
             </div>
           </div>
