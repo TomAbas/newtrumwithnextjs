@@ -134,9 +134,7 @@
 
 .textBox {
   padding-top: 3%;
-  width: fit-content;
-  /* margin-inline: auto; */
-  margin: 0 auto;
+  width: 80%;
   word-spacing: 1px;
 }
 .textBox p {
@@ -162,8 +160,8 @@
   padding-bottom: 15px;
 }
 .h1EffectBox {
+  width: 80%;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 .h1EffectBox1 {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useInView } from "framer-motion";
 
-import styles from '../../../../styles/Page01Styles.module.css'
+import styles from "../../../../styles/Page01Styles.module.css";
 import { useRef } from "react";
 import { useEffect } from "react";
 
@@ -23,13 +23,20 @@ const Page01 = ({ page1Data }) => {
 
   const produceArray = () => {
     if (page1Data) {
-      let firstLine = JSON.stringify(page1Data.firstLine);
-      let secondLine = JSON.stringify(page1Data.secondLine);
-      let thirdLine = JSON.stringify(page1Data.thirdLine);
-      let fourthLine = JSON.stringify(page1Data.fourthLine);
-      let fifthLine = JSON.stringify(page1Data.fifthLine);
-      let sixthLine = JSON.stringify(page1Data.sixthLine);
+      // let firstLine = JSON.stringify(page1Data.firstLine);
+      // let secondLine = JSON.stringify(page1Data.secondLine);
+      // let thirdLine = JSON.stringify(page1Data.thirdLine);
+      // let fourthLine = JSON.stringify(page1Data.fourthLine);
+      // let fifthLine = JSON.stringify(page1Data.fifthLine);
+      // let sixthLine = JSON.stringify(page1Data.sixthLine);
+      let firstLine = "We design and produce";
+      let secondLine = "As an ICON, the crowd will be";
+      let thirdLine = "faithful to your owned brand";
+      let fourthLine = "to";
+      let fifthLine = "As an ICON, Brand designs an extreme ";
+      let sixthLine = "DESIRES that MAD about your label.";
       // console.log(sixthLine);
+
       if (firstLine) {
         let arrayWords = firstLine.replace(/"/g, "");
         setLine01(arrayWords);
@@ -43,16 +50,17 @@ const Page01 = ({ page1Data }) => {
         setLine05(arrayWords4);
         let arrayWords5 = sixthLine.replace(/"/g, "").split(" ");
         setLine06(arrayWords5);
-
       }
     }
   };
+
+  function create(arr) {}
   const animationWords = () => {
     let b = line02.map((word, idx) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s` };
       return (
         <h1
-        key={idx}
+          key={idx}
           className={
             isArrWordIn1
               ? `${styles.fadeInUp0} ${styles.h1Word}`
@@ -71,7 +79,7 @@ const Page01 = ({ page1Data }) => {
       let delay = { animationDelay: `${idx / 5 + 1.2}s` };
       return (
         <h1
-        key={idx}
+          key={idx}
           className={
             isArrWordIn1
               ? `${styles.fadeInUp1} ${styles.h1Word}`
@@ -90,7 +98,7 @@ const Page01 = ({ page1Data }) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s` };
       return (
         <h1
-        key={idx}
+          key={idx}
           className={
             isArrWordIn4
               ? `${styles.fadeInUp1} ${styles.h1Word}`
@@ -109,7 +117,7 @@ const Page01 = ({ page1Data }) => {
       let delay = { animationDelay: `${idx / 5 + 1.2}s` };
       return (
         <h1
-        key={idx}
+          key={idx}
           className={
             isArrWordIn4
               ? `${styles.fadeInUp1} ${styles.h1Word}`

@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useInView } from "framer-motion";
 import styles from "../../../../styles/Page03Styles.module.css";
 import { useRef } from "react";
@@ -23,11 +23,16 @@ const Page03 = ({ page3Data }) => {
   const inViewSpan5 = useInView(spanRef5);
   const produceArray = () => {
     if (page3Data) {
-      let firstLine = JSON.stringify(page3Data.firstLine);
-      let secondLine = JSON.stringify(page3Data.secondLine);
-      let thirdLine = JSON.stringify(page3Data.thirdLine);
-      let fourthLine = JSON.stringify(page3Data.fourthLine);
-      let fifthLine = JSON.stringify(page3Data.fifthLine);
+      // let firstLine = JSON.stringify(page3Data.firstLine);
+      // let secondLine = JSON.stringify(page3Data.secondLine);
+      // let thirdLine = JSON.stringify(page3Data.thirdLine);
+      // let fourthLine = JSON.stringify(page3Data.fourthLine);
+      // let fifthLine = JSON.stringify(page3Data.fifthLine);
+      let firstLine = "Our approach is unapologetically human-centric,   ";
+      let secondLine = "user experience being at the core of a process of";
+      let thirdLine = "relentless exploration, experimentation and";
+      let fourthLine = "iteration that combines expertise in design,";
+      let fifthLine = " technological research and entertainment.";
       if (firstLine) {
         let arrayWords = firstLine.replace(/"/g, "").split(" ");
         setLine01(arrayWords);
@@ -39,7 +44,6 @@ const Page03 = ({ page3Data }) => {
         setLine04(arrayWords3);
         let arrayWords4 = fifthLine.replace(/"/g, "").split(" ");
         setLine05(arrayWords4);
-
       }
     }
   };
@@ -47,7 +51,7 @@ const Page03 = ({ page3Data }) => {
     let b = line01.map((word, idx) => {
       return (
         <h2
-        key={idx}
+          key={idx}
           className={
             inViewSpan
               ? `${styles.textContent} ${styles.effect}`
@@ -66,7 +70,7 @@ const Page03 = ({ page3Data }) => {
     let b = line02.map((word, idx) => {
       return (
         <h2
-        key={idx}
+          key={idx}
           className={
             inViewSpan1
               ? `${styles.textContent} ${styles.effect}`
@@ -85,7 +89,7 @@ const Page03 = ({ page3Data }) => {
     let b = line03.map((word, idx) => {
       return (
         <h2
-        key={idx}
+          key={idx}
           className={
             inViewSpan2
               ? `${styles.textContent} ${styles.effect}`
@@ -104,7 +108,7 @@ const Page03 = ({ page3Data }) => {
     let b = line04.map((word, idx) => {
       return (
         <h2
-        key={idx}
+          key={idx}
           className={
             inViewSpan3
               ? `${styles.textContent} ${styles.effect}`
@@ -123,7 +127,7 @@ const Page03 = ({ page3Data }) => {
     let b = line05.map((word, idx) => {
       return (
         <h2
-        key={idx}
+          key={idx}
           className={
             inViewSpan4
               ? `${styles.textContent} ${styles.effect}`
