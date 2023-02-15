@@ -345,6 +345,7 @@ const Page022 = () => {
 						<div className={styles.paginate}>{slider.current && slider.current.children.length}</div>
 					</div>
 				</div>
+                
 			</div>
 		</>
 	);
