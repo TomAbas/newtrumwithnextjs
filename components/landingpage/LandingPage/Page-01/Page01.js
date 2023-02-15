@@ -6,20 +6,20 @@ import { useRef } from "react";
 import { useEffect } from "react";
 
 const Page01 = ({ page1Data }) => {
-  const [line01, setLine01] = useState("");
-  const [line02, setLine02] = useState([]);
-  const [line03, setLine03] = useState([]);
-  const [line04, setLine04] = useState("");
-  const [line05, setLine05] = useState([]);
-  const [line06, setLine06] = useState([]);
-  const arrWordRef = useRef();
-  const isArrWordIn = useInView(arrWordRef);
-  const arrWordRef1 = useRef();
-  const isArrWordIn1 = useInView(arrWordRef1);
-  const arrWordRef3 = useRef();
-  const isArrWordIn3 = useInView(arrWordRef3);
-  const arrWordRef4 = useRef();
-  const isArrWordIn4 = useInView(arrWordRef4);
+	const [line01, setLine01] = useState("");
+	const [line02, setLine02] = useState([]);
+	const [line03, setLine03] = useState([]);
+	const [line04, setLine04] = useState("");
+	const [line05, setLine05] = useState([]);
+	const [line06, setLine06] = useState([]);
+	const arrWordRef = useRef();
+	const isArrWordIn = useInView(arrWordRef);
+	const arrWordRef1 = useRef();
+	const isArrWordIn1 = useInView(arrWordRef1);
+	const arrWordRef3 = useRef();
+	const isArrWordIn3 = useInView(arrWordRef3);
+	const arrWordRef4 = useRef();
+	const isArrWordIn4 = useInView(arrWordRef4);
 
   const produceArray = () => {
     if (page1Data) {
