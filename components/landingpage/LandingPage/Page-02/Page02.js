@@ -10,13 +10,11 @@ import { useInView } from "framer-motion";
 import Image from "next/future/image";
 import axios from "axios";
 //img
-import slidePic from "../../../../public/imgs/img1.png";
-import slidePic1 from "../../../../public/imgs/img2.png";
-import slidePic2 from "../../../../public/imgs/img3.png";
-import slidePic3 from "../../../../public/imgs/img4.png";
+
 
 const Page02 = () => {
   const router = useRouter();
+  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDown, setIsDown] = useState(false);
   const [walk, setWalk] = useState(0);
   const [render, setRender] = useState(false);
@@ -68,6 +66,7 @@ const Page02 = () => {
             backgroundColor: "blue",
             background: `url(${job.banner}) no-repeat center center/cover`,
           }}
+          onPointerMove={(e) => handleMouseEnterInside(e)}
           onDoubleClick={() => router.push(`/projects/${job.postId}`)}
         >
           <div className={styles.item}>
@@ -90,11 +89,12 @@ const Page02 = () => {
     sliderContainer.current.style.cursor = "grabbing";
     startX.current = slider.current.offsetLeft;
     check0.current = e.clientX;
+    console.log(check0.current);
     // console.log(slider.current.offsetLeft);
     // console.log(slider.current.children);
   };
   const mouseMove = (e) => {
-    handleMouseEnterInside(e);
+    // handleMouseEnterInside(e);
 
     if (!isDown) return;
     x.current = e.clientX;
@@ -107,7 +107,7 @@ const Page02 = () => {
     slider.current.style.left = `${walk}px`;
     //check left or right negative => right to left
 
-    check1.current = x.current - check0.current;
+    // check1.current = x.current - check0.current;
     // console.log(check1.current)
   };
   const mouseUp = () => {
@@ -117,13 +117,21 @@ const Page02 = () => {
 
     const widthOfItem = refItem0.current.offsetWidth;
 
-    if (check1.current < -50) {
+    // if (check1.current < -50) {
+    //   count.current = count.current - 1;
+    // }
+    // if (check1.current > 50) {
+    //   count.current = count.current + 1;
+    // }
+
+    console.log(position.x - check0.current < 0);
+    if (position.x - check0.current < 0) {
+      console.log("+1");
       count.current = count.current - 1;
-    }
-    if (check1.current > 50) {
+    } else {
+      console.log("-1");
       count.current = count.current + 1;
     }
-
     if (count.current === -slider.current.children.length) {
       count.current = -(slider.current.children.length - 1);
     }
@@ -201,6 +209,9 @@ const Page02 = () => {
       offsetY < heightOfItem
     ) {
       if (document.body.clientWidth >= 950) {
+        // setPosition({ x: offsetX, y: offsetY });
+        setPosition({ x: e.clientX, y: e.clientY });
+
         plusBoxRef.current.style.display = "inline-block";
         plusBoxRef.current.style.transform = `translate3d(${offsetX}px,${offsetY}px,0)`;
         arrowLeftBoxRef.current.style.display = "none";
@@ -208,6 +219,7 @@ const Page02 = () => {
       }
     }
   };
+
   const handleMouseEnterOutside = (e) => {
     let offsetX = e.nativeEvent.offsetX;
     let offsetY = e.nativeEvent.offsetY;
@@ -268,7 +280,7 @@ const Page02 = () => {
 
   const adjustSlideItem = () => {
     let a = slider.current.children;
-    console.log(count.current);
+    // console.log(count.current);
     for (let i = 0; i < a.length; i++) {
       if (count.current === -i) {
         a[i].style.transform = "rotate(0deg) translateY(0%) scale(1)";
@@ -342,7 +354,7 @@ const Page02 = () => {
           onMouseDown={mouseDown}
           onMouseMove={mouseMove}
           onMouseLeave={mouseLeave}
-          onMouseUp={mouseUp}
+          onMouseUp={(e) => mouseUp(e)}
         >
           <div className={styles.plusIconBox} ref={plusBoxRef}>
             <div>
