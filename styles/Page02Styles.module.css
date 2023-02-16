@@ -125,6 +125,7 @@
 .plusIconBox {
   /* border: 2px solid pink; */
   width: fit-content;
+  user-select: none;
   transform: translate3d(0px, 0px, 0px);
   position: absolute;
   pointer-events: none;
@@ -160,7 +161,8 @@
 .arrowImg {
   width: 70px;
   height: auto;
-  filter:invert(59%) sepia(12%) saturate(13%) hue-rotate(319deg) brightness(87%) contrast(93%);
+  filter: invert(59%) sepia(12%) saturate(13%) hue-rotate(319deg)
+    brightness(87%) contrast(93%);
 }
 
 .slidePagination {
@@ -192,6 +194,7 @@
   z-index: 0;
 }
 .slideItem {
+  user-select: none;
   background: url(/pages/components/imgs/img1.png) no-repeat center center/cover;
 }
 .slideItem:nth-child(2) {
@@ -203,6 +206,7 @@
 
 .item {
   pointer-events: none;
+  user-select: none;
 }
 .item h1 {
   transition: transform ease-in-out 0.5s;
@@ -230,13 +234,11 @@
 
   .sliderContainer {
     height: 40vw;
-   
   }
 }
 @media (min-width: 1200px) {
   .sliderContainer {
     height: 40vw;
-   
   }
   .slideItem {
     font-size: 3.3rem;
@@ -250,7 +252,7 @@
     font-size: 4rem;
   }
 }
-@media (min-width: 1900px){
+@media (min-width: 1900px) {
   .sliderContainer {
     height: 40vw;
   }
@@ -258,7 +260,6 @@
 @media (min-width: 2000px) {
   .sliderContainer {
     height: 35vw;
-   
   }
   .gridPic {
     top: 0%;
