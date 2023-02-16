@@ -48,7 +48,7 @@ const Page022 = () => {
 
 	const arrJob = [
 		{
-			banner: 'https://scontent.fsgn5-8.fna.fbcdn.net/v/t39.30808-6/322676601_1291424861776288_205454228272100580_n.jpg?stp=cp6_dst-jpg&_nc_cat=109&ccb=1-7&_nc_sid=e3f864&_nc_ohc=G52-8xFevCgAX8InGvY&_nc_ht=scontent.fsgn5-8.fna&oh=00_AfASKOfnL65UmQWJP6SdJHhJNvjo0YkXI2KlWy8acIjoig&oe=63F1F1BD',
+			banner: 'https://media.istockphoto.com/id/1143284629/vi/anh/nh%C3%ACn-t%E1%BB%AB-tr%C3%AAn-cao-c%E1%BB%A7a-%C4%91%C6%B0%E1%BB%9Dng-ch%C3%A2n-tr%E1%BB%9Di-th%C3%A0nh-ph%E1%BB%91-h%E1%BB%93-ch%C3%AD-minh-l%C3%BAc-ho%C3%A0ng-h%C3%B4n.jpg?s=1024x1024&w=is&k=20&c=Mvb4LvQX187IXnw75wi6yRwNNfAiBkEgPerKvSaqjhM=',
 			title: "123",
 			title1: "1234",
 		},
@@ -63,7 +63,7 @@ const Page022 = () => {
 			title1: "1234",
 		},
 		{
-            banner: 'https://scontent.fsgn5-8.fna.fbcdn.net/v/t39.30808-6/322676601_1291424861776288_205454228272100580_n.jpg?stp=cp6_dst-jpg&_nc_cat=109&ccb=1-7&_nc_sid=e3f864&_nc_ohc=G52-8xFevCgAX8InGvY&_nc_ht=scontent.fsgn5-8.fna&oh=00_AfASKOfnL65UmQWJP6SdJHhJNvjo0YkXI2KlWy8acIjoig&oe=63F1F1BD',
+            banner: 'https://media.istockphoto.com/id/1143284629/vi/anh/nh%C3%ACn-t%E1%BB%AB-tr%C3%AAn-cao-c%E1%BB%A7a-%C4%91%C6%B0%E1%BB%9Dng-ch%C3%A2n-tr%E1%BB%9Di-th%C3%A0nh-ph%E1%BB%91-h%E1%BB%93-ch%C3%AD-minh-l%C3%BAc-ho%C3%A0ng-h%C3%B4n.jpg?s=1024x1024&w=is&k=20&c=Mvb4LvQX187IXnw75wi6yRwNNfAiBkEgPerKvSaqjhM=',
 			title: "123",
 			title1: "1234",
 		},
@@ -345,7 +345,7 @@ const Page022 = () => {
 						<div className={styles.paginate}>{slider.current && slider.current.children.length}</div>
 					</div>
 
-					
+
 				</div>
 			</div>
 		</>
