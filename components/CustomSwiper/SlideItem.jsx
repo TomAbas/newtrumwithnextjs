@@ -1,16 +1,17 @@
-import React, { useRef, useState } from "react";
-import { SwiperSlide } from "swiper/react";
+import React, { useRef } from "react";
 import { Box } from "@mui/material";
 import stylesSlide from "../../styles/SwiperStyles.module.css";
 import useMoveIcon from "../../hooks/useMoveIcon";
-
+import iconPlus from "../../public/imgs/plusicon.svg";
+import Image from "next/future/image";
 const SlideItem = ({ item, isActive, isPrev }) => {
-  const [position, setPosition] = useMoveIcon();
+  const [position, setPosition, isEnter, setIsEnter] = useMoveIcon();
 
   const ref = useRef();
-
   return (
     <Box
+      onMouseEnter={() => setIsEnter(true)}
+      onMouseLeave={() => setIsEnter(false)}
       onPointerMove={(e) => {
         setPosition({
           x: e.clientX - ref.current.getBoundingClientRect().x,
@@ -20,10 +21,9 @@ const SlideItem = ({ item, isActive, isPrev }) => {
       ref={ref}
       sx={{
         overflow: "hidden",
-        border: "2px solid red",
         position: "relative",
         background: "#fff",
-        height: "60vh",
+        height: "40vw",
         transition: "1.1s cubic-bezier(0.215, 0.61, 0.355, 1)",
         ...(isActive
           ? {
@@ -37,17 +37,17 @@ const SlideItem = ({ item, isActive, isPrev }) => {
       Current slide is {isActive ? item.title : "not active"}
       {isActive && (
         <div
-          style={{
-            position: "absolute",
-            backgroundColor: "red",
-            borderRadius: "50%",
-            transform: `translate(${position.x}px, ${position.y}px)`,
-            left: -10,
-            top: -10,
-            width: 20,
-            height: 20,
-          }}
-        />
+          className={stylesSlide.iconPlusBox}
+          style={{ transform: `translate(${position.x}px, ${position.y}px)` }}
+        >
+          <Image
+            src={iconPlus}
+            alt='icon plus'
+            style={{
+              display: isEnter ? "block" : "none",
+            }}
+          />
+        </div>
       )}
     </Box>
   );

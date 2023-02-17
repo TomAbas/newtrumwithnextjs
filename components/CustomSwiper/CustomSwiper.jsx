@@ -21,14 +21,10 @@ export default function CustomSwiper({ renderSlide }) {
   return (
     <>
       <Swiper
-        spaceBetween={60}
-        grabCursor={true}
+        spaceBetween={150}
         centeredSlides={true}
         slidesPerView={1}
-        pagination={pagination}
-        modules={[Pagination]}
         effect='fade'
-        loop={true}
         className={styles.mySwiper}
       >
         {renderSlide()}
