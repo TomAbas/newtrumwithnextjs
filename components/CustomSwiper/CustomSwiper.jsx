@@ -61,7 +61,6 @@ export default function CustomSwiper({ renderSlide, setCurrentActiveSlide }) {
       centeredSlides={true}
       slidesPerView={1}
       effect='fade'
-      onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={(swiper) => {
         setCurrentActiveSlide(swiper.activeIndex);
       }}

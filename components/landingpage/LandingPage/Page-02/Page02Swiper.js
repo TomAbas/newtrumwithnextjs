@@ -1,4 +1,4 @@
-import { Box, Container } from "@mui/material";
+import { Box, Container, Stack, Typography } from "@mui/material";
 import React, { useEffect, useRef } from "react";
 import { SwiperSlide } from "swiper/react";
 import stylesSlide from "../../../../styles/SwiperStyles.module.css";
@@ -12,14 +12,14 @@ import useMoveIcon from "../../../../hooks/useMoveIcon";
 const Page02Swiper = () => {
   const [
     position,
-    setPosition,
+    ,
     isLeft,
-    setIsLeft,
+    ,
     isRight,
-    setIsRight,
+    ,
     currentActiveSlide,
     setCurrentActiveSlide,
-    checkLeftRight,
+    ,
     onPointerMove,
   ] = useMoveIcon();
 
@@ -68,11 +68,6 @@ const Page02Swiper = () => {
       <Box
         position='relative'
         onPointerMove={(e) => {
-          // checkLeftRight(e.clientX, outerContainer, innerContainerRef);
-          // setPosition({
-          //   x: e.clientX - innerContainerRef.current.getBoundingClientRect().x,
-          //   y: e.clientY - innerContainerRef.current.getBoundingClientRect().y,
-          // });
           onPointerMove(e, outerContainer, innerContainerRef);
         }}
         ref={outerContainer}
@@ -115,6 +110,16 @@ const Page02Swiper = () => {
           />
         </Container>
       </Box>
+      <Stack
+        direction='row'
+        width='90%'
+        mx='auto'
+        justifyContent={"space-between"}
+        sx={{ border: "2px solid red" }}
+      >
+        <Typography variant='h1'>{currentActiveSlide + 1}</Typography>
+        <Typography variant='h1'>{slide.length}</Typography>
+      </Stack>
     </>
   );
 };
