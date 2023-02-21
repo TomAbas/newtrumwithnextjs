@@ -170,6 +170,7 @@
 }
 .arrowRightBox {
 	/* border: 2px solid white; */
+	background: #fff;
 	position: absolute;
 	pointer-events: all;
 	z-index: 999;

@@ -105,8 +105,8 @@ const Page022 = () => {
 		// console.log(slider.current.children);
 	};
 	const mouseMove = (e) => {
-		// handleMouseEnterInside(e);
-		// if (!isDown) return;
+		handleMouseEnterInside(e);
+		if (!isDown) return;
 		// x.current = e.clientX;
 		// const test = e.clientX - check0.current;
 		// slider.current.style.transition = "";
