@@ -1,5 +1,5 @@
 import { Box, Container } from "@mui/material";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { SwiperSlide } from "swiper/react";
 import stylesSlide from "../../../../styles/SwiperStyles.module.css";
 import CustomSwiper from "../../../CustomSwiper/CustomSwiper";
@@ -10,8 +10,19 @@ import Image from "next/future/image";
 import useMoveIcon from "../../../../hooks/useMoveIcon";
 
 const Page02Swiper = () => {
-  const [position, setPosition, isLeft, setIsLeft, isRight, setIsRight] =
-    useMoveIcon();
+  const [
+    position,
+    setPosition,
+    isLeft,
+    setIsLeft,
+    isRight,
+    setIsRight,
+    currentActiveSlide,
+    setCurrentActiveSlide,
+    checkLeftRight,
+    onPointerMove,
+  ] = useMoveIcon();
+
   const outerContainer = useRef();
   const innerContainerRef = useRef();
   let slide = [
@@ -33,38 +44,36 @@ const Page02Swiper = () => {
       );
     });
   };
-  function checkLeftRight(clientX) {
-    if (
-      clientX > outerContainer.current.getBoundingClientRect().x &&
-      clientX < innerContainerRef.current.getBoundingClientRect().x
-    ) {
-      console.log("left");
-      setIsLeft(true);
-    } else {
-      setIsLeft(false);
-    }
-    if (
-      clientX < outerContainer.current.getBoundingClientRect().right &&
-      clientX > innerContainerRef.current.getBoundingClientRect().right
-    ) {
-      console.log("right");
-      setIsRight(true);
-    } else {
-      setIsRight(false);
-    }
-  }
+  // function checkLeftRight(clientX) {
+  //   if (
+  //     clientX > outerContainer.current.getBoundingClientRect().x &&
+  //     clientX < innerContainerRef.current.getBoundingClientRect().x
+  //   ) {
+  //     setIsLeft(true);
+  //   } else {
+  //     setIsLeft(false);
+  //   }
+  //   if (
+  //     clientX < outerContainer.current.getBoundingClientRect().right &&
+  //     clientX > innerContainerRef.current.getBoundingClientRect().right
+  //   ) {
+  //     setIsRight(true);
+  //   } else {
+  //     setIsRight(false);
+  //   }
+  // }
+
   return (
     <>
       <Box
         position='relative'
-        // onMouseEnter={() => setIsEnter(true)}
-        // onMouseLeave={() => setIsEnter(false)}
         onPointerMove={(e) => {
-          checkLeftRight(e.clientX);
-          setPosition({
-            x: e.clientX - innerContainerRef.current.getBoundingClientRect().x,
-            y: e.clientY - innerContainerRef.current.getBoundingClientRect().y,
-          });
+          // checkLeftRight(e.clientX, outerContainer, innerContainerRef);
+          // setPosition({
+          //   x: e.clientX - innerContainerRef.current.getBoundingClientRect().x,
+          //   y: e.clientY - innerContainerRef.current.getBoundingClientRect().y,
+          // });
+          onPointerMove(e, outerContainer, innerContainerRef);
         }}
         ref={outerContainer}
         sx={{
@@ -72,6 +81,7 @@ const Page02Swiper = () => {
           margin: "0 auto",
           position: "relative",
           height: "40vw",
+          maxHeight: "700px",
           transition: "1.1s cubic-bezier(0.215, 0.61, 0.355, 1)",
         }}
       >
@@ -82,6 +92,7 @@ const Page02Swiper = () => {
             display: isLeft ? "block" : "none",
           }}
         >
+          {" "}
           <Image src={arrowLeft} alt='arrow' />
         </Box>
         <Box
@@ -91,13 +102,17 @@ const Page02Swiper = () => {
             display: isRight ? "block" : "none",
           }}
         >
+          {" "}
           <Image src={arrowRight} alt='arrow' />
         </Box>
         <Container
           ref={innerContainerRef}
           sx={{ padding: "0px 0px !important" }}
         >
-          <CustomSwiper renderSlide={renderSlide} />
+          <CustomSwiper
+            renderSlide={renderSlide}
+            setCurrentActiveSlide={setCurrentActiveSlide}
+          />
         </Container>
       </Box>
     </>

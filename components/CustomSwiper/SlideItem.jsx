@@ -6,7 +6,7 @@ import iconPlus from "../../public/imgs/plusicon.svg";
 import Image from "next/future/image";
 const SlideItem = ({ item, isActive, isPrev }) => {
   const [position, setPosition, isEnter, setIsEnter] = useMoveIcon();
-
+ 
   const ref = useRef();
   return (
     <Box
@@ -24,6 +24,7 @@ const SlideItem = ({ item, isActive, isPrev }) => {
         position: "relative",
         background: "#fff",
         height: "40vw",
+        maxHeight: "700px",
         transition: "1.1s cubic-bezier(0.215, 0.61, 0.355, 1)",
         ...(isActive
           ? {
