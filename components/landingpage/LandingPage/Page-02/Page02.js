@@ -15,6 +15,7 @@ import slidePic1 from "../../../../public/imgs/img2.png";
 import slidePic2 from "../../../../public/imgs/img3.png";
 import slidePic3 from "../../../../public/imgs/img4.png";
 
+
 const Page02 = () => {
   const router = useRouter();
   const [isDown, setIsDown] = useState(false);
