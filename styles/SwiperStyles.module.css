@@ -33,7 +33,6 @@
   cursor: pointer !important;
 }
 
-
 .iconPlusBox {
   position: absolute;
   top: -5px;
@@ -50,6 +49,7 @@
   position: absolute;
   width: 70px;
   height: 70px;
+  border: 2px solid red;
   /* z-index: 999; */
 }
 
