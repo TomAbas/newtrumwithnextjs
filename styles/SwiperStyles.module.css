@@ -1,0 +1,9 @@
+.mySwiper {
+  overflow: unset;
+}
+.slideItem {
+ 
+}
+.mySwiper .swiper-pagination {
+  border: 2px solid red;
+}
