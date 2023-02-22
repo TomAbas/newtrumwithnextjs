@@ -114,8 +114,22 @@
 .page04ContentText1 {
   /* border: 2px solid red; */
   color: #fff;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.emptyDiv{
+  position: relative;
+}
+
+.emptyDiv img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  top:0;
+  bottom: 0;
+  left: -10%;
+  
 }
 
 .team-pic-img {
@@ -129,12 +143,11 @@
 }
 .contentText1 h1 {
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.65rem;
 }
 
 .textBox {
   padding-top: 3%;
-  width: 80%;
   word-spacing: 1px;
 }
 .textBox p {
@@ -149,7 +162,7 @@
 }
 
 .contentText2 h1 {
-  font-size: 2rem;
+  font-size: 1.65rem;
   padding-bottom: 15px;
 }
 .textBox1 {
@@ -207,9 +220,14 @@
   }
   .page04ContentText1 {
     justify-content: flex-end;
+
   }
+
+  .emptyDiv img{
+    object-fit: cover;
+  }
+
   .contentText1 {
-    width: 42.5%;
     padding: 15% 0px;
   }
   .contentText1 h1 {
