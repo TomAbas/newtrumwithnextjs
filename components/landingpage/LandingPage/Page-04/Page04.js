@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../../../../styles/Page04Styles.module.css";
 import facePic from "../../../../public/imgs/facepic.png";
+import wePic from "../../../../public/imgs/weare.png";
 import ncc from "../../../../public/imgs/ncc.jpg";
 import { useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
@@ -210,7 +211,16 @@ const Page04 = ({ page4Data, page44Data, page444Data }) => {
         </div>
         <div className={styles.page04Content1}>
           <div className={styles.page04ContentText1}>
-            <div className={styles.emptyDiv}></div>
+            <div className={styles.emptyDiv}>
+            <Image
+                layout='responsive'
+                width={1000}
+                height={1000}
+                // src={page04Img}
+                src={wePic}
+                alt='weare'
+              />
+            </div>
             <div className={styles.contentText1}>
               <div className={styles.h1EffectBox} ref={h1Ref1}>
                 {animationWords()}
