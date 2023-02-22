@@ -1,5 +1,5 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { SwiperSlide } from "swiper/react";
 import stylesSlide from "../../../../styles/SwiperStyles.module.css";
 import CustomSwiper from "../../../CustomSwiper/CustomSwiper";
@@ -8,6 +8,7 @@ import arrowLeft from "../../../../public/imgs/arrowLeft.svg";
 import arrowRight from "../../../../public/imgs/arrowRight.svg";
 import Image from "next/future/image";
 import useMoveIcon from "../../../../hooks/useMoveIcon";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Page02Swiper = () => {
   const [
@@ -22,9 +23,11 @@ const Page02Swiper = () => {
     ,
     onPointerMove,
   ] = useMoveIcon();
-
+  const [isClick, setIsClick] = useState(true);
+  const [count, setCount] = useState(1);
   const outerContainer = useRef();
   const innerContainerRef = useRef();
+  const textRef = useRef();
   let slide = [
     { title: "test1", title1: "123", postId: "1" },
     { title: "test2", title1: "123", postId: "1" },
@@ -44,25 +47,18 @@ const Page02Swiper = () => {
       );
     });
   };
-  // function checkLeftRight(clientX) {
-  //   if (
-  //     clientX > outerContainer.current.getBoundingClientRect().x &&
-  //     clientX < innerContainerRef.current.getBoundingClientRect().x
-  //   ) {
-  //     setIsLeft(true);
-  //   } else {
-  //     setIsLeft(false);
-  //   }
-  //   if (
-  //     clientX < outerContainer.current.getBoundingClientRect().right &&
-  //     clientX > innerContainerRef.current.getBoundingClientRect().right
-  //   ) {
-  //     setIsRight(true);
-  //   } else {
-  //     setIsRight(false);
-  //   }
-  // }
-
+  const variants = {
+    visible: (i) => ({
+      opacity: 1,
+      transform: `translateY(-${
+        i * textRef.current.getBoundingClientRect().height
+      }px)`,
+    }),
+    hidden: { opacity: 0 },
+  };
+  useEffect(() => {
+    console.log(count);
+  }, [count]);
   return (
     <>
       <Box
@@ -105,20 +101,52 @@ const Page02Swiper = () => {
           sx={{ padding: "0px 0px !important" }}
         >
           <CustomSwiper
+            setIsClick={setCount}
             renderSlide={renderSlide}
             setCurrentActiveSlide={setCurrentActiveSlide}
           />
         </Container>
-      </Box>
+      </Box>{" "}
       <Stack
         direction='row'
-        width='90%'
+        width='10%'
         mx='auto'
-        justifyContent={"space-between"}
-        sx={{ border: "2px solid red" }}
+        justifyContent={"flex-end"}
+        sx={{
+          position: "relative",
+          marginTop: "20px",
+          overflow: "hidden",
+        }}
       >
-        <Typography variant='h1'>{currentActiveSlide + 1}</Typography>
-        <Typography variant='h1'>{slide.length}</Typography>
+        <motion.div
+          style={{ position: "absolute", left: 0 }}
+          variants={variants}
+          custom={currentActiveSlide}
+          initial={{ opacity: 0 }}
+          animate={"visible"}
+          transition={{ duration: 0.5 }}
+          exit={{ opacity: 0 }}
+        >
+          {new Array(slide.length).fill(0).map((item, idx) => {
+            return (
+              <Typography variant='h5' color='#fff' key={idx} ref={textRef}>
+                {idx + 1}
+              </Typography>
+            );
+          })}
+        </motion.div>
+
+        <motion.div
+          variants={variants}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          exit={{ opacity: 0 }}
+        >
+          <Typography variant='h5' color='#fff'>
+            {slide.length}
+          </Typography>
+        </motion.div>
       </Stack>
     </>
   );
