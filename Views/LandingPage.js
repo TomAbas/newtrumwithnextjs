@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import LandingPage0 from "../components/landingpage/LandingPage/LandingPage1/LandingPage";
 import Page01 from "../components/landingpage/LandingPage/Page-01/Page01";
+<<<<<<< HEAD
 import Page02 from "../components/landingpage/LandingPage/Page-02/Page02";
 import Page022 from "../components/landingpage/LandingPage/Page-02/Page022";
+=======
+import Page02 from "../components/landingpage/LandingPage/Page-02/Page02Swiper";
+>>>>>>> 32280ef (use swiper)
 import Page03 from "../components/landingpage/LandingPage/Page-03/Page03";
 import Page04 from "../components/landingpage/LandingPage/Page-04/Page04";
 
