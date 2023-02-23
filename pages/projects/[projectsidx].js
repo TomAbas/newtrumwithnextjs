@@ -6,7 +6,6 @@ import axios from "axios";
 import { urlNewsId } from "../../ApiUrl/Api";
 
 export async function getServerSideProps ({params}){
-  // console.log(params.projectsidx, "312")
   let res
   if(params.projectsidx !== 'undefined' && params.projectsidx !== 'requestProvider.js.map'){
      res = await axios.get(`${urlNewsId}/${params.projectsidx}`).then(({ data }) => {
@@ -28,7 +27,7 @@ export async function getServerSideProps ({params}){
   }
 
 }
-const projectsidx0 = ({res}) => {
+const Projectsidx0 = ({res}) => {
   console.log(res)
   const router = useRouter();
   const { projectsidx } = router.query;
@@ -75,4 +74,4 @@ const projectsidx0 = ({res}) => {
   );
 };
 
-export default projectsidx0;
+export default Projectsidx0;
