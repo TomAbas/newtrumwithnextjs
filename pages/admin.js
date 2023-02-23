@@ -5,12 +5,9 @@ export default function admin() {
  
   return (
     <>
-    
-
       <div>
         <BasicTabs />
       </div>
-     
     </>
   );
 }

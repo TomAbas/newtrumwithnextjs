@@ -61,7 +61,7 @@ const LandingPageForm = ({ preLoadValue }) => {
   });
 
   const submitNewsEditor = (data) => {
-    // console.log(data);
+    console.log(data.title1.split("\n"));
     const newFormBanner = new FormData();
     newFormBanner.append("firstLine", data.title1);
     newFormBanner.append("secondLine", data.title2);
