@@ -53,7 +53,7 @@ const ProjectPage = ({ projectsidx, data }) => {
   };
 
   useEffect(() => {
-    fetchData();
+    // fetchData();
   }, [projectsidx]);
   return (
     <>
