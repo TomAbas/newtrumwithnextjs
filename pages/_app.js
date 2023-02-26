@@ -6,7 +6,11 @@ function MyApp({ Component, pageProps, ...appProps }) {
   const getContent = () => {
     if (
       [`/admins`].includes(appProps.router.pathname) ||
-      [`/admins/landingpage`].includes(appProps.router.pathname)
+      [`/admins/landingpage`].includes(appProps.router.pathname) ||
+      [`/admins/editprojects`].includes(appProps.router.pathname) ||
+      [`/admins/addprojects`].includes(appProps.router.pathname) ||
+      [`/admins/recuiter`].includes(appProps.router.pathname) ||
+      [`/admins/companyinfo`].includes(appProps.router.pathname)
     )
       return (
         <LayoutAdmin>
