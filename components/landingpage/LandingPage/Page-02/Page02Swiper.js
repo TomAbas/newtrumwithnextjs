@@ -68,7 +68,9 @@ const Page02Swiper = () => {
         }}
         ref={outerContainer}
         sx={{
+          border: "2px solid red",
           width: "90%",
+          maxWidth: "1400px",
           margin: "0 auto",
           position: "relative",
           height: "40vw",
@@ -98,7 +100,12 @@ const Page02Swiper = () => {
         </Box>
         <Container
           ref={innerContainerRef}
-          sx={{ padding: "0px 0px !important" }}
+          sx={{
+            padding: "0px 0px !important",
+            width: "80%",
+            maxWidth: "1200px",
+            border: "2px solid blue",
+          }}
         >
           <CustomSwiper
             setIsClick={setCount}
@@ -109,13 +116,24 @@ const Page02Swiper = () => {
       </Box>{" "}
       <Stack
         direction='row'
-        width='10%'
+        width='4%'
         mx='auto'
         justifyContent={"flex-end"}
         sx={{
           position: "relative",
           marginTop: "20px",
           overflow: "hidden",
+          "&:after": {
+            content: `''`,
+            position: "absolute",
+            width: "50%",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%,-50%)",
+            height: "1px",
+            backgroundColor: "white",
+            zIndex: 1,
+          },
         }}
       >
         <motion.div
