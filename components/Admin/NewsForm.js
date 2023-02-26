@@ -164,7 +164,7 @@ const NewsForm = () => {
         <li key={`section-${1}`}>
           <div className={styles.itemNews}>
             <ul className={styles.ulList}>
-              {arrNews.map((item, idx) => (
+              {arrNews?.map((item, idx) => (
                 <div
                   style={{ display: item.deleted === "1" && "none" }}
                   key={idx}

@@ -7,28 +7,28 @@ const getIcon = (name) => <Iconify icon={name} width={22} height={22} />;
 
 const navConfig = [
   {
-    title: "dashboard",
-    path: "/admins/app",
+    title: "Lading Page",
+    path: "/admins/landingpage",
     icon: getIcon("eva:pie-chart-2-fill"),
   },
   {
-    title: "Users",
-    path: "/admins/users",
+    title: "Edit Projects",
+    path: "/admins/editprojects",
     icon: getIcon("eva:people-fill"),
   },
   {
-    title: "Collection",
-    path: "/admins/collections",
+    title: "Add Projects",
+    path: "/admins/addprojects",
     icon: getIcon("eva:shopping-bag-fill"),
   },
   {
-    title: "Advertise Collection",
-    path: "/admins/advertise-collection",
+    title: "Recuiter",
+    path: "/admins/recuiter",
     icon: getIcon("mdi:advertisements"),
   },
   {
-    title: "Advertise Item",
-    path: "/admins/advertise-item",
+    title: "Company Info",
+    path: "/admins/companyinfo",
     icon: getIcon("mdi:advertisements"),
   },
   {
