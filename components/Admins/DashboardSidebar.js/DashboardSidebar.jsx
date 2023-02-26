@@ -65,19 +65,19 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
       </Box>
 
       <Box sx={{ mb: 5, mx: 2.5 }}>
-        <Link underline='none' to='#'>
+        {/* <Link underline='none' to='#'>
           <AccountStyle>
             <Box sx={{ ml: 2 }}>
               <Typography
                 variant='subtitle2'
                 sx={{ color: "text.primary" }}
               ></Typography>
-              <Typography variant='body2' sx={{ color: "text.secondary" }}>
+              <Typography variant='h3' sx={{ color: "text.secondary" }}>
                 Admin
               </Typography>
             </Box>
           </AccountStyle>
-        </Link>
+        </Link> */}
       </Box>
 
       <NavSection navConfig={NavConfig} />
