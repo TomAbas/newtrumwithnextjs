@@ -6,6 +6,7 @@ import ProjectPage01 from "../components/ProjectPage/ProjectPage01";
 import ProjectPage02 from "../components/ProjectPage/ProjectPage02";
 import ProjectPage03 from "../components/ProjectPage/ProjectPage03";
 import ProjectPage04 from "../components/ProjectPage/ProjectPage04";
+import ProjectPage04Swiper from "../components/ProjectPage/ProjectPage04Swiper";
 
 const ProjectPage = ({ projectsidx, data }) => {
   // console.log("ssr ",data);
@@ -77,7 +78,7 @@ const ProjectPage = ({ projectsidx, data }) => {
             content={content}
             img={img}
           />
-          <ProjectPage04
+          <ProjectPage04Swiper
             subTitle1={subTitle1}
             content1={content1}
             img1={img1}
@@ -87,6 +88,16 @@ const ProjectPage = ({ projectsidx, data }) => {
             img5={img5}
             projectsidx={projectsidx}
           />
+          {/* <ProjectPage04
+            subTitle1={subTitle1}
+            content1={content1}
+            img1={img1}
+            img2={img2}
+            img3={img3}
+            img4={img4}
+            img5={img5}
+            projectsidx={projectsidx}
+          /> */}
         </div>
       </div>
     </>

@@ -81,7 +81,6 @@ const ProjectPage02 = ({ tagLine, tagLine1, projectsidx }) => {
   };
   const contributorList = () => {
     let b = contributorArr.map((contributor ,idx) => {
-      console.log(contributor)
       return (
         <p key={idx}>
           {contributor.role} by : {contributor.contributorName}
