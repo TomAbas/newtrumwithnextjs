@@ -87,8 +87,8 @@ const LandingPage = ({ landingPageData }) => {
           className={styles.landingPagePicInside}
           style={{
             background:
-              landingPageData &&
-              `url(${landingPageData.img}) no-repeat fixed center
+              // landingPageData &&
+              `url("https://picsum.photos/700") no-repeat fixed center
     center/cover`,
           }}
         ></div>
