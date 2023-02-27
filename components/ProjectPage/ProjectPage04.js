@@ -57,8 +57,22 @@ const ProjectPage04 = ({
     }
   };
   const produceArray = () => {
-    if (subTitle1) {
-      let subTitleArr1 = subTitle1.split("");
+    // if (subTitle1) {
+    //   let subTitleArr1 = subTitle1.split("");
+    //   // console.log(subTitleArr1);
+    //   setSubTitleAr1(subTitleArr1);
+    //   // console.log(typeof img);
+    //   let imgArr = [];
+
+    //   imgArr.push(img1);
+    //   imgArr.push(img2);
+    //   imgArr.push(img3);
+    //   imgArr.push(img4);
+    //   imgArr.push(img5);
+    //   setImgArr(imgArr);
+    // }
+    if (true) {
+      let subTitleArr1 = 'Innovation'.split("");
       // console.log(subTitleArr1);
       setSubTitleAr1(subTitleArr1);
       // console.log(typeof img);
@@ -354,7 +368,9 @@ const ProjectPage04 = ({
               {animationWords()}
             </div>
 
-            <div dangerouslySetInnerHTML={{ __html: content1 }} />
+            {/* <div dangerouslySetInnerHTML={{ __html: content1 }} /> */}
+<p>A consistent content marketing strategy and simplification of the e-commerce contract are the key. Taking advantage of our rich digital KOL resource and the Facebook Fanpage community to distribute content, TRUM quickly helps brands capture and attract customers.</p>
+<p>As a result, in just 3 days of sale event, TRUM has boosted revenue on e-commerce platforms by 350% (~ 4 billionVND) compared to previous seasons.</p>
           </div>
         </div>
         <div className={styles.page02Container}>

@@ -12,11 +12,23 @@ const ProjectPage01 = ({ title, title1, category, bannerImg }) => {
   const isHeadLineIn1 = useInView(headLineRef1);
   // console.log(title);
   const produceArray = () => {
-    if (title) {
-      let titleArr = title.split(" ");
+    // if (title) {
+    //   // let titleArr = title.split(" ");
+    //   let titleArr = "Levent Clothing".split(" ");
+    //   setHeadline(titleArr);
+    //   if (title1) {
+    //     let titleArr1 = title1.split(" ");
+    //     titleArr1=['CLOTHING','BRAND']
+    //     setHeadline1(titleArr1);
+    //   }
+    // }
+    if (true) {
+      // let titleArr = title.split(" ");
+      let titleArr = "Levent Clothing".split(" ");
       setHeadline(titleArr);
-      if (title1) {
-        let titleArr1 = title1.split(" ");
+      if (true) {
+        // let titleArr1 = title1.split(" ");
+       let titleArr1=['Levent','Clothing']
         setHeadline1(titleArr1);
       }
     }
