@@ -92,7 +92,7 @@ const LandingPage = ({ landingPageData }) => {
     center/cover`,
           }}
         ></div>
-      </div>
+      </div>∑∑
     </>
   );
 };

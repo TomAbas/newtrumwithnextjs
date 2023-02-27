@@ -8,7 +8,6 @@ import axios from "axios";
 import { urlListContributorIdPost } from "../../ApiUrl/Api";
 
 const ProjectPage02 = ({ tagLine, tagLine1, projectsidx }) => {
- 
   const [line1, setLine1] = useState([]);
   const [line2, setLine2] = useState([]);
   const [contributorArr, setContributorArr] = useState([]);
@@ -26,21 +25,31 @@ const ProjectPage02 = ({ tagLine, tagLine1, projectsidx }) => {
       .catch((error) => {
         console.log(error);
       });
+      setContributorArr([{role:'Creative Director',contributorName:'Levent'},{role:'Photographer',contributorName:'Levent'}])
   };
   const produceArray = () => {
-    if (tagLine) {
-      // console.log(tagLine1);
-      let firstLine = tagLine.split(" ");
+    // if (tagLine) {
+    //   // console.log(tagLine1);
+    //   // let firstLine = tagLine.split(" ");
+    //  let firstLine=['LEVENT','- ','TOP','OF','MIND']
+    //   setLine1(firstLine);
+    //   if (tagLine1) {
+    //     // console.log("123");
+    //     // let secondLine = tagLine1.split(" ");
+    //  let secondLine=['FASHION' ,'BRAND' ,'FOR' ,'GENZ']
+    //     setLine2(secondLine);
+    //   }
+    // }
+    if (true) {
+     let firstLine=['LEVENT','- ','TOP','OF','MIND']
       setLine1(firstLine);
-      if (tagLine1) {
-        // console.log("123");
-        let secondLine = tagLine1.split(" ");
+      if (true) {      
+     let secondLine=['FASHION' ,'BRAND' ,'FOR' ,'GENZ']
         setLine2(secondLine);
       }
     }
   };
   const animationWords = () => {
-    // console.log(line1);
     let b = line1.map((word, idx) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s ` };
       return (
@@ -56,7 +65,6 @@ const ProjectPage02 = ({ tagLine, tagLine1, projectsidx }) => {
     return b;
   };
   const animationWords1 = () => {
-    // console.log(line2);
     let b = line2.map((word, idx) => {
       let delay = { animationDelay: `${idx / 5 + 1}s` };
       return (
@@ -73,6 +81,7 @@ const ProjectPage02 = ({ tagLine, tagLine1, projectsidx }) => {
   };
   const contributorList = () => {
     let b = contributorArr.map((contributor ,idx) => {
+      console.log(contributor)
       return (
         <p key={idx}>
           {contributor.role} by : {contributor.contributorName}

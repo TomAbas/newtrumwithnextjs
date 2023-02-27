@@ -11,12 +11,18 @@ const ProjectPage03 = ({ openTitle, subTitle, youtubeUrl, content, img }) => {
   const isArrWordIn = useInView(arrWordRef);
 
   const produceArray = () => {
-    if (subTitle) {
-      let subTitleArr = subTitle.split("");
+    // if (subTitle) {
+    //   let subTitleArr = subTitle.split("");
+    //   // console.log(subTitleArr);
+    //   setSubTitleAr(subTitleArr);
+    // }
+    if (true) {
+      let subTitleArr = 'Concept'.split("")
       // console.log(subTitleArr);
       setSubTitleAr(subTitleArr);
     }
   };
+  
   const animationWords = () => {
     let b = subTitleAr.map((word, idx) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s` };
@@ -46,7 +52,8 @@ const ProjectPage03 = ({ openTitle, subTitle, youtubeUrl, content, img }) => {
             <iframe
               width='100%'
               height='100%'
-              src={youtubeUrl}
+              // src={youtubeUrl}
+              src={'https://youtu.be/ahe9baHOWIg'}
               title='YouTube video player'
               frameBorder='0'
               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;'
@@ -79,7 +86,10 @@ const ProjectPage03 = ({ openTitle, subTitle, youtubeUrl, content, img }) => {
                   {animationWords()}
                 </div>
 
-                <div dangerouslySetInnerHTML={{ __html: content }} />
+                {/* <div dangerouslySetInnerHTML={{ __html: content }} /> */}
+                <div><p>The COVID-19 pandemic has strongly promoted online shopping trend on e-commerce platforms. Many businesses have lost their way when trying to find a way to catch up with the significant change. </p>
+
+<p>But LEVENT is not like that! They have successfully grown brand recognition and revenue on Shopee and Lazada when choosing TRUM digital marketing service as a companion solution.</p></div>
               </div>
             </div>
           </div>
