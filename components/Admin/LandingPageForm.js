@@ -61,58 +61,69 @@ const LandingPageForm = ({ preLoadValue }) => {
   });
 
   const submitNewsEditor = (data) => {
-    // console.log(data);
+    // console.log(data.title1.split("\n"));
+    let titleArr = data.title1.split("\n");
     const newFormBanner = new FormData();
-    newFormBanner.append("firstLine", data.title1);
-    newFormBanner.append("secondLine", data.title2);
-    newFormBanner.append("thirdLine", data.title3);
+    newFormBanner.append("firstLine", titleArr[0]);
+    newFormBanner.append("secondLine", titleArr[1]);
+    newFormBanner.append("thirdLine", titleArr[2]);
     newFormBanner.append("img", data.image1[0]);
+    console.log(newFormBanner);
     //if not success add to headers: { "Content-Type": "multipart/form-data" },
     editInfoLandingPage(1, newFormBanner);
 
+    const section1Arr = data.content1Line1.split("\n");
     const objSection1 = {
-      firstLine: data.content1Line1,
-      secondLine: data.content1Line2,
-      thirdLine: data.content1Line3,
-      fourthLine: data.content1Line4,
-      fifthLine: data.content1Line5,
-      sixthLine: data.content1Line6,
+      firstLine: section1Arr[0],
+      secondLine: section1Arr[1],
+      thirdLine: section1Arr[2],
+      fourthLine: section1Arr[3],
+      fifthLine: section1Arr[4],
+      sixthLine: section1Arr[5],
     };
+    // console.log(objSection1);
     editInfoLandingPage(2, objSection1);
+
+    const section2Arr = data.content2Line1.split("\n");
     const objSection2 = {
-      firstLine: data.content2Line1,
-      secondLine: data.content2Line2,
-      thirdLine: data.content2Line3,
-      fourthLine: data.content2Line4,
-      fifthLine: data.content2Line5,
+      firstLine: section2Arr[0],
+      secondLine: section2Arr[1],
+      thirdLine: section2Arr[2],
+      fourthLine: section2Arr[3],
+      fifthLine: section2Arr[4],
     };
     editInfoLandingPage(3, objSection2);
-    const newFormObjecSection3 = new FormData();
-    newFormObjecSection3.append("firstLine", data.content3Line1);
-    newFormObjecSection3.append("secondLine", data.content3Line2);
-    newFormObjecSection3.append("thirdLine", data.content3Line3);
-    newFormObjecSection3.append("fourthLine", data.content3Line4);
-    newFormObjecSection3.append("fifthLine", data.content3Line5);
-    newFormObjecSection3.append("sixthLine", data.content3Line6);
-    newFormObjecSection3.append("seventhLine", data.content3Line7);
-    newFormObjecSection3.append("eighthLine", data.content3Line8);
-    newFormObjecSection3.append("ninthLine", data.content3Line9);
-    newFormObjecSection3.append("tenthLine", data.content3Line10);
-    newFormObjecSection3.append("img", data.image2[0]);
 
+    const section3Arr = data.content3Line1.split("\n");
+    const newFormObjecSection3 = new FormData();
+    newFormObjecSection3.append("firstLine", section3Arr[0]);
+    newFormObjecSection3.append("secondLine", section3Arr[1]);
+    newFormObjecSection3.append("thirdLine", section3Arr[2]);
+    newFormObjecSection3.append("fourthLine", section3Arr[3]);
+    newFormObjecSection3.append("fifthLine", section3Arr[4]);
+    newFormObjecSection3.append("sixthLine", section3Arr[5]);
+    newFormObjecSection3.append("seventhLine", section3Arr[6]);
+    newFormObjecSection3.append("eighthLine", section3Arr[7]);
+    newFormObjecSection3.append("ninthLine", section3Arr[8]);
+    newFormObjecSection3.append("tenthLine", section3Arr[9]);
+    newFormObjecSection3.append("img", data.image2[0]);
     editInfoLandingPage(4, newFormObjecSection3);
+
+    const section4Arr = data.content4Line1.split("\n");
     const objSection4 = {
-      firstLine: data.content4Line1,
-      secondLine: data.content4Line2,
-      thirdLine: data.content4Line3,
-      fourthLine: data.content4Line4,
-      fifthLine: data.content4Line5,
+      firstLine: section4Arr[0],
+      secondLine: section4Arr[1],
+      thirdLine: section4Arr[2],
+      fourthLine: section4Arr[3],
+      fifthLine: section4Arr[4],
     };
     editInfoLandingPage(5, objSection4);
+
+    const section5Arr = data.content5Line1.split("\n");
     const objSection5 = {
-      firstLine: data.content5Line1,
-      secondLine: data.content5Line2,
-      thirdLine: data.content5Line3,
+      firstLine: section5Arr[0],
+      secondLine: section5Arr[1],
+      thirdLine: section5Arr[2],
     };
     editInfoLandingPage(6, objSection5);
   };
@@ -131,7 +142,7 @@ const LandingPageForm = ({ preLoadValue }) => {
               <div className={styles.bannerBanner}>EDIT BANNER :</div>
               <div className={styles.row1}>
                 <div className={styles.titleEdit}>
-                  <h3>Line 1 : </h3>
+                  <h3>Banner : 3 line</h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
@@ -141,7 +152,7 @@ const LandingPageForm = ({ preLoadValue }) => {
 
                   <p>{errors.title1?.message}</p>
                 </div>
-                <div className={styles.titleEdit}>
+                {/* <div className={styles.titleEdit}>
                   <h3>Line 2 : </h3>
                   <textarea
                     type='text'
@@ -160,14 +171,14 @@ const LandingPageForm = ({ preLoadValue }) => {
                     {...register("title3")}
                   />
                   <p>{errors.title2?.message}</p>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className={styles.content1Edit}>
               <div className={styles.bannerBanner}>EDIT CONTENT 1 :</div>
               <div className={styles.row1}>
                 <div className={styles.titleEdit}>
-                  <h3>Content 1 - Line 1 : </h3>
+                  <h3>Content 1 : 6 line</h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
@@ -176,7 +187,7 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                   <p>{errors.content1Line1?.message}</p>
                 </div>
-                <div className={styles.titleEdit}>
+                {/* <div className={styles.titleEdit}>
                   <h3>Content 1 - Line 2 : </h3>
                   <textarea
                     type='text'
@@ -195,9 +206,9 @@ const LandingPageForm = ({ preLoadValue }) => {
                     {...register("content1Line3")}
                   />
                   <p>{errors.content1Line3?.message}</p>
-                </div>
+                </div> */}
               </div>
-              <div className={styles.row1}>
+              {/* <div className={styles.row1}>
                 <div className={styles.titleEdit}>
                   <h3>Content 1 - Line 4 : </h3>
                   <textarea
@@ -228,13 +239,13 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                   <p>{errors.content1Line6?.message}</p>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className={styles.content2Edit}>
               <div className={styles.bannerBanner}>EDIT CONTENT 2 :</div>
               <div className={styles.row1}>
                 <div className={styles.titleEdit}>
-                  <h3>Content 2 - Line 1 : </h3>
+                  <h3>Content 2 : 5 line</h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
@@ -243,7 +254,7 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                   <p>{errors.content2Line1?.message}</p>
                 </div>
-                <div className={styles.titleEdit}>
+                {/* <div className={styles.titleEdit}>
                   <h3>Content 2 - Line 2 : </h3>
                   <textarea
                     type='text'
@@ -262,9 +273,9 @@ const LandingPageForm = ({ preLoadValue }) => {
                     {...register("content2Line3")}
                   />
                   <p>{errors.content2Line3?.message}</p>
-                </div>
+                </div> */}
               </div>
-              <div className={styles.row1}>
+              {/* <div className={styles.row1}>
                 <div className={styles.titleEdit}>
                   <h3>Content 2 - Line 4 : </h3>
                   <textarea
@@ -285,13 +296,13 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                   <p>{errors.content2Line5?.message}</p>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className={styles.content3Edit}>
               <div className={styles.bannerBanner}>EDIT CONTENT 3 :</div>
               <div className={styles.row1}>
                 <div className={styles.titleEdit}>
-                  <h3>Content 3 - Line 1 : </h3>
+                  <h3>Content 3 : 10 Line</h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
@@ -300,7 +311,7 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                   <p>{errors.content3Line1?.message}</p>
                 </div>
-                <div className={styles.titleEdit}>
+                {/* <div className={styles.titleEdit}>
                   <h3>Content 3 - Line 2 : </h3>
                   <textarea
                     type='text'
@@ -319,9 +330,9 @@ const LandingPageForm = ({ preLoadValue }) => {
                     {...register("content3Line3")}
                   />
                   <p>{errors.content3Line3?.message}</p>
-                </div>
+                </div> */}
               </div>
-              <div className={styles.row1}>
+              {/* <div className={styles.row1}>
                 <div className={styles.titleEdit}>
                   <h3>Content 3 - Line 4 : </h3>
                   <textarea
@@ -396,13 +407,13 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                   <p>{errors.content3Line10?.message}</p>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className={styles.content4Edit}>
               <div className={styles.bannerBanner}>EDIT CONTENT 4 :</div>
               <div className={styles.row1}>
                 <div className={styles.titleEdit}>
-                  <h3>Content 4 - Line 1 : </h3>
+                  <h3>Content 4 : 5 Line</h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
@@ -411,7 +422,7 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                   <p>{errors.content4Line1?.message}</p>
                 </div>
-                <div className={styles.titleEdit}>
+                {/* <div className={styles.titleEdit}>
                   <h3>Content 4 - Line 2 : </h3>
                   <textarea
                     type='text'
@@ -430,9 +441,9 @@ const LandingPageForm = ({ preLoadValue }) => {
                     {...register("content4Line3")}
                   />
                   <p>{errors.content4Line3?.message}</p>
-                </div>
+                </div> */}
               </div>
-              <div className={styles.row1}>
+              {/* <div className={styles.row1}>
                 <div className={styles.titleEdit}>
                   <h3>Content 4 - Line 4 : </h3>
                   <textarea
@@ -453,13 +464,13 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                   <p>{errors.content4Line5?.message}</p>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className={styles.content5Edit}>
               <div className={styles.bannerBanner}>EDIT CONTENT 5 :</div>
               <div className={styles.row1}>
                 <div className={styles.titleEdit}>
-                  <h3>Content 5 - Line 1 : </h3>
+                  <h3>Content 5 : 3 Line</h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
@@ -468,7 +479,7 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                   <p>{errors.content5Line1?.message}</p>
                 </div>
-                <div className={styles.titleEdit}>
+                {/* <div className={styles.titleEdit}>
                   <h3>Content 5 - Line 2 : </h3>
                   <textarea
                     type='text'
@@ -487,7 +498,7 @@ const LandingPageForm = ({ preLoadValue }) => {
                     {...register("content5Line3")}
                   />
                   <p>{errors.content5Line3?.message}</p>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className={styles.content5Edit}>

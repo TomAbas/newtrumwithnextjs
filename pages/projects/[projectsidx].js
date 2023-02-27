@@ -5,30 +5,29 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { urlNewsId } from "../../ApiUrl/Api";
 
-export async function getServerSideProps ({params}){
-  // console.log(params.projectsidx, "312")
-  let res
-  if(params.projectsidx !== 'undefined' && params.projectsidx !== 'requestProvider.js.map'){
-     res = await axios.get(`${urlNewsId}/${params.projectsidx}`).then(({ data }) => {
-      // console.log(data[0])
-      return data[0]
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+// export async function getServerSideProps ({params}){
+//   let res
+//   if(params.projectsidx !== 'undefined' && params.projectsidx !== 'requestProvider.js.map'){
+//      res = await axios.get(`${urlNewsId}/${params.projectsidx}`).then(({ data }) => {
+//       // console.log(data[0])
+//       return data[0]
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
 
-  }
-  if (!res) {
-    return {
-      notFound: true,
-    }
-  }
-  return {
-    props: { res }, // will be passed to the page component as props
-  }
+//   }
+//   if (!res) {
+//     return {
+//       notFound: true,
+//     }
+//   }
+//   return {
+//     props: { res }, // will be passed to the page component as props
+//   }
 
-}
-const projectsidx0 = ({res}) => {
+// }
+const Projectsidx0 = ({res}) => {
   console.log(res)
   const router = useRouter();
   const { projectsidx } = router.query;
@@ -46,33 +45,33 @@ const projectsidx0 = ({res}) => {
          {/* metatag google  */}
          <meta
           name='description'
-          content={res.tagline21}
+          // content={res.tagline21}
         />
         <meta
           name='keywords'
           content='Agency, Content,Marketing, KOL, Festival, Singer, Video, Art, Products'
         />
         <meta name='author' content='Trum Agency' />
-        <link rel='canonical' href={`/${res.postId}`} />
+        {/* <link rel='canonical' href={`/${res.postId}`} /> */}
         {/* metatag facebook */}
-        <meta property='og:url' content={`https://www.trumagency.com/projects/${res.postId}`} />
+        {/* <meta property='og:url' content={`https://www.trumagency.com/projects/${res.postId}`} /> */}
         <meta property='og:type' content='article' />
-        <meta property='og:title' content={res.title + " " + res.title2} />
+        {/* <meta property='og:title' content={res.title + " " + res.title2} /> */}
         <meta
           property='og:description'
-          content={res.tagline21}
+          // content={res.tagline21}
         />
         <meta
           property='og:image'
-          content={res.thumbnail}
+          // content={res.thumbnail}
         />
         <meta property='og:image:width' content='1200' />
         <meta property='og:image:height' content='630' />
-        <title>{res.title + " " + res.title2}</title>
+        {/* <title>{res.title + " " + res.title2}</title> */}
       </Head>
       <ProjectPage projectsidx={projectsidx} data={res}/>
     </>
   );
 };
 
-export default projectsidx0;
+export default Projectsidx0;

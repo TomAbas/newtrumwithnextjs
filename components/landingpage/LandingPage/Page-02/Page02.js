@@ -12,7 +12,6 @@ import axios from "axios";
 //img
 
 
-
 const Page02 = () => {
   const router = useRouter();
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -107,7 +106,6 @@ const Page02 = () => {
   };
   const mouseMove = (e) => {
     // handleMouseEnterInside(e);
->>>>>>> 32280ef (use swiper)
 
 		if (!isDown) return;
 		x.current = e.clientX;
@@ -120,15 +118,6 @@ const Page02 = () => {
 		slider.current.style.left = `${walk}px`;
 		//check left or right negative => right to left
 
-<<<<<<< HEAD
-		check1.current = x.current - check0.current;
-		// console.log(check1.current)
-	};
-	const mouseUp = () => {
-		sliderContainer.current.style.cursor = "grab";
-		setIsDown(false);
-		//swift from right to left
-=======
     // check1.current = x.current - check0.current;
     // console.log(check1.current)
   };
@@ -140,28 +129,6 @@ const Page02 = () => {
 
 		const widthOfItem = refItem0.current.offsetWidth;
 
-<<<<<<< HEAD
-		if (check1.current < -50) {
-			count.current = count.current - 1;
-		}
-		if (check1.current > 50) {
-			count.current = count.current + 1;
-		}
-
-		if (count.current === -slider.current.children.length) {
-			count.current = -(slider.current.children.length - 1);
-		}
-		if (count.current === 1) {
-			count.current = 0;
-		}
-		slider.current.style.left = `${count.current * (widthOfItem + 120)}px`;
-		slider.current.style.transition = "all 0.5s ease-in-out";
-		setWalk(count.current * (widthOfItem + 120));
-	};
-	const mouseLeave = () => {
-		setIsDown(false);
-	};
-=======
     // if (check1.current < -50) {
     //   count.current = count.current - 1;
     // }
@@ -190,7 +157,6 @@ const Page02 = () => {
   const mouseLeave = () => {
     setIsDown(false);
   };
->>>>>>> 32280ef (use swiper)
 
 	const tounchStart = (e) => {
 		setIsDown(true);
