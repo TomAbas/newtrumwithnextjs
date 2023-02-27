@@ -1,5 +1,4 @@
-// export const urlAbout = "https://pagesmanagementapi.com/api/index/web-info";
-export const urlAbout = "https://jsonplaceholder.typicode.com/todos/1";
+export const urlAbout = "https://pagesmanagementapi.com/api/index/web-info";
 export const editAbout =
   "https://pagesmanagementapi.com/api/admin/update/web-info";
 export const urlNews = "https://pagesmanagementapi.com/api/index/post";

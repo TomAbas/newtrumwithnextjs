@@ -29,7 +29,7 @@ const LandingPage = ({ data }) => {
     <>
       <LandingPage0 landingPageData={landingPageData} />
       <Page01 page1Data={page1Data} />
-      <Page02 />
+      <Page02 isLandingPage={true} />
       <Page03 page3Data={page3Data} />
       <Page04
         page4Data={page4Data}

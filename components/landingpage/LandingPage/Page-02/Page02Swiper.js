@@ -2,15 +2,19 @@ import { Box, Container, Stack, Typography } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import { SwiperSlide } from "swiper/react";
 import stylesSlide from "../../../../styles/SwiperStyles.module.css";
+import styles from "../../../../styles/Page02Styles.module.css";
 import CustomSwiper from "../../../CustomSwiper/CustomSwiper";
 import SlideItem from "../../../CustomSwiper/SlideItem";
 import arrowLeft from "../../../../public/imgs/arrowLeft.svg";
 import arrowRight from "../../../../public/imgs/arrowRight.svg";
+import gridpic from "../../../../public/imgs/grid.svg";
 import Image from "next/future/image";
 import useMoveIcon from "../../../../hooks/useMoveIcon";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 
-const Page02Swiper = () => {
+const Page02Swiper = ({ isLandingPage }) => {
+  const gridBoxRef = useRef();
+  const inViewGridPicref = useInView(gridBoxRef);
   const [
     position,
     ,
@@ -78,6 +82,19 @@ const Page02Swiper = () => {
           transition: "1.1s cubic-bezier(0.215, 0.61, 0.355, 1)",
         }}
       >
+        {" "}
+        {isLandingPage && (
+          <Box
+            ref={gridBoxRef}
+            className={
+              inViewGridPicref
+                ? `${styles.gridBox} ${styles.gridShow}`
+                : styles.gridBox
+            }
+          >
+            <Image src={gridpic} alt='grid-pic' className={styles.gridPic} />
+          </Box>
+        )}
         <Box
           className={stylesSlide.boxArrLeft}
           style={{

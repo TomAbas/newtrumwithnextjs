@@ -1,15 +1,20 @@
 import React, { useRef } from "react";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import stylesSlide from "../../styles/SwiperStyles.module.css";
+import styles from "../../styles/Page02Styles.module.css";
 import useMoveIcon from "../../hooks/useMoveIcon";
 import iconPlus from "../../public/imgs/plusicon.svg";
 import Image from "next/future/image";
+import { useRouter } from "next/router";
 const SlideItem = ({ item, isActive, isPrev }) => {
   const [position, setPosition, isEnter, setIsEnter] = useMoveIcon();
- 
+  const router = useRouter();
   const ref = useRef();
   return (
     <Box
+      onClick={() => {
+        router.push(`/projects/${item.postId}`);
+      }}
       onMouseEnter={() => setIsEnter(true)}
       onMouseLeave={() => setIsEnter(false)}
       onPointerMove={(e) => {
@@ -35,7 +40,6 @@ const SlideItem = ({ item, isActive, isPrev }) => {
           : { transform: "rotate(4deg) translateY(5%) scale(1)" }),
       }}
     >
-      Current slide is {isActive ? item.title : "not active"}
       {isActive && (
         <div
           className={stylesSlide.iconPlusBox}
@@ -50,6 +54,21 @@ const SlideItem = ({ item, isActive, isPrev }) => {
           />
         </div>
       )}
+      <Box
+        className={styles.slideItem}
+        style={{
+          background: `url(${item?.banner}) no-repeat center center/cover`,
+        }}
+      >
+        <Box className={styles.item}>
+          <Typography variant='h1'>{item.title}</Typography>
+        </Box>
+        {item.title1 && (
+          <Box className={styles.item}>
+            <Typography variant='h1'>{item.title1}</Typography>
+          </Box>
+        )}
+      </Box>
     </Box>
   );
 };
