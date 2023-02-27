@@ -211,15 +211,17 @@ const Page04 = ({ page4Data, page44Data, page444Data }) => {
         </div>
         <div className={styles.page04Content1}>
           <div className={styles.page04ContentText1}>
-            <div className={styles.emptyDiv}>
-            <Image
-                layout='responsive'
-                width={1000}
-                height={1000}
-                // src={page04Img}
-                src={wePic}
-                alt='weare'
-              />
+            <div className={styles.page04Img1}>
+              <div className={styles.imgBox}>
+                <Image
+                  layout='responsive'
+                  width={800}
+                  height={800}
+                  // src={page04Img}
+                  src={wePic}
+                  alt='weare'
+                />
+              </div>
             </div>
             <div className={styles.contentText1}>
               <div className={styles.h1EffectBox} ref={h1Ref1}>

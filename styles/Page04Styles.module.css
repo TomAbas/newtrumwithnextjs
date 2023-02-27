@@ -96,6 +96,10 @@
   width: 60%;
   transform: translateX(15%);
 }
+.page04Img1 {
+  width: 100%;
+  transform: translateX(-12%);
+}
 .imgBox {
   /* border: 2px solid white; */
   width: 100%;
