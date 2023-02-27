@@ -83,18 +83,6 @@ const Page02 = () => {
     return b;
   };
 
-<<<<<<< HEAD
-	const mouseDown = (e) => {
-		setIsDown(true);
-		sliderContainer.current.style.cursor = "grabbing";
-		startX.current = slider.current.offsetLeft;
-		check0.current = e.clientX;
-		// console.log(slider.current.offsetLeft);
-		// console.log(slider.current.children);
-	};
-	const mouseMove = (e) => {
-		handleMouseEnterInside(e);
-=======
   const mouseDown = (e) => {
     setIsDown(true);
     sliderContainer.current.style.cursor = "grabbing";
@@ -125,7 +113,6 @@ const Page02 = () => {
     sliderContainer.current.style.cursor = "grab";
     setIsDown(false);
     //swift from right to left
->>>>>>> 32280ef (use swiper)
 
 		const widthOfItem = refItem0.current.offsetWidth;
 
