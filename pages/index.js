@@ -7,19 +7,16 @@ import { urlAbout } from "../ApiUrl/Api";
 export async function getServerSideProps() {
   // let res = await getInfoLandingPage();
   // console.log(res)
-  let res = await axios.get(urlAbout).then(({data})=>{
+  let res = await axios.get(`${urlAbout}`).then(({data})=>{
     console.log(data)
     return data
   })
+  
   if (!res) {
     return {
       notFound: true,
     };
   }
-  // resNext.setHead(
-  //   "Cache-Control",
-  //   "public, s-maxage=10, stale-while-revalidate=59"
-  // );
   return {
     props: { res }, // will be passed to the page component as props
   };

@@ -36,7 +36,7 @@ const LandingPage = ({ landingPageData }) => {
         </h1>
       );
     });
-
+    console.log(b)
     return b;
   };
   const animationWords1 = () => {
