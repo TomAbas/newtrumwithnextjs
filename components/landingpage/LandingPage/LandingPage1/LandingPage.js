@@ -86,10 +86,7 @@ const LandingPage = ({ landingPageData }) => {
         <div
           className={styles.landingPagePicInside}
           style={{
-            background:
-              landingPageData &&
-              `url(${landingpagepic.src}) no-repeat fixed center
-    center/cover`,
+            backgroundImage: landingPageData && `url(${landingpagepic.src})`,
           }}
         ></div>
       </div>

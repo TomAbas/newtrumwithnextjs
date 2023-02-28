@@ -176,6 +176,15 @@
   transform: translateY(100%);
   margin-right: 6px;
 }
+@media (min-width: 360px) {
+  .landingPagePicInside {
+    object-fit: cover;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+  }
+}
 @media (min-width: 425px) {
   .test {
     height: 100vh;
@@ -209,6 +218,9 @@
 }
 
 @media (min-width: 1024px) {
+  .landingPagePicInside {
+    background-attachment: fixed;
+  }
   .test {
     height: 100vh;
   }
