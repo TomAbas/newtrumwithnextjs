@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-  baseURL: "https://pagesmanagementapi.com/api/",
+  baseURL: "https://pagesmanagementapi.com/public/api/",
 });
 
 axiosClient.interceptors.request.use(

@@ -23,18 +23,18 @@ const Page01 = ({ page1Data }) => {
 
   const produceArray = () => {
     if (page1Data) {
-      // let firstLine = JSON.stringify(page1Data.firstLine);
-      // let secondLine = JSON.stringify(page1Data.secondLine);
-      // let thirdLine = JSON.stringify(page1Data.thirdLine);
-      // let fourthLine = JSON.stringify(page1Data.fourthLine);
-      // let fifthLine = JSON.stringify(page1Data.fifthLine);
-      // let sixthLine = JSON.stringify(page1Data.sixthLine);
-      let firstLine = "We design and produce";
-      let secondLine = "As an ICON, the crowd will be";
-      let thirdLine = "faithful to your owned brand";
-      let fourthLine = "to";
-      let fifthLine = "As an ICON, Brand designs an extreme ";
-      let sixthLine = "DESIRES that MAD about your label.";
+      let firstLine = JSON.stringify(page1Data.firstLine);
+      let secondLine = JSON.stringify(page1Data.secondLine);
+      let thirdLine = JSON.stringify(page1Data.thirdLine);
+      let fourthLine = JSON.stringify(page1Data.fourthLine);
+      let fifthLine = JSON.stringify(page1Data.fifthLine);
+      let sixthLine = JSON.stringify(page1Data.sixthLine);
+      // let firstLine = "We design and produce";
+      // let secondLine = "As an ICON, the crowd will be";
+      // let thirdLine = "faithful to your owned brand";
+      // let fourthLine = "to";
+      // let fifthLine = "As an ICON, Brand designs an extreme ";
+      // let sixthLine = "DESIRES that MAD about your label.";
       // console.log(sixthLine);
 
       if (firstLine) {
@@ -54,7 +54,6 @@ const Page01 = ({ page1Data }) => {
     }
   };
 
-  function create(arr) {}
   const animationWords = () => {
     let b = line02.map((word, idx) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s` };

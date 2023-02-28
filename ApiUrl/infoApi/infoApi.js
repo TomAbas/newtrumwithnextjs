@@ -1,18 +1,21 @@
 import axios from "axios";
-
+import axiosClient from "../axiosClient";
 let BaseURL = "index";
 let EditURL = "admin";
 function getInfoLandingPage() {
-  return axios
+  return axiosClient
     .get(`${BaseURL}/web-info`)
-    .then(({ data }) => data)
+    .then(({ data }) =>{
+      console.log(data)
+    return  data
+    })
     .catch((error) => {
       console.log(error);
     });
 }
 
 function editInfoLandingPage(id, data) {
-  return axios.post(`${EditURL}/web-info/${id}`, data).catch((error) => {
+  return axiosClient.post(`${EditURL}/web-info/${id}`, data).catch((error) => {
     console.log(error);
   });
 }

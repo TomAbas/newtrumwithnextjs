@@ -10,13 +10,13 @@ const LandingPage = ({ landingPageData }) => {
   const refWord0 = useRef();
 
   const produceArray = () => {
-    // if (landingPageData) {
-      // let firstLine = JSON.stringify(landingPageData.firstLine);
-      // let secondLine = JSON.stringify(landingPageData.secondLine);
-      // let thirdLine = JSON.stringify(landingPageData.thirdLine);
-      let firstLine = 'We are expert in...';
-      let secondLine = 'turning your brand into';
-      let thirdLine = 'the catchy icon';
+    if (landingPageData) {
+      let firstLine = JSON.stringify(landingPageData.firstLine);
+      let secondLine = JSON.stringify(landingPageData.secondLine);
+      let thirdLine = JSON.stringify(landingPageData.thirdLine);
+      // let firstLine = 'We are expert in...';
+      // let secondLine = 'turning your brand into';
+      // let thirdLine = 'the catchy icon';
       if (firstLine) {
         let arrayWords = firstLine.replace(/"/g, "").split(" ");
         setLine01(arrayWords);
@@ -25,7 +25,7 @@ const LandingPage = ({ landingPageData }) => {
         let arrayWords2 = thirdLine.replace(/"/g, "").split(" ");
         setLine03(arrayWords2);
       }
-    // }
+    }
   };
   const animationWords = () => {
     let b = line01.map((word, idx) => {
@@ -87,8 +87,8 @@ const LandingPage = ({ landingPageData }) => {
           className={styles.landingPagePicInside}
           style={{
             background:
-              // landingPageData &&
-              `url("https://picsum.photos/700") no-repeat fixed center
+              landingPageData &&
+              `url(${landingPageData?.img}) no-repeat fixed center
     center/cover`,
           }}
         ></div>
