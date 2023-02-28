@@ -29,6 +29,7 @@ const SlideItem = ({ item, isActive, isPrev }) => {
         position: "relative",
         background: "#fff",
         height: "40vw",
+        minHeight: "180px",
         maxHeight: "700px",
         transition: "1.1s cubic-bezier(0.215, 0.61, 0.355, 1)",
         ...(isActive
@@ -61,11 +62,11 @@ const SlideItem = ({ item, isActive, isPrev }) => {
         }}
       >
         <Box className={styles.item}>
-          <Typography variant="p">{item.title}</Typography>
+          <Typography variant='p'>{item.title}</Typography>
         </Box>
         {item.title1 && (
           <Box className={styles.item}>
-            <Typography variant="p">{item.title1}</Typography>
+            <Typography variant='p'>{item.title1}</Typography>
           </Box>
         )}
       </Box>
