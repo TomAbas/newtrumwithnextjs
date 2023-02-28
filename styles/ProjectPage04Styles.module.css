@@ -48,7 +48,7 @@
   height: 50vw;
   /* border: 2px solid white; */
   background: url(../public/imgs/grid.svg) no-repeat center center/cover;
-  padding: 6% 17%;
+  padding: 6% 12%;
 }
 .gridShow {
   opacity: 1;
@@ -90,7 +90,7 @@
   margin: 0px 0px !important;
   font-size: 2rem;
 }
-@media (min-width: 380px) {
+@media (min-width: 375px) {
   .headlineNextNews h1 {
     font-size: 0.8rem;
   }

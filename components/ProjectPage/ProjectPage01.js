@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import styles from "../../styles/ProjectPage01Styles.module.css";
-import slide4Img from "/public/imgs/slideImgs/MultiMediaProduction6.png";
+import slide4Img from "/public/imgs/slideImgs/MultiMediaProduction6.webp";
 const ProjectPage01 = ({ title, title1, category, bannerImg }) => {
   const [headline, setHeadline] = useState([]);
   const [headline1, setHeadline1] = useState([]);

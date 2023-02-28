@@ -10,7 +10,7 @@ import { urlNewsId } from "../../ApiUrl/Api";
 import axios from "axios";
 import Link from "next/link";
 import Page02Swiper from "../landingpage/LandingPage/Page-02/Page02Swiper";
-import slide5Img from "/public/imgs/slideImgs/MultiMediaProduction7.png";
+import slide5Img from "/public/imgs/slideImgs/MultiMediaProduction7.webp";
 const ProjectPage04Swiper = ({
   subTitle1,
   content1,
