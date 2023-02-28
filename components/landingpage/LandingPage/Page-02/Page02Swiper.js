@@ -11,6 +11,12 @@ import gridpic from "../../../../public/imgs/grid.svg";
 import Image from "next/future/image";
 import useMoveIcon from "../../../../hooks/useMoveIcon";
 import { motion, AnimatePresence, useInView } from "framer-motion";
+import slideImg from "/public/imgs/slideImgs/MultiMediaProduction1.png";
+import slide1Img from "/public/imgs/slideImgs/MultiMediaProduction2.png";
+import slide2Img from "/public/imgs/slideImgs/MultiMediaProduction3.png";
+import slide3Img from "/public/imgs/slideImgs/MultiMediaProduction4.png";
+import slide4Img from "/public/imgs/slideImgs/MultiMediaProduction6.png";
+import slide5Img from "/public/imgs/slideImgs/MultiMediaProduction7.png";
 
 const Page02Swiper = ({ isLandingPage }) => {
   const gridBoxRef = useRef();
@@ -33,10 +39,16 @@ const Page02Swiper = ({ isLandingPage }) => {
   const innerContainerRef = useRef();
   const textRef = useRef();
   let slide = [
-    { title: "test1", title1: "123", postId: "1" },
-    { title: "test2", title1: "123", postId: "1" },
-    { title: "test3", title1: "123", postId: "1" },
-    { title: "test4", title1: "123", postId: "1" },
+    { title: "multi media production", postId: "1", img: `${slideImg.src}` },
+    { title: "branding stategy", postId: "1", img: `${slide1Img.src}` },
+    { title: "creative consultant", postId: "1", img: `${slide2Img.src}` },
+    { title: "digital service", postId: "1", img: `${slide3Img.src}` },
+    { title: "fashion brand consulting", postId: "1", img: `${slide4Img.src}` },
+    {
+      title: "lifestyle marketing solution",
+      postId: "1",
+      img: `${slide5Img.src}`,
+    },
   ];
   const renderSlide = () => {
     return slide.map((item, idx) => {
@@ -133,25 +145,26 @@ const Page02Swiper = ({ isLandingPage }) => {
       </Box>{" "}
       <Stack
         direction='row'
-        width='4%'
+        // width='2%'
         mx='auto'
         justifyContent={"flex-end"}
-        sx={{
-          position: "relative",
-          marginTop: "20px",
-          overflow: "hidden",
-          "&:after": {
-            content: `''`,
-            position: "absolute",
-            width: "50%",
-            left: "50%",
-            top: "50%",
-            transform: "translate(-50%,-50%)",
-            height: "1px",
-            backgroundColor: "white",
-            zIndex: 1,
-          },
-        }}
+        className={styles.slidePagination}
+        // sx={{
+        //   position: "relative",
+        //   marginTop: "20px",
+        //   overflow: "hidden",
+        //   "&:after": {
+        //     content: `''`,
+        //     position: "absolute",
+        //     width: "50%",
+        //     left: "50%",
+        //     top: "50%",
+        //     transform: "translate(-50%,-50%)",
+        //     height: "1px",
+        //     backgroundColor: "white",
+        //     zIndex: 1,
+        //   },
+        // }}
       >
         <motion.div
           style={{ position: "absolute", left: 0 }}
@@ -164,7 +177,7 @@ const Page02Swiper = ({ isLandingPage }) => {
         >
           {new Array(slide.length).fill(0).map((item, idx) => {
             return (
-              <Typography variant='h5' color='#fff' key={idx} ref={textRef}>
+              <Typography color='#fff' key={idx} ref={textRef}>
                 {idx + 1}
               </Typography>
             );
@@ -178,9 +191,7 @@ const Page02Swiper = ({ isLandingPage }) => {
           transition={{ duration: 0.5 }}
           exit={{ opacity: 0 }}
         >
-          <Typography variant='h5' color='#fff'>
-            {slide.length}
-          </Typography>
+          <Typography color='#fff'>{slide.length}</Typography>
         </motion.div>
       </Stack>
     </>

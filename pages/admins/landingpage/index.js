@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { getInfoLandingPage } from "../../../ApiUrl/infoApi/infoApi";
 import LandingPageForm from "../../../components/Admin/LandingPageForm";
 
-
 const Index = () => {
   const [defaultValues, setDefaultValues] = useState();
   const fetchLandingPageData = async () => {
@@ -47,11 +46,11 @@ const Index = () => {
     });
   };
   useEffect(() => {
-    // fetchLandingPageData();
+    fetchLandingPageData();
   }, []);
   return (
     <>
-      {true ? (
+      {defaultValues ? (
         <LandingPageForm preLoadValue={defaultValues} />
       ) : (
         // <NewsForm />

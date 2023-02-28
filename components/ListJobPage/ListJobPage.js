@@ -1,5 +1,5 @@
 import React from "react";
-import styles from '../../styles/ProjectStyles.module.css'
+import styles from "../../styles/ProjectStyles.module.css";
 import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
@@ -11,8 +11,6 @@ const ListJobPage = ({ arrayListJob, amountJob }) => {
       let a = (
         <div className={styles.listJobBox}>
           {job.map((job, idx) => {
-            // console.log("job in side", job);
-            // console.log(idxo);
             return (
               <>
                 {idx === 0 ? (

@@ -57,15 +57,15 @@ const SlideItem = ({ item, isActive, isPrev }) => {
       <Box
         className={styles.slideItem}
         style={{
-          background: `url(${item?.banner}) no-repeat center center/cover`,
+          background: `url(${item?.img}) no-repeat center center/cover`,
         }}
       >
         <Box className={styles.item}>
-          <Typography variant='h1'>{item.title}</Typography>
+          <Typography variant="p">{item.title}</Typography>
         </Box>
         {item.title1 && (
           <Box className={styles.item}>
-            <Typography variant='h1'>{item.title1}</Typography>
+            <Typography variant="p">{item.title1}</Typography>
           </Box>
         )}
       </Box>

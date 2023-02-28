@@ -10,6 +10,7 @@ import { urlNewsId } from "../../ApiUrl/Api";
 import axios from "axios";
 import Link from "next/link";
 import Page02Swiper from "../landingpage/LandingPage/Page-02/Page02Swiper";
+import slide5Img from "/public/imgs/slideImgs/MultiMediaProduction7.png";
 const ProjectPage04Swiper = ({
   subTitle1,
   content1,
@@ -51,13 +52,19 @@ const ProjectPage04Swiper = ({
     });
   };
   const fetchNextNews = async () => {
-    if (currentIdxNews) {
-      // console.log("currentIdxNews", currentIdxNews);
-      await axios.get(`${urlNewsId}/${currentIdxNews}`).then(({ data }) => {
-        // console.log(data);
-        setNextNews(data[0]);
-      });
-    }
+    // if (currentIdxNews) {
+    //   // console.log("currentIdxNews", currentIdxNews);
+    //   await axios.get(`${urlNewsId}/${currentIdxNews}`).then(({ data }) => {
+    //     // console.log(data);
+    //     setNextNews(data[0]);
+    //   });
+    // }
+    setNextNews({
+      title: "lifestyle marketing solution",
+      postId: "1",
+      img: `${slide5Img.src}`,
+      category: "marketing",
+    });
   };
   const produceArray = () => {
     // if (subTitle1) {
@@ -107,7 +114,7 @@ const ProjectPage04Swiper = ({
   };
 
   useEffect(() => {
-    getListNews();
+    // getListNews();
   }, [projectsidx]);
   useEffect(() => {
     fetchNextNews();
@@ -158,7 +165,13 @@ const ProjectPage04Swiper = ({
           >
             {nextNews && (
               <Link href={`/projects/${nextNews.postId}`}>
-                <div className={styles.newsBackground}>
+                <div
+                  className={styles.newsBackground}
+                  style={{
+                    background: `url(${nextNews.img}) no-repeat center
+                  center/cover`,
+                  }}
+                >
                   <div className={styles.headlineNextNews}>
                     <h1>{nextNews.title}</h1>
                     <h1>{nextNews.title1}</h1>

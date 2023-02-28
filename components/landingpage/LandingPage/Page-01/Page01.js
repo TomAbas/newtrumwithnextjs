@@ -6,35 +6,35 @@ import { useRef } from "react";
 import { useEffect } from "react";
 
 const Page01 = ({ page1Data }) => {
-	const [line01, setLine01] = useState("");
-	const [line02, setLine02] = useState([]);
-	const [line03, setLine03] = useState([]);
-	const [line04, setLine04] = useState("");
-	const [line05, setLine05] = useState([]);
-	const [line06, setLine06] = useState([]);
-	const arrWordRef = useRef();
-	const isArrWordIn = useInView(arrWordRef);
-	const arrWordRef1 = useRef();
-	const isArrWordIn1 = useInView(arrWordRef1);
-	const arrWordRef3 = useRef();
-	const isArrWordIn3 = useInView(arrWordRef3);
-	const arrWordRef4 = useRef();
-	const isArrWordIn4 = useInView(arrWordRef4);
+  const [line01, setLine01] = useState("");
+  const [line02, setLine02] = useState([]);
+  const [line03, setLine03] = useState([]);
+  const [line04, setLine04] = useState("");
+  const [line05, setLine05] = useState([]);
+  const [line06, setLine06] = useState([]);
+  const arrWordRef = useRef();
+  const isArrWordIn = useInView(arrWordRef);
+  const arrWordRef1 = useRef();
+  const isArrWordIn1 = useInView(arrWordRef1);
+  const arrWordRef3 = useRef();
+  const isArrWordIn3 = useInView(arrWordRef3);
+  const arrWordRef4 = useRef();
+  const isArrWordIn4 = useInView(arrWordRef4);
 
   const produceArray = () => {
     if (page1Data) {
-      let firstLine = JSON.stringify(page1Data.firstLine);
-      let secondLine = JSON.stringify(page1Data.secondLine);
-      let thirdLine = JSON.stringify(page1Data.thirdLine);
-      let fourthLine = JSON.stringify(page1Data.fourthLine);
-      let fifthLine = JSON.stringify(page1Data.fifthLine);
-      let sixthLine = JSON.stringify(page1Data.sixthLine);
-      // let firstLine = "We design and produce";
-      // let secondLine = "As an ICON, the crowd will be";
-      // let thirdLine = "faithful to your owned brand";
-      // let fourthLine = "to";
-      // let fifthLine = "As an ICON, Brand designs an extreme ";
-      // let sixthLine = "DESIRES that MAD about your label.";
+      // let firstLine = JSON.stringify(page1Data.firstLine);
+      // let secondLine = JSON.stringify(page1Data.secondLine);
+      // let thirdLine = JSON.stringify(page1Data.thirdLine);
+      // let fourthLine = JSON.stringify(page1Data.fourthLine);
+      // let fifthLine = JSON.stringify(page1Data.fifthLine);
+      // let sixthLine = JSON.stringify(page1Data.sixthLine);
+      let firstLine = "We design and produce";
+      let secondLine = "As an ICON, the crowd will be";
+      let thirdLine = "faithful to your owned brand";
+      let fourthLine = "to";
+      let fifthLine = "As an ICON, Brand designs an extreme ";
+      let sixthLine = "DESIRES that MAD about your label.";
       // console.log(sixthLine);
 
       if (firstLine) {
