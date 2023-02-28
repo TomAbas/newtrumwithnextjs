@@ -21,6 +21,7 @@ const LandingPage = ({ data }) => {
 		setPage44Data(data[4]);
 		setPage444Data(data[5]);
 	};
+	console.log(data)
 	useEffect(() => {
 		setData();
 	}, []);
