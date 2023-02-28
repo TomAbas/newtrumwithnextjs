@@ -146,6 +146,8 @@
   right: -12%;
   top: 0;
   bottom: 0;
+  /* background: url("/public/imgs/landingpagepic.png") no-repeat fixed center
+    center/cover; */
   object-fit: cover;
   background-attachment: fixed;
   background-size: contain;

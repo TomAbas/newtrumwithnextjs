@@ -27,8 +27,7 @@ import { urlNewsId } from "../../ApiUrl/Api";
 //   }
 
 // }
-const Projectsidx0 = ({res}) => {
-  console.log(res)
+const Projectsidx0 = ({ res }) => {
   const router = useRouter();
   const { projectsidx } = router.query;
   // console.log(projectsidx);
@@ -36,14 +35,13 @@ const Projectsidx0 = ({res}) => {
     <>
       {" "}
       <Head>
-
         <link rel='icon' href='/logo300px.ico' />
         <link
           rel='stylesheet'
           href='https://fonts.googleapis.com/css?family=Montserrat'
         />
-         {/* metatag google  */}
-         <meta
+        {/* metatag google  */}
+        <meta
           name='description'
           // content={res.tagline21}
         />
@@ -69,7 +67,7 @@ const Projectsidx0 = ({res}) => {
         <meta property='og:image:height' content='630' />
         {/* <title>{res.title + " " + res.title2}</title> */}
       </Head>
-      <ProjectPage projectsidx={projectsidx} data={res}/>
+      <ProjectPage projectsidx={projectsidx} data={res} />
     </>
   );
 };

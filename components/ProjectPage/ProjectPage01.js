@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import styles from "../../styles/ProjectPage01Styles.module.css";
-
+import slide4Img from "/public/imgs/slideImgs/MultiMediaProduction6.png";
 const ProjectPage01 = ({ title, title1, category, bannerImg }) => {
   const [headline, setHeadline] = useState([]);
   const [headline1, setHeadline1] = useState([]);
@@ -28,7 +28,7 @@ const ProjectPage01 = ({ title, title1, category, bannerImg }) => {
       setHeadline(titleArr);
       if (true) {
         // let titleArr1 = title1.split(" ");
-       let titleArr1=['Levent','Clothing']
+        let titleArr1 = ["Levent", "Clothing"];
         setHeadline1(titleArr1);
       }
     }
@@ -40,7 +40,8 @@ const ProjectPage01 = ({ title, title1, category, bannerImg }) => {
         // console.log("123");
         let delay = { animationDelay: `${idx / 5 + 0.5}s` };
         return (
-          <h1 key={idx}
+          <h1
+            key={idx}
             className={
               isHeadLineIn
                 ? `${styles.headlineWord} ${styles.fadeInUp0}`
@@ -60,7 +61,8 @@ const ProjectPage01 = ({ title, title1, category, bannerImg }) => {
       let b = headline1.map((word, idx) => {
         let delay = { animationDelay: `${idx / 5 + 0.9}s` };
         return (
-          <h1 key={idx}
+          <h1
+            key={idx}
             className={
               isHeadLineIn1
                 ? `${styles.headlineWord} ${styles.fadeInUp0}`
@@ -84,7 +86,7 @@ const ProjectPage01 = ({ title, title1, category, bannerImg }) => {
       <div
         className={styles.headlineNewsBox}
         style={{
-          background: `url(${bannerImg}) no-repeat center
+          background: `url(${slide4Img.src}) no-repeat center
     center/cover`,
         }}
       >
