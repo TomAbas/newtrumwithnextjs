@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import ListJobPage0 from "../components/ListJobPage/ListJobPage";
 import { urlNews } from "../ApiUrl/Api";
 import axios from "axios";
-import slideImg from "/public/imgs/slideImgs/MultiMediaProduction1.png";
-import slide1Img from "/public/imgs/slideImgs/MultiMediaProduction2.png";
-import slide2Img from "/public/imgs/slideImgs/MultiMediaProduction3.png";
-import slide3Img from "/public/imgs/slideImgs/MultiMediaProduction4.png";
-import slide4Img from "/public/imgs/slideImgs/MultiMediaProduction6.png";
-import slide5Img from "/public/imgs/slideImgs/MultiMediaProduction7.png";
+import slideImg from "/public/imgs/slideImgs/MultiMediaProduction1.webp";
+import slide1Img from "/public/imgs/slideImgs/MultiMediaProduction2.webp";
+import slide2Img from "/public/imgs/slideImgs/MultiMediaProduction3.webp";
+import slide3Img from "/public/imgs/slideImgs/MultiMediaProduction4.webp";
+import slide4Img from "/public/imgs/slideImgs/MultiMediaProduction6.webp";
+import slide5Img from "/public/imgs/slideImgs/MultiMediaProduction7.webp";
 
 const ListJobPage = () => {
   const [arrayListJob, setArrayListJob] = useState([]);

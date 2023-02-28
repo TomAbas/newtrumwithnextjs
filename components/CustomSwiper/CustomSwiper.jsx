@@ -63,6 +63,7 @@ export default function CustomSwiper({
 }) {
   return (
     <Swiper
+      
       spaceBetween={150}
       centeredSlides={true}
       slidesPerView={1}

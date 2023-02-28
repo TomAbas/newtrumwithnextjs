@@ -1,4 +1,4 @@
-import { Box, Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack, Typography, useTheme } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import { SwiperSlide } from "swiper/react";
 import stylesSlide from "../../../../styles/SwiperStyles.module.css";
@@ -11,14 +11,15 @@ import gridpic from "../../../../public/imgs/grid.svg";
 import Image from "next/future/image";
 import useMoveIcon from "../../../../hooks/useMoveIcon";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import slideImg from "/public/imgs/slideImgs/MultiMediaProduction1.png";
-import slide1Img from "/public/imgs/slideImgs/MultiMediaProduction2.png";
-import slide2Img from "/public/imgs/slideImgs/MultiMediaProduction3.png";
-import slide3Img from "/public/imgs/slideImgs/MultiMediaProduction4.png";
-import slide4Img from "/public/imgs/slideImgs/MultiMediaProduction6.png";
-import slide5Img from "/public/imgs/slideImgs/MultiMediaProduction7.png";
+import slideImg from "/public/imgs/slideImgs/MultiMediaProduction1.webp";
+import slide1Img from "/public/imgs/slideImgs/MultiMediaProduction2.webp";
+import slide2Img from "/public/imgs/slideImgs/MultiMediaProduction3.webp";
+import slide3Img from "/public/imgs/slideImgs/MultiMediaProduction4.webp";
+import slide4Img from "/public/imgs/slideImgs/MultiMediaProduction6.webp";
+import slide5Img from "/public/imgs/slideImgs/MultiMediaProduction7.webp";
 
 const Page02Swiper = ({ isLandingPage }) => {
+  const theme = useTheme();
   const gridBoxRef = useRef();
   const inViewGridPicref = useInView(gridBoxRef);
   const [
@@ -134,6 +135,9 @@ const Page02Swiper = ({ isLandingPage }) => {
             width: "80%",
             maxWidth: "1200px",
             // border: "2px solid blue",
+            [theme.breakpoints.down("sm")]: {
+              width: "100%",
+            },
           }}
         >
           <CustomSwiper
@@ -149,22 +153,6 @@ const Page02Swiper = ({ isLandingPage }) => {
         mx='auto'
         justifyContent={"flex-end"}
         className={styles.slidePagination}
-        // sx={{
-        //   position: "relative",
-        //   marginTop: "20px",
-        //   overflow: "hidden",
-        //   "&:after": {
-        //     content: `''`,
-        //     position: "absolute",
-        //     width: "50%",
-        //     left: "50%",
-        //     top: "50%",
-        //     transform: "translate(-50%,-50%)",
-        //     height: "1px",
-        //     backgroundColor: "white",
-        //     zIndex: 1,
-        //   },
-        // }}
       >
         <motion.div
           style={{ position: "absolute", left: 0 }}

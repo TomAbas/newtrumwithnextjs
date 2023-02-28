@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../../../../styles/Page04Styles.module.css";
-import facePic from "../../../../public/imgs/slideImgs/image21.png";
-import wePic from "../../../../public/imgs/weare.png";
+import facePic from "../../../../public/imgs/slideImgs/image21.webp";
+import wePic from "../../../../public/imgs/weare.webp";
 import ncc from "../../../../public/imgs/ncc.jpg";
 import { useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";

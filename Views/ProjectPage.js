@@ -6,8 +6,8 @@ import ProjectPage03 from "../components/ProjectPage/ProjectPage03";
 import ProjectPage04 from "../components/ProjectPage/ProjectPage04";
 import ProjectPage04Swiper from "../components/ProjectPage/ProjectPage04Swiper";
 // img
-import slide4Img from "/public/imgs/slideImgs/MultiMediaProduction6.png";
-import slide5Img from "/public/imgs/slideImgs/MultiMediaProduction7.png";
+import slide4Img from "/public/imgs/slideImgs/MultiMediaProduction6.webp";
+import slide5Img from "/public/imgs/slideImgs/MultiMediaProduction7.webp";
 const ProjectPage = ({ projectsidx, data }) => {
   // console.log("ssr ",data);
   const [newsBigTitle, setNewsBigTitle] = useState();
