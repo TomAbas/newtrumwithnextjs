@@ -43,9 +43,10 @@ const ProjectPage01 = ({ title, title1, category, bannerImg }) => {
           <h1
             key={idx}
             className={
-              isHeadLineIn
-                ? `${styles.headlineWord} ${styles.fadeInUp0}`
-                : styles.headlineWord
+              `${styles.headlineWord} ${styles.fadeInUp0}`
+              // isHeadLineIn
+              //   ? `${styles.headlineWord} ${styles.fadeInUp0}`
+              //   : styles.headlineWord
             }
             style={delay}
           >
@@ -64,9 +65,10 @@ const ProjectPage01 = ({ title, title1, category, bannerImg }) => {
           <h1
             key={idx}
             className={
-              isHeadLineIn1
-                ? `${styles.headlineWord} ${styles.fadeInUp0}`
-                : styles.headlineWord
+              `${styles.headlineWord} ${styles.fadeInUp0}`
+              // isHeadLineIn1
+              //   ? `${styles.headlineWord} ${styles.fadeInUp0}`
+              //   : styles.headlineWord
             }
             style={delay}
           >
