@@ -180,7 +180,7 @@
 .slidePagination {
   /* border: 2px solid white; */
   width: 5%;
-  margin-top: 20px;
+  margin-top: 30px;
   overflow: hidden;
   position: relative;
 }
@@ -224,6 +224,7 @@
 @media (min-width: 350px) {
   .slidePagination {
     width: 20%;
+    margin-top: 40px;
   }
 }
 @media (min-width: 425px) {
@@ -232,6 +233,7 @@
   }
   .slidePagination {
     width: 12%;
+    margin-top: 30px;
   }
 }
 @media (min-width: 600px) {
