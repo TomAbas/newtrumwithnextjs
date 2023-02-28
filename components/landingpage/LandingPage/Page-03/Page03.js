@@ -23,16 +23,16 @@ const Page03 = ({ page3Data }) => {
   const inViewSpan5 = useInView(spanRef5);
   const produceArray = () => {
     if (page3Data) {
-      // let firstLine = JSON.stringify(page3Data.firstLine);
-      // let secondLine = JSON.stringify(page3Data.secondLine);
-      // let thirdLine = JSON.stringify(page3Data.thirdLine);
-      // let fourthLine = JSON.stringify(page3Data.fourthLine);
-      // let fifthLine = JSON.stringify(page3Data.fifthLine);
-      let firstLine = "Our approach is unapologetically human-centric,   ";
-      let secondLine = "user experience being at the core of a process of";
-      let thirdLine = "relentless exploration, experimentation and";
-      let fourthLine = "iteration that combines expertise in design,";
-      let fifthLine = " technological research and entertainment.";
+      let firstLine = JSON.stringify(page3Data.firstLine);
+      let secondLine = JSON.stringify(page3Data.secondLine);
+      let thirdLine = JSON.stringify(page3Data.thirdLine);
+      let fourthLine = JSON.stringify(page3Data.fourthLine);
+      let fifthLine = JSON.stringify(page3Data.fifthLine);
+      // let firstLine = "Our approach is unapologetically human-centric,   ";
+      // let secondLine = "user experience being at the core of a process of";
+      // let thirdLine = "relentless exploration, experimentation and";
+      // let fourthLine = "iteration that combines expertise in design,";
+      // let fifthLine = " technological research and entertainment.";
       if (firstLine) {
         let arrayWords = firstLine.replace(/"/g, "").split(" ");
         setLine01(arrayWords);
