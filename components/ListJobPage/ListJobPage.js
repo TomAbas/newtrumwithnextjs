@@ -15,6 +15,7 @@ const ListJobPage = ({ arrayListJob, amountJob }) => {
               <>
                 {idx === 0 ? (
                   <Link href={`/projects/${job.postId}`}>
+                    <a>
                     <Parallax
                       translateY={[-20, -50]}
                       speed={-20}
@@ -28,9 +29,11 @@ const ListJobPage = ({ arrayListJob, amountJob }) => {
                         <p>{job.category}</p>
                       </div>
                     </Parallax>
+                    </a>
                   </Link>
                 ) : (
                   <Link href={`/projects/${job.postId}`}>
+                    <a>
                     <Parallax
                       translateY={[0, -100]}
                       speed={30}
@@ -44,6 +47,7 @@ const ListJobPage = ({ arrayListJob, amountJob }) => {
                         <p>{job.category}</p>
                       </div>
                     </Parallax>
+                    </a>
                   </Link>
                 )}
               </>

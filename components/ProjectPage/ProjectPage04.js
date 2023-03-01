@@ -440,6 +440,7 @@ const ProjectPage04 = ({
           <div className={styles.nextNewsBackground}>
             {nextNews && (
               <Link href={`/projects/${nextNews.postId}`}>
+                <a>
                 <div className={styles.newsBackground}>
                   <div className={styles.headlineNextNews}>
                     <h1>{nextNews.title}</h1>
@@ -447,6 +448,7 @@ const ProjectPage04 = ({
                     <p>{nextNews.category}</p>
                   </div>
                 </div>
+                </a>
               </Link>
             )}
           </div>
