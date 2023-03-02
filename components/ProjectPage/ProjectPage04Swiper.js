@@ -165,6 +165,7 @@ const ProjectPage04Swiper = ({
           >
             {nextNews && (
               <Link href={`/projects/${nextNews.postId}`}>
+                <a>
                 <div
                   className={styles.newsBackground}
                   style={{
@@ -178,6 +179,7 @@ const ProjectPage04Swiper = ({
                     <p>{nextNews.category}</p>
                   </div>
                 </div>
+                </a>
               </Link>
             )}
           </div>

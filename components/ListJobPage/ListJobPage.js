@@ -13,6 +13,7 @@ const ListJobPage = ({ arrayListJob }) => {
               <>
                 {idx === 0 ? (
                   <Link href={`/projects/${job.postId}`}>
+                    <a>
                     <Parallax
                       scale={[0.95, 1]}
                       translateY={[-20, -30]}
@@ -27,9 +28,11 @@ const ListJobPage = ({ arrayListJob }) => {
                         <p>{job.category}</p>
                       </div>
                     </Parallax>
+                    </a>
                   </Link>
                 ) : (
                   <Link href={`/projects/${job.postId}`}>
+                    <a>
                     <Parallax
                       scale={[0.95, 1]}
                       translateY={[0, -70]}
@@ -44,6 +47,7 @@ const ListJobPage = ({ arrayListJob }) => {
                         <p>{job.category}</p>
                       </div>
                     </Parallax>
+                    </a>
                   </Link>
                 )}
               </>
