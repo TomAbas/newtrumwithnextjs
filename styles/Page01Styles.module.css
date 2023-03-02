@@ -19,6 +19,20 @@
     display: block;
   }
 }
+@keyframes scaleIn1 {
+  0% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.scaleIn1 {
+  animation: scaleIn1 0.8s ease-in-out forwards;
+}
 .fadeInUp0 {
   animation: fadeInUp 0.8s ease forwards;
   display: block !important;
@@ -34,7 +48,7 @@
   margin-right: 5px;
 }
 .h1Word {
-  opacity: 0;
+  opacity: 1;
 }
 .page01WrapperEffect {
   /* animation: tst 2s ease-in-out 1s forwards; */
@@ -71,7 +85,7 @@
   background: linear-gradient(90deg, #000, #fff, #000);
   background-repeat: no-repeat;
   background-size: 80%;
-  animation: animate 3s ease 1 forwards;
+  /* animation: animate 3s ease 1 forwards; */
   -webkit-background-clip: text;
   -webkit-text-fill-color: rgba(255, 255, 255, 0);
   margin-right: 10px;
