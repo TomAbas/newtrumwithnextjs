@@ -38,17 +38,30 @@ const Page01 = ({ page1Data }) => {
       // console.log(sixthLine);
 
       if (firstLine) {
+        // let arrayWords = firstLine.replace(/"/g, "");
+        // setLine01(arrayWords);
+        // let arrayWords1 = secondLine.replace(/"/g, "").split(" ");
+        // setLine02(arrayWords1);
+        // let arrayWords2 = thirdLine.replace(/"/g, "").split(" ");
+        // setLine03(arrayWords2);
+        // let arrayWords3 = fourthLine.replace(/"/g, "");
+        // setLine04(arrayWords3);
+        // let arrayWords4 = fifthLine.replace(/"/g, "").split(" ");
+        // setLine05(arrayWords4);
+        // let arrayWords5 = sixthLine.replace(/"/g, "").split(" ");
+        // setLine06(arrayWords5);
+        // test ani
         let arrayWords = firstLine.replace(/"/g, "");
         setLine01(arrayWords);
-        let arrayWords1 = secondLine.replace(/"/g, "").split(" ");
+        let arrayWords1 = secondLine.replace(/"/g, "");
         setLine02(arrayWords1);
-        let arrayWords2 = thirdLine.replace(/"/g, "").split(" ");
+        let arrayWords2 = thirdLine.replace(/"/g, "");
         setLine03(arrayWords2);
         let arrayWords3 = fourthLine.replace(/"/g, "");
         setLine04(arrayWords3);
-        let arrayWords4 = fifthLine.replace(/"/g, "").split(" ");
+        let arrayWords4 = fifthLine.replace(/"/g, "");
         setLine05(arrayWords4);
-        let arrayWords5 = sixthLine.replace(/"/g, "").split(" ");
+        let arrayWords5 = sixthLine.replace(/"/g, "");
         setLine06(arrayWords5);
       }
     }
@@ -137,16 +150,22 @@ const Page01 = ({ page1Data }) => {
   return (
     <>
       <div className={styles.page01Container}>
-        <div className={styles.page01Content}>
+        <div
+          className={
+            isArrWordIn && `${styles.page01Content} ${styles.scaleIn1}`
+          }
+        >
           <div className={styles.topText}>
             <p className={isArrWordIn && styles.topTextP} ref={arrWordRef}>
               {line01}
             </p>
             <div className={styles.page01WrapperEffect} ref={arrWordRef1}>
-              {animationWords()}
+              {/* {animationWords()} */}
+              <h1 className={styles.h1Word}> {line02}</h1>
             </div>
             <div className={styles.page01WrapperEffect} ref={arrWordRef1}>
-              {animationWords1()}
+              {/* {animationWords1()} */}
+              <h1 className={styles.h1Word}> {line03}</h1>
             </div>
           </div>
           <div className={styles.bottomText}>
@@ -154,10 +173,12 @@ const Page01 = ({ page1Data }) => {
               {line04}
             </p>
             <div className={styles.page01WrapperEffect} ref={arrWordRef4}>
-              {animationWords2()}
+              {/* {animationWords2()} */}
+              <h1 className={styles.h1Word}> {line05}</h1>
             </div>
             <div className={styles.page01WrapperEffect} ref={arrWordRef4}>
-              {animationWords3()}
+              {/* {animationWords3()} */}
+              <h1 className={styles.h1Word}>{line06}</h1>
             </div>
           </div>
         </div>

@@ -1,13 +1,11 @@
 import React from "react";
 import styles from "../../styles/ProjectStyles.module.css";
 import { ParallaxProvider, Parallax } from "react-scroll-parallax";
-import { useState, useEffect, useRef } from "react";
+
 import Link from "next/link";
-const ListJobPage = ({ arrayListJob, amountJob }) => {
-  console.log(arrayListJob);
+const ListJobPage = ({ arrayListJob }) => {
   const createItem = () => {
-    let b = arrayListJob.map((job, idxo) => {
-      // console.log(job);
+    let b = arrayListJob.map((job) => {
       let a = (
         <div className={styles.listJobBox}>
           {job.map((job, idx) => {
@@ -16,8 +14,9 @@ const ListJobPage = ({ arrayListJob, amountJob }) => {
                 {idx === 0 ? (
                   <Link href={`/projects/${job.postId}`}>
                     <Parallax
-                      translateY={[-20, -50]}
-                      speed={-20}
+                      scale={[0.95, 1]}
+                      translateY={[-20, -30]}
+                      easing='easeOutCubic'
                       className={styles.jobBox}
                     >
                       <div
@@ -32,8 +31,9 @@ const ListJobPage = ({ arrayListJob, amountJob }) => {
                 ) : (
                   <Link href={`/projects/${job.postId}`}>
                     <Parallax
-                      translateY={[0, -100]}
-                      speed={30}
+                      scale={[0.95, 1]}
+                      translateY={[0, -70]}
+                      easing='easeOutCubic'
                       className={styles.jobBox}
                     >
                       <div
@@ -66,9 +66,7 @@ const ListJobPage = ({ arrayListJob, amountJob }) => {
               Projects.
             </h1>
           </div>
-          <div className={`${styles.listJobOuterBox} ${styles.outerMove}`}>
-            {createItem()}
-          </div>
+          <div className={` ${styles.outerMove}`}>{createItem()}</div>
         </div>
       </ParallaxProvider>
     </>

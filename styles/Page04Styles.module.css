@@ -35,7 +35,6 @@
 }
 .scaleIn1 {
   animation: scaleIn1 0.8s ease-in-out forwards;
-  /* opacity: 1 !important; */
 }
 @keyframes fadeTopDown {
   0% {
