@@ -9,11 +9,14 @@ const NavPage = () => {
     <>
       <div className={styles.navContainer}>
         <Link href='/'>
+          <a>
           <div className={styles.navBrandLogo}>
             <Image src={brandLogo} alt='trum-logo' className='logoImg' />
           </div>
+          </a>
         </Link>
         <Link href='/projects'>
+          <a>
           <div className={styles.navProject}>
             <Image
               src={projectLogo}
@@ -22,6 +25,7 @@ const NavPage = () => {
             />
             <p>Projects</p>
           </div>
+          </a>
         </Link>
       </div>
     </>
