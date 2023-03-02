@@ -3,8 +3,12 @@ import styles from "../../styles/ProjectStyles.module.css";
 import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 
 import Link from "next/link";
+import { useEffect } from "react";
 const ListJobPage = ({ arrayListJob }) => {
-  let deviceWitdh = window.innerWidth;
+  const [deviceWidth, setDeviceWidth] = React.useState(0);
+  useEffect(() => {
+    setDeviceWidth(window?.innerWidth);
+  }, []);
   const createItem = () => {
     let b = arrayListJob.map((job) => {
       let a = (
@@ -17,7 +21,7 @@ const ListJobPage = ({ arrayListJob }) => {
                     <a>
                       <Parallax
                         scale={[0.95, 1]}
-                        translateY={deviceWitdh > 768 && [-20, -30]}
+                        translateY={deviceWidth > 768 && [-20, -30]}
                         easing='easeOutCubic'
                         className={styles.jobBox}
                       >
@@ -36,7 +40,7 @@ const ListJobPage = ({ arrayListJob }) => {
                     <a>
                       <Parallax
                         scale={[0.95, 1]}
-                        translateY={deviceWitdh > 768 && [0, -70]}
+                        translateY={deviceWidth > 768 && [0, -70]}
                         easing='easeOutCubic'
                         className={styles.jobBox}
                       >
