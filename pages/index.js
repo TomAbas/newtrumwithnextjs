@@ -1,17 +1,12 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import LandingPage from "../Views/LandingPage";
-import { getInfoLandingPage } from "../ApiUrl/infoApi/infoApi";
-import axios from "axios";
-import { urlAbout } from "../ApiUrl/Api";
+import { getLandingPageData } from "../ApiUrl/landingpageApi/landingApi";
+import axiosClient from "../ApiUrl/axiosClient";
 export async function getServerSideProps() {
-  // let res = await getInfoLandingPage();
-  // console.log(res)
-  let res = await axios.get(`${urlAbout}`).then(({data})=>{
-    console.log(data)
-    return data
-  })
-  
+  let res = await getLandingPageData();
+  console.log(res);
+
   if (!res) {
     return {
       notFound: true,
@@ -32,12 +27,10 @@ export default function Home({ res }) {
           href='https://fonts.googleapis.com/css?family=Montserrat'
           rel='stylesheet'
         />
-        {/* metatag google  */}
+
         <meta
           name='description'
-          content={
-            res[0].firstLine + " " + res[0].secondLine + " " + res[0].thirdLine
-          }
+          content={res.title.map((item) => item.content).join(" ")}
         />
         <meta
           name='keywords'
@@ -45,15 +38,13 @@ export default function Home({ res }) {
         />
         <meta name='author' content='Trum Agency' />
         <link rel='canonical' href='/' />
-        {/* metatag facebook */}
+
         <meta property='og:url' content='https://www.trumagency.com' />
         <meta property='og:type' content='article' />
         <meta property='og:title' content='Trum Agency' />
         <meta
           property='og:description'
-          content={
-            res[0].firstLine + " " + res[0].secondLine + " " + res[0].thirdLine
-          }
+          content={res.title.map((item) => item.content).join(" ")}
         />
         <meta
           property='og:image'
