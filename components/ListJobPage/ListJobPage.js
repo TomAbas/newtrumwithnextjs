@@ -4,6 +4,7 @@ import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 
 import Link from "next/link";
 const ListJobPage = ({ arrayListJob }) => {
+  let deviceWitdh = window.innerWidth;
   const createItem = () => {
     let b = arrayListJob.map((job) => {
       let a = (
@@ -14,39 +15,39 @@ const ListJobPage = ({ arrayListJob }) => {
                 {idx === 0 ? (
                   <Link href={`/projects/${job.postId}`}>
                     <a>
-                    <Parallax
-                      scale={[0.95, 1]}
-                      translateY={[-20, -30]}
-                      easing='easeOutCubic'
-                      className={styles.jobBox}
-                    >
-                      <div
-                        className={styles.innerBox}
-                        style={{ backgroundImage: `url(${job.banner})` }}
+                      <Parallax
+                        scale={[0.95, 1]}
+                        translateY={deviceWitdh > 768 && [-20, -30]}
+                        easing='easeOutCubic'
+                        className={styles.jobBox}
                       >
-                        <h1>{job.title}</h1>
-                        <p>{job.category}</p>
-                      </div>
-                    </Parallax>
+                        <div
+                          className={styles.innerBox}
+                          style={{ backgroundImage: `url(${job.banner})` }}
+                        >
+                          <h1>{job.title}</h1>
+                          <p>{job.category}</p>
+                        </div>
+                      </Parallax>
                     </a>
                   </Link>
                 ) : (
                   <Link href={`/projects/${job.postId}`}>
                     <a>
-                    <Parallax
-                      scale={[0.95, 1]}
-                      translateY={[0, -70]}
-                      easing='easeOutCubic'
-                      className={styles.jobBox}
-                    >
-                      <div
-                        className={styles.innerBox}
-                        style={{ backgroundImage: `url(${job.banner})` }}
+                      <Parallax
+                        scale={[0.95, 1]}
+                        translateY={deviceWitdh > 768 && [0, -70]}
+                        easing='easeOutCubic'
+                        className={styles.jobBox}
                       >
-                        <h1>{job.title}</h1>
-                        <p>{job.category}</p>
-                      </div>
-                    </Parallax>
+                        <div
+                          className={styles.innerBox}
+                          style={{ backgroundImage: `url(${job.banner})` }}
+                        >
+                          <h1>{job.title}</h1>
+                          <p>{job.category}</p>
+                        </div>
+                      </Parallax>
                     </a>
                   </Link>
                 )}
