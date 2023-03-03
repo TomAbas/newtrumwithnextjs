@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import Image from "next/future/image";
 import styles from "../../styles/ProjectPage03Styles.module.css";
+
 import slide4Img from "/public/imgs/slideImgs/MultiMediaProduction6.webp";
 import slide5Img from "/public/imgs/slideImgs/MultiMediaProduction7.webp";
 const ProjectPage03 = ({ openTitle, subTitle, youtubeUrl, content, img }) => {
@@ -11,21 +12,8 @@ const ProjectPage03 = ({ openTitle, subTitle, youtubeUrl, content, img }) => {
   const arrWordRef = useRef();
   const isArrWordIn = useInView(arrWordRef);
 
-  const produceArray = () => {
-    // if (subTitle) {
-    //   let subTitleArr = subTitle.split("");
-    //   // console.log(subTitleArr);
-    //   setSubTitleAr(subTitleArr);
-    // }
-    if (true) {
-      let subTitleArr = "Concept".split("");
-      // console.log(subTitleArr);
-      setSubTitleAr(subTitleArr);
-    }
-  };
-
   const animationWords = () => {
-    let b = subTitleAr.map((word, idx) => {
+    let b = subTitle?.split("").map((word, idx) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s` };
       return (
         <h1
@@ -41,9 +29,6 @@ const ProjectPage03 = ({ openTitle, subTitle, youtubeUrl, content, img }) => {
     return b;
   };
 
-  useEffect(() => {
-    produceArray();
-  }, [subTitle]);
   return (
     <>
       {" "}
@@ -53,8 +38,7 @@ const ProjectPage03 = ({ openTitle, subTitle, youtubeUrl, content, img }) => {
             <iframe
               width='100%'
               height='100%'
-              // src={youtubeUrl}
-              src={"https://www.youtube.com/embed/Pnz32g6ERIQ"}
+              src={youtubeUrl}
               title='YouTube video player'
               frameBorder='0'
               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;'
@@ -70,7 +54,7 @@ const ProjectPage03 = ({ openTitle, subTitle, youtubeUrl, content, img }) => {
             <div className={styles.newsContent01Img}>
               {slide4Img && (
                 <Image
-                  src={slide4Img.src}
+                  src={img}
                   alt='brand-img'
                   className={styles.brandImg}
                   layout='responsive'
@@ -78,8 +62,6 @@ const ProjectPage03 = ({ openTitle, subTitle, youtubeUrl, content, img }) => {
                   height={1000}
                 />
               )}
-
-              {/* <img src={pic0} alt='brand-img' className={styles.brandImg} /> */}
             </div>
             <div className={styles.newsContent01Text}>
               <div className={styles.test0}>
@@ -88,8 +70,8 @@ const ProjectPage03 = ({ openTitle, subTitle, youtubeUrl, content, img }) => {
                   {animationWords()}
                 </div>
 
-                {/* <div dangerouslySetInnerHTML={{ __html: content }} /> */}
-                <div>
+                <div dangerouslySetInnerHTML={{ __html: content }} />
+                {/* <div>
                   <p>
                     The COVID-19 pandemic has strongly promoted online shopping
                     trend on e-commerce platforms. Many businesses have lost
@@ -103,7 +85,7 @@ const ProjectPage03 = ({ openTitle, subTitle, youtubeUrl, content, img }) => {
                     choosing TRUM digital marketing service as a companion
                     solution.
                   </p>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

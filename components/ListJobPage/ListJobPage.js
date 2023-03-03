@@ -17,9 +17,10 @@ const ListJobPage = ({ arrayListJob }) => {
             return (
               <>
                 {idx === 0 ? (
-                  <Link href={`/projects/${job.postId}`}>
+                  <Link href={`/projects/${job.title}`}>
                     <a>
                       <Parallax
+                        speed={-1}
                         scale={[0.95, 1]}
                         translateY={deviceWidth > 768 && [-20, -30]}
                         easing='easeOutCubic'
@@ -27,7 +28,7 @@ const ListJobPage = ({ arrayListJob }) => {
                       >
                         <div
                           className={styles.innerBox}
-                          style={{ backgroundImage: `url(${job.banner})` }}
+                          style={{ backgroundImage: `url(${job.mainImage})` }}
                         >
                           <h1>{job.title}</h1>
                           <p>{job.category}</p>
@@ -36,9 +37,10 @@ const ListJobPage = ({ arrayListJob }) => {
                     </a>
                   </Link>
                 ) : (
-                  <Link href={`/projects/${job.postId}`}>
+                  <Link href={`/projects/${job.title}`}>
                     <a>
                       <Parallax
+                        speed={-1}
                         scale={[0.95, 1]}
                         translateY={deviceWidth > 768 && [0, -70]}
                         easing='easeOutCubic'
@@ -46,7 +48,7 @@ const ListJobPage = ({ arrayListJob }) => {
                       >
                         <div
                           className={styles.innerBox}
-                          style={{ backgroundImage: `url(${job.banner})` }}
+                          style={{ backgroundImage: `url(${job.mainImage})` }}
                         >
                           <h1>{job.title}</h1>
                           <p>{job.category}</p>
@@ -60,7 +62,6 @@ const ListJobPage = ({ arrayListJob }) => {
           })}
         </div>
       );
-      // console.log(a);
       return a;
     });
 

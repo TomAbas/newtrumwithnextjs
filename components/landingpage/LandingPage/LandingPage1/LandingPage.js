@@ -48,7 +48,6 @@ const LandingPage = ({ landingPageData }) => {
           <div className={styles.loganContainer}>{renderAnim()}</div>
         </div>
       </div>
-
       <div className={styles.picLandingPage}>
         <div
           className={styles.landingPagePicInside}

@@ -5,7 +5,7 @@ import { getLandingPageData } from "../ApiUrl/landingpageApi/landingApi";
 import axiosClient from "../ApiUrl/axiosClient";
 export async function getServerSideProps() {
   let res = await getLandingPageData();
-  console.log(res);
+  // console.log(res);
 
   if (!res) {
     return {
