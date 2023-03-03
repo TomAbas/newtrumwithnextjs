@@ -126,7 +126,6 @@
 .topText {
   /* outline: 2px solid blue; */
   text-align: center;
-  margin-bottom: 20px;
 }
 .topText h1 {
   color: #fff;
@@ -134,7 +133,7 @@
   /* margin-bottom: 10px; */
 }
 .topText p {
-  margin-bottom: 10px;
+  margin: 10px auto; 
   font-size: 0.4rem;
 }
 
@@ -183,7 +182,7 @@
   } */
 
   .topText p {
-    margin-bottom: 20px;
+    margin: 20px auto;
     font-size: 0.9rem;
   }
   .bottomText p {
@@ -228,7 +227,7 @@
   } */
 
   .topText p {
-    margin-bottom: 30px;
+    margin: 30px auto;
     font-size: 1rem;
   }
   .bottomText p {
@@ -248,7 +247,7 @@
     font-size: 3.75rem;
   }
   .topText p {
-    margin-bottom: 30px;
+    margin: 30px auto;
     font-size: 1.2rem;
   }
   .bottomText p {

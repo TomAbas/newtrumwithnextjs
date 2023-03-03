@@ -34,10 +34,12 @@
   margin: 30px 0px 10px 0px;
   text-transform: uppercase;
   font-size: 0.65rem;
+  flex: 1;
 }
 .newsTitleH1 {
   display: flex;
   overflow: hidden;
+  flex-wrap: wrap;
 }
 .newsTitle h1:nth-child(1) {
   margin-bottom: 5px;
@@ -76,7 +78,6 @@
 @media (min-width: 768px) {
   .newsTitleBox {
     flex-direction: row;
-    align-items: flex-end;
     margin-top: 50px;
   }
   .newsTitle {

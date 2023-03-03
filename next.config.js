@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["pagesmanagementapi.com"],
+    domains: ["pagesmanagementapi.com", "s3-alpha-sig.figma.com"],
   },
   eslint: {
     // Warning: This allows production builds to successfully complete even if

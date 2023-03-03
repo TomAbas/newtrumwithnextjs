@@ -3,105 +3,36 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import styles from "../../styles/ProjectPage01Styles.module.css";
 import slide4Img from "/public/imgs/slideImgs/MultiMediaProduction6.webp";
-const ProjectPage01 = ({ title, title1, category, bannerImg }) => {
-  const [headline, setHeadline] = useState([]);
-  const [headline1, setHeadline1] = useState([]);
-  const headLineRef = useRef();
-  const isHeadLineIn = useInView(headLineRef);
-  const headLineRef1 = useRef();
-  const isHeadLineIn1 = useInView(headLineRef1);
-  // console.log(title);
-  const produceArray = () => {
-    // if (title) {
-    //   // let titleArr = title.split(" ");
-    //   let titleArr = "Levent Clothing".split(" ");
-    //   setHeadline(titleArr);
-    //   if (title1) {
-    //     let titleArr1 = title1.split(" ");
-    //     titleArr1=['CLOTHING','BRAND']
-    //     setHeadline1(titleArr1);
-    //   }
-    // }
-    if (true) {
-      // let titleArr = title.split(" ");
-      let titleArr = "Levent Clothing".split(" ");
-      setHeadline(titleArr);
-      if (true) {
-        // let titleArr1 = title1.split(" ");
-        let titleArr1 = ["Levent", "Clothing"];
-        setHeadline1(titleArr1);
-      }
-    }
-  };
+const ProjectPage01 = ({ title, category, bannerImg }) => {
   const animationWords = () => {
-    // console.log(headline);
-    if (headline) {
-      let b = headline.map((word, idx) => {
-        // console.log("123");
-        let delay = { animationDelay: `${idx / 5 + 0.5}s` };
-        return (
-          <h1
-            key={idx}
-            className={
-              `${styles.headlineWord} ${styles.fadeInUp0}`
-              // isHeadLineIn
-              //   ? `${styles.headlineWord} ${styles.fadeInUp0}`
-              //   : styles.headlineWord
-            }
-            style={delay}
-          >
-            {word}
-          </h1>
-        );
-      });
-      return b;
-    }
-  };
-  const animationWords1 = () => {
-    if (headline1) {
-      let b = headline1.map((word, idx) => {
-        let delay = { animationDelay: `${idx / 5 + 0.9}s` };
-        return (
-          <h1
-            key={idx}
-            className={
-              `${styles.headlineWord} ${styles.fadeInUp0}`
-              // isHeadLineIn1
-              //   ? `${styles.headlineWord} ${styles.fadeInUp0}`
-              //   : styles.headlineWord
-            }
-            style={delay}
-          >
-            {word}
-          </h1>
-        );
-      });
-      return b;
-    }
+    let b = title?.split(" ").map((word, idx) => {
+      let delay = { animationDelay: `${idx / 5 + 0.5}s` };
+      return (
+        <h1
+          key={idx}
+          className={`${styles.headlineWord} ${styles.fadeInUp0}`}
+          style={delay}
+        >
+          {word}
+        </h1>
+      );
+    });
+    return b;
   };
 
-  useEffect(() => {
-    produceArray();
-  }, [title]);
   return (
     <>
       <div
         className={styles.headlineNewsBox}
         style={{
-          background: `url(${slide4Img.src}) no-repeat center
+          background: `url(${bannerImg}) no-repeat center
     center/cover`,
         }}
       >
         <div className={styles.backgroundImgBox}>
           <div className={styles.headlineContent}>
             <div className={styles.headlineWordBox}>
-              <div className={styles.wrapperText} ref={headLineRef}>
-                {" "}
-                {headline && animationWords()}
-              </div>
-              <div className={styles.wrapperText} ref={headLineRef1}>
-                {headline1 && animationWords1()}
-              </div>
+              <div className={styles.wrapperText}> {animationWords()}</div>
             </div>
             <div className={styles.clientShortInfo}>
               <h5>{category}</h5>

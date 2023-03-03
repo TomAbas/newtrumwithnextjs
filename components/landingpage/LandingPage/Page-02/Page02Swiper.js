@@ -18,7 +18,7 @@ import slide3Img from "/public/imgs/slideImgs/MultiMediaProduction4.webp";
 import slide4Img from "/public/imgs/slideImgs/MultiMediaProduction6.webp";
 import slide5Img from "/public/imgs/slideImgs/MultiMediaProduction7.webp";
 
-const Page02Swiper = ({ isLandingPage }) => {
+const Page02Swiper = ({ isLandingPage, imgArr }) => {
   const theme = useTheme();
   const gridBoxRef = useRef();
   const inViewGridPicref = useInView(gridBoxRef);
@@ -52,7 +52,7 @@ const Page02Swiper = ({ isLandingPage }) => {
     },
   ];
   const renderSlide = () => {
-    return slide.map((item, idx) => {
+    return imgArr?.map((item, idx) => {
       return (
         <SwiperSlide key={idx}>
           {({ isActive, isPrev }) => {
@@ -179,7 +179,7 @@ const Page02Swiper = ({ isLandingPage }) => {
           transition={{ duration: 0.5 }}
           exit={{ opacity: 0 }}
         >
-          <Typography color='#fff'>{slide.length}</Typography>
+          <Typography color='#fff'>{imgArr?.length}</Typography>
         </motion.div>
       </Stack>
     </>

@@ -8,11 +8,46 @@ import slide2Img from "/public/imgs/slideImgs/MultiMediaProduction3.webp";
 import slide3Img from "/public/imgs/slideImgs/MultiMediaProduction4.webp";
 import slide4Img from "/public/imgs/slideImgs/MultiMediaProduction6.webp";
 import slide5Img from "/public/imgs/slideImgs/MultiMediaProduction7.webp";
+import { getAllProject } from "../ApiUrl/projectApi/projectApi";
 
 const ListJobPage = () => {
   const [arrayListJob, setArrayListJob] = useState([]);
   const [amountJob, setAmountJob] = useState([]);
   const fetchListJob = async () => {
+    await getAllProject().then((data) => {
+      let b = [];
+      for (let i = 0; i < data.length; i++) {
+        let c;
+        if (i === 0) {
+          if (i < data.length - 1) {
+            c = new Array(data[i], data[i + 1]);
+            // console.log(c);
+            b.push(c);
+            // console.log(b)
+          } else {
+            c = new Array(data[i]);
+            b.push(c);
+            // console.log(b);
+          }
+        } else if (i > 0 && i < data.length - 1) {
+          let count = i + 1;
+          if (i < data.length - 2) {
+            c = new Array(data[count], data[count + 1]);
+            // console.log(b);
+            b.push(c);
+          } else {
+            if (data.length % 2 === 0) {
+            } else {
+              c = new Array(data[count]);
+              b.push(c);
+            }
+            // console.log(b);
+          }
+        }
+      }
+      console.log(b);
+      setArrayListJob(b);
+    });
     // await axios.get(urlNews).then(({ data }) => {
     //   // console.log(data);
     //   let a = data.filter((data) => {
@@ -103,7 +138,7 @@ const ListJobPage = () => {
       ],
     ];
 
-    setArrayListJob(a);
+    // setArrayListJob(a);
   };
   useEffect(() => {
     fetchListJob();

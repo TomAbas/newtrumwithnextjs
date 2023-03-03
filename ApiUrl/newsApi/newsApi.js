@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 let BaseURL = "index";
 let EditURL = "admin";
 function getAllPosts() {
@@ -20,9 +21,6 @@ function getPost(id) {
     });
 }
 
-function editPost(id, data) {
-  return axios.post(`${EditURL}/update/post/${id}`, data).catch((error) => {
-    console.log(error);
-  });
-}
-export { getAllPosts, getPost };
+
+
+export { getAllPosts, getPost, getLandingPageData };
