@@ -20,21 +20,6 @@ const Page03 = ({ page3Data }) => {
             }
           >
             {item.content.split(" ").map((word, idx) => {
-              if (oIdx === 0) {
-                item.effect = [4];
-              }
-              if (oIdx === 1) {
-                item.effect = [4];
-              }
-              if (oIdx === 2) {
-                item.effect = [1, 2, 3];
-              }
-              if (oIdx === 3) {
-                item.effect = [0, 3, 4, 5];
-              }
-              if (oIdx === 4) {
-                item.effect = [4];
-              }
               if (item.effect.indexOf(idx) !== -1) {
                 return (
                   <h2
