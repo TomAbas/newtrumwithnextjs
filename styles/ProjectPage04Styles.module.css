@@ -48,7 +48,7 @@
   height: 50vw;
   /* border: 2px solid white; */
   background: url(../public/imgs/grid.svg) no-repeat center center/cover;
-  padding: 6% 12%;
+  padding: 4% 8%;
 }
 .gridShow {
   opacity: 1;
@@ -90,6 +90,15 @@
   margin: 0px 0px !important;
   font-size: 2rem;
 }
+.page03VideoBox {
+  /* border: 2px solid red; */
+  height: 50vw;
+  /* good untill 768px */
+}
+.videoBranding {
+  height: 100%;
+  width: 100%;
+}
 @media (min-width: 375px) {
   .headlineNextNews h1 {
     font-size: 0.8rem;
@@ -113,7 +122,8 @@
 @media (min-width: 768px) {
   .newsContentTextPage04 {
     width: 55%;
-    margin-bottom: 50px;
+    margin-top: 100px;
+    margin-bottom: 100px;
   }
   .nextNewsBackground {
     max-height: 700px;
@@ -141,6 +151,11 @@
   .newsNextNews {
     margin: 120px 0px 70px 0px;
   }
+  .page03VideoBox {
+    height: 55vw;
+    max-height: 800px;
+    margin: 40px auto;
+  }
 }
 @media (min-width: 1024px) {
   .newsContentH1 h1 {
@@ -148,7 +163,7 @@
     font-size: 2.7rem;
   }
   .newsContentTextPage04 {
-    margin-bottom: 70px;
+    margin-bottom: 100px;
   }
   .newsContentTextPage04 p {
     font-size: 0.9rem;

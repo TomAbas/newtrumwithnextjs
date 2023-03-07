@@ -33,7 +33,7 @@ const ProjectPage03 = ({ openTitle, subTitle, youtubeUrl, content, img }) => {
     <>
       {" "}
       <div className={styles.newsPage03Box}>
-        <div className={styles.page03VideoBox}>
+        {/* <div className={styles.page03VideoBox}>
           <div className={styles.videoBranding}>
             <iframe
               width='100%'
@@ -45,11 +45,8 @@ const ProjectPage03 = ({ openTitle, subTitle, youtubeUrl, content, img }) => {
               allowFullScreen
             ></iframe>
           </div>
-        </div>
+        </div> */}
         <div className={styles.newsContentBox}>
-          <div className={`${styles.newsContent00} ${styles.fadeTopDown}`}>
-            <p>{openTitle}</p>
-          </div>
           <div className={styles.newsContent01}>
             <div className={styles.newsContent01Img}>
               {slide4Img && (
@@ -88,6 +85,9 @@ const ProjectPage03 = ({ openTitle, subTitle, youtubeUrl, content, img }) => {
                 </div> */}
               </div>
             </div>
+          </div>
+          <div className={`${styles.newsContent00} ${styles.fadeTopDown}`}>
+            <p>{openTitle}</p>
           </div>
         </div>
       </div>
