@@ -23,4 +23,4 @@ function getPost(id) {
 
 
 
-export { getAllPosts, getPost, getLandingPageData };
+export { getAllPosts, getPost };

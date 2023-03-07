@@ -47,7 +47,7 @@ const ProjectPage = ({ projectsidx, data }) => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [data]);
   return (
     <>
       <div>
