@@ -5,8 +5,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useEffect } from "react";
-import { Button } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 import { editInfoLandingPage } from "../../ApiUrl/infoApi/infoApi";
+import RenderRowCheckBox from "./CheckboxEffect";
+import CheckboxEffect from "./CheckboxEffect";
+import { editLandingPageData } from "../../ApiUrl/landingpageApi/landingApi";
 const schema = yup.object().shape({
   title1: yup.string(),
   content1Line1: yup.string(),
@@ -19,12 +22,34 @@ const schema = yup.object().shape({
   content5Line2: yup.string(),
   image1: yup.mixed().required(),
   image2: yup.mixed().required(),
+  image3: yup.mixed().required(),
 });
-const LandingPageForm = ({ preLoadValue }) => {
+const LandingPageForm = ({ preLoadValue, fullData }) => {
+  const [dadEffectArr, setDadEffectArr] = useState(() => {
+    let obj = {};
+    fullData.title.forEach((item, idx) => {
+      obj[idx] = item.effect;
+    });
+    return obj;
+  });
+  const [dadEffectArr1, setDadEffectArr1] = useState(() => {
+    let obj = {};
+    fullData.subTitle.forEach((item, idx) => {
+      obj[idx] = item.effect;
+    });
+    return obj;
+  });
+  useEffect(() => {
+    console.log(dadEffectArr1);
+  }, [dadEffectArr1]);
+  const [trigger, setTrigger] = useState(false);
+  const [trigger1, setTrigger1] = useState(false);
   const {
     register,
     handleSubmit,
     reset,
+    getValues,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -33,71 +58,110 @@ const LandingPageForm = ({ preLoadValue }) => {
     }, [preLoadValue]),
   });
 
+  // const submitNewsEditor = (data) => {
+  //   let titleArr = data.title1.split("\n");
+  //   const newFormBanner = new FormData();
+  //   newFormBanner.append("firstLine", titleArr[0]);
+  //   newFormBanner.append("secondLine", titleArr[1]);
+  //   newFormBanner.append("thirdLine", titleArr[2]);
+  //   newFormBanner.append("img", data.image1[0]);
+  //   console.log(newFormBanner);
+  //   //if not success add to headers: { "Content-Type": "multipart/form-data" },
+  //   editInfoLandingPage(1, newFormBanner);
+
+  //   const section1Arr = data.content1Line1.split("\n");
+  //   const objSection1 = {
+  //     firstLine: section1Arr[0],
+  //     secondLine: section1Arr[1],
+  //     thirdLine: section1Arr[2],
+  //     fourthLine: section1Arr[3],
+  //     fifthLine: section1Arr[4],
+  //     sixthLine: section1Arr[5],
+  //   };
+  //   // console.log(objSection1);
+  //   editInfoLandingPage(2, objSection1);
+
+  //   const section2Arr = data.content2Line1.split("\n");
+  //   const objSection2 = {
+  //     firstLine: section2Arr[0],
+  //     secondLine: section2Arr[1],
+  //     thirdLine: section2Arr[2],
+  //     fourthLine: section2Arr[3],
+  //     fifthLine: section2Arr[4],
+  //   };
+  //   editInfoLandingPage(3, objSection2);
+
+  //   const section3Arr = data.content3Line1.split("\n");
+  //   const newFormObjecSection3 = new FormData();
+  //   newFormObjecSection3.append("firstLine", section3Arr[0]);
+  //   newFormObjecSection3.append("secondLine", section3Arr[1]);
+  //   newFormObjecSection3.append("thirdLine", section3Arr[2]);
+  //   newFormObjecSection3.append("fourthLine", section3Arr[3]);
+  //   newFormObjecSection3.append("fifthLine", section3Arr[4]);
+  //   newFormObjecSection3.append("sixthLine", section3Arr[5]);
+  //   newFormObjecSection3.append("seventhLine", section3Arr[6]);
+  //   newFormObjecSection3.append("eighthLine", section3Arr[7]);
+  //   newFormObjecSection3.append("ninthLine", section3Arr[8]);
+  //   newFormObjecSection3.append("tenthLine", section3Arr[9]);
+  //   newFormObjecSection3.append("img", data.image2[0]);
+  //   editInfoLandingPage(4, newFormObjecSection3);
+
+  //   const section4Arr = data.content4Line1.split("\n");
+  //   const objSection4 = {
+  //     firstLine: section4Arr[0],
+  //     secondLine: section4Arr[1],
+  //     thirdLine: section4Arr[2],
+  //     fourthLine: section4Arr[3],
+  //     fifthLine: section4Arr[4],
+  //   };
+  //   editInfoLandingPage(5, objSection4);
+
+  //   const section5Arr = data.content5Line1.split("\n");
+  //   const objSection5 = {
+  //     firstLine: section5Arr[0],
+  //     secondLine: section5Arr[1],
+  //     thirdLine: section5Arr[2],
+  //   };
+  //   editInfoLandingPage(6, objSection5);
+  // };
   const submitNewsEditor = (data) => {
-    let titleArr = data.title1.split("\n");
-    const newFormBanner = new FormData();
-    newFormBanner.append("firstLine", titleArr[0]);
-    newFormBanner.append("secondLine", titleArr[1]);
-    newFormBanner.append("thirdLine", titleArr[2]);
-    newFormBanner.append("img", data.image1[0]);
-    console.log(newFormBanner);
-    //if not success add to headers: { "Content-Type": "multipart/form-data" },
-    editInfoLandingPage(1, newFormBanner);
-
-    const section1Arr = data.content1Line1.split("\n");
-    const objSection1 = {
-      firstLine: section1Arr[0],
-      secondLine: section1Arr[1],
-      thirdLine: section1Arr[2],
-      fourthLine: section1Arr[3],
-      fifthLine: section1Arr[4],
-      sixthLine: section1Arr[5],
+    let bodyTitle = data.title1.split("\n").map((item, idx) => {
+      return { content: item, effect: dadEffectArr[idx] };
+    });
+    let bodyDescription = data.content1Line1.split("\n").map((item, idx) => {
+      return { content: item };
+    });
+    let bodySubTitle = data.content2Line1.split("\n").map((item, idx) => {
+      return { content: item, effect: dadEffectArr1[idx] };
+    });
+    let bodyListContent = [
+      {
+        content: data.content3Line1,
+        description: data.content3Line2,
+        image: data.image2[0],
+      },
+      {
+        content: data.content4Line1,
+        description: data.content4Line2,
+        image: data.image3[0],
+      },
+      { content: data.content5Line1, description: data.content5Line2 },
+    ];
+    let body = {
+      title: bodyTitle,
+      description: bodyDescription,
+      subTitle: bodySubTitle,
+      listContent: bodyListContent,
+      mainImage: data.image1[0],
     };
-    // console.log(objSection1);
-    editInfoLandingPage(2, objSection1);
-
-    const section2Arr = data.content2Line1.split("\n");
-    const objSection2 = {
-      firstLine: section2Arr[0],
-      secondLine: section2Arr[1],
-      thirdLine: section2Arr[2],
-      fourthLine: section2Arr[3],
-      fifthLine: section2Arr[4],
-    };
-    editInfoLandingPage(3, objSection2);
-
-    const section3Arr = data.content3Line1.split("\n");
-    const newFormObjecSection3 = new FormData();
-    newFormObjecSection3.append("firstLine", section3Arr[0]);
-    newFormObjecSection3.append("secondLine", section3Arr[1]);
-    newFormObjecSection3.append("thirdLine", section3Arr[2]);
-    newFormObjecSection3.append("fourthLine", section3Arr[3]);
-    newFormObjecSection3.append("fifthLine", section3Arr[4]);
-    newFormObjecSection3.append("sixthLine", section3Arr[5]);
-    newFormObjecSection3.append("seventhLine", section3Arr[6]);
-    newFormObjecSection3.append("eighthLine", section3Arr[7]);
-    newFormObjecSection3.append("ninthLine", section3Arr[8]);
-    newFormObjecSection3.append("tenthLine", section3Arr[9]);
-    newFormObjecSection3.append("img", data.image2[0]);
-    editInfoLandingPage(4, newFormObjecSection3);
-
-    const section4Arr = data.content4Line1.split("\n");
-    const objSection4 = {
-      firstLine: section4Arr[0],
-      secondLine: section4Arr[1],
-      thirdLine: section4Arr[2],
-      fourthLine: section4Arr[3],
-      fifthLine: section4Arr[4],
-    };
-    editInfoLandingPage(5, objSection4);
-
-    const section5Arr = data.content5Line1.split("\n");
-    const objSection5 = {
-      firstLine: section5Arr[0],
-      secondLine: section5Arr[1],
-      thirdLine: section5Arr[2],
-    };
-    editInfoLandingPage(6, objSection5);
+    const formData = new FormData();
+    formData.append("title", bodyTitle);
+    formData.append("description", bodyDescription);
+    formData.append("subTitle", bodySubTitle);
+    formData.append("listContent", bodyListContent);
+    formData.append("mainImage", data.image1[0]);
+    console.log(body);
+    editLandingPageData(formData);
   };
   useEffect(() => {
     reset(preLoadValue);
@@ -120,12 +184,38 @@ const LandingPageForm = ({ preLoadValue }) => {
                     className={styles.inputField}
                     name='title1'
                     {...register("title1")}
+                    onChange={(e) => {
+                      setValue("title1", e.target.value);
+                      setTrigger(!trigger);
+                      if (e.target.value === "") {
+                        setDadEffectArr({});
+                        setTrigger1(!trigger1);
+                      }
+                    }}
                   />
-
                   <p>{errors.title1?.message}</p>
                 </div>
                 <div className={styles.titleEdit}>
                   <h3>Check Box Effect</h3>
+                  <div>
+                    {getValues("title1")
+                      .split("\n")
+                      .map((row, idx) => {
+                        if (row.trim().length > 0)
+                          return (
+                            <CheckboxEffect
+                              charArr={row.split(" ")}
+                              key={idx}
+                              idxOfLine={idx}
+                              setDadEffectArr={setDadEffectArr}
+                              arrEffectData={
+                                dadEffectArr[idx] ? dadEffectArr[idx] : []
+                              }
+                              trigger1={trigger1}
+                            />
+                          );
+                      })}
+                  </div>
                 </div>
               </div>
             </div>
@@ -154,8 +244,38 @@ const LandingPageForm = ({ preLoadValue }) => {
                     className={styles.inputField}
                     name='content2Line1'
                     {...register("content2Line1")}
+                    onChange={(e) => {
+                      setValue("content2Line1", e.target.value);
+                      setTrigger(!trigger);
+                      if (e.target.value === "") {
+                        setDadEffectArr1({});
+                        setTrigger1(!trigger1);
+                      }
+                    }}
                   />
                   <p>{errors.content2Line1?.message}</p>
+                </div>
+                <div className={styles.titleEdit}>
+                  <h3>Check Box Effect</h3>
+                  <div>
+                    {getValues("content2Line1")
+                      .split("\n")
+                      .map((row, idx) => {
+                        if (row.trim().length > 0)
+                          return (
+                            <CheckboxEffect
+                              charArr={row.split(" ")}
+                              key={idx}
+                              idxOfLine={idx}
+                              setDadEffectArr={setDadEffectArr1}
+                              arrEffectData={
+                                dadEffectArr1[idx] ? dadEffectArr1[idx] : []
+                              }
+                              trigger1={trigger1}
+                            />
+                          );
+                      })}
+                  </div>
                 </div>
               </div>
             </div>
@@ -248,13 +368,23 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                 </div>
                 <div className={styles.titleEdit}>
-                  <h3>Choose a image for content : </h3>
+                  <h3>Choose first image for content : </h3>
                   <input
                     type='file'
                     accept='image/*'
                     className={styles.inputField}
                     name='image2'
                     {...register("image2")}
+                  />
+                </div>
+                <div className={styles.titleEdit}>
+                  <h3>Choose second image for content : </h3>
+                  <input
+                    type='file'
+                    accept='image/*'
+                    className={styles.inputField}
+                    name='image3'
+                    {...register("image3")}
                   />
                 </div>
               </div>
