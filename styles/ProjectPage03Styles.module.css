@@ -62,7 +62,7 @@
   color: #fff;
   text-align: center;
   width: 90%;
-  margin: 50px auto;
+  margin: 100px auto;
 }
 
 .newsContent00 p {
@@ -142,7 +142,7 @@
 
   .newsContent01 {
     display: flex;
-    margin-bottom: 50px;
+    margin: 100px auto;
   }
 
   .newsContent01Img {

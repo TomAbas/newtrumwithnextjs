@@ -13,7 +13,9 @@ const SlideItem = ({ item, isActive, isPrev }) => {
   return (
     <Box
       onClick={() => {
-        router.push(`/projects/${item.postId}`);
+        if (item.postId) {
+          router.push(`/projects/${item.postId}`);
+        }
       }}
       onMouseEnter={() => setIsEnter(true)}
       onMouseLeave={() => setIsEnter(false)}

@@ -8,19 +8,10 @@ import axios from "axios";
 import { urlListContributorIdPost } from "../../ApiUrl/Api";
 
 const ProjectPage02 = ({ tagLine, contributor, projectsidx }) => {
-  const [line1, setLine1] = useState([]);
-  const [line2, setLine2] = useState([]);
-  const [contributorArr, setContributorArr] = useState([]);
   const arrWordRef = useRef();
   const isArrWordIn = useInView(arrWordRef);
   const arrWordRef1 = useRef();
   const isArrWordIn1 = useInView(arrWordRef1);
-  const getListContributor = () => {
-    setContributorArr([
-      { role: "Creative Director", contributorName: "Levent" },
-      { role: "Photographer", contributorName: "Levent" },
-    ]);
-  };
 
   const animationWords = () => {
     let b = tagLine?.split(" ").map((word, idx) => {
@@ -39,14 +30,6 @@ const ProjectPage02 = ({ tagLine, contributor, projectsidx }) => {
   };
 
   const contributorList = () => {
-    // let b = contributorArr?.map((contributor, idx) => {
-    //   return (
-    //     <p key={idx}>
-    //       {contributor.role} by : {contributor.contributorName}
-    //     </p>
-    //   );
-    // });
-    // return b;
     if (contributor) {
       return Object.keys(contributor).map((key, idx) => {
         return (
@@ -66,11 +49,8 @@ const ProjectPage02 = ({ tagLine, contributor, projectsidx }) => {
             <div className={styles.newsTitleH1} ref={arrWordRef}>
               {animationWords()}
             </div>
-            {/* <div className={styles.newsTitleH1} ref={arrWordRef1}>
-              {animationWords1()}
-            </div> */}
           </div>
-          <div className={styles.newsCredits}>
+          {/* <div className={styles.newsCredits}>
             <div className={styles.newsCreditsWrapper}>
               <p>credits</p>
               <div className={styles.creditsBoxWrapper}>
@@ -78,7 +58,7 @@ const ProjectPage02 = ({ tagLine, contributor, projectsidx }) => {
                 <div className={styles.creditsBox1}></div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
