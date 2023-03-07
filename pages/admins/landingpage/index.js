@@ -28,7 +28,6 @@ const Index = () => {
         content5Line1: content5Line1,
         content5Line2: content5Line2,
       };
-      // console.log(preLoadValue);
       setDefaultValues(preLoadValue);
     });
   };
@@ -40,7 +39,6 @@ const Index = () => {
       {defaultValues ? (
         <LandingPageForm preLoadValue={defaultValues} />
       ) : (
-        // <NewsForm />
         <div>Loading...</div>
       )}
     </>

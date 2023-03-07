@@ -1,46 +1,22 @@
 import React, { useState, useMemo } from "react";
 import styles from "../../styles/Admin.module.css";
-
 //hook form
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import axios from "axios";
-import { editAbout } from "../../ApiUrl/Api";
 import { useEffect } from "react";
 import { Button } from "@mui/material";
 import { editInfoLandingPage } from "../../ApiUrl/infoApi/infoApi";
 const schema = yup.object().shape({
   title1: yup.string(),
   content1Line1: yup.string(),
-  content1Line2: yup.string(),
-  content1Line3: yup.string(),
-  content1Line4: yup.string(),
-  content1Line5: yup.string(),
-  content1Line6: yup.string(),
   content2Line1: yup.string(),
-  content2Line2: yup.string(),
-  content2Line3: yup.string(),
-  content2Line4: yup.string(),
-  content2Line5: yup.string(),
   content3Line1: yup.string(),
   content3Line2: yup.string(),
-  content3Line3: yup.string(),
-  content3Line4: yup.string(),
-  content3Line5: yup.string(),
-  content3Line6: yup.string(),
-  content3Line7: yup.string(),
-  content3Line8: yup.string(),
-  content3Line9: yup.string(),
-  content3Line10: yup.string(),
   content4Line1: yup.string(),
   content4Line2: yup.string(),
-  content4Line3: yup.string(),
-  content4Line4: yup.string(),
-  content4Line5: yup.string(),
   content5Line1: yup.string(),
   content5Line2: yup.string(),
-  content5Line3: yup.string(),
   image1: yup.mixed().required(),
   image2: yup.mixed().required(),
 });
@@ -58,7 +34,6 @@ const LandingPageForm = ({ preLoadValue }) => {
   });
 
   const submitNewsEditor = (data) => {
-    // console.log(data.title1.split("\n"));
     let titleArr = data.title1.split("\n");
     const newFormBanner = new FormData();
     newFormBanner.append("firstLine", titleArr[0]);
@@ -139,7 +114,7 @@ const LandingPageForm = ({ preLoadValue }) => {
               <div className={styles.bannerBanner}>EDIT BANNER :</div>
               <div className={styles.row1}>
                 <div className={styles.titleEdit}>
-                  <h3>Banner : 3 line</h3>
+                  <h3>Banner</h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
@@ -149,13 +124,16 @@ const LandingPageForm = ({ preLoadValue }) => {
 
                   <p>{errors.title1?.message}</p>
                 </div>
+                <div className={styles.titleEdit}>
+                  <h3>Check Box Effect</h3>
+                </div>
               </div>
             </div>
             <div className={styles.content1Edit}>
               <div className={styles.bannerBanner}>EDIT CONTENT 1 :</div>
               <div className={styles.row1}>
                 <div className={styles.titleEdit}>
-                  <h3>Content 1 : 6 line</h3>
+                  <h3>Content 1 </h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
@@ -170,7 +148,7 @@ const LandingPageForm = ({ preLoadValue }) => {
               <div className={styles.bannerBanner}>EDIT CONTENT 2 :</div>
               <div className={styles.row1}>
                 <div className={styles.titleEdit}>
-                  <h3>Content 2 : 5 line</h3>
+                  <h3>Content 2 </h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
