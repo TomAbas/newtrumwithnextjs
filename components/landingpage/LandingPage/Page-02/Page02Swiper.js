@@ -82,7 +82,7 @@ const Page02Swiper = ({ isLandingPage, imgArr }) => {
         }}
         ref={outerContainer}
         sx={{
-          border: "2px solid red",
+          // border: "2px solid red",
           width: "90%",
           maxWidth: "1400px",
           margin: "0 auto",
@@ -131,7 +131,7 @@ const Page02Swiper = ({ isLandingPage, imgArr }) => {
             padding: "0px 0px !important",
             width: "80%",
             maxWidth: "1200px",
-            border: "2px solid blue",
+            // border: "2px solid blue",
             [theme.breakpoints.down("sm")]: {
               width: "100%",
             },

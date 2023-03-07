@@ -110,6 +110,10 @@
   .newsContentH1 {
     margin-bottom: 5px;
   }
+  .newsContentTextPage04 {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
   .newsContentTextPage04 p {
     margin-bottom: 10px;
     font-size: 0.8rem;
