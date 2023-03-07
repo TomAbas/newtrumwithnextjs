@@ -6,15 +6,12 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
-
 import { editAbout } from "../../ApiUrl/Api";
 import { useEffect } from "react";
 import { Button } from "@mui/material";
 import { editInfoLandingPage } from "../../ApiUrl/infoApi/infoApi";
 const schema = yup.object().shape({
   title1: yup.string(),
-  title2: yup.string(),
-  title3: yup.string(),
   content1Line1: yup.string(),
   content1Line2: yup.string(),
   content1Line3: yup.string(),
@@ -152,26 +149,6 @@ const LandingPageForm = ({ preLoadValue }) => {
 
                   <p>{errors.title1?.message}</p>
                 </div>
-                {/* <div className={styles.titleEdit}>
-                  <h3>Line 2 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='title2'
-                    {...register("title2")}
-                  />
-                  <p>{errors.title2?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Line 3 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='title3'
-                    {...register("title3")}
-                  />
-                  <p>{errors.title2?.message}</p>
-                </div> */}
               </div>
             </div>
             <div className={styles.content1Edit}>
@@ -187,59 +164,7 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                   <p>{errors.content1Line1?.message}</p>
                 </div>
-                {/* <div className={styles.titleEdit}>
-                  <h3>Content 1 - Line 2 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content1Line2'
-                    {...register("content1Line2")}
-                  />
-                  <p>{errors.content1Line2?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 1 - Line 3 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content1Line3'
-                    {...register("content1Line3")}
-                  />
-                  <p>{errors.content1Line3?.message}</p>
-                </div> */}
               </div>
-              {/* <div className={styles.row1}>
-                <div className={styles.titleEdit}>
-                  <h3>Content 1 - Line 4 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content1Line4'
-                    {...register("content1Line4")}
-                  />
-                  <p>{errors.content1Line4?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 1 - Line 5 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content1Line5'
-                    {...register("content1Line5")}
-                  />
-                  <p>{errors.content1Line5?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 1 - Line 6 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content1Line6'
-                    {...register("content1Line6")}
-                  />
-                  <p>{errors.content1Line6?.message}</p>
-                </div>
-              </div> */}
             </div>
             <div className={styles.content2Edit}>
               <div className={styles.bannerBanner}>EDIT CONTENT 2 :</div>
@@ -254,55 +179,13 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                   <p>{errors.content2Line1?.message}</p>
                 </div>
-                {/* <div className={styles.titleEdit}>
-                  <h3>Content 2 - Line 2 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content2Line2'
-                    {...register("content2Line2")}
-                  />
-                  <p>{errors.content2Line2?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 2 - Line 3 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content2Line3'
-                    {...register("content2Line3")}
-                  />
-                  <p>{errors.content2Line3?.message}</p>
-                </div> */}
               </div>
-              {/* <div className={styles.row1}>
-                <div className={styles.titleEdit}>
-                  <h3>Content 2 - Line 4 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content2Line4'
-                    {...register("content2Line4")}
-                  />
-                  <p>{errors.content2Line4?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 2 - Line 5 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content2Line5'
-                    {...register("content2Line5")}
-                  />
-                  <p>{errors.content2Line5?.message}</p>
-                </div>
-              </div> */}
             </div>
             <div className={styles.content3Edit}>
               <div className={styles.bannerBanner}>EDIT CONTENT 3 :</div>
               <div className={styles.row1}>
                 <div className={styles.titleEdit}>
-                  <h3>Content 3 : 10 Line</h3>
+                  <h3>Content 3 : Content</h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
@@ -311,8 +194,8 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                   <p>{errors.content3Line1?.message}</p>
                 </div>
-                {/* <div className={styles.titleEdit}>
-                  <h3>Content 3 - Line 2 : </h3>
+                <div className={styles.titleEdit}>
+                  <h3>Content 3 : Description </h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
@@ -321,99 +204,13 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                   <p>{errors.content3Line2?.message}</p>
                 </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 3 - Line 3 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content3Line3'
-                    {...register("content3Line3")}
-                  />
-                  <p>{errors.content3Line3?.message}</p>
-                </div> */}
               </div>
-              {/* <div className={styles.row1}>
-                <div className={styles.titleEdit}>
-                  <h3>Content 3 - Line 4 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content3Line4'
-                    {...register("content3Line4")}
-                  />
-                  <p>{errors.content3Line4?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 3 - Line 5 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content3Line5'
-                    {...register("content3Line5")}
-                  />
-                  <p>{errors.content3Line5?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 3 - Line 6 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content3Line6'
-                    {...register("content3Line6")}
-                  />
-                  <p>{errors.content3Line6?.message}</p>
-                </div>
-              </div>
-              <div className={styles.row1}>
-                <div className={styles.titleEdit}>
-                  <h3>Content 3 - Line 7 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content3Line7'
-                    {...register("content3Line7")}
-                  />
-                  <p>{errors.content3Line7?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 3 - Line 8 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content3Line8'
-                    {...register("content3Line8")}
-                  />
-                  <p>{errors.content3Line8?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 3 - Line 9 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content3Line9'
-                    {...register("content3Line9")}
-                  />
-                  <p>{errors.content3Line9?.message}</p>
-                </div>
-              </div>
-              <div className={styles.row1}>
-                <div className={styles.titleEdit}>
-                  <h3>Content 3 - Line 10 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content3Line10'
-                    {...register("content3Line10")}
-                  />
-                  <p>{errors.content3Line10?.message}</p>
-                </div>
-              </div> */}
             </div>
             <div className={styles.content4Edit}>
               <div className={styles.bannerBanner}>EDIT CONTENT 4 :</div>
               <div className={styles.row1}>
                 <div className={styles.titleEdit}>
-                  <h3>Content 4 : 5 Line</h3>
+                  <h3>Content 4 : Content</h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
@@ -422,8 +219,8 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                   <p>{errors.content4Line1?.message}</p>
                 </div>
-                {/* <div className={styles.titleEdit}>
-                  <h3>Content 4 - Line 2 : </h3>
+                <div className={styles.titleEdit}>
+                  <h3>Content 4 : Description </h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
@@ -432,45 +229,13 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                   <p>{errors.content4Line2?.message}</p>
                 </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 4 - Line 3 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content4Line3'
-                    {...register("content4Line3")}
-                  />
-                  <p>{errors.content4Line3?.message}</p>
-                </div> */}
               </div>
-              {/* <div className={styles.row1}>
-                <div className={styles.titleEdit}>
-                  <h3>Content 4 - Line 4 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content4Line4'
-                    {...register("content4Line4")}
-                  />
-                  <p>{errors.content4Line4?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 4 - Line 5 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content4Line5'
-                    {...register("content4Line5")}
-                  />
-                  <p>{errors.content4Line5?.message}</p>
-                </div>
-              </div> */}
             </div>
             <div className={styles.content5Edit}>
               <div className={styles.bannerBanner}>EDIT CONTENT 5 :</div>
               <div className={styles.row1}>
                 <div className={styles.titleEdit}>
-                  <h3>Content 5 : 3 Line</h3>
+                  <h3>Content 5 : Content</h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
@@ -479,8 +244,8 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                   <p>{errors.content5Line1?.message}</p>
                 </div>
-                {/* <div className={styles.titleEdit}>
-                  <h3>Content 5 - Line 2 : </h3>
+                <div className={styles.titleEdit}>
+                  <h3>Content 5 : Description</h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
@@ -489,16 +254,6 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                   <p>{errors.content5Line2?.message}</p>
                 </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 5 - Line 3 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content5Line3'
-                    {...register("content5Line3")}
-                  />
-                  <p>{errors.content5Line3?.message}</p>
-                </div> */}
               </div>
             </div>
             <div className={styles.content5Edit}>
