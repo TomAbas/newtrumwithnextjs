@@ -1,47 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
+import { useEffect } from "react";
+import { Button, Stack, Box } from "@mui/material";
+import useSelect from "../../hooks/useSelect";
 
-function ControlledCheckbox({ setArrEffect, idx }) {
-  const [checked, setChecked] = React.useState(true);
-
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
-    if (event.target.checked) {
-      setArrEffect((prev) => [...prev, idx]);
-    } else {
-      setArrEffect((prev) => prev.filter((item) => item !== idx));
-    }
-  };
-
+function ControlledCheckbox({ handleChange, checked, idx }) {
   return (
     <Checkbox
       checked={checked}
-      onChange={handleChange}
+      onChange={(e) => handleChange(e, idx)}
       inputProps={{ "aria-label": "controlled" }}
     />
   );
 }
 
-const CheckboxEffect = ({ charArr = ["lo", "he", "sd"] }) => {
-  const [arrEffect, setArrEffect] = React.useState([]);
+const CheckboxEffect = ({
+  charArr,
+  arrEffectData,
+  setDadEffectArr,
+  idxOfLine,
+  trigger1,
+}) => {
+  const { handleChange, setArrEffect, arrEffect } = useSelect(
+    arrEffectData,
+    trigger1,
+    setDadEffectArr,
+    idxOfLine
+  );
+
   return (
-    <>
-      {charArr.map((item, idx) => {
+    <Stack direction={"row"} gap={2} my={3} sx={{ overflowX: "auto" }}>
+      {charArr?.map((item, idx) => {
         return (
-          <ControlledCheckbox key={idx} setArrEffect={setArrEffect} idx={idx} />
+          <Stack key={idx}>
+            <Box sx={{ minWidth: "80px", textAlign: "center" }}>
+              index : {idx}
+            </Box>
+            <ControlledCheckbox
+              key={idx}
+              setArrEffect={setArrEffect}
+              idx={idx}
+              checked={arrEffect.includes(idx)}
+              handleChange={handleChange}
+            />
+          </Stack>
         );
       })}
-    </>
+    </Stack>
   );
 };
 
-const RenderRowCheckBox = ({ amount }) => {
-  return (
-    <>
-      {new Array(amount).fill(null).map((item, idx) => {
-        return <CheckboxEffect key={idx} />;
-      })}
-    </>
-  );
-};
 export default CheckboxEffect;
