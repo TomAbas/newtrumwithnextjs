@@ -136,6 +136,12 @@
   color: #858585;
   font-size: 0.6rem;
 }
+.bottomWidget a {
+  padding-right: 8px;
+}
+.bottomWidget ul a :last-child{
+  padding-right: 0px;
+}
 .bottomWidget ul :last-child {
   padding-right: 0px;
 }
