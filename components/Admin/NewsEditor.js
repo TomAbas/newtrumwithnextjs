@@ -246,9 +246,9 @@ const NewsEditor = ({
           <div className={styles.row1}>
             <div className={styles.titleEdit}>
               <h3>Image : </h3>
-              <textarea
-                type="text"
-                defaultValue={preLoadValue.mainImage}
+              <input
+                type="file"
+                accept="image/*"
                 className={styles.inputField}
                 name="mainImage"
                 {...register("mainImage")}
