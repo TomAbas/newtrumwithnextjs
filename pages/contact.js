@@ -4,7 +4,6 @@ import Recuitment from "../components/Recuitment/Recuitment";
 const recuitment = () => {
   return (
     <>
-   
     <Head>
         <title>Contact</title>
         <link rel='icon' href='/logo300px.ico' />

@@ -7,23 +7,20 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
 
-import {  urlEditCompanyInfo } from "../../ApiUrl/Api";
+import { urlEditCompanyInfo } from "../../ApiUrl/Api";
 import { useEffect } from "react";
 import { Button } from "@mui/material";
+import { editContactPageData } from "../../ApiUrl/contact/contact";
 const schema = yup.object().shape({
   title1: yup.string(),
   title2: yup.string(),
   title3: yup.string(),
-  content1Line1: yup.string(),
-  content1Line2: yup.string(),
   content1Line3: yup.string(),
   content1Line4: yup.string(),
   content1Line5: yup.string(),
   content1Line6: yup.string(),
-  
 });
 const CompanyInfo = ({ defaultValuesCom }) => {
-  //   console.log(defaultValuesCom);
   const {
     register,
     handleSubmit,
@@ -35,40 +32,29 @@ const CompanyInfo = ({ defaultValuesCom }) => {
       return defaultValuesCom;
     }, [defaultValuesCom]),
   });
-  const editorRef = useRef();
-  const [editorLoaded, setEditorLoaded] = useState(false);
-  const { CKEditor, ClassicEditor } = editorRef.current || {};
+  // const editorRef = useRef();
+  // const [editorLoaded, setEditorLoaded] = useState(false);
+  // const { CKEditor, ClassicEditor } = editorRef.current || {};
   const submitCompanyInfoEditor = async (data) => {
     const submitData = {
       address: data.title1,
-      phoneNumber: data.title2,
+      phone: data.title2,
       email: data.title3,
-      title: data.content1Line1,
-      content: data.content1Line2,
       instagram: data.content1Line3,
       facebook: data.content1Line4,
       twitter: data.content1Line5,
       linkedin: data.content1Line6,
     };
     // console.log(submitData);
-    await axios
-      .post(`${urlEditCompanyInfo}/1`, submitData)
-      .then((res) => {
-        console.log(res);
-        
-      })
-      .catch((error) => {
-     
-        console.log(error);
-      });
+    editContactPageData(submitData);
   };
-  useEffect(() => {
-    editorRef.current = {
-      CKEditor: require("@ckeditor/ckeditor5-react").CKEditor, //Added .CKEditor
-      ClassicEditor: require("@ckeditor/ckeditor5-build-classic"),
-    };
-    setEditorLoaded(true);
-  }, []);
+  // useEffect(() => {
+  //   editorRef.current = {
+  //     CKEditor: require("@ckeditor/ckeditor5-react").CKEditor, //Added .CKEditor
+  //     ClassicEditor: require("@ckeditor/ckeditor5-build-classic"),
+  //   };
+  //   setEditorLoaded(true);
+  // }, []);
   useEffect(() => {
     reset(defaultValuesCom);
   }, [defaultValuesCom]);
@@ -119,26 +105,6 @@ const CompanyInfo = ({ defaultValuesCom }) => {
             <div className={styles.content1Edit}>
               <div className={styles.bannerBanner}>EDIT SOCIAL LINK :</div>
               <div className={styles.row1}>
-                <div className={styles.titleEdit}>
-                  <h3>Title : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content1Line1'
-                    {...register("content1Line1")}
-                  />
-                  <p>{errors.content1Line1?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content1Line2'
-                    {...register("content1Line2")}
-                  />
-                  <p>{errors.content1Line2?.message}</p>
-                </div>
                 <div className={styles.titleEdit}>
                   <h3>Link Instagram : </h3>
                   <textarea
