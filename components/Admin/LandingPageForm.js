@@ -1,13 +1,14 @@
 import React, { useState, useMemo } from "react";
 import styles from "../../styles/Admin.module.css";
+//firebase
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { storage } from "../../config/firbase";
 //hook form
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useEffect } from "react";
-import { Button, Stack } from "@mui/material";
-import { editInfoLandingPage } from "../../ApiUrl/infoApi/infoApi";
-import RenderRowCheckBox from "./CheckboxEffect";
+import { Button } from "@mui/material";
 import CheckboxEffect from "./CheckboxEffect";
 import { editLandingPageData } from "../../ApiUrl/landingpageApi/landingApi";
 const schema = yup.object().shape({
@@ -39,9 +40,6 @@ const LandingPageForm = ({ preLoadValue, fullData }) => {
     });
     return obj;
   });
-  useEffect(() => {
-    console.log(dadEffectArr1);
-  }, [dadEffectArr1]);
   const [trigger, setTrigger] = useState(false);
   const [trigger1, setTrigger1] = useState(false);
   const {
@@ -58,73 +56,28 @@ const LandingPageForm = ({ preLoadValue, fullData }) => {
     }, [preLoadValue]),
   });
 
-  // const submitNewsEditor = (data) => {
-  //   let titleArr = data.title1.split("\n");
-  //   const newFormBanner = new FormData();
-  //   newFormBanner.append("firstLine", titleArr[0]);
-  //   newFormBanner.append("secondLine", titleArr[1]);
-  //   newFormBanner.append("thirdLine", titleArr[2]);
-  //   newFormBanner.append("img", data.image1[0]);
-  //   console.log(newFormBanner);
-  //   //if not success add to headers: { "Content-Type": "multipart/form-data" },
-  //   editInfoLandingPage(1, newFormBanner);
-
-  //   const section1Arr = data.content1Line1.split("\n");
-  //   const objSection1 = {
-  //     firstLine: section1Arr[0],
-  //     secondLine: section1Arr[1],
-  //     thirdLine: section1Arr[2],
-  //     fourthLine: section1Arr[3],
-  //     fifthLine: section1Arr[4],
-  //     sixthLine: section1Arr[5],
-  //   };
-  //   // console.log(objSection1);
-  //   editInfoLandingPage(2, objSection1);
-
-  //   const section2Arr = data.content2Line1.split("\n");
-  //   const objSection2 = {
-  //     firstLine: section2Arr[0],
-  //     secondLine: section2Arr[1],
-  //     thirdLine: section2Arr[2],
-  //     fourthLine: section2Arr[3],
-  //     fifthLine: section2Arr[4],
-  //   };
-  //   editInfoLandingPage(3, objSection2);
-
-  //   const section3Arr = data.content3Line1.split("\n");
-  //   const newFormObjecSection3 = new FormData();
-  //   newFormObjecSection3.append("firstLine", section3Arr[0]);
-  //   newFormObjecSection3.append("secondLine", section3Arr[1]);
-  //   newFormObjecSection3.append("thirdLine", section3Arr[2]);
-  //   newFormObjecSection3.append("fourthLine", section3Arr[3]);
-  //   newFormObjecSection3.append("fifthLine", section3Arr[4]);
-  //   newFormObjecSection3.append("sixthLine", section3Arr[5]);
-  //   newFormObjecSection3.append("seventhLine", section3Arr[6]);
-  //   newFormObjecSection3.append("eighthLine", section3Arr[7]);
-  //   newFormObjecSection3.append("ninthLine", section3Arr[8]);
-  //   newFormObjecSection3.append("tenthLine", section3Arr[9]);
-  //   newFormObjecSection3.append("img", data.image2[0]);
-  //   editInfoLandingPage(4, newFormObjecSection3);
-
-  //   const section4Arr = data.content4Line1.split("\n");
-  //   const objSection4 = {
-  //     firstLine: section4Arr[0],
-  //     secondLine: section4Arr[1],
-  //     thirdLine: section4Arr[2],
-  //     fourthLine: section4Arr[3],
-  //     fifthLine: section4Arr[4],
-  //   };
-  //   editInfoLandingPage(5, objSection4);
-
-  //   const section5Arr = data.content5Line1.split("\n");
-  //   const objSection5 = {
-  //     firstLine: section5Arr[0],
-  //     secondLine: section5Arr[1],
-  //     thirdLine: section5Arr[2],
-  //   };
-  //   editInfoLandingPage(6, objSection5);
-  // };
-  const submitNewsEditor = (data) => {
+  const submitNewsEditor = async (data) => {
+    let arrImg = [data.image1[0], data.image2[0], data.image3[0]];
+    arrImg = await Promise.all(
+      arrImg.map(async (item) => {
+        let downloadURL;
+        const sotrageRef = ref(storage, `web/${item.name}`);
+        const uploadTask = uploadBytesResumable(sotrageRef, item);
+        downloadURL = await new Promise((resolve, reject) => {
+          uploadTask.on(
+            "state_changed",
+            () => {},
+            (error) => console.log("err ", error),
+            async () => {
+              let url = await getDownloadURL(uploadTask.snapshot.ref);
+              resolve(url);
+            }
+          );
+        });
+        return downloadURL;
+      })
+    );
+    console.log(arrImg);
     let bodyTitle = data.title1.split("\n").map((item, idx) => {
       return { content: item, effect: dadEffectArr[idx] };
     });
@@ -138,12 +91,12 @@ const LandingPageForm = ({ preLoadValue, fullData }) => {
       {
         content: data.content3Line1,
         description: data.content3Line2,
-        image: data.image2[0],
+        image: arrImg[1],
       },
       {
         content: data.content4Line1,
         description: data.content4Line2,
-        image: data.image3[0],
+        image: arrImg[2],
       },
       { content: data.content5Line1, description: data.content5Line2 },
     ];
@@ -152,18 +105,10 @@ const LandingPageForm = ({ preLoadValue, fullData }) => {
       description: bodyDescription,
       subTitle: bodySubTitle,
       listContent: bodyListContent,
-      mainImage: data.image1[0],
+      mainImage: arrImg[0],
     };
-    const formDatas = new FormData();
-    formDatas.append("title", bodyTitle);
-    formDatas.append("description", bodyDescription);
-    formDatas.append("subTitle", bodySubTitle);
-    formDatas.append("listContent", bodyListContent);
-    formDatas.append("mainImage", data.image1[0]);
-    for (var pair of formDatas.entries()) {
-      console.log(pair[0]+ ' - ' + JSON.stringify(pair[1])); 
-  }
-    editLandingPageData(formDatas);
+    console.log(body);
+    editLandingPageData(body);
   };
   useEffect(() => {
     reset(preLoadValue);
@@ -405,3 +350,70 @@ const LandingPageForm = ({ preLoadValue, fullData }) => {
 };
 
 export default LandingPageForm;
+
+// const submitNewsEditor = (data) => {
+//   let titleArr = data.title1.split("\n");
+//   const newFormBanner = new FormData();
+//   newFormBanner.append("firstLine", titleArr[0]);
+//   newFormBanner.append("secondLine", titleArr[1]);
+//   newFormBanner.append("thirdLine", titleArr[2]);
+//   newFormBanner.append("img", data.image1[0]);
+//   console.log(newFormBanner);
+//   //if not success add to headers: { "Content-Type": "multipart/form-data" },
+//   editInfoLandingPage(1, newFormBanner);
+
+//   const section1Arr = data.content1Line1.split("\n");
+//   const objSection1 = {
+//     firstLine: section1Arr[0],
+//     secondLine: section1Arr[1],
+//     thirdLine: section1Arr[2],
+//     fourthLine: section1Arr[3],
+//     fifthLine: section1Arr[4],
+//     sixthLine: section1Arr[5],
+//   };
+//   // console.log(objSection1);
+//   editInfoLandingPage(2, objSection1);
+
+//   const section2Arr = data.content2Line1.split("\n");
+//   const objSection2 = {
+//     firstLine: section2Arr[0],
+//     secondLine: section2Arr[1],
+//     thirdLine: section2Arr[2],
+//     fourthLine: section2Arr[3],
+//     fifthLine: section2Arr[4],
+//   };
+//   editInfoLandingPage(3, objSection2);
+
+//   const section3Arr = data.content3Line1.split("\n");
+//   const newFormObjecSection3 = new FormData();
+//   newFormObjecSection3.append("firstLine", section3Arr[0]);
+//   newFormObjecSection3.append("secondLine", section3Arr[1]);
+//   newFormObjecSection3.append("thirdLine", section3Arr[2]);
+//   newFormObjecSection3.append("fourthLine", section3Arr[3]);
+//   newFormObjecSection3.append("fifthLine", section3Arr[4]);
+//   newFormObjecSection3.append("sixthLine", section3Arr[5]);
+//   newFormObjecSection3.append("seventhLine", section3Arr[6]);
+//   newFormObjecSection3.append("eighthLine", section3Arr[7]);
+//   newFormObjecSection3.append("ninthLine", section3Arr[8]);
+//   newFormObjecSection3.append("tenthLine", section3Arr[9]);
+//   newFormObjecSection3.append("img", data.image2[0]);
+//   editInfoLandingPage(4, newFormObjecSection3);
+
+//   const section4Arr = data.content4Line1.split("\n");
+//   const objSection4 = {
+//     firstLine: section4Arr[0],
+//     secondLine: section4Arr[1],
+//     thirdLine: section4Arr[2],
+//     fourthLine: section4Arr[3],
+//     fifthLine: section4Arr[4],
+//   };
+//   editInfoLandingPage(5, objSection4);
+
+//   const section5Arr = data.content5Line1.split("\n");
+//   const objSection5 = {
+//     firstLine: section5Arr[0],
+//     secondLine: section5Arr[1],
+//     thirdLine: section5Arr[2],
+//   };
+//   editInfoLandingPage(6, objSection5);
+// };
