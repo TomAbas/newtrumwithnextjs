@@ -50,49 +50,7 @@ const NewsCkEditor = ({
               )}
             </div>
             <div className={styles.row1}>
-              <div className={styles.titleEdit}>
-                {editorLoaded ? (
-                  <CKEditor
-                    className={styles.ckEditor}
-                    editor={ClassicEditor}
-                    data=''
-                    onReady={(editor) => {
-                      // You can store the "editor" and use when it is needed.
-                      console.log("Editor is ready to use!", editor);
-                    }}
-                    onChange={(event, editor) => {
-                      const data = editor.getData();
-
-                      setNewContent1(data);
-                      console.log({ event, editor, data });
-                    }}
-                  />
-                ) : (
-                  <div>Editor loading</div>
-                )}
-                {/* <CKEditor
-                  className={styles.ckEditor}
-                  editor={Editor}
-                  name='content1'
-                  data=''
-                  onReady={(editor) => {
-                    // You can store the "editor" and use when it is needed.
-                    console.log("Editor is ready to use!", editor);
-                  }}
-                  onChange={(event, editor) => {
-                    const data = editor.getData();
-
-                    isAddNews ? setNewNewsContent1(data) : setNewContent1(data);
-                    console.log({ event, editor, data });
-                  }}
-                  onBlur={(event, editor) => {
-                    // console.log("Blur.", editor);
-                  }}
-                  onFocus={(event, editor) => {
-                    // console.log("Focus.", editor);
-                  }}
-                /> */}
-              </div>
+              <div className={styles.titleEdit}></div>
             </div>
           </div>
           <div className={styles.content4Edit}>
@@ -109,14 +67,13 @@ const NewsCkEditor = ({
                   <CKEditor
                     className={styles.ckEditor}
                     editor={ClassicEditor}
-                    data=''
-                    onReady={(editor) => {
-                      // You can store the "editor" and use when it is needed.
-                      console.log("Editor is ready to use!", editor);
-                    }}
+                    data="a"
+                    // onReady={(editor) => {
+                    //   // You can store the "editor" and use when it is needed.
+                    //   console.log("Editor is ready to use!", editor);
+                    // }}
                     onChange={(event, editor) => {
                       const data = editor.getData();
-
                       setNewContent2(data);
                       console.log({ event, editor, data });
                     }}
@@ -152,8 +109,8 @@ const NewsCkEditor = ({
             submit
           </button> */}
           <Button
-            variant='outlined'
-            type='submit'
+            variant="outlined"
+            type="submit"
             disabled={didNotSubmitHeadForm}
           >
             submit

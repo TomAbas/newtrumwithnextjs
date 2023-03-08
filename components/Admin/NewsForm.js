@@ -71,20 +71,11 @@ const NewsForm = () => {
   const fetchNewsId = async (id) => {
     try {
       let post = await getPost(id);
-      let preLoadValue = {
-        title1: post[0].title,
-        title2: post[0].title2,
-        headLine1: post[0].tagline11,
-        headLine2: post[0].tagline12,
-        subHeadLine: post[0].tagline21,
-        tagLine1: post[0].subtitle,
-        tagLine2: post[0].subtitle2,
-        category: post[0].category,
-        youtubeUrl: post[0].youtubeLink,
-      };
+      console.log(post);
+      let preLoadValue = post;
       setDefaultValues(preLoadValue);
-      setCurrentContent1(data[0].content);
-      setCurrentContent2(data[0].contetn2);
+      // setCurrentContent1(data[0].content);
+      // setCurrentContent2(data[0].contetn2);
       setTrigger(true);
     } catch (error) {
       console.log(error);
@@ -175,8 +166,9 @@ const NewsForm = () => {
                         <ListItemButton
                           key={`item-${idx}`}
                           onClick={async () => {
-                            await fetchNewsId(item.postId);
-                            setNewsIdx(item.postId);
+                            console.log(item.title);
+                            await fetchNewsId(item.title);
+                            setNewsIdx(item._id);
                             setIsAddContributor(false);
                             // console.log(`${urlNewsId}/${newsIdx}`);
                           }}
@@ -191,9 +183,9 @@ const NewsForm = () => {
                     <div className={styles.btnGroup}>
                       <div>
                         <IconButton
-                          size='small'
+                          size="small"
                           sx={{ flex: "30%" }}
-                          variant='contained'
+                          variant="contained"
                           // className={styles.btnContributor}
                           onClick={async () => {
                             await fetchListContributorId(item.postId);
@@ -216,9 +208,9 @@ const NewsForm = () => {
                       </IconButton> */}
                       <div>
                         <IconButton
-                          size='small'
+                          size="small"
                           sx={{ flex: "30%" }}
-                          variant='contained'
+                          variant="contained"
                           // className={styles.btnEditNews}
                           onClick={async () => {
                             await deleteNews(item.postId);
@@ -281,7 +273,7 @@ const NewsForm = () => {
               </>
             )}
             <div
-              className=''
+              className=""
               style={{
                 display: trigger && !isAddContributor ? "block" : "none",
               }}
