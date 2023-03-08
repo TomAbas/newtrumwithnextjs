@@ -37,7 +37,6 @@ const NewsCkEditorAddNews = ({
           <div className={styles.content3Edit}>
             <div className={styles.bannerBanner}>ADD CONTENT 1</div>
             <h3>Content 1 - Text : </h3>
-
             <div className={styles.row1}>
               <div className={styles.titleEdit}>
                 {

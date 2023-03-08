@@ -35,6 +35,7 @@ import { useState } from "react";
 import NewsEditor from "./NewsEditor";
 import NewsCkEditor from "./NewsCkEditor";
 import { getAllPosts, getPost } from "../../ApiUrl/newsApi/newsApi";
+import { updateProjectData } from "../../ApiUrl/projectApi/projectApi";
 
 const drawerWidth = 240;
 const NewsForm = () => {
@@ -74,8 +75,8 @@ const NewsForm = () => {
       console.log(post);
       let preLoadValue = post;
       setDefaultValues(preLoadValue);
-      // setCurrentContent1(data[0].content);
-      // setCurrentContent2(data[0].contetn2);
+      setCurrentContent1(post.listContent[0].description);
+      setCurrentContent2(post.listContent[1].description);
       setTrigger(true);
     } catch (error) {
       console.log(error);
@@ -89,48 +90,51 @@ const NewsForm = () => {
   };
   const submitNewsCKEditor = async (e) => {
     e.preventDefault();
-    const newForm = new FormData();
+    console.log("submit");
     console.log(newsHeadContent);
-    newForm.append("banner", newsHeadContent.image1[0]);
-    newForm.append("img", newsHeadContent.image2[0]);
-    newForm.append("img1", newsHeadContent.image3[0]);
-    newForm.append("img2", newsHeadContent.image4[0]);
-    newForm.append("img3", newsHeadContent.image5[0]);
-    newForm.append("img4", newsHeadContent.image6[0]);
-    newForm.append("img5", newsHeadContent.image6[0]);
-    newForm.append("thumbnail", newsHeadContent.thumbnail[0]);
-    newForm.append("postId", newsIdx);
-    newForm.append("title", newsHeadContent.title1);
-    newForm.append("title2", newsHeadContent.title2);
-    newForm.append("category", newsHeadContent.category);
-    newForm.append("subtitle", newsHeadContent.tagLine1);
-    newForm.append("subtitle2", newsHeadContent.tagLine2);
-    newForm.append("youtubeLink", newsHeadContent.youtubeUrl);
-    newForm.append("tagline11", newsHeadContent.headLine1);
-    newForm.append("tagline12", newsHeadContent.headLine2);
-    newForm.append("tagline21", newsHeadContent.subHeadLine);
-    newForm.append("deleted", 0);
-    newForm.append("content", newContent1);
-    newForm.append("contetn2", newContent2);
-    console.log(newForm);
-    if (newForm) {
-      await axios({
-        url: `${urlEditNewsId}/${newsIdx}`,
-        method: "POST",
-        headers: { "Content-Type": "multipart/form-data" },
-        data: newForm,
-      })
-        .then((res) => {
-          console.log(res);
+    // await updateProjectData(newsHeadContent);
+    // const newForm = new FormData();
+    // console.log(newsHeadContent);
+    // newForm.append("banner", newsHeadContent.image1[0]);
+    // newForm.append("img", newsHeadContent.image2[0]);
+    // newForm.append("img1", newsHeadContent.image3[0]);
+    // newForm.append("img2", newsHeadContent.image4[0]);
+    // newForm.append("img3", newsHeadContent.image5[0]);
+    // newForm.append("img4", newsHeadContent.image6[0]);
+    // newForm.append("img5", newsHeadContent.image6[0]);
+    // newForm.append("thumbnail", newsHeadContent.thumbnail[0]);
+    // newForm.append("postId", newsIdx);
+    // newForm.append("title", newsHeadContent.title1);
+    // newForm.append("title2", newsHeadContent.title2);
+    // newForm.append("category", newsHeadContent.category);
+    // newForm.append("subtitle", newsHeadContent.tagLine1);
+    // newForm.append("subtitle2", newsHeadContent.tagLine2);
+    // newForm.append("youtubeLink", newsHeadContent.youtubeUrl);
+    // newForm.append("tagline11", newsHeadContent.headLine1);
+    // newForm.append("tagline12", newsHeadContent.headLine2);
+    // newForm.append("tagline21", newsHeadContent.subHeadLine);
+    // newForm.append("deleted", 0);
+    // newForm.append("content", newContent1);
+    // newForm.append("contetn2", newContent2);
+    // console.log(newForm);
+    // if (newForm) {
+    //   await axios({
+    //     url: `${urlEditNewsId}/${newsIdx}`,
+    //     method: "POST",
+    //     headers: { "Content-Type": "multipart/form-data" },
+    //     data: newForm,
+    //   })
+    //     .then((res) => {
+    //       console.log(res);
 
-          setNewsHeadContent([]);
-          setCurrentContent1("");
-          setCurrentContent2("");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
+    setNewsHeadContent([]);
+    setCurrentContent1("");
+    setCurrentContent2("");
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+    // }
   };
   useEffect(() => {
     fetchListNews();
