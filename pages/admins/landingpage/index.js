@@ -3,6 +3,7 @@ import { getLandingPageData } from "../../../ApiUrl/landingpageApi/landingApi";
 import LandingPageForm from "../../../components/Admin/LandingPageForm";
 
 const Index = () => {
+  const [fullData, setFullData] = useState();
   const [defaultValues, setDefaultValues] = useState();
   const fetchLandingPageData = async () => {
     await getLandingPageData().then((data) => {
@@ -29,6 +30,7 @@ const Index = () => {
         content5Line2: content5Line2,
       };
       setDefaultValues(preLoadValue);
+      setFullData(data);
     });
   };
   useEffect(() => {
@@ -37,7 +39,7 @@ const Index = () => {
   return (
     <>
       {defaultValues ? (
-        <LandingPageForm preLoadValue={defaultValues} />
+        <LandingPageForm preLoadValue={defaultValues} fullData={fullData} />
       ) : (
         <div>Loading...</div>
       )}
