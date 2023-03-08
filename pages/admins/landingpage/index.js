@@ -28,6 +28,9 @@ const Index = () => {
         content4Line2: content4Line2,
         content5Line1: content5Line1,
         content5Line2: content5Line2,
+        image1: data.mainImage,
+        image2: data.listContent[0].image,
+        image3: data.listContent[1].image,
       };
       setDefaultValues(preLoadValue);
       setFullData(data);

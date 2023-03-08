@@ -50,7 +50,26 @@ const NewsCkEditor = ({
               )}
             </div>
             <div className={styles.row1}>
-              <div className={styles.titleEdit}></div>
+              <div className={styles.titleEdit}>
+                {editorLoaded ? (
+                  <CKEditor
+                    className={styles.ckEditor}
+                    editor={ClassicEditor}
+                    data=""
+                    onReady={(editor) => {
+                      // You can store the "editor" and use when it is needed.
+                      console.log("Editor is ready to use!", editor);
+                    }}
+                    onChange={(event, editor) => {
+                      const data = editor.getData();
+                      setNewContent1(data);
+                      console.log({ event, editor, data });
+                    }}
+                  />
+                ) : (
+                  <div>Editor loading</div>
+                )}
+              </div>
             </div>
           </div>
           <div className={styles.content4Edit}>
@@ -67,11 +86,11 @@ const NewsCkEditor = ({
                   <CKEditor
                     className={styles.ckEditor}
                     editor={ClassicEditor}
-                    data="a"
-                    // onReady={(editor) => {
-                    //   // You can store the "editor" and use when it is needed.
-                    //   console.log("Editor is ready to use!", editor);
-                    // }}
+                    data=""
+                    onReady={(editor) => {
+                      // You can store the "editor" and use when it is needed.
+                      console.log("Editor is ready to use!", editor);
+                    }}
                     onChange={(event, editor) => {
                       const data = editor.getData();
                       setNewContent2(data);

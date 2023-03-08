@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "../../styles/Admin.module.css";
-
+//firebase
+import { storage } from "../../config/firbase";
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 //mui
 import { Button } from "@mui/material";
 import List from "@mui/material/List";
@@ -30,10 +32,8 @@ const schema = yup.object().shape({
   mainImage: yup.mixed().required("missing field"),
   mainImageAlt: yup.string().required("missing field"),
   content1Title: yup.string().required("missing field"),
-  content1Description: yup.string().required("missing field"),
   content1Image: yup.mixed().required("missing field"),
   content2Title: yup.string().required("missing field"),
-  content2Description: yup.string().required("missing field"),
   content2Image: yup.mixed().required("missing field"),
   image1: yup.mixed().required("missing field"),
   image2: yup.mixed().required("missing field"),
@@ -71,14 +71,131 @@ const NewsEditor = ({
     }, [preLoadValue]),
   });
 
-  const submitNewsEditor = (data) => {
-    console.log(data);
+  const submitNewsEditor = async (data) => {
+    let arrImg = [
+      data.image1[0],
+      data.image2[0],
+      data.image3[0],
+      data.image4[0],
+      data.image5[0],
+    ];
+    let swiper = await Promise.all(
+      arrImg.map(async (img, index) => {
+        try {
+          let downloadURL;
+          if (img.name === undefined) {
+            throw new Error("No file selected");
+          }
+          const sotrageRef = ref(storage, `web/${img.name}`);
+          const uploadTask = uploadBytesResumable(sotrageRef, img);
+          downloadURL = await new Promise((resolve, reject) => {
+            uploadTask.on(
+              "state_changed",
+              () => {},
+              (error) => console.log("err ", error),
+              async () => {
+                let url = await getDownloadURL(uploadTask.snapshot.ref);
+                resolve(url);
+              }
+            );
+          });
+          return { image: downloadURL };
+        } catch (error) {
+          console.log(error);
+          return { image: preLoadValue.swiper[index].image};
+        }
+      })
+    );
+
+    try {
+      if (data.mainImage[0].name !== undefined) {
+        console.log("mainImage", data.mainImage[0]);
+        const sotrageRef = ref(storage, `web/${data.mainImage[0].name}`);
+        const uploadTask = uploadBytesResumable(sotrageRef, data.mainImage[0]);
+        data.mainImage = await new Promise((resolve, reject) => {
+          uploadTask.on(
+            "state_changed",
+            () => {},
+            (error) => console.log("err ", error),
+            async () => {
+              let url = await getDownloadURL(uploadTask.snapshot.ref);
+              resolve(url);
+            }
+          );
+        });
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+
+    try {
+      if (data.content1Image[0].name !== undefined) {
+        const sotrageRef = ref(storage, `web/${data.content1Image[0].name}`);
+        const uploadTask = uploadBytesResumable(
+          sotrageRef,
+          data.content1Image[0]
+        );
+        data.content1Image = await new Promise((resolve, reject) => {
+          uploadTask.on(
+            "state_changed",
+            () => {},
+            (error) => console.log("err ", error),
+            async () => {
+              let url = await getDownloadURL(uploadTask.snapshot.ref);
+              resolve(url);
+            }
+          );
+        });
+      }
+    } catch (error) {
+      data.content1Image = preLoadValue.listContent[0].image;
+      console.log("error", error);
+    }
+    try {
+      if (data.content2Image && data.content2Image[0].name !== undefined) {
+        const sotrageRef = ref(storage, `web/${data.content2Image[0].name}`);
+        const uploadTask = uploadBytesResumable(
+          sotrageRef,
+          data.content2Image[0]
+        );
+        data.content2Image = await new Promise((resolve, reject) => {
+          uploadTask.on(
+            "state_changed",
+            () => {},
+            (error) => console.log("err ", error),
+            async () => {
+              let url = await getDownloadURL(uploadTask.snapshot.ref);
+              resolve(url);
+            }
+          );
+        });
+      }
+    } catch (error) {
+      data.content2Image = preLoadValue.listContent[1].image;
+      console.log("error", error);
+    }
+
+    let submitData = {
+      mainImage: data.mainImage,
+      mainImageAlt: data.mainImageAlt,
+      title: data.title,
+      category: data.category,
+      video: data.video,
+      videoAlt: data.videoAlt,
+      swiper: swiper,
+      listContent: [
+        { title: data.content1Title, image: data.content1Image },
+        { title: data.content2Title, image: data.content2Image },
+      ],
+    };
+
+    console.log(submitData);
 
     if (isAddNews) {
       setNewNewsHeadContent(data);
       setDidNotSubmitHeadForm2(false);
     } else {
-      setNewsHeadContent(data);
+      setNewsHeadContent(submitData);
       setDidNotSubmitHeadForm(false);
     }
   };
@@ -336,17 +453,6 @@ const NewsEditor = ({
             </div>
 
             <div className={styles.titleEdit}>
-              <h3>Description : </h3>
-              <textarea
-                type="text"
-                defaultValue={preLoadValue?.listContent[0].description}
-                className={styles.inputField}
-                name="content1Description"
-                {...register("content1Description")}
-              />
-              <p>{errors.content1Description?.message}</p>
-            </div>
-            <div className={styles.titleEdit}>
               <h3>Choose a image for content: </h3>
               <input
                 type="file"
@@ -371,17 +477,6 @@ const NewsEditor = ({
               <p>{errors.content2Title?.message}</p>
             </div>
 
-            <div className={styles.titleEdit}>
-              <h3>Description : </h3>
-              <textarea
-                type="text"
-                defaultValue={preLoadValue?.listContent[1].description}
-                className={styles.inputField}
-                name="content2Description"
-                {...register("content2Description")}
-              />
-              <p>{errors.content2Description?.message}</p>
-            </div>
             <div className={styles.titleEdit}>
               <h3>Choose a image for content: </h3>
               <input
