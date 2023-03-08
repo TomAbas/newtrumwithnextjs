@@ -6,7 +6,9 @@ export async function getLandingPageData() {
 
 export async function editLandingPageData(body) {
   return axiosClient
-    .post("homepage/update", body)
+    .put("homepage/update", body, {
+      headers: { "Content-Type": "multipart/form-data" },
+    })
     .then(({ data }) => console.log(data))
     .catch((err) => console.log(err));
 }

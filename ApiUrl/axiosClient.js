@@ -2,6 +2,8 @@ import axios from "axios";
 
 const axiosClient = axios.create({
   baseURL: "https://hoangnt-trum-api.herokuapp.com/",
+  // baseURL: "http://192.168.0.185:3000",
+
 });
 
 axiosClient.interceptors.request.use(

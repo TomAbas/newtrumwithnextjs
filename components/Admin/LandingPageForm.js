@@ -154,14 +154,16 @@ const LandingPageForm = ({ preLoadValue, fullData }) => {
       listContent: bodyListContent,
       mainImage: data.image1[0],
     };
-    const formData = new FormData();
-    formData.append("title", bodyTitle);
-    formData.append("description", bodyDescription);
-    formData.append("subTitle", bodySubTitle);
-    formData.append("listContent", bodyListContent);
-    formData.append("mainImage", data.image1[0]);
-    console.log(body);
-    editLandingPageData(formData);
+    const formDatas = new FormData();
+    formDatas.append("title", bodyTitle);
+    formDatas.append("description", bodyDescription);
+    formDatas.append("subTitle", bodySubTitle);
+    formDatas.append("listContent", bodyListContent);
+    formDatas.append("mainImage", data.image1[0]);
+    for (var pair of formDatas.entries()) {
+      console.log(pair[0]+ ' - ' + JSON.stringify(pair[1])); 
+  }
+    editLandingPageData(formDatas);
   };
   useEffect(() => {
     reset(preLoadValue);
