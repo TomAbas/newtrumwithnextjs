@@ -145,9 +145,10 @@
 }
 
 .btnGroup {
-  display: flex;
+  /* width: 100%; */
+  /* display: flex;
   gap: 5px;
-  justify-content: space-around;
+  justify-content: space-around; */
 }
 .btnContributor {
   width: fit-content;
@@ -179,10 +180,16 @@
 }
 
 .itemNews {
-  border: 1px solid #ccc;
+ border-bottom: 2px solid gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 4px 10px;
 }
-
+.itemNews ul{
+  min-width: 200px;
+  max-width: 250px;
+}
 .waitingForm {
   padding: 10px 20px;
 }
@@ -270,7 +277,7 @@
   font-size: 16px;
   font-weight: 50;
   line-height: 19px;
-  color: #131740;
+  color: #282b4c;
   background: #fff;
   border: 1px solid #e7e8ec;
   font-family: Montserrat, sans-serif;

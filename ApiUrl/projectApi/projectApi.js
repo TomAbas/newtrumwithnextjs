@@ -11,9 +11,7 @@ export async function getAllProject() {
 }
 
 export async function updateProjectData(data) {
-  let id = data._id;
-  delete data._id;
   return axiosClient
-    .put(`project/update/${id}`, data)
+    .put(`project/update/${data.id}`, data)
     .then(({ data }) => data);
 }

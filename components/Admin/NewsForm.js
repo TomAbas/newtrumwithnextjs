@@ -91,8 +91,15 @@ const NewsForm = () => {
   const submitNewsCKEditor = async (e) => {
     e.preventDefault();
     console.log("submit");
-    console.log(newsHeadContent);
-    // await updateProjectData(newsHeadContent);
+    let body = {
+      ...newsHeadContent,
+      listContent: [
+        { ...newsHeadContent.listContent[0], description: newContent1 },
+        { ...newsHeadContent.listContent[1], description: newContent2 },
+      ],
+    };
+    console.log(body);
+    await updateProjectData(body);
     // const newForm = new FormData();
     // console.log(newsHeadContent);
     // newForm.append("banner", newsHeadContent.image1[0]);
@@ -130,11 +137,6 @@ const NewsForm = () => {
     setNewsHeadContent([]);
     setCurrentContent1("");
     setCurrentContent2("");
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-    // }
   };
   useEffect(() => {
     fetchListNews();
@@ -185,31 +187,6 @@ const NewsForm = () => {
                       </ListItem>
                     </List>
                     <div className={styles.btnGroup}>
-                      <div>
-                        <IconButton
-                          size="small"
-                          sx={{ flex: "30%" }}
-                          variant="contained"
-                          // className={styles.btnContributor}
-                          onClick={async () => {
-                            await fetchListContributorId(item.postId);
-                            setNewsIdx(item.postId);
-                            await fetchNewsId(item.postId);
-                            setIsAddContributor(true);
-                          }}
-                        >
-                          <PersonAddIcon />
-                        </IconButton>
-                      </div>
-
-                      {/* <IconButton
-                        size='small'
-                        sx={{ flex: "30%" }}
-                        variant='contained'
-                        className='btn-edit-news'
-                      >
-                        <EditIcon />
-                      </IconButton> */}
                       <div>
                         <IconButton
                           size="small"
