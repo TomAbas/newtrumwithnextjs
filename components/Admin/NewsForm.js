@@ -35,7 +35,10 @@ import { useState } from "react";
 import NewsEditor from "./NewsEditor";
 import NewsCkEditor from "./NewsCkEditor";
 import { getAllPosts, getPost } from "../../ApiUrl/newsApi/newsApi";
-import { updateProjectData } from "../../ApiUrl/projectApi/projectApi";
+import {
+  deleteProject,
+  updateProjectData,
+} from "../../ApiUrl/projectApi/projectApi";
 
 const drawerWidth = 240;
 const NewsForm = () => {
@@ -54,15 +57,21 @@ const NewsForm = () => {
   const [didNotSubmitHeadForm, setDidNotSubmitHeadForm] = useState(true);
   const [trigger1, setTrigger1] = useState();
   const deleteNews = async (id) => {
-    await axios
-      .post(`${urlDeleteNewsId}/${id}`)
-      .then((res) => {
-        console.log(res);
-        setReDelete(!reDelete);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // await axios
+    //   .post(`${urlDeleteNewsId}/${id}`)
+    //   .then((res) => {
+    //     console.log(res);
+    //     setReDelete(!reDelete);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+    try {
+      await deleteProject(id);
+      setReDelete(!reDelete);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const fetchListNews = async () => {
     await getAllPosts().then((data) => {
@@ -82,12 +91,7 @@ const NewsForm = () => {
       console.log(error);
     }
   };
-  const fetchListContributorId = async (id) => {
-    await axios.get(`${urlListContributorIdPost}/${id}`).then(({ data }) => {
-      console.log(data);
-      setContributorList(data);
-    });
-  };
+
   const submitNewsCKEditor = async (e) => {
     e.preventDefault();
     console.log("submit");
@@ -98,45 +102,14 @@ const NewsForm = () => {
         { ...newsHeadContent.listContent[1], description: newContent2 },
       ],
     };
-    console.log(body);
-    await updateProjectData(body);
-    // const newForm = new FormData();
-    // console.log(newsHeadContent);
-    // newForm.append("banner", newsHeadContent.image1[0]);
-    // newForm.append("img", newsHeadContent.image2[0]);
-    // newForm.append("img1", newsHeadContent.image3[0]);
-    // newForm.append("img2", newsHeadContent.image4[0]);
-    // newForm.append("img3", newsHeadContent.image5[0]);
-    // newForm.append("img4", newsHeadContent.image6[0]);
-    // newForm.append("img5", newsHeadContent.image6[0]);
-    // newForm.append("thumbnail", newsHeadContent.thumbnail[0]);
-    // newForm.append("postId", newsIdx);
-    // newForm.append("title", newsHeadContent.title1);
-    // newForm.append("title2", newsHeadContent.title2);
-    // newForm.append("category", newsHeadContent.category);
-    // newForm.append("subtitle", newsHeadContent.tagLine1);
-    // newForm.append("subtitle2", newsHeadContent.tagLine2);
-    // newForm.append("youtubeLink", newsHeadContent.youtubeUrl);
-    // newForm.append("tagline11", newsHeadContent.headLine1);
-    // newForm.append("tagline12", newsHeadContent.headLine2);
-    // newForm.append("tagline21", newsHeadContent.subHeadLine);
-    // newForm.append("deleted", 0);
-    // newForm.append("content", newContent1);
-    // newForm.append("contetn2", newContent2);
-    // console.log(newForm);
-    // if (newForm) {
-    //   await axios({
-    //     url: `${urlEditNewsId}/${newsIdx}`,
-    //     method: "POST",
-    //     headers: { "Content-Type": "multipart/form-data" },
-    //     data: newForm,
-    //   })
-    //     .then((res) => {
-    //       console.log(res);
-
-    setNewsHeadContent([]);
-    setCurrentContent1("");
-    setCurrentContent2("");
+    try {
+      await updateProjectData(body);
+      setNewsHeadContent([]);
+      setCurrentContent1("");
+      setCurrentContent2("");
+    } catch (error) {
+      console.log(error);
+    }
   };
   useEffect(() => {
     fetchListNews();
@@ -193,8 +166,8 @@ const NewsForm = () => {
                           sx={{ flex: "30%" }}
                           variant="contained"
                           // className={styles.btnEditNews}
-                          onClick={async () => {
-                            await deleteNews(item.postId);
+                          onClick={() => {
+                            deleteNews(item._id);
                             console.log("click");
                           }}
                         >
@@ -277,3 +250,37 @@ const NewsForm = () => {
 };
 
 export default NewsForm;
+
+// const newForm = new FormData();
+// console.log(newsHeadContent);
+// newForm.append("banner", newsHeadContent.image1[0]);
+// newForm.append("img", newsHeadContent.image2[0]);
+// newForm.append("img1", newsHeadContent.image3[0]);
+// newForm.append("img2", newsHeadContent.image4[0]);
+// newForm.append("img3", newsHeadContent.image5[0]);
+// newForm.append("img4", newsHeadContent.image6[0]);
+// newForm.append("img5", newsHeadContent.image6[0]);
+// newForm.append("thumbnail", newsHeadContent.thumbnail[0]);
+// newForm.append("postId", newsIdx);
+// newForm.append("title", newsHeadContent.title1);
+// newForm.append("title2", newsHeadContent.title2);
+// newForm.append("category", newsHeadContent.category);
+// newForm.append("subtitle", newsHeadContent.tagLine1);
+// newForm.append("subtitle2", newsHeadContent.tagLine2);
+// newForm.append("youtubeLink", newsHeadContent.youtubeUrl);
+// newForm.append("tagline11", newsHeadContent.headLine1);
+// newForm.append("tagline12", newsHeadContent.headLine2);
+// newForm.append("tagline21", newsHeadContent.subHeadLine);
+// newForm.append("deleted", 0);
+// newForm.append("content", newContent1);
+// newForm.append("contetn2", newContent2);
+// console.log(newForm);
+// if (newForm) {
+//   await axios({
+//     url: `${urlEditNewsId}/${newsIdx}`,
+//     method: "POST",
+//     headers: { "Content-Type": "multipart/form-data" },
+//     data: newForm,
+//   })
+//     .then((res) => {
+//       console.log(res);
