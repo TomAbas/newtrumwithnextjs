@@ -11,10 +11,14 @@ import { urlEditCompanyInfo } from "../../ApiUrl/Api";
 import { useEffect } from "react";
 import { Button } from "@mui/material";
 import { editContactPageData } from "../../ApiUrl/contact/contact";
+import { editTitleRecuiterData } from "../../ApiUrl/recuiter/recuiter";
+import { toast } from "react-toastify";
 const schema = yup.object().shape({
   title1: yup.string(),
   title2: yup.string(),
   title3: yup.string(),
+  content1Line1: yup.string(),
+  content1Line2: yup.string(),
   content1Line3: yup.string(),
   content1Line4: yup.string(),
   content1Line5: yup.string(),
@@ -45,16 +49,20 @@ const CompanyInfo = ({ defaultValuesCom }) => {
       twitter: data.content1Line5,
       linkedin: data.content1Line6,
     };
-    // console.log(submitData);
-    editContactPageData(submitData);
+    const submitData1 = {
+      title: data.content1Line1,
+      description: data.content1Line2,
+    };
+    try {
+      await editContactPageData(submitData);
+      await editTitleRecuiterData(submitData1);
+      toast.success("Successfully edited company info");
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to edit, please try again");
+    }
   };
-  // useEffect(() => {
-  //   editorRef.current = {
-  //     CKEditor: require("@ckeditor/ckeditor5-react").CKEditor, //Added .CKEditor
-  //     ClassicEditor: require("@ckeditor/ckeditor5-build-classic"),
-  //   };
-  //   setEditorLoaded(true);
-  // }, []);
+
   useEffect(() => {
     reset(defaultValuesCom);
   }, [defaultValuesCom]);
@@ -99,6 +107,32 @@ const CompanyInfo = ({ defaultValuesCom }) => {
                     {...register("title3")}
                   />
                   <p>{errors.title2?.message}</p>
+                </div>
+              </div>
+            </div>
+            <div className={styles.bannerEdit}>
+              <div className={styles.bannerBanner}>EDIT RECUITMENT INFO :</div>
+              <div className={styles.row1}>
+                <div className={styles.titleEdit}>
+                  <h3>Title : </h3>
+                  <textarea
+                    type='text'
+                    className={styles.inputField}
+                    name='content1Line1'
+                    {...register("content1Line1")}
+                  />
+
+                  <p>{errors.content1Line1?.message}</p>
+                </div>
+                <div className={styles.titleEdit}>
+                  <h3>Slogan : </h3>
+                  <textarea
+                    type='text'
+                    className={styles.inputField}
+                    name='content1Line2'
+                    {...register("content1Line2")}
+                  />
+                  <p>{errors.content1Line2?.message}</p>
                 </div>
               </div>
             </div>
@@ -161,3 +195,10 @@ const CompanyInfo = ({ defaultValuesCom }) => {
 };
 
 export default CompanyInfo;
+// useEffect(() => {
+//   editorRef.current = {
+//     CKEditor: require("@ckeditor/ckeditor5-react").CKEditor, //Added .CKEditor
+//     ClassicEditor: require("@ckeditor/ckeditor5-build-classic"),
+//   };
+//   setEditorLoaded(true);
+// }, []);

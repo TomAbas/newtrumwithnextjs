@@ -1,7 +1,8 @@
 import "../styles/globals.css";
 import Layout from "../components/Layout.js";
 import LayoutAdmin from "../components/LayoutAdmin";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function MyApp({ Component, pageProps, ...appProps }) {
   const getContent = () => {
     if (
@@ -14,6 +15,7 @@ function MyApp({ Component, pageProps, ...appProps }) {
     )
       return (
         <LayoutAdmin>
+          <ToastContainer />
           <Component {...pageProps} />
         </LayoutAdmin>
       );

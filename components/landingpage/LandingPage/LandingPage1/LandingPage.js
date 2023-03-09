@@ -3,7 +3,7 @@ import styles from "../../../../styles/LandingPageStyles.module.css";
 import { useRef } from "react";
 import { useEffect } from "react";
 import landingpagepic from "/public/imgs/landingpagepic.png";
-const LandingPage = ({ landingPageData }) => {
+const LandingPage = ({ landingPageData, mainImage }) => {
   const refWord0 = useRef();
   const renderAnim = () => {
     return landingPageData?.map((item, oIdx) => {
@@ -52,7 +52,7 @@ const LandingPage = ({ landingPageData }) => {
         <div
           className={styles.landingPagePicInside}
           style={{
-            backgroundImage: landingPageData && `url(${landingpagepic.src})`,
+            backgroundImage: landingPageData && `url(${mainImage})`,
           }}
         ></div>
       </div>

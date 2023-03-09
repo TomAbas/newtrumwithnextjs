@@ -31,36 +31,36 @@ const navConfig = [
     path: "/admins/companyinfo",
     icon: getIcon("mdi:advertisements"),
   },
-  {
-    title: "Analytics",
-    path: "/admins/google-analytic",
-    icon: getIcon("akar-icons:statistic-up"),
-  },
   // {
-  //   title: 'Import NFT',
-  //   path: '/admins/import-nft',
-  //   icon: getIcon('dashicons:database-import'),
+  //   title: "Analytics",
+  //   path: "/admins/google-analytic",
+  //   icon: getIcon("akar-icons:statistic-up"),
   // },
-  {
-    title: "INO",
-    path: "/admins/step-ino",
-    icon: getIcon("clarity:deploy-solid"),
-  },
-  {
-    title: "Auction",
-    path: "/admins/step-auction",
-    icon: getIcon("clarity:deploy-solid"),
-  },
-  {
-    title: "INO Request",
-    path: "/admins/request-ino",
-    icon: getIcon("carbon:request-quote"),
-  },
-  {
-    title: "INOs",
-    path: "/admins/inos",
-    icon: getIcon("carbon:request-quote"),
-  },
+  // // {
+  // //   title: 'Import NFT',
+  // //   path: '/admins/import-nft',
+  // //   icon: getIcon('dashicons:database-import'),
+  // // },
+  // {
+  //   title: "INO",
+  //   path: "/admins/step-ino",
+  //   icon: getIcon("clarity:deploy-solid"),
+  // },
+  // {
+  //   title: "Auction",
+  //   path: "/admins/step-auction",
+  //   icon: getIcon("clarity:deploy-solid"),
+  // },
+  // {
+  //   title: "INO Request",
+  //   path: "/admins/request-ino",
+  //   icon: getIcon("carbon:request-quote"),
+  // },
+  // {
+  //   title: "INOs",
+  //   path: "/admins/inos",
+  //   icon: getIcon("carbon:request-quote"),
+  // },
 
   // {
   //   title: 'blog',

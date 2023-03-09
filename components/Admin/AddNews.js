@@ -9,6 +9,7 @@ import styles from "../../styles/Admin.module.css";
 import { urlAddNews } from "../../ApiUrl/Api";
 import NewsCkEditorAddNews from "./NewsCkEditorAddNews";
 import { createProjectData } from "../../ApiUrl/projectApi/projectApi";
+import { toast } from "react-toastify";
 const AddNews = ({ isAddNews }) => {
   let preloadValue = {
     title: "",
@@ -64,8 +65,10 @@ const AddNews = ({ isAddNews }) => {
     console.log(body);
     try {
       await createProjectData(body);
+      toast.success("News added successfully");
     } catch (error) {
       console.log(error);
+      toast.error("News added failed,plesae try again");
     }
   };
   return (
@@ -82,7 +85,7 @@ const AddNews = ({ isAddNews }) => {
               isAddNews={isAddNews}
               setDidNotSubmitHeadForm2={setDidNotSubmitHeadForm2}
             />
-            <div className="">
+            <div className=''>
               {/* <NewsCkEditor
                 className={styles.ckForm}
                 setNewNewsContent1={setNewNewsContent1}
