@@ -36,7 +36,7 @@ const Hiring = () => {
     }
   };
   const fetchListJobs = async () => {
-    setArrNews(await getRecuiterData());
+    setArrNews(await getRecuiterData().then((data) => data.listJob));
   };
   const fetchJobId = async (id) => {
     let jobEdit = arrNews.find((item) => item._id === id);
@@ -104,9 +104,9 @@ const Hiring = () => {
                     <div className={styles.btnGroup}>
                       <div>
                         <IconButton
-                          size="small"
+                          size='small'
                           sx={{ flex: "30%" }}
-                          variant="contained"
+                          variant='contained'
                           // className={styles.btnEditNews}
                           onClick={() => {
                             deleteJobs(item._id);

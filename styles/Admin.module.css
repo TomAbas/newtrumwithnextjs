@@ -139,7 +139,7 @@
 .formCk {
   /* flex: 60% 1; */
 
-  width: 800px;
+  min-width: 800px;
   transition: all 0.5s ease;
   /* box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px; */
 }

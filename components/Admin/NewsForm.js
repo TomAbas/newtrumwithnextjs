@@ -55,17 +55,8 @@ const NewsForm = () => {
   const [reDelete, setReDelete] = useState(true);
   const [contributorList, setContributorList] = useState([0]);
   const [didNotSubmitHeadForm, setDidNotSubmitHeadForm] = useState(true);
-  const [trigger1, setTrigger1] = useState();
+
   const deleteNews = async (id) => {
-    // await axios
-    //   .post(`${urlDeleteNewsId}/${id}`)
-    //   .then((res) => {
-    //     console.log(res);
-    //     setReDelete(!reDelete);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
     try {
       await deleteProject(id);
       setReDelete(!reDelete);
@@ -104,7 +95,7 @@ const NewsForm = () => {
     };
     try {
       await updateProjectData(body);
-      setNewsHeadContent([]);
+      setNewsHeadContent({});
       setCurrentContent1("");
       setCurrentContent2("");
     } catch (error) {
@@ -162,9 +153,9 @@ const NewsForm = () => {
                     <div className={styles.btnGroup}>
                       <div>
                         <IconButton
-                          size="small"
+                          size='small'
                           sx={{ flex: "30%" }}
-                          variant="contained"
+                          variant='contained'
                           // className={styles.btnEditNews}
                           onClick={() => {
                             deleteNews(item._id);
@@ -227,7 +218,7 @@ const NewsForm = () => {
               </>
             )}
             <div
-              className=""
+              className=''
               style={{
                 display: trigger && !isAddContributor ? "block" : "none",
               }}

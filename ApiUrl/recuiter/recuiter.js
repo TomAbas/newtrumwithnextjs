@@ -1,12 +1,19 @@
 import axiosClient from "../axiosClient";
 
 export async function getRecuiterData() {
-  return axiosClient.get("recruitment").then(({ data }) => data.listJob);
+  return axiosClient.get("recruitment").then(({ data }) => data);
 }
 
 export async function editRecuiterData(body, id) {
   return axiosClient
     .put(`recruitment/update-hiring/${id}`, body)
+    .then(({ data }) => console.log(data))
+    .catch((err) => console.log(err));
+}
+
+export async function editTitleRecuiterData(body) {
+  return axiosClient
+    .put(`recruitment/add-hiring/`, body)
     .then(({ data }) => console.log(data))
     .catch((err) => console.log(err));
 }
