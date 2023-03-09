@@ -24,6 +24,9 @@ const ProjectPage04Swiper = ({
         const findIdx = (e) => e.title === newsBigTitle;
         let nextProject = data.findIndex(findIdx);
         console.log(data[nextProject + 1]);
+        if (nextProject === data.length - 1) {
+          return data[0];
+        }
         return data[nextProject + 1];
       })
     );
@@ -80,12 +83,12 @@ const ProjectPage04Swiper = ({
         <div className={styles.page03VideoBox}>
           <div className={styles.videoBranding}>
             <iframe
-              width='100%'
-              height='100%'
+              width="100%"
+              height="100%"
               src={"https://www.youtube.com/embed/6pGL9S-Serw"}
-              title='YouTube video player'
-              frameBorder='0'
-              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;'
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
               allowFullScreen
             ></iframe>
           </div>

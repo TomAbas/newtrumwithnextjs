@@ -51,17 +51,19 @@ const Page02Swiper = ({ isLandingPage, imgArr }) => {
     },
   ];
   const renderSlide = () => {
-    return imgArr?.map((item, idx) => {
-      return (
-        <SwiperSlide key={idx}>
-          {({ isActive, isPrev }) => {
-            return (
-              <SlideItem item={item} isActive={isActive} isPrev={isPrev} />
-            );
-          }}
-        </SwiperSlide>
-      );
-    });
+    return imgArr
+      ?.filter((item) => item.img)
+      .map((item, idx) => {
+        return (
+          <SwiperSlide key={idx}>
+            {({ isActive, isPrev }) => {
+              return (
+                <SlideItem item={item} isActive={isActive} isPrev={isPrev} />
+              );
+            }}
+          </SwiperSlide>
+        );
+      });
   };
   const variants = {
     visible: (i) => ({
@@ -76,7 +78,7 @@ const Page02Swiper = ({ isLandingPage, imgArr }) => {
   return (
     <>
       <Box
-        position='relative'
+        position="relative"
         onPointerMove={(e) => {
           onPointerMove(e, outerContainer, innerContainerRef);
         }}
@@ -102,7 +104,7 @@ const Page02Swiper = ({ isLandingPage, imgArr }) => {
                 : styles.gridBox
             }
           >
-            <Image src={gridpic} alt='grid-pic' className={styles.gridPic} />
+            <Image src={gridpic} alt="grid-pic" className={styles.gridPic} />
           </Box>
         )}
         <Box
@@ -113,7 +115,7 @@ const Page02Swiper = ({ isLandingPage, imgArr }) => {
           }}
         >
           {" "}
-          <Image src={arrowLeft} alt='arrow' />
+          <Image src={arrowLeft} alt="arrow" />
         </Box>
         <Box
           className={stylesSlide.boxArrRight}
@@ -123,7 +125,7 @@ const Page02Swiper = ({ isLandingPage, imgArr }) => {
           }}
         >
           {" "}
-          <Image src={arrowRight} alt='arrow' />
+          <Image src={arrowRight} alt="arrow" />
         </Box>
         <Container
           ref={innerContainerRef}
@@ -145,9 +147,9 @@ const Page02Swiper = ({ isLandingPage, imgArr }) => {
         </Container>
       </Box>{" "}
       <Stack
-        direction='row'
+        direction="row"
         // width='2%'
-        mx='auto'
+        mx="auto"
         justifyContent={"flex-end"}
         className={styles.slidePagination}
       >
@@ -162,7 +164,7 @@ const Page02Swiper = ({ isLandingPage, imgArr }) => {
         >
           {new Array(slide.length).fill(0).map((item, idx) => {
             return (
-              <Typography color='#fff' key={idx} ref={textRef}>
+              <Typography color="#fff" key={idx} ref={textRef}>
                 {idx + 1}
               </Typography>
             );
@@ -176,7 +178,9 @@ const Page02Swiper = ({ isLandingPage, imgArr }) => {
           transition={{ duration: 0.5 }}
           exit={{ opacity: 0 }}
         >
-          <Typography color='#fff'>{imgArr?.length}</Typography>
+          <Typography color="#fff">
+            {imgArr?.filter((item) => item.img).length}
+          </Typography>
         </motion.div>
       </Stack>
     </>

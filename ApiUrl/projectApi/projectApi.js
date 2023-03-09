@@ -17,3 +17,6 @@ export async function updateProjectData(data) {
     .put(`project/update/${data.id}`, data)
     .then(({ data }) => data);
 }
+export async function createProjectData(data) {
+  return axiosClient.post(`project/add`, data).then(({ data }) => data);
+}
