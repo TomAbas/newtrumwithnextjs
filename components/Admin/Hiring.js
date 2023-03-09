@@ -11,7 +11,10 @@ import { useEffect } from "react";
 import { useState } from "react";
 import HiringEditor from "./HringEdior";
 import AddHiring from "./AddHiring";
-import { getRecuiterData } from "../../ApiUrl/recuiter/recuiter";
+import {
+  deleteRecuiterData,
+  getRecuiterData,
+} from "../../ApiUrl/recuiter/recuiter";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import { Button } from "@mui/material";
 const drawerWidth = 240;
@@ -24,17 +27,14 @@ const Hiring = () => {
   const [newsHeadContent, setNewsHeadContent] = useState();
   const [reDelete, setReDelete] = useState(true);
 
-  // const deleteJobs = async (id) => {
-  //   await axios
-  //     .post(`${urlDeleteJob}/${id}`)
-  //     .then((res) => {
-  //       console.log(res);
-  //       setReDelete(!reDelete);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
+  const deleteJobs = async (id) => {
+    try {
+      await deleteRecuiterData(id);
+      setReDelete(!reDelete);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const fetchListJobs = async () => {
     setArrNews(await getRecuiterData());
   };
@@ -108,9 +108,8 @@ const Hiring = () => {
                           sx={{ flex: "30%" }}
                           variant="contained"
                           // className={styles.btnEditNews}
-                          onClick={async () => {
-                            await deleteJobs(item.id);
-                            console.log("click");
+                          onClick={() => {
+                            deleteJobs(item._id);
                           }}
                         >
                           <DeleteForeverIcon />

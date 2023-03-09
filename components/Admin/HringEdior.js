@@ -22,6 +22,7 @@ import { useState } from "react";
 import { useMemo } from "react";
 import { urlDeleteContributor, urlEditJob } from "../../ApiUrl/Api";
 import { urlAddContributor } from "../../ApiUrl/Api";
+import { editRecuiterData } from "../../ApiUrl/recuiter/recuiter";
 const schema = yup.object().shape({
   title1: yup.string().required("missing field"),
   title2: yup.string().required("missing field"),
@@ -41,19 +42,23 @@ const HiringEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
   });
   const submitNewsEditor = async (data) => {
     console.log(data);
-    const dataSubmit = { title: data.title1, content: data.title2 };
-    await axios
-      .post(`${urlEditJob}/${newsIdx}`, dataSubmit)
-      .then((res) => {
-        // console.log(res);
-       
-        setTrigger(!trigger);
-        
-      })
-      .catch((error) => {
-        
-        console.log(error);
-      });
+    const dataSubmit = { title: data.title1, description: data.title2 };
+    try {
+      await editRecuiterData(dataSubmit, newsIdx);
+      setTrigger(!trigger);
+    } catch (error) {
+      console.log(error);
+    }
+    // await axios
+    //   .post(`${urlEditJob}/${newsIdx}`, dataSubmit)
+    //   .then((res) => {
+    //     // console.log(res);
+
+    //     setTrigger(!trigger);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   useEffect(() => {
@@ -72,10 +77,10 @@ const HiringEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
             <div className={styles.titleEdit}>
               <h3>Position </h3>
               <textarea
-                type='text'
+                type="text"
                 // defaultValue={preLoadValue.title1}
                 className={styles.inputField}
-                name='title1'
+                name="title1"
                 {...register("title1")}
               />
               <p>{errors.title1?.message}</p>
@@ -84,17 +89,17 @@ const HiringEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
             <div className={styles.titleEdit}>
               <h3>Description </h3>
               <textarea
-                type='text'
+                type="text"
                 // defaultValue={preLoadValue.title2}
                 className={styles.inputField}
-                name='title2'
+                name="title2"
                 {...register("title2")}
               />
               <p>{errors.title2?.message}</p>
             </div>
           </div>
         </div>
-        <Button variant='outlined' type='submit'>
+        <Button variant="outlined" type="submit">
           submit
         </Button>
       </form>
