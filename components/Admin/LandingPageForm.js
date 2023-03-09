@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { Button } from "@mui/material";
 import CheckboxEffect from "./CheckboxEffect";
 import { editLandingPageData } from "../../ApiUrl/landingpageApi/landingApi";
+import { toast } from "react-toastify";
 const schema = yup.object().shape({
   title1: yup.string(),
   content1Line1: yup.string(),
@@ -116,7 +117,13 @@ const LandingPageForm = ({ preLoadValue, fullData }) => {
       mainImage: arrImg[0],
     };
     console.log(body);
-    editLandingPageData(body);
+    try {
+      await editLandingPageData(body);
+      toast.success("Edit Landing Page Success");
+    } catch (error) {
+      console.log(error);
+      toast.error("Edit Landing Page Fail, Please Try Again");
+    }
   };
   useEffect(() => {
     reset(preLoadValue);
@@ -135,9 +142,9 @@ const LandingPageForm = ({ preLoadValue, fullData }) => {
                 <div className={styles.titleEdit}>
                   <h3>Banner</h3>
                   <textarea
-                    type="text"
+                    type='text'
                     className={styles.inputField}
-                    name="title1"
+                    name='title1'
                     {...register("title1")}
                     onChange={(e) => {
                       setValue("title1", e.target.value);
@@ -180,9 +187,9 @@ const LandingPageForm = ({ preLoadValue, fullData }) => {
                 <div className={styles.titleEdit}>
                   <h3>Content 1 </h3>
                   <textarea
-                    type="text"
+                    type='text'
                     className={styles.inputField}
-                    name="content1Line1"
+                    name='content1Line1'
                     {...register("content1Line1")}
                   />
                   <p>{errors.content1Line1?.message}</p>
@@ -195,9 +202,9 @@ const LandingPageForm = ({ preLoadValue, fullData }) => {
                 <div className={styles.titleEdit}>
                   <h3>Content 2 </h3>
                   <textarea
-                    type="text"
+                    type='text'
                     className={styles.inputField}
-                    name="content2Line1"
+                    name='content2Line1'
                     {...register("content2Line1")}
                     onChange={(e) => {
                       setValue("content2Line1", e.target.value);
@@ -240,9 +247,9 @@ const LandingPageForm = ({ preLoadValue, fullData }) => {
                 <div className={styles.titleEdit}>
                   <h3>Content 3 : Content</h3>
                   <textarea
-                    type="text"
+                    type='text'
                     className={styles.inputField}
-                    name="content3Line1"
+                    name='content3Line1'
                     {...register("content3Line1")}
                   />
                   <p>{errors.content3Line1?.message}</p>
@@ -250,9 +257,9 @@ const LandingPageForm = ({ preLoadValue, fullData }) => {
                 <div className={styles.titleEdit}>
                   <h3>Content 3 : Description </h3>
                   <textarea
-                    type="text"
+                    type='text'
                     className={styles.inputField}
-                    name="content3Line2"
+                    name='content3Line2'
                     {...register("content3Line2")}
                   />
                   <p>{errors.content3Line2?.message}</p>
@@ -265,9 +272,9 @@ const LandingPageForm = ({ preLoadValue, fullData }) => {
                 <div className={styles.titleEdit}>
                   <h3>Content 4 : Content</h3>
                   <textarea
-                    type="text"
+                    type='text'
                     className={styles.inputField}
-                    name="content4Line1"
+                    name='content4Line1'
                     {...register("content4Line1")}
                   />
                   <p>{errors.content4Line1?.message}</p>
@@ -275,9 +282,9 @@ const LandingPageForm = ({ preLoadValue, fullData }) => {
                 <div className={styles.titleEdit}>
                   <h3>Content 4 : Description </h3>
                   <textarea
-                    type="text"
+                    type='text'
                     className={styles.inputField}
-                    name="content4Line2"
+                    name='content4Line2'
                     {...register("content4Line2")}
                   />
                   <p>{errors.content4Line2?.message}</p>
@@ -290,9 +297,9 @@ const LandingPageForm = ({ preLoadValue, fullData }) => {
                 <div className={styles.titleEdit}>
                   <h3>Content 5 : Content</h3>
                   <textarea
-                    type="text"
+                    type='text'
                     className={styles.inputField}
-                    name="content5Line1"
+                    name='content5Line1'
                     {...register("content5Line1")}
                   />
                   <p>{errors.content5Line1?.message}</p>
@@ -300,9 +307,9 @@ const LandingPageForm = ({ preLoadValue, fullData }) => {
                 <div className={styles.titleEdit}>
                   <h3>Content 5 : Description</h3>
                   <textarea
-                    type="text"
+                    type='text'
                     className={styles.inputField}
-                    name="content5Line2"
+                    name='content5Line2'
                     {...register("content5Line2")}
                   />
                   <p>{errors.content5Line2?.message}</p>
@@ -315,30 +322,30 @@ const LandingPageForm = ({ preLoadValue, fullData }) => {
                 <div className={styles.titleEdit}>
                   <h3>Choose a image for banner : </h3>
                   <input
-                    type="file"
-                    accept="image/*"
+                    type='file'
+                    accept='image/*'
                     className={styles.inputField}
-                    name="image1"
+                    name='image1'
                     {...register("image1")}
                   />
                 </div>
                 <div className={styles.titleEdit}>
                   <h3>Choose first image for content : </h3>
                   <input
-                    type="file"
-                    accept="image/*"
+                    type='file'
+                    accept='image/*'
                     className={styles.inputField}
-                    name="image2"
+                    name='image2'
                     {...register("image2")}
                   />
                 </div>
                 <div className={styles.titleEdit}>
                   <h3>Choose second image for content : </h3>
                   <input
-                    type="file"
-                    accept="image/*"
+                    type='file'
+                    accept='image/*'
                     className={styles.inputField}
-                    name="image3"
+                    name='image3'
                     {...register("image3")}
                   />
                 </div>
@@ -347,7 +354,7 @@ const LandingPageForm = ({ preLoadValue, fullData }) => {
             {/* <button className='btn-submit' type='submit'>
               submit
             </button> */}
-            <Button variant="outlined" type="submit">
+            <Button variant='outlined' type='submit'>
               submit
             </Button>
           </form>

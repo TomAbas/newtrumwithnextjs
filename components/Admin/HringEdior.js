@@ -23,6 +23,7 @@ import { useMemo } from "react";
 import { urlDeleteContributor, urlEditJob } from "../../ApiUrl/Api";
 import { urlAddContributor } from "../../ApiUrl/Api";
 import { editRecuiterData } from "../../ApiUrl/recuiter/recuiter";
+import { toast } from "react-toastify";
 const schema = yup.object().shape({
   title1: yup.string().required("missing field"),
   title2: yup.string().required("missing field"),
@@ -45,8 +46,10 @@ const HiringEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
     const dataSubmit = { title: data.title1, description: data.title2 };
     try {
       await editRecuiterData(dataSubmit, newsIdx);
+      toast.success("Edit Success");
       setTrigger(!trigger);
     } catch (error) {
+      toast.error("Edit Failed");
       console.log(error);
     }
     // await axios
