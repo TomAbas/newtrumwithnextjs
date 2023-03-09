@@ -193,7 +193,7 @@ const NewsEditor = ({
     console.log(submitData);
 
     if (isAddNews) {
-      setNewNewsHeadContent(data);
+      setNewNewsHeadContent(submitData);
       setDidNotSubmitHeadForm2(false);
     } else {
       setNewsHeadContent(submitData);

@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import { Button } from "@mui/material";
 
-
 import { useEffect, useRef } from "react";
 import { useState } from "react";
 import styles from "../../styles/Admin.module.css";
@@ -16,7 +15,6 @@ const NewsCkEditorAddNews = ({
   const editorRef = useRef();
   const [editorLoaded, setEditorLoaded] = useState(false);
   const { CKEditor, ClassicEditor } = editorRef.current || {};
-  //   console.log(didNotSubmitHeadForm2);
   useEffect(() => {
     editorRef.current = {
       CKEditor: require("@ckeditor/ckeditor5-react").CKEditor, //Added .CKEditor
@@ -39,29 +37,24 @@ const NewsCkEditorAddNews = ({
             <h3>Content 1 - Text : </h3>
             <div className={styles.row1}>
               <div className={styles.titleEdit}>
-                {
-                  editorLoaded && (
-                    <CKEditor
-                      className={styles.ckEditor}
-                      editor={ClassicEditor}
-                      data=''
-                      onReady={(editor) => {
-                        // You can store the "editor" and use when it is needed.
-                        console.log("Editor is ready to use!", editor);
-                      }}
-                      onChange={(event, editor) => {
-                        const data = editor.getData();
+                {editorLoaded && (
+                  <CKEditor
+                    className={styles.ckEditor}
+                    editor={ClassicEditor}
+                    data=""
+                    onReady={(editor) => {
+                      // You can store the "editor" and use when it is needed.
+                      console.log("Editor is ready to use!", editor);
+                    }}
+                    onChange={(event, editor) => {
+                      const data = editor.getData();
 
-                        setNewNewsContent1(data);
+                      setNewNewsContent1(data);
 
-                        console.log({ event, editor, data });
-                      }}
-                    />
-                  )
-                  // : (
-                  //   <div>Editor loading</div>
-                  // )
-                }
+                      // console.log({ event, editor, data });
+                    }}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -71,38 +64,31 @@ const NewsCkEditorAddNews = ({
 
             <div className={styles.row1}>
               <div className={styles.titleEdit}>
-                {
-                  editorLoaded && (
-                    <CKEditor
-                      className={styles.ckEditor}
-                      editor={ClassicEditor}
-                      data=''
-                      onReady={(editor) => {
-                        // You can store the "editor" and use when it is needed.
-                        console.log("Editor is ready to use!", editor);
-                      }}
-                      onChange={(event, editor) => {
-                        const data = editor.getData();
+                {editorLoaded && (
+                  <CKEditor
+                    className={styles.ckEditor}
+                    editor={ClassicEditor}
+                    data=""
+                    onReady={(editor) => {
+                      // You can store the "editor" and use when it is needed.
+                      console.log("Editor is ready to use!", editor);
+                    }}
+                    onChange={(event, editor) => {
+                      const data = editor.getData();
 
-                        setNewNewsContent2(data);
+                      setNewNewsContent2(data);
 
-                        console.log({ event, editor, data });
-                      }}
-                    />
-                  )
-                  //  : (
-                  //   <div>Editor loading</div>
-                  // )
-                }
+                      // console.log({ event, editor, data });
+                    }}
+                  />
+                )}
               </div>
             </div>
           </div>
-          {/* <button className={styles.btnSubmit} type='submit'>
-            submit
-          </button> */}
+
           <Button
-            variant='outlined'
-            type='submit'
+            variant="outlined"
+            type="submit"
             disabled={didNotSubmitHeadForm2}
           >
             submit
