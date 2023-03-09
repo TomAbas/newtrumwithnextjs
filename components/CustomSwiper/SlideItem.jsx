@@ -7,6 +7,7 @@ import iconPlus from "../../public/imgs/plusicon.svg";
 import Image from "next/future/image";
 import { useRouter } from "next/router";
 const SlideItem = ({ item, isActive, isPrev }) => {
+  console.log('chay lai')
   const [position, setPosition, isEnter, setIsEnter] = useMoveIcon();
   const router = useRouter();
   const ref = useRef();

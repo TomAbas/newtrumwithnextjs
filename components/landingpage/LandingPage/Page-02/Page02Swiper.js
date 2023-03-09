@@ -1,5 +1,5 @@
 import { Box, Container, Stack, Typography, useTheme } from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { SwiperSlide } from "swiper/react";
 import stylesSlide from "../../../../styles/SwiperStyles.module.css";
 import styles from "../../../../styles/Page02Styles.module.css";
@@ -18,6 +18,17 @@ import slide3Img from "/public/imgs/slideImgs/MultiMediaProduction4.webp";
 import slide4Img from "/public/imgs/slideImgs/MultiMediaProduction6.webp";
 import slide5Img from "/public/imgs/slideImgs/MultiMediaProduction7.webp";
 
+const CSlideItem = (imgArr) => {
+  return imgArr.map((item, idx) => {
+    return (
+      <SwiperSlide key={idx}>
+        {({ isActive, isPrev }) => {
+          return <SlideItem item={item} isActive={isActive} isPrev={isPrev} />;
+        }}
+      </SwiperSlide>
+    );
+  });
+};
 const Page02Swiper = ({ isLandingPage, imgArr }) => {
   const theme = useTheme();
   const gridBoxRef = useRef();
@@ -50,26 +61,28 @@ const Page02Swiper = ({ isLandingPage, imgArr }) => {
       img: `${slide5Img.src}`,
     },
   ];
-  const renderSlide = () => {
-    return imgArr
-      ?.filter((item) => item.img)
-      .map((item, idx) => {
-        return (
-          <SwiperSlide key={idx}>
-            {({ isActive, isPrev }) => {
-              return (
-                <SlideItem item={item} isActive={isActive} isPrev={isPrev} />
-              );
-            }}
-          </SwiperSlide>
-        );
-      });
-  };
+
+  // const renderSlide = () => {
+  //   return imgArr
+  //     ?.filter((item) => item.img)
+  //     .map((item, idx) => {
+  //       return (
+  //         <SwiperSlide key={idx}>
+  //           {({ isActive, isPrev }) => {
+  //             return (
+  //               <SlideItem item={item} isActive={isActive} isPrev={isPrev} />
+  //             );
+  //           }}
+  //         </SwiperSlide>
+  //       );
+  //     });
+  // };
+
   const variants = {
     visible: (i) => ({
       opacity: 1,
       transform: `translateY(-${
-        i * textRef.current.getBoundingClientRect().height
+        i * textRef?.current?.getBoundingClientRect().height
       }px)`,
     }),
     hidden: { opacity: 0 },
@@ -141,7 +154,7 @@ const Page02Swiper = ({ isLandingPage, imgArr }) => {
         >
           <CustomSwiper
             setIsClick={setCount}
-            renderSlide={renderSlide}
+            renderSlide={() => CSlideItem(imgArr?.filter((item) => item.img))}
             setCurrentActiveSlide={setCurrentActiveSlide}
           />
         </Container>
@@ -162,13 +175,15 @@ const Page02Swiper = ({ isLandingPage, imgArr }) => {
           transition={{ duration: 0.5 }}
           exit={{ opacity: 0 }}
         >
-          {new Array(slide.length).fill(0).map((item, idx) => {
-            return (
-              <Typography color="#fff" key={idx} ref={textRef}>
-                {idx + 1}
-              </Typography>
-            );
-          })}
+          {imgArr
+            ?.filter((item) => item.img)
+            .map((item, idx) => {
+              return (
+                <Typography color="#fff" key={idx} ref={textRef}>
+                  {idx + 1}
+                </Typography>
+              );
+            })}
         </motion.div>
 
         <motion.div
