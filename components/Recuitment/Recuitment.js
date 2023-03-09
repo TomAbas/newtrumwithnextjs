@@ -28,8 +28,8 @@ const ListJobItem = ({ job }) => {
           <AddIcon sx={{ color: "#858585" }} />
         </ListItemIcon>
       </ListItemButton>
-      <Collapse in={activeSelectOption} timeout='auto' unmountOnExit>
-        <List component='div' disablePadding>
+      <Collapse in={activeSelectOption} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
           <ListItemText
             primary={job.description}
             sx={{ padding: "8px 16px" }}
@@ -40,19 +40,20 @@ const ListJobItem = ({ job }) => {
   );
 };
 const Recuitment = () => {
-  const [activeSelectOption, setActiveSelectOption] = useState({
-    idx: 0,
-    open: false,
-  });
   const [companyInfo, setCompanyInfo] = useState();
   const [listJob, setListJob] = useState([]);
   const fetchCompanyInfo = async () => {
     setCompanyInfo(await getContactPageData());
-    setListJob(await getRecuiterData());
+    setListJob(
+      await getRecuiterData().then((data) => {
+        console.log(data);
+        return data;
+      })
+    );
   };
 
   const createListJobItem = () => {
-    return listJob.listJob?.map((job, idx) => {
+    return listJob?.map((job, idx) => {
       return (
         <>
           <ListJobItem job={job} />
@@ -97,22 +98,22 @@ const Recuitment = () => {
             </div>
             <div className={styles.bottomWidget}>
               <ul>
-                <Link href={`${companyInfo.instagram}`} target='_blank'>
+                <Link href={`${companyInfo.instagram}`} target="_blank">
                   <a>
                     <li className={styles.link}>Instagram</li>
                   </a>
                 </Link>
-                <Link href={`${companyInfo.facebook}`} target='_blank'>
+                <Link href={`${companyInfo.facebook}`} target="_blank">
                   <a>
                     <li className={styles.link}>Facebook</li>
                   </a>
                 </Link>
-                <Link href={`${companyInfo.twitter}`} target='_blank'>
+                <Link href={`${companyInfo.twitter}`} target="_blank">
                   <a>
                     <li className={styles.link}>Twitter</li>
                   </a>
                 </Link>
-                <Link href={`${companyInfo.linkedin}`} target='_blank'>
+                <Link href={`${companyInfo.linkedin}`} target="_blank">
                   <a>
                     <li className={styles.link}>Linkedin</li>
                   </a>
