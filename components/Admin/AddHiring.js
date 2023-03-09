@@ -24,6 +24,7 @@ import { useMemo } from "react";
 import { urlAddJob, urlDeleteContributor } from "../../ApiUrl/Api";
 import { urlAddContributor } from "../../ApiUrl/Api";
 import { addRecuiterData } from "../../ApiUrl/recuiter/recuiter";
+import { toast } from "react-toastify";
 const schema = yup.object().shape({
   title1: yup.string().required("missing field"),
   title2: yup.string().required("missing field"),
@@ -45,9 +46,16 @@ const AddHiring = ({ newsIdx, preLoadValue, setTrigger, trigger }) => {
   const submitAddNewsJob = async (data) => {
     console.log(data);
     const dataSubmit = { title: data.title1, description: data.title2 };
-    await addRecuiterData(dataSubmit).then((res) => {
-      setTrigger(!trigger);
-    });
+
+    await addRecuiterData(dataSubmit)
+      .then((res) => {
+        setTrigger(!trigger);
+        toast.success("Add Success");
+      })
+      .catch((err) => {
+        toast.error("Add Failed");
+        console.log(err);
+      });
   };
 
   useEffect(() => {
@@ -66,10 +74,10 @@ const AddHiring = ({ newsIdx, preLoadValue, setTrigger, trigger }) => {
             <div className={styles.titleEdit}>
               <h3>Position </h3>
               <textarea
-                type="text"
+                type='text'
                 // defaultValue={preLoadValue.title1}
                 className={styles.inputField}
-                name="title1"
+                name='title1'
                 {...register("title1")}
               />
               <p>{errors.title1?.message}</p>
@@ -78,17 +86,17 @@ const AddHiring = ({ newsIdx, preLoadValue, setTrigger, trigger }) => {
             <div className={styles.titleEdit}>
               <h3>Description </h3>
               <textarea
-                type="text"
+                type='text'
                 // defaultValue={preLoadValue.title2}
                 className={styles.inputField}
-                name="title2"
+                name='title2'
                 {...register("title2")}
               />
               <p>{errors.title2?.message}</p>
             </div>
           </div>
         </div>
-        <Button variant="outlined" type="submit">
+        <Button variant='outlined' type='submit'>
           submit
         </Button>
       </form>
