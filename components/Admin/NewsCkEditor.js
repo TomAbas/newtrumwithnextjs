@@ -55,7 +55,7 @@ const NewsCkEditor = ({
                   <CKEditor
                     className={styles.ckEditor}
                     editor={ClassicEditor}
-                    data=""
+                    data={currentContent1 ? currentContent1 : ""}
                     onReady={(editor) => {
                       // You can store the "editor" and use when it is needed.
                       console.log("Editor is ready to use!", editor);
@@ -63,7 +63,7 @@ const NewsCkEditor = ({
                     onChange={(event, editor) => {
                       const data = editor.getData();
                       setNewContent1(data);
-                      console.log({ event, editor, data });
+                      console.log(data);
                     }}
                   />
                 ) : (
@@ -86,7 +86,7 @@ const NewsCkEditor = ({
                   <CKEditor
                     className={styles.ckEditor}
                     editor={ClassicEditor}
-                    data=""
+                    data={currentContent2 ? currentContent2 : ""}
                     onReady={(editor) => {
                       // You can store the "editor" and use when it is needed.
                       console.log("Editor is ready to use!", editor);

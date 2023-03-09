@@ -102,7 +102,7 @@ const NewsEditor = ({
           return { image: downloadURL };
         } catch (error) {
           console.log(error);
-          return { image: preLoadValue.swiper[index].image};
+          return { image: preLoadValue.swiper[index].image };
         }
       })
     );
@@ -178,7 +178,7 @@ const NewsEditor = ({
     let submitData = {
       mainImage: data.mainImage,
       mainImageAlt: data.mainImageAlt,
-      title: data.title,
+      title: data.title.trim(),
       category: data.category,
       video: data.video,
       videoAlt: data.videoAlt,
@@ -187,6 +187,7 @@ const NewsEditor = ({
         { title: data.content1Title, image: data.content1Image },
         { title: data.content2Title, image: data.content2Image },
       ],
+      id: data._id,
     };
 
     console.log(submitData);
