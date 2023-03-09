@@ -4,7 +4,7 @@ import AddNews from "../../../components/Admin/AddNews";
 const index = () => {
   return (
     <>
-      <AddNews isAddNews={true} />
+      {/* <AddNews isAddNews={true} /> */}
     </>
   );
 };
