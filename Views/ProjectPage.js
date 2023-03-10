@@ -65,7 +65,6 @@ const ProjectPage = ({ projectsidx, data }) => {
           <ProjectPage03
             openTitle={openTitle}
             subTitle={subTitle}
-            youtubeUrl={youtubeUrl}
             content={content}
             img={img}
           />
@@ -75,6 +74,7 @@ const ProjectPage = ({ projectsidx, data }) => {
             projectsidx={projectsidx}
             swiper={swiper}
             newsBigTitle={newsBigTitle}
+            youtubeUrl={youtubeUrl}
           />
           {/* <ProjectPage04
             subTitle1={subTitle1}
