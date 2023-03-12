@@ -9,7 +9,7 @@ const ProjectPage04Swiper = ({
   subTitle1,
   content1,
   swiper,
-  projectsidx,
+  youtubeUrl,
   newsBigTitle,
 }) => {
   const gridBoxRef = useRef();
@@ -85,7 +85,7 @@ const ProjectPage04Swiper = ({
             <iframe
               width="100%"
               height="100%"
-              src={"https://www.youtube.com/embed/6pGL9S-Serw"}
+              src={youtubeUrl}
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
