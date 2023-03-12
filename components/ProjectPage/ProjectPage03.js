@@ -7,7 +7,7 @@ import styles from "../../styles/ProjectPage03Styles.module.css";
 
 import slide4Img from "/public/imgs/slideImgs/MultiMediaProduction6.webp";
 import slide5Img from "/public/imgs/slideImgs/MultiMediaProduction7.webp";
-const ProjectPage03 = ({ openTitle, subTitle, youtubeUrl, content, img }) => {
+const ProjectPage03 = ({ openTitle, subTitle, content, img }) => {
   const [subTitleAr, setSubTitleAr] = useState([]);
   const arrWordRef = useRef();
   const isArrWordIn = useInView(arrWordRef);

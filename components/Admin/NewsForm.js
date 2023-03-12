@@ -39,6 +39,7 @@ import {
   deleteProject,
   updateProjectData,
 } from "../../ApiUrl/projectApi/projectApi";
+import { toast } from "react-toastify";
 
 const drawerWidth = 240;
 const NewsForm = () => {
@@ -98,7 +99,9 @@ const NewsForm = () => {
       setNewsHeadContent({});
       setCurrentContent1("");
       setCurrentContent2("");
+      toast.success("Update news successfully");
     } catch (error) {
+      toast.error("Update news failed,plesae try again");
       console.log(error);
     }
   };
@@ -153,9 +156,9 @@ const NewsForm = () => {
                     <div className={styles.btnGroup}>
                       <div>
                         <IconButton
-                          size='small'
+                          size="small"
                           sx={{ flex: "30%" }}
-                          variant='contained'
+                          variant="contained"
                           // className={styles.btnEditNews}
                           onClick={() => {
                             deleteNews(item._id);
@@ -218,7 +221,7 @@ const NewsForm = () => {
               </>
             )}
             <div
-              className=''
+              className=""
               style={{
                 display: trigger && !isAddContributor ? "block" : "none",
               }}
