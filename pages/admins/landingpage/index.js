@@ -17,7 +17,9 @@ const Index = () => {
       let content4Line1 = data.listContent[1].content;
       let content4Line2 = data.listContent[1].description;
       let content5Line1 = data.listContent[2].content;
-      let content5Line2 = data.listContent[2].description;
+      let content5Line2 = data.listContent[2].description
+        .replaceAll("<p>", "")
+        .replaceAll("</p>", "\n");
       let preLoadValue = {
         title1: title,
         content1Line1: content1Line1,

@@ -1,10 +1,9 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-  baseURL: "https://hoangnt-trum-api.herokuapp.com/",
+  baseURL: "https://pagesmanagementapi.com/",
   // baseURL: "http://192.168.0.185:3000",
   // baseURL: "http://localhost:3001",
-
 });
 
 axiosClient.interceptors.request.use(
