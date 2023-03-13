@@ -7,17 +7,17 @@ const Index = () => {
   const [defaultValues, setDefaultValues] = useState();
   const fetchLandingPageData = async () => {
     await getLandingPageData().then((data) => {
-      let title = data.title.map((item) => item.content).join("\n");
+      let title = data.title.map((item) => item?.content).join("\n");
       let content1Line1 = data.description
-        .map((item) => item.content)
+        .map((item) => item?.content)
         .join("\n");
-      let content2Line1 = data.subTitle.map((item) => item.content).join("\n");
-      let content3Line1 = data.listContent[0].content;
-      let content3Line2 = data.listContent[0].description;
-      let content4Line1 = data.listContent[1].content;
-      let content4Line2 = data.listContent[1].description;
-      let content5Line1 = data.listContent[2].content;
-      let content5Line2 = data.listContent[2].description
+      let content2Line1 = data.subTitle?.map((item) => item.content).join("\n");
+      let content3Line1 = data.listContent[0]?.content;
+      let content3Line2 = data.listContent[0]?.description;
+      let content4Line1 = data.listContent[1]?.content;
+      let content4Line2 = data.listContent[1]?.description;
+      let content5Line1 = data.listContent[2]?.content;
+      let content5Line2 = data.listContent[2]?.description
         .replaceAll("<p>", "")
         .replaceAll("</p>", "\n");
       let preLoadValue = {
@@ -31,8 +31,8 @@ const Index = () => {
         content5Line1: content5Line1,
         content5Line2: content5Line2,
         image1: data.mainImage,
-        image2: data.listContent[0].image,
-        image3: data.listContent[1].image,
+        image2: data.listContent[0]?.image,
+        image3: data.listContent[1]?.image,
       };
       setDefaultValues(preLoadValue);
       setFullData(data);
