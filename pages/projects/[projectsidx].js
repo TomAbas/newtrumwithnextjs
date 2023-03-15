@@ -10,10 +10,12 @@ export async function getServerSideProps({ params }) {
     params.projectsidx !== "undefined" &&
     params.projectsidx !== "requestProvider.js.map"
   ) {
-    res = await getDetailProjectData(params.projectsidx).then((res) => {
-      // console.log(res);
-      return res;
-    });
+    res = await getDetailProjectData(encodeURI(params.projectsidx)).then(
+      (res) => {
+        // console.log(res);
+        return res;
+      }
+    );
   }
   if (!res) {
     return {
