@@ -510,6 +510,7 @@ const NewsEditor = ({
                   setDidNotSubmitHeadForm2(true);
                 }}
               />
+              <p>{errors.content2Title?.message}</p>
             </div>
             <div
               className={styles.titleEdit}

@@ -28,3 +28,33 @@ const LandingPage = ({ data }) => {
 };
 
 export default LandingPage;
+
+// const [landingPageData, setLandingPageData] = useState([]);
+// const [page1Data, setPage1Data] = useState([]);
+// const [page3Data, setPage3Data] = useState([]);
+// const [page4Data, setPage4Data] = useState([]);
+// const [imgArr, setImgArr] = useState([]);
+// const setData = () => {
+//   setLandingPageData(data.title);
+//   setPage1Data(data.description);
+//   setPage3Data(data.subTitle);
+//   setPage4Data(data.listContent);
+// };
+// const getListNews = async () => {
+//   setImgArr(
+//     await getAllProject().then((data) => {
+//       return data.map((item, idx) => {
+//         return {
+//           img: item.mainImage,
+//           title: item.title,
+//           postId: item.title,
+//         };
+//       });
+//     })
+//   );
+// };
+
+// useEffect(() => {
+//   setData();
+//   getListNews();
+// }, []);

@@ -132,7 +132,7 @@ const NewsForm = () => {
                     <div className={styles.btnGroup}>
                       <div>
                         <IconButton
-                          size='small'
+                          size="small"
                           sx={{ flex: "30%" }}
                           variant='contained'
                           // className={styles.btnEditNews}
@@ -197,7 +197,7 @@ const NewsForm = () => {
               </>
             )}
             <div
-              className=''
+              className=""
               style={{
                 display: trigger && !isAddContributor ? "block" : "none",
               }}
