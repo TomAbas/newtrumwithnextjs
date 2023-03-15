@@ -7,13 +7,10 @@ const ListJobPage = () => {
   const [amountJob, setAmountJob] = useState([]);
   const fetchListJob = async () => {
     await getAllProject().then((data) => {
-      let projects = data.filter((item) => !item.isCategory);
-      let b = new Array(Math.ceil(projects.length / 2))
-        .fill()
-        .map(() => new Array(2).fill(2));
+      let b = new Array(Math.ceil(data.length/2)).fill().map(() => new Array(2).fill(2));
       console.log(b);
-      for (let i = 0; i < projects.length; i++) {
-        b[Math.floor(i / 2)][i % 2] = projects[i];
+      for (let i = 0; i < data.length; i++) {
+        b[Math.floor(i/2)][i%2] = data[i];
       }
       setArrayListJob(b);
     });

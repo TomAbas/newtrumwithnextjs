@@ -42,7 +42,6 @@ const schema = yup.object().shape({
   image5: yup.mixed().required("missing field"),
   // swiper: yup.array().required("missing field").default(new Array(4)),
   thumbnail: yup.mixed(),
-  isCategory: yup.boolean().default(false).required("missing field"),
 });
 
 const NewsEditor = ({
@@ -73,7 +72,6 @@ const NewsEditor = ({
   });
 
   const submitNewsEditor = async (data) => {
-    console.log(data);
     let arrImg = [
       data.image1[0],
       data.image2[0],
@@ -190,7 +188,6 @@ const NewsEditor = ({
         { title: data.content2Title, image: data.content2Image },
       ],
       id: data._id,
-      isCategory: data.isCategory,
     };
 
     console.log(submitData);
@@ -506,22 +503,6 @@ const NewsEditor = ({
                 {...register("content2Image")}
                 onChange={() => {
                   console.log("change");
-                  setDidNotSubmitHeadForm(true);
-                  setDidNotSubmitHeadForm2(true);
-                }}
-              />
-            </div>
-            <div
-              className={styles.titleEdit}
-              style={{ display: "flex", gap: "20px", alignItems: "center" }}
-            >
-              <h3>Is add category :</h3>
-              <input
-                type='checkbox'
-                className={styles.checkBox}
-                name='content2Image'
-                {...register("isCategory")}
-                onChange={() => {
                   setDidNotSubmitHeadForm(true);
                   setDidNotSubmitHeadForm2(true);
                 }}

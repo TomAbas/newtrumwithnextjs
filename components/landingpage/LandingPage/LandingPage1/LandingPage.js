@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../../../styles/LandingPageStyles.module.css";
 import { useRef } from "react";
+import { useEffect } from "react";
+import landingpagepic from "/public/imgs/landingpagepic.png";
 const LandingPage = ({ landingPageData, mainImage }) => {
   const refWord0 = useRef();
   const renderAnim = () => {

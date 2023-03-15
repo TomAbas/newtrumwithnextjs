@@ -3,9 +3,11 @@ import styles from "../styles/NavPageStyles.module.css";
 import ProjectPage01 from "../components/ProjectPage/ProjectPage01";
 import ProjectPage02 from "../components/ProjectPage/ProjectPage02";
 import ProjectPage03 from "../components/ProjectPage/ProjectPage03";
+import ProjectPage04 from "../components/ProjectPage/ProjectPage04";
 import ProjectPage04Swiper from "../components/ProjectPage/ProjectPage04Swiper";
-import { getAllProject } from "../ApiUrl/projectApi/projectApi";
 // img
+import slide4Img from "/public/imgs/slideImgs/MultiMediaProduction6.webp";
+import slide5Img from "/public/imgs/slideImgs/MultiMediaProduction7.webp";
 const ProjectPage = ({ projectsidx, data }) => {
   const [newsBigTitle, setNewsBigTitle] = useState();
   const [openTitle, setOpenTitle] = useState();
@@ -20,9 +22,10 @@ const ProjectPage = ({ projectsidx, data }) => {
   const [bannerImg, setBannerImg] = useState();
   const [img, setImg] = useState();
   const [swiper, setSwiper] = useState([]);
-  const [isCategory, setIsCategory] = useState(false);
+
   //
-  const fetchData = async () => {
+
+  const fetchData = () => {
     //1
     setCategory(data.category);
     setNewsBigTitle(data.title);
@@ -39,26 +42,7 @@ const ProjectPage = ({ projectsidx, data }) => {
     //4
     setSubTitle1(data.listContent[1].title);
     setContent1(data.listContent[1].description);
-    setIsCategory(data.isCategory);
-    if (data.isCategory) {
-      setSwiper(
-        await getAllProject().then((data) => {
-          return data
-            .filter(
-              (item) => item.category === data.category && !item.isCategory
-            )
-            .map((item) => {
-              return {
-                img: item.mainImage,
-                title: item.title,
-                postId: item.title,
-              };
-            });
-        })
-      );
-    } else {
-      setSwiper(data.swiper);
-    }
+    setSwiper(data.swiper);
   };
 
   useEffect(() => {
@@ -91,7 +75,6 @@ const ProjectPage = ({ projectsidx, data }) => {
             swiper={swiper}
             newsBigTitle={newsBigTitle}
             youtubeUrl={youtubeUrl}
-            isCategory={isCategory}
           />
           {/* <ProjectPage04
             subTitle1={subTitle1}

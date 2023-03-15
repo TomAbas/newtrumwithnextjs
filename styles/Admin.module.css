@@ -180,13 +180,13 @@
 }
 
 .itemNews {
-  border-bottom: 2px solid gray;
+ border-bottom: 2px solid gray;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 4px 10px;
 }
-.itemNews ul {
+.itemNews ul{
   min-width: 200px;
   max-width: 250px;
 }
@@ -310,7 +310,3 @@
   flex: 48%;
 }
 
-.checkBox {
-  height: 30px;
-  width: 50px;
-}

@@ -1,5 +1,8 @@
 import axios from "../axiosClient";
 
+
+let BaseURL = "index";
+let EditURL = "admin";
 function getAllPosts() {
   return axios
     .get(`project`)
@@ -17,5 +20,7 @@ function getPost(id) {
       console.log(error);
     });
 }
+
+
 
 export { getAllPosts, getPost };
