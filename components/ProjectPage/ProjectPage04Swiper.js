@@ -11,6 +11,7 @@ const ProjectPage04Swiper = ({
   swiper,
   youtubeUrl,
   newsBigTitle,
+  isCategory,
 }) => {
   const gridBoxRef = useRef();
   const inViewGridPicref = useInView(gridBoxRef);
@@ -22,24 +23,45 @@ const ProjectPage04Swiper = ({
     setNextProject(
       await getAllProject().then((data) => {
         const findIdx = (e) => e.title === newsBigTitle;
-        let nextProject = data.findIndex(findIdx);
-        console.log(data[nextProject + 1]);
-        if (nextProject === data.length - 1) {
-          return data[0];
+        if (isCategory) {
+          let nextProject = data
+            .filter((item) => item.isCategory)
+            .findIndex(findIdx);
+          if (
+            nextProject ===
+            data.filter((item) => item.isCategory).length - 1
+          ) {
+            return data.filter((item) => item.isCategory)[0];
+          }
+          return data.filter((item) => item.isCategory)[nextProject + 1];
+        } else {
+          let nextProject = data
+            .filter((item) => !item.isCategory)
+            .findIndex(findIdx);
+          if (
+            nextProject ===
+            data.filter((item) => !item.isCategory).length - 1
+          ) {
+            return data.filter((item) => !item.isCategory)[0];
+          }
+          return data.filter((item) => !item.isCategory)[nextProject + 1];
         }
-        return data[nextProject + 1];
       })
     );
   };
   const createSwiperObj = () => {
-    let swiperObj = swiper?.map((item, idx) => {
-      return {
-        img: item.image,
-        title: "",
-        postId: "",
-      };
-    });
-    setImgArr(swiperObj);
+    if (isCategory) {
+      setImgArr(swiper);
+    } else {
+      let swiperObj = swiper?.map((item, idx) => {
+        return {
+          img: item.image,
+          title: "",
+          postId: "",
+        };
+      });
+      setImgArr(swiperObj);
+    }
   };
   const animationWords = () => {
     let b = subTitle1?.split("").map((word, idx) => {
@@ -60,6 +82,7 @@ const ProjectPage04Swiper = ({
     if (newsBigTitle) getListNews();
   }, [newsBigTitle]);
   useEffect(() => {
+    console.log(swiper);
     if (swiper.length > 0) createSwiperObj();
   }, [swiper]);
 
@@ -83,12 +106,12 @@ const ProjectPage04Swiper = ({
         <div className={styles.page03VideoBox}>
           <div className={styles.videoBranding}>
             <iframe
-              width="100%"
-              height="100%"
+              width='100%'
+              height='100%'
               src={youtubeUrl}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+              title='YouTube video player'
+              frameBorder='0'
+              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;'
               allowFullScreen
             ></iframe>
           </div>

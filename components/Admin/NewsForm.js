@@ -1,35 +1,12 @@
 import React from "react";
 import styles from "../../styles/Admin.module.css";
-
 //mui
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import Box from "@mui/material/Box";
-import { Button } from "@mui/material";
-import Drawer from "@mui/material/Drawer";
-import CssBaseline from "@mui/material/CssBaseline";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
 import ListItemButton from "@mui/material/ListItemButton";
-// import ListItemIcon from "@mui/material/ListItemIcon";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
-// import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import IconButton from "@mui/material/IconButton";
-// import InboxIcon from "@mui/icons-material/MoveToInbox";
-// import MailIcon from "@mui/icons-material/Mail";
-
-//
-import axios from "axios";
-
-import {
-  urlDeleteNewsId,
-  urlEditNewsId,
-  urlListContributorIdPost,
-} from "../../ApiUrl/Api";
 import { useEffect } from "react";
 import { useState } from "react";
 import NewsEditor from "./NewsEditor";
@@ -41,7 +18,6 @@ import {
 } from "../../ApiUrl/projectApi/projectApi";
 import { toast } from "react-toastify";
 
-const drawerWidth = 240;
 const NewsForm = () => {
   const [arrNews, setArrNews] = useState([]);
   const [newsIdx, setNewsIdx] = useState();
@@ -156,9 +132,9 @@ const NewsForm = () => {
                     <div className={styles.btnGroup}>
                       <div>
                         <IconButton
-                          size="small"
+                          size='small'
                           sx={{ flex: "30%" }}
-                          variant="contained"
+                          variant='contained'
                           // className={styles.btnEditNews}
                           onClick={() => {
                             deleteNews(item._id);
@@ -221,7 +197,7 @@ const NewsForm = () => {
               </>
             )}
             <div
-              className=""
+              className=''
               style={{
                 display: trigger && !isAddContributor ? "block" : "none",
               }}
