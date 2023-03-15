@@ -62,8 +62,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url(../public/imgs/landingpagepic.png) no-repeat center
-    center/cover;
 }
 .headlineNextNews {
   /* border: 2px solid red; */

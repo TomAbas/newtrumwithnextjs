@@ -19,13 +19,15 @@ const useGetDataLand = (data) => {
     try {
       setImgArr(
         await getAllProject().then((data) => {
-          return data.map((item, idx) => {
-            return {
-              img: item.mainImage,
-              title: item.title,
-              postId: item.title,
-            };
-          });
+          return data
+            .filter((item) => item.isCategory)
+            .map((item) => {
+              return {
+                img: item.mainImage,
+                title: item.title,
+                postId: item.title,
+              };
+            });
         })
       );
       setData();
