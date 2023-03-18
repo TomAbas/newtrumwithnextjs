@@ -42,12 +42,15 @@ const ProjectPage = ({ projectsidx, data }) => {
     setIsCategory(data.isCategory);
     if (data.isCategory) {
       setSwiper(
-        await getAllProject().then((data) => {
-          return data
-            .filter(
-              (item) => item.category === data.category && !item.isCategory
-            )
+        await getAllProject().then((project) => {
+          return project
+            .filter((item) => {
+              console.log(data.category);
+              console.log(item.category);
+              return item.category === data.category && !item.isCategory;
+            })
             .map((item) => {
+              console.log(item);
               return {
                 img: item.mainImage,
                 title: item.title,

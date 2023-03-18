@@ -20,7 +20,7 @@ const ListJobPage = ({ arrayListJob }) => {
                   <Link href={`/projects/${job.title}`}>
                     <a>
                       <Parallax
-                        speed={-1}
+                        speed={7}
                         scale={[0.95, 1]}
                         translateY={deviceWidth > 768 && [-20, -30]}
                         easing='easeOutCubic'
@@ -40,7 +40,7 @@ const ListJobPage = ({ arrayListJob }) => {
                   <Link href={`/projects/${job.title}`}>
                     <a>
                       <Parallax
-                        speed={-1}
+                        speed={7}
                         scale={[0.95, 1]}
                         translateY={deviceWidth > 768 && [0, -70]}
                         easing='easeOutCubic'
