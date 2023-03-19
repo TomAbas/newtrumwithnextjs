@@ -46,6 +46,7 @@
 .newsPage03Box {
   /* border: 2px solid white; */
   margin: 50px auto;
+  margin-top: 60px;
 }
 
 .page03VideoBox {
@@ -87,7 +88,7 @@
   object-fit: cover;
 }
 .newsContent01Text {
-  margin: 40px auto 30px auto;
+  margin: 30px auto 30px auto;
 }
 .newsContent01Text h1 {
   text-transform: uppercase;
