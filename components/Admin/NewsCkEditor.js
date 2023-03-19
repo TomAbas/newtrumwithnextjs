@@ -14,10 +14,6 @@ const NewsCkEditor = ({
   setNewContent1,
   setNewContent2,
   submitNewsCKEditor,
-  // isAddNews,
-  // submitNewNewsCKEditor,
-  // setNewNewsContent1,
-  // setNewNewsContent2,
   didNotSubmitHeadForm,
 }) => {
   const editorRef = useRef();
@@ -72,7 +68,7 @@ const NewsCkEditor = ({
               </div>
             </div>
           </div>
-          <div className={styles.content4Edit}>
+          {/* <div className={styles.content4Edit}>
             <div className={styles.bannerBanner}> EDIT CONTENT 2</div>
             <h3>Content 2 - Text : </h3>
             <div className={styles.currentContent}>
@@ -100,36 +96,12 @@ const NewsCkEditor = ({
                 ) : (
                   <div>Editor loading</div>
                 )}
-                {/* <CKEditor
-                  className={styles.ckEditor}
-                  editor={Editor}
-                  data=''
-                  onReady={(editor) => {
-                    // You can store the "editor" and use when it is needed.
-                    //   console.log("Editor is ready to use!", editor);
-                    // setValue(editor);
-                  }}
-                  onChange={(event, editor) => {
-                    const data = editor.getData();
-                    isAddNews ? setNewNewsContent2(data) : setNewContent2(data);
-                    //   console.log({ event, editor, data });
-                  }}
-                  onBlur={(event, editor) => {
-                    //   console.log("Blur.", editor);
-                  }}
-                  onFocus={(event, editor) => {
-                    //   console.log("Focus.", editor);
-                  }}
-                /> */}
               </div>
             </div>
-          </div>
-          {/* <button className={styles.btnSubmit} type='submit'>
-            submit
-          </button> */}
+          </div> */}
           <Button
-            variant="outlined"
-            type="submit"
+            variant='outlined'
+            type='submit'
             disabled={didNotSubmitHeadForm}
           >
             submit

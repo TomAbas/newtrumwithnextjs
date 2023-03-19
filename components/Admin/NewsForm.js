@@ -24,7 +24,7 @@ const NewsForm = () => {
   const [defaultValues, setDefaultValues] = useState();
   const [trigger, setTrigger] = useState(false);
   const [newContent1, setNewContent1] = useState();
-  const [newContent2, setNewContent2] = useState();
+  const [newContent2, setNewContent2] = useState("");
   const [newsHeadContent, setNewsHeadContent] = useState();
   const [currentContent1, setCurrentContent1] = useState();
   const [currentContent2, setCurrentContent2] = useState();
@@ -132,7 +132,7 @@ const NewsForm = () => {
                     <div className={styles.btnGroup}>
                       <div>
                         <IconButton
-                          size="small"
+                          size='small'
                           sx={{ flex: "30%" }}
                           variant='contained'
                           // className={styles.btnEditNews}
@@ -197,7 +197,7 @@ const NewsForm = () => {
               </>
             )}
             <div
-              className=""
+              className=''
               style={{
                 display: trigger && !isAddContributor ? "block" : "none",
               }}

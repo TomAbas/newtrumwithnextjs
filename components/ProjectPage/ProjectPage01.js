@@ -31,12 +31,12 @@ const ProjectPage01 = ({ title, category, bannerImg }) => {
       >
         <div className={styles.backgroundImgBox}>
           <div className={styles.headlineContent}>
-            <div className={styles.headlineWordBox}>
+            {/* <div className={styles.headlineWordBox}>
               <div className={styles.wrapperText}> {animationWords()}</div>
             </div>
             <div className={styles.clientShortInfo}>
               <h5>{category}</h5>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
