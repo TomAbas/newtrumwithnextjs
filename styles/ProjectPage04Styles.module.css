@@ -445,6 +445,9 @@
   .slideItem {
     font-size: 4.8rem;
   }
+  .page02Container {
+    margin-bottom: 100px;
+  }
 }
 @media (min-width: 2000px) {
   .gridPic {

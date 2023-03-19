@@ -14,7 +14,7 @@ const ProjectPage03 = ({ openTitle, subTitle, content, img }) => {
 
   const animationWords = () => {
     let b = subTitle?.split("").map((word, idx) => {
-      let delay = { animationDelay: `${idx / 5 + 0.5}s` };
+      let delay = { animationDelay: `${idx / 10 + 0.5}s` };
       return (
         <h1
           key={idx}
@@ -33,19 +33,6 @@ const ProjectPage03 = ({ openTitle, subTitle, content, img }) => {
     <>
       {" "}
       <div className={styles.newsPage03Box}>
-        {/* <div className={styles.page03VideoBox}>
-          <div className={styles.videoBranding}>
-            <iframe
-              width='100%'
-              height='100%'
-              src={youtubeUrl}
-              title='YouTube video player'
-              frameBorder='0'
-              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;'
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div> */}
         <div className={styles.newsContentBox}>
           <div className={styles.newsContent01}>
             <div className={styles.newsContent01Img}>
@@ -62,27 +49,10 @@ const ProjectPage03 = ({ openTitle, subTitle, content, img }) => {
             </div>
             <div className={styles.newsContent01Text}>
               <div className={styles.test0}>
-                {/* <h1 className='fadeTopDown'>concept</h1> */}
                 <div className={styles.test0H1} ref={arrWordRef}>
                   {animationWords()}
                 </div>
-
                 <div dangerouslySetInnerHTML={{ __html: content }} />
-                {/* <div>
-                  <p>
-                    The COVID-19 pandemic has strongly promoted online shopping
-                    trend on e-commerce platforms. Many businesses have lost
-                    their way when trying to find a way to catch up with the
-                    significant change.{" "}
-                  </p>
-
-                  <p>
-                    But LEVENT is not like that! They have successfully grown
-                    brand recognition and revenue on Shopee and Lazada when
-                    choosing TRUM digital marketing service as a companion
-                    solution.
-                  </p>
-                </div> */}
               </div>
             </div>
           </div>

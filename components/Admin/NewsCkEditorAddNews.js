@@ -58,7 +58,7 @@ const NewsCkEditorAddNews = ({
               </div>
             </div>
           </div>
-          <div className={styles.content4Edit}>
+          {/* <div className={styles.content4Edit}>
             <div className={styles.bannerBanner}> ADD CONTENT 2</div>
             <h3>Content 2 - Text : </h3>
 
@@ -84,7 +84,7 @@ const NewsCkEditorAddNews = ({
                 )}
               </div>
             </div>
-          </div>
+          </div> */}
 
           <Button
             variant="outlined"

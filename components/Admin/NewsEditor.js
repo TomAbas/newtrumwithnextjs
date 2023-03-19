@@ -30,18 +30,17 @@ const schema = yup.object().shape({
   video: yup.string().required("missing field"),
   videoAlt: yup.string().required("missing field"),
   mainImage: yup.mixed().required("missing field"),
-  mainImageAlt: yup.string().required("missing field"),
+  // mainImageAlt: yup.string().required("missing field"),
   content1Title: yup.string().required("missing field"),
   content1Image: yup.mixed().required("missing field"),
-  content2Title: yup.string().required("missing field"),
-  content2Image: yup.mixed().required("missing field"),
+  // content2Title: yup.string().required("missing field"),
+  // content2Image: yup.mixed().required("missing field"),
   image1: yup.mixed().required("missing field"),
   image2: yup.mixed().required("missing field"),
   image3: yup.mixed().required("missing field"),
   image4: yup.mixed().required("missing field"),
   image5: yup.mixed().required("missing field"),
   // swiper: yup.array().required("missing field").default(new Array(4)),
-  thumbnail: yup.mixed(),
   isCategory: yup.boolean().default(false).required("missing field"),
 });
 
@@ -179,7 +178,7 @@ const NewsEditor = ({
 
     let submitData = {
       mainImage: data.mainImage,
-      mainImageAlt: data.mainImageAlt,
+      mainImageAlt: "data.mainImageAlt",
       title: data.title.trim(),
       category: data.category,
       video: data.video,
@@ -187,7 +186,7 @@ const NewsEditor = ({
       swiper: swiper,
       listContent: [
         { title: data.content1Title, image: data.content1Image },
-        { title: data.content2Title, image: data.content2Image },
+        { title: "data.content2Title", image: " data.content2Image" },
       ],
       id: data._id,
       isCategory: data.isCategory,
@@ -363,7 +362,7 @@ const NewsEditor = ({
           </div>
         </div>
         <div className={styles.content1Edit}>
-          <div className={styles.bannerBanner}> IMAGE :</div>
+          <div className={styles.bannerBanner}> THUMBNAIL :</div>
           <div className={styles.row1}>
             <div className={styles.titleEdit}>
               <h3>Image : </h3>
@@ -382,7 +381,7 @@ const NewsEditor = ({
               <p>{errors.mainImage?.message}</p>
             </div>
 
-            <div className={styles.titleEdit}>
+            {/* <div className={styles.titleEdit}>
               <h3>Description : </h3>
               <textarea
                 type='text'
@@ -392,7 +391,7 @@ const NewsEditor = ({
                 {...register("mainImageAlt")}
               />
               <p>{errors.mainImageAlt?.message}</p>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className={styles.content1Edit}>
@@ -482,9 +481,9 @@ const NewsEditor = ({
               />
             </div>
           </div>
-          <h2>Content 2: </h2>
+          {/* <h2>Content 2: </h2> */}
           <div className={styles.row1}>
-            <div className={styles.titleEdit}>
+            {/* <div className={styles.titleEdit}>
               <h3>Title : </h3>
               <textarea
                 type='text'
@@ -511,7 +510,7 @@ const NewsEditor = ({
                 }}
               />
               <p>{errors.content2Title?.message}</p>
-            </div>
+            </div> */}
             <div
               className={styles.titleEdit}
               style={{ display: "flex", gap: "20px", alignItems: "center" }}
@@ -520,7 +519,6 @@ const NewsEditor = ({
               <input
                 type='checkbox'
                 className={styles.checkBox}
-                name='content2Image'
                 {...register("isCategory")}
                 onChange={() => {
                   setDidNotSubmitHeadForm(true);

@@ -19,7 +19,11 @@ const ListJobPage = ({ arrayListJob }) => {
                 {idx === 0 ? (
                   <Link href={`/projects/${job.title}`}>
                     <a>
-                      <Parallax className={styles.jobBox}>
+                      <Parallax
+                        scale={[0.95, 1]}
+                        className={styles.jobBox}
+                        speed={1}
+                      >
                         <div
                           className={styles.innerBox}
                           style={{ backgroundImage: `url(${job.mainImage})` }}
@@ -34,8 +38,9 @@ const ListJobPage = ({ arrayListJob }) => {
                   <Link href={`/projects/${job.title}`}>
                     <a>
                       <Parallax
-                        speed={2}
-                        translateY={deviceWidth > 768 && [0, -75]}
+                        speed={0}
+                        scale={[0.95, 1]}
+                        translateY={deviceWidth > 768 && [0, -50]}
                         className={styles.jobBox}
                       >
                         <div
