@@ -45,12 +45,13 @@
 
 .newsPage03Box {
   /* border: 2px solid white; */
-  margin-bottom: 50px;
+  margin: 50px auto;
 }
 
 .page03VideoBox {
   /* border: 2px solid red; */
   height: 50vw;
+
   /* good untill 768px */
 }
 .videoBranding {

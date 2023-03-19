@@ -91,6 +91,7 @@
 .page03VideoBox {
   /* border: 2px solid red; */
   height: 50vw;
+
   /* good untill 768px */
 }
 .videoBranding {
@@ -119,6 +120,9 @@
   .newsContentH1 h1 {
     margin: 0px 0px !important;
     font-size: 2.2rem;
+  }
+  .page03VideoBox {
+    margin: 50px auto;
   }
 }
 @media (min-width: 768px) {
@@ -409,6 +413,8 @@
   transition: transform ease-in-out 0.5s;
 }
 
+@media (min-width: 375px) {
+}
 @media (min-width: 425px) {
   .slideItem {
     font-size: 1.5rem;
