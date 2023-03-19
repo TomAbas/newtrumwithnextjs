@@ -63,7 +63,7 @@
   color: #fff;
   text-align: center;
   width: 90%;
-  margin: 100px auto;
+  margin: auto;
 }
 
 .newsContent00 p {
@@ -137,6 +137,7 @@
   }
   .newsContent00 {
     width: 80%;
+    margin: 100px auto;
   }
   .newsContent00 p {
     font-size: 2.3rem;
