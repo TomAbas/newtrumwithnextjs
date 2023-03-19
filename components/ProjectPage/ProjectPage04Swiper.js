@@ -94,14 +94,14 @@ const ProjectPage04Swiper = ({
           <Page02Swiper isLandingPage={false} imgArr={imgArr} />
         </div>
         {/* end */}
-        <div className={styles.newsContentBox01}>
+        {/* <div className={styles.newsContentBox01}>
           <div className={styles.newsContentTextPage04}>
             <div className={styles.newsContentH1} ref={arrWordRef}>
               {animationWords()}
             </div>
             <div dangerouslySetInnerHTML={{ __html: content1 }} />
           </div>
-        </div>
+        </div> */}
         {/* video */}
         <div className={styles.page03VideoBox}>
           <div className={styles.videoBranding}>

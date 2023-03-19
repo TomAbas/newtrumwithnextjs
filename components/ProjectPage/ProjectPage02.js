@@ -45,11 +45,11 @@ const ProjectPage02 = ({ tagLine, contributor, projectsidx }) => {
     <>
       <div className={styles.newsPage02Box}>
         <div className={styles.newsTitleBox}>
-          <div className={styles.newsTitle}>
+          {/* <div className={styles.newsTitle}>
             <div className={styles.newsTitleH1} ref={arrWordRef}>
               {animationWords()}
             </div>
-          </div>
+          </div> */}
           {/* <div className={styles.newsCredits}>
             <div className={styles.newsCreditsWrapper}>
               <p>credits</p>

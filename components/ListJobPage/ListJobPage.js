@@ -19,19 +19,13 @@ const ListJobPage = ({ arrayListJob }) => {
                 {idx === 0 ? (
                   <Link href={`/projects/${job.title}`}>
                     <a>
-                      <Parallax
-                        speed={7}
-                        scale={[0.95, 1]}
-                        translateY={deviceWidth > 768 && [-20, -30]}
-                        easing='easeOutCubic'
-                        className={styles.jobBox}
-                      >
+                      <Parallax className={styles.jobBox}>
                         <div
                           className={styles.innerBox}
                           style={{ backgroundImage: `url(${job.mainImage})` }}
                         >
-                          <h1>{job.title}</h1>
-                          <p>{job.category}</p>
+                          {/* <h1>{job.title}</h1>
+                          <p>{job.category}</p> */}
                         </div>
                       </Parallax>
                     </a>
@@ -40,18 +34,16 @@ const ListJobPage = ({ arrayListJob }) => {
                   <Link href={`/projects/${job.title}`}>
                     <a>
                       <Parallax
-                        speed={7}
-                        scale={[0.95, 1]}
-                        translateY={deviceWidth > 768 && [0, -70]}
-                        easing='easeOutCubic'
+                        speed={2}
+                        translateY={deviceWidth > 768 && [0, -75]}
                         className={styles.jobBox}
                       >
                         <div
                           className={styles.innerBox}
                           style={{ backgroundImage: `url(${job.mainImage})` }}
                         >
-                          <h1>{job.title}</h1>
-                          <p>{job.category}</p>
+                          {/* <h1>{job.title}</h1>
+                          <p>{job.category}</p> */}
                         </div>
                       </Parallax>
                     </a>

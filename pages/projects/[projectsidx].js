@@ -41,31 +41,28 @@ const Projectsidx0 = ({ res }) => {
           href='https://fonts.googleapis.com/css?family=Montserrat'
         />
         {/* metatag google  */}
-        <meta
-          name='description'
-          // content={res.tagline21}
-        />
+        <meta name='description' content={res.listContent[0].description} />
         <meta
           name='keywords'
           content='Agency, Content,Marketing, KOL, Festival, Singer, Video, Art, Products'
         />
         <meta name='author' content='Trum Agency' />
-        {/* <link rel='canonical' href={`/${res.postId}`} /> */}
+        <link rel='canonical' href={`/${res.title}`} />
         {/* metatag facebook */}
-        {/* <meta property='og:url' content={`https://www.trumagency.com/projects/${res.postId}`} /> */}
+        <meta
+          property='og:url'
+          content={`https://www.trumagency.com/projects/${res.title}`}
+        />
         <meta property='og:type' content='article' />
-        {/* <meta property='og:title' content={res.title + " " + res.title2} /> */}
+        <meta property='og:title' content={res.title} />
         <meta
           property='og:description'
-          // content={res.tagline21}
+          content={res.listContent[0].description}
         />
-        <meta
-          property='og:image'
-          // content={res.thumbnail}
-        />
+        <meta property='og:image' content={res.mainImage} />
         <meta property='og:image:width' content='1200' />
         <meta property='og:image:height' content='630' />
-        {/* <title>{res.title + " " + res.title2}</title> */}
+        <title>{res.title}</title>
       </Head>
       <ProjectPage projectsidx={projectsidx} data={res} />
     </>
