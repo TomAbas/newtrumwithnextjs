@@ -137,10 +137,10 @@ const ProjectPage04Swiper = ({
                   center/cover`,
                     }}
                   >
-                    <div className={styles.headlineNextNews}>
+                    {/* <div className={styles.headlineNextNews}>
                       <h1>{nextProject.title}</h1>
                       <p>{nextProject.category}</p>
-                    </div>
+                    </div> */}
                   </div>
                 </a>
               </Link>
