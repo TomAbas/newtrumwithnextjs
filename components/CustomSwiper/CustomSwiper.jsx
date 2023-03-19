@@ -15,7 +15,7 @@ import useMoveIcon from "../../hooks/useMoveIcon";
 import arrowLeft from "../../public/imgs/arrowLeft.svg";
 import arrowRight from "../../public/imgs/arrowRight.svg";
 
-const BtnLeft = ({ children, setIsClick }) => {
+const BtnLeft = ({ children }) => {
   const swiper = useSwiper();
   return (
     <Box
@@ -27,7 +27,6 @@ const BtnLeft = ({ children, setIsClick }) => {
         bottom: "0",
       }}
       onClick={() => {
-        setIsClick((prev) => !prev);
         swiper.slidePrev();
       }}
     >
@@ -35,7 +34,7 @@ const BtnLeft = ({ children, setIsClick }) => {
     </Box>
   );
 };
-const BtnRight = ({ children, setIsClick }) => {
+const BtnRight = ({ children }) => {
   const swiper = useSwiper();
   return (
     <Box
@@ -48,7 +47,6 @@ const BtnRight = ({ children, setIsClick }) => {
       }}
       onClick={() => {
         swiper.slideNext();
-        setIsClick((prev) => prev + 1);
       }}
     >
       {children}
@@ -56,14 +54,9 @@ const BtnRight = ({ children, setIsClick }) => {
   );
 };
 
-export default function CustomSwiper({
-  renderSlide,
-  setCurrentActiveSlide,
-  setIsClick,
-}) {
+export default function CustomSwiper({ renderSlide, setCurrentActiveSlide }) {
   return (
     <Swiper
-      
       spaceBetween={150}
       centeredSlides={true}
       slidesPerView={1}
@@ -73,8 +66,8 @@ export default function CustomSwiper({
       }}
       className={styles.mySwiper}
     >
-      <BtnLeft setIsClick={setIsClick}></BtnLeft>
-      <BtnRight setIsClick={setIsClick}></BtnRight>
+      <BtnLeft></BtnLeft>
+      <BtnRight></BtnRight>
       {renderSlide()}
     </Swiper>
   );
