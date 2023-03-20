@@ -12,6 +12,7 @@ const ProjectPage04Swiper = ({
   youtubeUrl,
   newsBigTitle,
   isCategory,
+  category,
 }) => {
   const gridBoxRef = useRef();
   const inViewGridPicref = useInView(gridBoxRef);
@@ -36,15 +37,22 @@ const ProjectPage04Swiper = ({
           return data.filter((item) => item.isCategory)[nextProject + 1];
         } else {
           let nextProject = data
-            .filter((item) => !item.isCategory)
+            .filter((item) => !item.isCategory && item.category === category)
             .findIndex(findIdx);
           if (
             nextProject ===
-            data.filter((item) => !item.isCategory).length - 1
+            data.filter(
+              (item) => !item.isCategory && item.category === category
+            ).length -
+              1
           ) {
-            return data.filter((item) => !item.isCategory)[0];
+            return data.filter(
+              (item) => !item.isCategory && item.category === category
+            )[0];
           }
-          return data.filter((item) => !item.isCategory)[nextProject + 1];
+          return data.filter(
+            (item) => !item.isCategory && item.category === category
+          )[nextProject + 1];
         }
       })
     );

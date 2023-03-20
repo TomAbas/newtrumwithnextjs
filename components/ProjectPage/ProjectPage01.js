@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
 import styles from "../../styles/ProjectPage01Styles.module.css";
-import slide4Img from "/public/imgs/slideImgs/MultiMediaProduction6.webp";
-const ProjectPage01 = ({ title, category, bannerImg }) => {
+const ProjectPage01 = ({ title, category, bannerImg, isCategory }) => {
   const animationWords = () => {
     let b = title?.split(" ").map((word, idx) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s` };
@@ -31,12 +28,17 @@ const ProjectPage01 = ({ title, category, bannerImg }) => {
       >
         <div className={styles.backgroundImgBox}>
           <div className={styles.headlineContent}>
-            {/* <div className={styles.headlineWordBox}>
-              <div className={styles.wrapperText}> {animationWords()}</div>
-            </div>
-            <div className={styles.clientShortInfo}>
-              <h5>{category}</h5>
-            </div> */}
+            {isCategory && (
+              <>
+                {" "}
+                <div className={styles.headlineWordBox}>
+                  <div className={styles.wrapperText}> {animationWords()}</div>
+                </div>
+                <div className={styles.clientShortInfo}>
+                  <h5>{category}</h5>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

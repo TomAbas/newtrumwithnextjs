@@ -6,7 +6,7 @@ import useMoveIcon from "../../hooks/useMoveIcon";
 import iconPlus from "../../public/imgs/plusicon.svg";
 import Image from "next/future/image";
 import { useRouter } from "next/router";
-const SlideItem = ({ item, isActive, isPrev }) => {
+const SlideItem = ({ item, isActive, isPrev, isCategory }) => {
   const [position, setPosition, isEnter, setIsEnter] = useMoveIcon();
   const router = useRouter();
   const ref = useRef();
@@ -63,7 +63,7 @@ const SlideItem = ({ item, isActive, isPrev }) => {
           background: `url(${item?.img}) no-repeat center center/cover`,
         }}
       >
-        {isCategory && (
+        {!isCategory && (
           <Box className={styles.item}>
             <Typography variant='p'>{item.title}</Typography>
           </Box>

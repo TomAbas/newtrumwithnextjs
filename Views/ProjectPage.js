@@ -71,6 +71,7 @@ const ProjectPage = ({ projectsidx, data }) => {
     <>
       <div>
         <ProjectPage01
+          isCategory={isCategory}
           title={newsBigTitle}
           category={category}
           bannerImg={bannerImg}
@@ -95,6 +96,7 @@ const ProjectPage = ({ projectsidx, data }) => {
             newsBigTitle={newsBigTitle}
             youtubeUrl={youtubeUrl}
             isCategory={isCategory}
+            category={category}
           />
           {/* <ProjectPage04
             subTitle1={subTitle1}
