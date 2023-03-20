@@ -63,12 +63,9 @@ const SlideItem = ({ item, isActive, isPrev }) => {
           background: `url(${item?.img}) no-repeat center center/cover`,
         }}
       >
-        <Box className={styles.item}>
-          <Typography variant='p'>{item.title}</Typography>
-        </Box>
-        {item.title1 && (
+        {isCategory && (
           <Box className={styles.item}>
-            <Typography variant='p'>{item.title1}</Typography>
+            <Typography variant='p'>{item.title}</Typography>
           </Box>
         )}
       </Box>

@@ -12,18 +12,25 @@ import Image from "next/future/image";
 import useMoveIcon from "../../../../hooks/useMoveIcon";
 import { motion, useInView } from "framer-motion";
 
-const CSlideItem = (imgArr) => {
+const CSlideItem = (imgArr, isCategory) => {
   return imgArr.map((item, idx) => {
     return (
       <SwiperSlide key={idx}>
         {({ isActive, isPrev }) => {
-          return <SlideItem item={item} isActive={isActive} isPrev={isPrev} />;
+          return (
+            <SlideItem
+              item={item}
+              isActive={isActive}
+              isPrev={isPrev}
+              isCategory={isCategory}
+            />
+          );
         }}
       </SwiperSlide>
     );
   });
 };
-const Page02Swiper = ({ isLandingPage, imgArr }) => {
+const Page02Swiper = ({ isLandingPage, imgArr, isCategory = false }) => {
   const theme = useTheme();
   const gridBoxRef = useRef();
   const inViewGridPicref = useInView(gridBoxRef);
@@ -118,7 +125,12 @@ const Page02Swiper = ({ isLandingPage, imgArr }) => {
           }}
         >
           <CustomSwiper
-            renderSlide={() => CSlideItem(imgArr?.filter((item) => item.img))}
+            renderSlide={() =>
+              CSlideItem(
+                imgArr?.filter((item) => item.img),
+                isCategory
+              )
+            }
             setCurrentActiveSlide={setCurrentActiveSlide}
           />
         </Container>

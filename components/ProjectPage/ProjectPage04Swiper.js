@@ -91,7 +91,11 @@ const ProjectPage04Swiper = ({
       <div className={styles.newsPage04Box}>
         {/* swiper */}
         <div className={styles.page02Container}>
-          <Page02Swiper isLandingPage={false} imgArr={imgArr} />
+          <Page02Swiper
+            isLandingPage={false}
+            imgArr={imgArr}
+            isCategory={isCategory}
+          />
         </div>
         {/* end */}
         {/* <div className={styles.newsContentBox01}>
@@ -137,10 +141,12 @@ const ProjectPage04Swiper = ({
                   center/cover`,
                     }}
                   >
-                    {/* <div className={styles.headlineNextNews}>
-                      <h1>{nextProject.title}</h1>
-                      <p>{nextProject.category}</p>
-                    </div> */}
+                    {isCategory && (
+                      <div className={styles.headlineNextNews}>
+                        <h1>{nextProject.title}</h1>
+                        <p>{nextProject.category}</p>
+                      </div>
+                    )}
                   </div>
                 </a>
               </Link>
