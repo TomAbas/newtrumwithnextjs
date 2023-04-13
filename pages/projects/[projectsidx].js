@@ -1,18 +1,34 @@
-import React from "react";
-import Head from "next/head";
-import ProjectPage from "../../Views/ProjectPage";
-import { useRouter } from "next/router";
-import { getDetailProjectData } from "../../ApiUrl/projectApi/projectApi";
+import React from 'react';
+import Head from 'next/head';
+import ProjectPage from '../../Views/ProjectPage';
+import { useRouter } from 'next/router';
+import {
+  getAllProject,
+  getDetailProjectData,
+} from '../../ApiUrl/projectApi/projectApi';
 
-export async function getServerSideProps({ params }) {
+export async function getStaticPaths() {
+  const res = await getAllProject().then((data) => {
+    let projects = data.filter((item) => !item.isCategory);
+    return projects;
+  });
+
+  const paths = res.map((item) => ({
+    params: { projectsidx: decodeURI(item.title) },
+  }));
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
   let res;
   if (
-    params.projectsidx !== "undefined" &&
-    params.projectsidx !== "requestProvider.js.map"
+    params.projectsidx !== 'undefined' &&
+    params.projectsidx !== 'requestProvider.js.map'
   ) {
+    console.log(params);
     res = await getDetailProjectData(encodeURI(params.projectsidx)).then(
       (res) => {
-        // console.log(res);
+        console.log(res);
         return res;
       }
     );
@@ -33,7 +49,7 @@ const Projectsidx0 = ({ res }) => {
   // console.log(projectsidx);
   return (
     <>
-      {" "}
+      {' '}
       <Head>
         <link rel='icon' href='/logo300px.ico' />
 
@@ -44,7 +60,7 @@ const Projectsidx0 = ({ res }) => {
           content='Agency, Content,Marketing, KOL, Festival, Singer, Video, Art, Products'
         />
         <meta name='author' content='Trum Agency' />
-        <link rel='canonical' href={`/${res.title}`} />
+        <link rel='canonical' href={`https://www.trumagency.com/projects/${res.title}`} />
         {/* metatag facebook */}
         <meta
           property='og:url'

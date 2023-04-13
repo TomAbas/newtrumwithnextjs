@@ -2,7 +2,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import LandingPage from '../Views/LandingPage';
 import { getLandingPageData } from '../ApiUrl/landingpageApi/landingApi';
-import axiosClient from '../ApiUrl/axiosClient';
+
 // export async function getServerSideProps() {
 //   let res = await getLandingPageData();
 //   // console.log(res);
@@ -45,7 +45,7 @@ export default function Home({ res }) {
           content='Agency, Content,Marketing, KOL, Festival, Singer, Video, Art, Products'
         />
         <meta name='author' content='Trum Agency' />
-        <link rel='canonical' href='/' />
+        <link rel='canonical' href='https://www.trumagency.com/' />
 
         <meta property='og:url' content='https://www.trumagency.com' />
         <meta property='og:type' content='article' />
@@ -60,7 +60,6 @@ export default function Home({ res }) {
         />
         <meta property='og:image:width' content='1200' />
         <meta property='og:image:height' content='630' />
-
       </Head>
       <LandingPage data={res} />
     </div>
