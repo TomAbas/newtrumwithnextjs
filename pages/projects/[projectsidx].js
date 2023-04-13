@@ -9,8 +9,7 @@ import {
 
 export async function getStaticPaths() {
   const res = await getAllProject().then((data) => {
-    let projects = data.filter((item) => !item.isCategory);
-    return projects;
+    return data;
   });
 
   const paths = res.map((item) => ({
