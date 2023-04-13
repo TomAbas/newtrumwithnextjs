@@ -7,18 +7,18 @@ import {
   getDetailProjectData,
 } from '../../ApiUrl/projectApi/projectApi';
 
-export async function getStaticPaths() {
-  const res = await getAllProject().then((data) => {
-    return data;
-  });
+// export async function getStaticPaths() {
+//   const res = await getAllProject().then((data) => {
+//     return data;
+//   });
 
-  const paths = res.map((item) => ({
-    params: { projectsidx: item.title },
-  }));
-  return { paths, fallback: false };
-}
+//   const paths = res.map((item) => ({
+//     params: { projectsidx: item.title },
+//   }));
+//   return { paths, fallback: false };
+// }
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   let res;
   if (
     params.projectsidx !== 'undefined' &&
@@ -37,8 +37,7 @@ export async function getStaticProps({ params }) {
     };
   }
   return {
-    props: { res }, // will be passed to the page component as props
-    revalidate: 30,
+    props: { res }, // will be passed to the page component as prop
   };
 }
 const Projectsidx0 = ({ res }) => {

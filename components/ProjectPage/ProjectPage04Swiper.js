@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useInView } from "framer-motion";
-import styles from "../../styles/ProjectPage04Styles.module.css";
-import Link from "next/link";
-import Page02Swiper from "../landingpage/LandingPage/Page-02/Page02Swiper";
-import { getAllProject } from "../../ApiUrl/projectApi/projectApi";
+import React, { useEffect, useRef, useState } from 'react';
+import { useInView } from 'framer-motion';
+import styles from '../../styles/ProjectPage04Styles.module.css';
+import Link from 'next/link';
+import Page02Swiper from '../landingpage/LandingPage/Page-02/Page02Swiper';
+import { getAllProject } from '../../ApiUrl/projectApi/projectApi';
 
 const ProjectPage04Swiper = ({
   subTitle1,
@@ -64,20 +64,20 @@ const ProjectPage04Swiper = ({
       let swiperObj = swiper?.map((item, idx) => {
         return {
           img: item.image,
-          title: "",
-          postId: "",
+          title: '',
+          postId: '',
         };
       });
       setImgArr(swiperObj);
     }
   };
   const animationWords = () => {
-    let b = subTitle1?.split("").map((word, idx) => {
+    let b = subTitle1?.split('').map((word, idx) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s` };
       return (
         <h1
           key={idx}
-          className={isArrWordIn ? `${styles.fadeInUp0}` : " "}
+          className={isArrWordIn ? `${styles.fadeInUp0}` : ' '}
           style={delay}
         >
           {word}
@@ -140,7 +140,7 @@ const ProjectPage04Swiper = ({
             ref={gridBoxRef}
           >
             {nextProject && (
-              <Link href={`/projects/${nextProject.title}`}>
+              <Link href={`/projects/${encodeURIComponent(nextProject.title)}`}>
                 <a>
                   <div
                     className={styles.newsBackground}
