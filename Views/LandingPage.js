@@ -1,10 +1,10 @@
-import React from "react";
-import LandingPage0 from "../components/landingpage/LandingPage/LandingPage1/LandingPage";
-import Page01 from "../components/landingpage/LandingPage/Page-01/Page01";
-import Page02 from "../components/landingpage/LandingPage/Page-02/Page02Swiper";
-import Page03 from "../components/landingpage/LandingPage/Page-03/Page03";
-import Page04 from "../components/landingpage/LandingPage/Page-04/Page04";
-import useGetDataLand from "../hooks/useGetDataLand";
+import React from 'react';
+import LandingPage0 from '../components/landingpage/LandingPage/LandingPage1/LandingPage';
+import Page01 from '../components/landingpage/LandingPage/Page-01/Page01';
+import Page02 from '../components/landingpage/LandingPage/Page-02/Page02Swiper';
+import Page03 from '../components/landingpage/LandingPage/Page-03/Page03';
+import Page04 from '../components/landingpage/LandingPage/Page-04/Page04';
+import useGetDataLand from '../hooks/useGetDataLand';
 
 const LandingPage = ({ data }) => {
   const {

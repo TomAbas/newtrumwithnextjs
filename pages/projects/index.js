@@ -1,7 +1,7 @@
-import React from "react";
-import ListJobPage from "../../Views/ListJobPage";
-import styles from "../../styles/Home.module.css";
-import Head from "next/head";
+import React from 'react';
+import ListJobPage from '../../Views/ListJobPage';
+import styles from '../../styles/Home.module.css';
+import Head from 'next/head';
 
 const index = () => {
   return (
@@ -9,10 +9,6 @@ const index = () => {
       <Head>
         <title>Trum's Projects</title>
         <link rel='icon' href='/logo300px.ico' />
-        <link
-          href="https://fonts.googleapis.com/css?family=Montserrat"
-          rel='stylesheet'
-        />
         {/* metatag google  */}
         <meta
           name='description'
