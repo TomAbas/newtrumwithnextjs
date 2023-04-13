@@ -1,23 +1,23 @@
-import React from "react";
-import styles from "../../styles/ProjectStyles.module.css";
-import { ParallaxProvider, Parallax } from "react-scroll-parallax";
+import React from 'react';
+import styles from '../../styles/ProjectStyles.module.css';
+import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 
-import Link from "next/link";
-import { useEffect } from "react";
+import Link from 'next/link';
+import { useEffect } from 'react';
 const ListJobPage = ({ arrayListJob }) => {
   const [deviceWidth, setDeviceWidth] = React.useState(0);
   useEffect(() => {
     setDeviceWidth(window?.innerWidth);
   }, []);
   const createItem = () => {
-    let b = arrayListJob.map((job) => {
+    let b = arrayListJob.map((job, idx) => {
       let a = (
-        <div className={styles.listJobBox}>
+        <div className={styles.listJobBox} key={idx}>
           {job.map((job, idx) => {
             return (
               <>
                 {idx === 0 ? (
-                  <Link href={`/projects/${job.title}`}>
+                  <Link href={`/projects/${job.title}`} key={idx}>
                     <a>
                       <Parallax
                         scale={[0.95, 1]}
@@ -35,7 +35,7 @@ const ListJobPage = ({ arrayListJob }) => {
                     </a>
                   </Link>
                 ) : (
-                  <Link href={`/projects/${job.title}`}>
+                  <Link href={`/projects/${job.title}`} key={idx}>
                     <a>
                       <Parallax
                         speed={0}

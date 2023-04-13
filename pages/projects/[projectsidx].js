@@ -24,11 +24,10 @@ export async function getStaticProps({ params }) {
     params.projectsidx !== 'undefined' &&
     params.projectsidx !== 'requestProvider.js.map'
   ) {
-    // console.log(params);
-    res = await getDetailProjectData(
-      encodeURIComponent(params.projectsidx)
-    ).then((res) => {
-      // console.log(res);
+    console.log(params);
+    let url = encodeURIComponent(params.projectsidx);
+    res = await getDetailProjectData(url).then((res) => {
+      console.log(res);
       return res;
     });
   }
