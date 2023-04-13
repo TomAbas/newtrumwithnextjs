@@ -140,7 +140,7 @@ const ProjectPage04Swiper = ({
             ref={gridBoxRef}
           >
             {nextProject && (
-              <Link href={`/projects/${encodeURIComponent(nextProject.title)}`}>
+              <Link href={`/projects/${nextProject.title}`}>
                 <a>
                   <div
                     className={styles.newsBackground}
