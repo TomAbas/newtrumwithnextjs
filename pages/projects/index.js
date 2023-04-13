@@ -9,7 +9,7 @@ export async function getStaticProps() {
     data.filter((item) => !item.isCategory)
   );
 
-  console.log(res);
+  // console.log(res);
 
   if (!res) {
     return {

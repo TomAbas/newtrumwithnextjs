@@ -13,7 +13,7 @@ export async function getStaticPaths() {
   });
 
   const paths = res.map((item) => ({
-    params: { projectsidx: decodeURI(item.title) },
+    params: { projectsidx: item.title },
   }));
   return { paths, fallback: false };
 }
@@ -24,13 +24,13 @@ export async function getStaticProps({ params }) {
     params.projectsidx !== 'undefined' &&
     params.projectsidx !== 'requestProvider.js.map'
   ) {
-    console.log(params);
-    res = await getDetailProjectData(encodeURI(params.projectsidx)).then(
-      (res) => {
-        console.log(res);
-        return res;
-      }
-    );
+    // console.log(params);
+    res = await getDetailProjectData(
+      encodeURIComponent(params.projectsidx)
+    ).then((res) => {
+      // console.log(res);
+      return res;
+    });
   }
   if (!res) {
     return {
