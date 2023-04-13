@@ -15,7 +15,7 @@ export async function getStaticPaths() {
   const paths = res.map((item) => ({
     params: { projectsidx: item.title },
   }));
-  return { paths, fallback: false };
+  return { paths, fallback: 'blocking' };
 }
 
 export async function getStaticProps({ params }) {
