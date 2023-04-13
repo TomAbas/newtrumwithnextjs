@@ -40,6 +40,7 @@ export async function getStaticProps({ params }) {
   }
   return {
     props: { res }, // will be passed to the page component as props
+    revalidate: 30,
   };
 }
 const Projectsidx0 = ({ res }) => {
@@ -60,7 +61,10 @@ const Projectsidx0 = ({ res }) => {
           content='Agency, Content,Marketing, KOL, Festival, Singer, Video, Art, Products'
         />
         <meta name='author' content='Trum Agency' />
-        <link rel='canonical' href={`https://www.trumagency.com/projects/${res.title}`} />
+        <link
+          rel='canonical'
+          href={`https://www.trumagency.com/projects/${res.title}`}
+        />
         {/* metatag facebook */}
         <meta
           property='og:url'
