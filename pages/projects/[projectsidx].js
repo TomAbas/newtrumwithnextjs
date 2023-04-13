@@ -7,18 +7,18 @@ import {
   getDetailProjectData,
 } from '../../ApiUrl/projectApi/projectApi';
 
-// export async function getStaticPaths() {
-//   const res = await getAllProject().then((data) => {
-//     return data;
-//   });
+export async function getStaticPaths() {
+  const res = await getAllProject().then((data) => {
+    return data;
+  });
 
-//   const paths = res.map((item) => ({
-//     params: { projectsidx: item.title },
-//   }));
-//   return { paths, fallback: false };
-// }
+  const paths = res.map((item) => ({
+    params: { projectsidx: item.title },
+  }));
+  return { paths, fallback: true };
+}
 
-export async function getServerSideProps({ params }) {
+export async function getStaticProps({ params }) {
   let res;
   if (
     params.projectsidx !== 'undefined' &&
