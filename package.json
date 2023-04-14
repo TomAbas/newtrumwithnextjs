@@ -4,10 +4,9 @@
   "private": true,
   "homepage": "https://trumagency.com",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "next dev",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
-    "lint": "next lint"
+    "start": "next start "
   },
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^27.1.0",

@@ -4,9 +4,9 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: [
-      "pagesmanagementapi.com",
-      "s3-alpha-sig.figma.com",
-      "firebasestorage.googleapis.com",
+      'pagesmanagementapi.com',
+      's3-alpha-sig.figma.com',
+      'firebasestorage.googleapis.com',
     ],
   },
   eslint: {
@@ -15,6 +15,8 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   experimental: { images: { allowFutureImage: true } },
+  output: 'export', 
+  distDir: 'build',
 };
 
 module.exports = nextConfig;
