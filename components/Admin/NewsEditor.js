@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "../../styles/Admin.module.css";
-
+//firebase
+import { storage } from "../../config/firbase";
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 //mui
 import { Button } from "@mui/material";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-// import ListItemText from "@mui/material/ListItemText";
-// import ListItemButton from "@mui/material/ListItemButton";
-// import ListItemIcon from "@mui/material/ListItemIcon";
+
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import IconButton from "@mui/material/IconButton";
 //form
@@ -15,8 +15,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 //editor
-// import Editor from "ckeditor5-custom-build/build/ckeditor";
-// import { CKEditor } from "@ckeditor/ckeditor5-react";
 import axios from "axios";
 
 import { useEffect } from "react";
@@ -27,22 +25,23 @@ import { urlAddContributor, urlListContributorIdPost } from "../../ApiUrl/Api";
 const schema = yup.object().shape({
   contributorName: yup.string(),
   contributorRole: yup.string(),
-  title1: yup.string().required("missing field"),
-  title2: yup.mixed(),
-  headLine1: yup.string().required("missing field"),
-  headLine2: yup.mixed(),
-  subHeadLine: yup.string().required("missing field"),
-  tagLine1: yup.string().required("missing field"),
-  tagLine2: yup.string().required("missing field"),
-  youtubeUrl: yup.string().required("missing field"),
+  title: yup.string().required("missing field"),
   category: yup.string().required("missing field"),
+  video: yup.string().required("missing field"),
+  videoAlt: yup.string().required("missing field"),
+  mainImage: yup.mixed().required("missing field"),
+  // mainImageAlt: yup.string().required("missing field"),
+  content1Title: yup.string().required("missing field"),
+  content1Image: yup.mixed().required("missing field"),
+  // content2Title: yup.string().required("missing field"),
+  // content2Image: yup.mixed().required("missing field"),
   image1: yup.mixed().required("missing field"),
   image2: yup.mixed().required("missing field"),
   image3: yup.mixed().required("missing field"),
   image4: yup.mixed().required("missing field"),
   image5: yup.mixed().required("missing field"),
-  image6: yup.mixed().required("missing field"),
-  thumbnail: yup.mixed(),
+  // swiper: yup.array().required("missing field").default(new Array(4)),
+  isCategory: yup.boolean().default(false).required("missing field"),
 });
 
 const NewsEditor = ({
@@ -54,8 +53,8 @@ const NewsEditor = ({
   setNewNewsHeadContent,
   isAddContributor,
   contributorList,
-  setDidNotSubmitHeadForm,
-  setDidNotSubmitHeadForm2,
+  setDidNotSubmitHeadForm = () => {},
+  setDidNotSubmitHeadForm2 = () => {},
   setContributorList,
 }) => {
   // console.log(isAddContributor);
@@ -71,21 +70,139 @@ const NewsEditor = ({
       return preLoadValue;
     }, [preLoadValue]),
   });
-  const submitNewsEditor = (data) => {
+
+  const submitNewsEditor = async (data) => {
     console.log(data);
+    let arrImg = [
+      data.image1[0],
+      data.image2[0],
+      data.image3[0],
+      data.image4[0],
+      data.image5[0],
+    ];
+    let swiper = await Promise.all(
+      arrImg.map(async (img, index) => {
+        try {
+          let downloadURL;
+          if (img.name === undefined) {
+            throw new Error("No file selected");
+          }
+          const sotrageRef = ref(storage, `web/${img.name}`);
+          const uploadTask = uploadBytesResumable(sotrageRef, img);
+          downloadURL = await new Promise((resolve, reject) => {
+            uploadTask.on(
+              "state_changed",
+              () => {},
+              (error) => console.log("err ", error),
+              async () => {
+                let url = await getDownloadURL(uploadTask.snapshot.ref);
+                resolve(url);
+              }
+            );
+          });
+          return { image: downloadURL };
+        } catch (error) {
+          console.log(error);
+          return { image: preLoadValue.swiper[index].image };
+        }
+      })
+    );
+
+    try {
+      if (data.mainImage[0].name !== undefined) {
+        console.log("mainImage", data.mainImage[0]);
+        const sotrageRef = ref(storage, `web/${data.mainImage[0].name}`);
+        const uploadTask = uploadBytesResumable(sotrageRef, data.mainImage[0]);
+        data.mainImage = await new Promise((resolve, reject) => {
+          uploadTask.on(
+            "state_changed",
+            () => {},
+            (error) => console.log("err ", error),
+            async () => {
+              let url = await getDownloadURL(uploadTask.snapshot.ref);
+              resolve(url);
+            }
+          );
+        });
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+
+    try {
+      if (data.content1Image[0].name !== undefined) {
+        const sotrageRef = ref(storage, `web/${data.content1Image[0].name}`);
+        const uploadTask = uploadBytesResumable(
+          sotrageRef,
+          data.content1Image[0]
+        );
+        data.content1Image = await new Promise((resolve, reject) => {
+          uploadTask.on(
+            "state_changed",
+            () => {},
+            (error) => console.log("err ", error),
+            async () => {
+              let url = await getDownloadURL(uploadTask.snapshot.ref);
+              resolve(url);
+            }
+          );
+        });
+      }
+    } catch (error) {
+      data.content1Image = preLoadValue.listContent[0].image;
+      console.log("error", error);
+    }
+    try {
+      if (data.content2Image && data.content2Image[0].name !== undefined) {
+        const sotrageRef = ref(storage, `web/${data.content2Image[0].name}`);
+        const uploadTask = uploadBytesResumable(
+          sotrageRef,
+          data.content2Image[0]
+        );
+        data.content2Image = await new Promise((resolve, reject) => {
+          uploadTask.on(
+            "state_changed",
+            () => {},
+            (error) => console.log("err ", error),
+            async () => {
+              let url = await getDownloadURL(uploadTask.snapshot.ref);
+              resolve(url);
+            }
+          );
+        });
+      }
+    } catch (error) {
+      data.content2Image = preLoadValue.listContent[1].image;
+      console.log("error", error);
+    }
+
+    let submitData = {
+      mainImage: data.mainImage,
+      mainImageAlt: "data.mainImageAlt",
+      title: data.title.trim(),
+      category: data.category,
+      video: data.video,
+      videoAlt: data.videoAlt,
+      swiper: swiper,
+      listContent: [
+        { title: data.content1Title, image: data.content1Image },
+        { title: "data.content2Title", image: " data.content2Image" },
+      ],
+      id: data._id,
+      isCategory: data.isCategory,
+    };
+
+    console.log(submitData);
 
     if (isAddNews) {
-      console.log(213);
-      setNewNewsHeadContent(data);
+      setNewNewsHeadContent(submitData);
       setDidNotSubmitHeadForm2(false);
     } else {
-      console.log(213);
-      setNewsHeadContent(data);
+      setNewsHeadContent(submitData);
       setDidNotSubmitHeadForm(false);
     }
   };
   const submitAddContributor = async (data) => {
-    console.log(data);
     await axios
       .post(urlAddContributor, {
         contributorName: data.contributorName,
@@ -98,12 +215,11 @@ const NewsEditor = ({
           .get(`${urlListContributorIdPost}/${newsIdx}`)
           .then(({ data }) => {
             console.log(data);
-          
+
             setContributorList(data);
           });
       })
       .catch((error) => {
-       
         console.log(error);
       });
   };
@@ -114,17 +230,20 @@ const NewsEditor = ({
         .get(`${urlListContributorIdPost}/${newsIdx}`)
         .then(({ data }) => {
           console.log(data);
-         
+
           setContributorList(data);
-        }).catch((error)=>{
-         
-          console.log(error)
+        })
+        .catch((error) => {
+          console.log(error);
         });
     });
   };
   useEffect(() => {
     reset(preLoadValue);
   }, [preLoadValue]);
+  useEffect(() => {
+    console.log(errors);
+  }, [errors]);
 
   return (
     <div className={`${styles.landingpageform} ${styles.formNews}`}>
@@ -142,7 +261,10 @@ const NewsEditor = ({
                 {contributorList &&
                   contributorList.map((item, idx) => {
                     return (
-                      <ListItem sx={{ borderBottom: " 2px solid #ccc" }} key={idx}>
+                      <ListItem
+                        sx={{ borderBottom: " 2px solid #ccc" }}
+                        key={idx}
+                      >
                         <p>
                           {item.contributorName} : {item.role}{" "}
                         </p>{" "}
@@ -213,78 +335,24 @@ const NewsEditor = ({
           <div className={styles.bannerBanner}>TITLE :</div>
           <div className={styles.row1}>
             <div className={styles.titleEdit}>
-              <h3>Line 1 : </h3>
               <textarea
                 type='text'
-                // defaultValue={preLoadValue.title1}
+                defaultValue={preLoadValue.title}
                 className={styles.inputField}
-                name='title1'
-                {...register("title1")}
+                name='title'
+                {...register("title")}
               />
-              <p>{errors.title1?.message}</p>
-            </div>
-
-            <div className={styles.titleEdit}>
-              <h3>Line 2 : </h3>
-              <textarea
-                type='text'
-                // defaultValue={preLoadValue.title2}
-                className={styles.inputField}
-                name='title2'
-                {...register("title2")}
-              />
-              <p>{errors.title2?.message}</p>
+              <p>{errors.title?.message}</p>
             </div>
           </div>
         </div>
-        <div className={styles.content1Edit}>
-          <div className={styles.bannerBanner}> HEADLINE :</div>
+        <div className={styles.bannerEdit}>
+          <div className={styles.bannerBanner}>CATEGORY :</div>
           <div className={styles.row1}>
             <div className={styles.titleEdit}>
-              <h3>HEADLINE - Line 1 : </h3>
               <textarea
                 type='text'
-                // defaultValue={preLoadValue.headLine1}
-                className={styles.inputField}
-                name='headLine1'
-                {...register("headLine1")}
-              />
-              <p>{errors.headLine1?.message}</p>
-            </div>
-
-            <div className={styles.titleEdit}>
-              <h3>HEADLINE - Line 2 : </h3>
-              <textarea
-                type='text'
-                // defaultValue={preLoadValue.headLine2}
-                className={styles.inputField}
-                name='headLine2'
-                {...register("headLine2")}
-              />
-              <p>{errors.headLine2?.message}</p>
-            </div>
-          </div>
-        </div>
-        <div className={styles.content1Edit}>
-          <div className={styles.bannerBanner}> Youtube Url :</div>
-          <div className={styles.row1}>
-            <div className={styles.titleEdit}>
-              <h3>Youtube Embed URL </h3>
-              <textarea
-                type='text'
-                // defaultValue={preLoadValue.youtubeUrl}
-                className={styles.inputField}
-                name='youtubeUrl'
-                {...register("youtubeUrl")}
-              />
-              <p>{errors.youtubeUrl?.message}</p>
-            </div>
-
-            <div className={styles.titleEdit}>
-              <h3>Category : </h3>
-              <textarea
-                type='text'
-                // defaultValue={preLoadValue.category}
+                defaultValue={preLoadValue.category}
                 className={styles.inputField}
                 name='category'
                 {...register("category")}
@@ -293,116 +361,169 @@ const NewsEditor = ({
             </div>
           </div>
         </div>
-        <div className={styles.content2Edit}>
-          <div className={styles.bannerBanner}> SUB HEADLINE :</div>
+        <div className={styles.content1Edit}>
+          <div className={styles.bannerBanner}> THUMBNAIL :</div>
           <div className={styles.row1}>
             <div className={styles.titleEdit}>
-              <h3>SUB HEADLINE : </h3>
+              <h3>Image : </h3>
+              <input
+                type='file'
+                accept='image/*'
+                className={styles.inputField}
+                name='mainImage'
+                {...register("mainImage")}
+                onChange={() => {
+                  console.log("change");
+                  setDidNotSubmitHeadForm2(true);
+                  setDidNotSubmitHeadForm(true);
+                }}
+              />
+              <p>{errors.mainImage?.message}</p>
+            </div>
+
+            {/* <div className={styles.titleEdit}>
+              <h3>Description : </h3>
               <textarea
                 type='text'
-                // defaultValue={preLoadValue.subHeadLine}
+                defaultValue={preLoadValue.mainImageAlt}
                 className={styles.inputField}
-                name='subHeadLine'
-                {...register("subHeadLine")}
+                name='mainImageAlt'
+                {...register("mainImageAlt")}
               />
-              <p>{errors.subHeadline?.message}</p>
+              <p>{errors.mainImageAlt?.message}</p>
+            </div> */}
+          </div>
+        </div>
+        <div className={styles.content1Edit}>
+          <div className={styles.bannerBanner}> VIDEO :</div>
+          <div className={styles.row1}>
+            <div className={styles.titleEdit}>
+              <h3>Video </h3>
+              <textarea
+                type='text'
+                defaultValue={preLoadValue.video}
+                className={styles.inputField}
+                name='video'
+                {...register("video")}
+              />
+              <p>{errors.video?.message}</p>
             </div>
 
             <div className={styles.titleEdit}>
-              <h3>Content 1 - Headline : </h3>
+              <h3>Description : </h3>
               <textarea
                 type='text'
+                defaultValue={preLoadValue.videoAlt}
                 className={styles.inputField}
-                name='tagLine1'
-                {...register("tagLine1")}
+                name='videoAlt'
+                {...register("videoAlt")}
               />
-              <p>{errors.tagLine1?.message}</p>
-            </div>
-            <div className={styles.titleEdit}>
-              <h3>Content 2 - Headline : </h3>
-              <textarea
-                type='text'
-                className={styles.inputField}
-                name='tagLine2'
-                {...register("tagLine2")}
-              />
-              <p>{errors.tagLine2?.message}</p>
+              <p>{errors.videoAlt?.message}</p>
             </div>
           </div>
         </div>
-        <div className={styles.content4Edit}>
-          <div className={styles.bannerBanner}>IMAGES :</div>
+        <div className={styles.content2Edit}>
+          <div className={styles.bannerBanner}> LIST IMAGE :</div>
+          <div className={styles.row1}>
+            {new Array(5).fill(0).map((_, idx) => {
+              return (
+                <>
+                  <div className={styles.titleEdit}>
+                    <h3>Image {idx + 1} : </h3>
+                    <input
+                      type='file'
+                      accept='image/*'
+                      className={styles.inputField}
+                      name={`image${idx + 1}`}
+                      {...register(`image${idx + 1}`)}
+                      onChange={() => {
+                        console.log("change");
+                        setDidNotSubmitHeadForm2(true);
+                        setDidNotSubmitHeadForm(true);
+                      }}
+                    />
+                    <p>{errors.listImage?.message}</p>
+                  </div>
+                </>
+              );
+            })}
+          </div>
+        </div>
+        <div className={styles.content1Edit}>
+          <div className={styles.bannerBanner}> CONTENT :</div>
+          <h2>Content 1: </h2>
           <div className={styles.row1}>
             <div className={styles.titleEdit}>
-              <h3>Choose a image for banner : </h3>
-              <input
-                type='file'
-                accept='image/*'
+              <h3>Title : </h3>
+              <textarea
+                type='text'
+                defaultValue={preLoadValue?.listContent[0].title}
                 className={styles.inputField}
-                name='image1'
-                {...register("image1")}
+                name='content1Title'
+                {...register("content1Title")}
               />
+              <p>{errors.content1Title?.message}</p>
             </div>
+
             <div className={styles.titleEdit}>
-              <h3>Choose a image for slide: </h3>
+              <h3>Choose a image for content: </h3>
               <input
                 type='file'
                 accept='image/*'
                 className={styles.inputField}
-                name='image2'
-                {...register("image2")}
-              />
-            </div>
-            <div className={styles.titleEdit}>
-              <h3>Choose a image for slide: </h3>
-              <input
-                type='file'
-                accept='image/*'
-                className={styles.inputField}
-                name='image3'
-                {...register("image3")}
+                name='content1Image'
+                {...register("content1Image")}
+                onChange={() => {
+                  console.log("change");
+                  setDidNotSubmitHeadForm(true);
+                  setDidNotSubmitHeadForm2(true);
+                }}
               />
             </div>
           </div>
+          {/* <h2>Content 2: </h2> */}
           <div className={styles.row1}>
-            <div className={styles.titleEdit}>
-              <h3>Choose a image for slide: </h3>
-              <input
-                type='file'
-                accept='image/*'
+            {/* <div className={styles.titleEdit}>
+              <h3>Title : </h3>
+              <textarea
+                type='text'
+                defaultValue={preLoadValue?.listContent[1].title}
                 className={styles.inputField}
-                name='image4'
-                {...register("image4")}
+                name='content2Title'
+                {...register("content2Title")}
               />
+              <p>{errors.content2Title?.message}</p>
             </div>
+
             <div className={styles.titleEdit}>
-              <h3>Choose a image for slide: </h3>
+              <h3>Choose a image for content: </h3>
               <input
                 type='file'
                 accept='image/*'
                 className={styles.inputField}
-                name='image5'
-                {...register("image5")}
+                name='content2Image'
+                {...register("content2Image")}
+                onChange={() => {
+                  console.log("change");
+                  setDidNotSubmitHeadForm(true);
+                  setDidNotSubmitHeadForm2(true);
+                }}
               />
-            </div>
-            <div className={styles.titleEdit}>
-              <h3>Choose a image for slide: </h3>
+              <p>{errors.content2Title?.message}</p>
+            </div> */}
+            <div
+              className={styles.titleEdit}
+              style={{ display: "flex", gap: "20px", alignItems: "center" }}
+            >
+              <h3>Is add category :</h3>
               <input
-                type='file'
-                accept='image/*'
-                className={styles.inputField}
-                name='image6'
-                {...register("image6")}
-              />
-            </div>
-            <div className={styles.titleEdit}>
-              <h3>Choose a image for thumbnail: </h3>
-              <input
-                type='file'
-                accept='image/*'
-                className={styles.inputField}
-                name='thumbnail'
-                {...register("thumbnail")}
+                type='checkbox'
+                className={styles.checkBox}
+                {...register("isCategory")}
+                onChange={() => {
+                  setDidNotSubmitHeadForm(true);
+                  setDidNotSubmitHeadForm2(true);
+                }}
               />
             </div>
           </div>

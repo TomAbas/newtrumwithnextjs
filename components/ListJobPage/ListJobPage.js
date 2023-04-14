@@ -1,51 +1,57 @@
-import React from "react";
-import styles from '../../styles/ProjectStyles.module.css'
-import { ParallaxProvider, Parallax } from "react-scroll-parallax";
-import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
-const ListJobPage = ({ arrayListJob, amountJob }) => {
-  console.log(arrayListJob);
+import React from 'react';
+import styles from '../../styles/ProjectStyles.module.css';
+import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
+
+import Link from 'next/link';
+import { useEffect } from 'react';
+const ListJobPage = ({ arrayListJob }) => {
+  const [deviceWidth, setDeviceWidth] = React.useState(0);
+  useEffect(() => {
+    setDeviceWidth(window?.innerWidth);
+  }, []);
   const createItem = () => {
-    let b = arrayListJob.map((job, idxo) => {
-      // console.log(job);
+    let b = arrayListJob.map((job, idx) => {
       let a = (
-        <div className={styles.listJobBox}>
+        <div className={styles.listJobBox} key={idx}>
           {job.map((job, idx) => {
-            // console.log("job in side", job);
-            // console.log(idxo);
             return (
               <>
                 {idx === 0 ? (
-                  <Link href={`/projects/${job.postId}`}>
-                    <Parallax
-                      translateY={[-20, -50]}
-                      speed={-20}
-                      className={styles.jobBox}
-                    >
-                      <div
-                        className={styles.innerBox}
-                        style={{ backgroundImage: `url(${job.banner})` }}
+                  <Link href={`/projects/${job.title}`} key={idx}>
+                    <a>
+                      <Parallax
+                        scale={[0.95, 1]}
+                        className={styles.jobBox}
+                        speed={1}
                       >
-                        <h1>{job.title}</h1>
-                        <p>{job.category}</p>
-                      </div>
-                    </Parallax>
+                        <div
+                          className={styles.innerBox}
+                          style={{ backgroundImage: `url(${job.mainImage})` }}
+                        >
+                          {/* <h1>{job.title}</h1>
+                          <p>{job.category}</p> */}
+                        </div>
+                      </Parallax>
+                    </a>
                   </Link>
                 ) : (
-                  <Link href={`/projects/${job.postId}`}>
-                    <Parallax
-                      translateY={[0, -100]}
-                      speed={30}
-                      className={styles.jobBox}
-                    >
-                      <div
-                        className={styles.innerBox}
-                        style={{ backgroundImage: `url(${job.banner})` }}
+                  <Link href={`/projects/${job.title}`} key={idx}>
+                    <a>
+                      <Parallax
+                        speed={0}
+                        scale={[0.95, 1]}
+                        translateY={deviceWidth > 768 && [0, -50]}
+                        className={styles.jobBox}
                       >
-                        <h1>{job.title}</h1>
-                        <p>{job.category}</p>
-                      </div>
-                    </Parallax>
+                        <div
+                          className={styles.innerBox}
+                          style={{ backgroundImage: `url(${job.mainImage})` }}
+                        >
+                          {/* <h1>{job.title}</h1>
+                          <p>{job.category}</p> */}
+                        </div>
+                      </Parallax>
+                    </a>
                   </Link>
                 )}
               </>
@@ -53,7 +59,6 @@ const ListJobPage = ({ arrayListJob, amountJob }) => {
           })}
         </div>
       );
-      // console.log(a);
       return a;
     });
 
@@ -68,9 +73,7 @@ const ListJobPage = ({ arrayListJob, amountJob }) => {
               Projects.
             </h1>
           </div>
-          <div className={`${styles.listJobOuterBox} ${styles.outerMove}`}>
-            {createItem()}
-          </div>
+          <div className={` ${styles.outerMove}`}>{createItem()}</div>
         </div>
       </ParallaxProvider>
     </>

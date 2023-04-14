@@ -19,6 +19,20 @@
     display: block;
   }
 }
+@keyframes scaleIn1 {
+  0% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.scaleIn1 {
+  animation: scaleIn1 0.8s ease-in-out forwards;
+}
 .fadeInUp0 {
   animation: fadeInUp 0.8s ease forwards;
   display: block !important;
@@ -34,7 +48,7 @@
   margin-right: 5px;
 }
 .h1Word {
-  opacity: 0;
+  opacity: 1;
 }
 .page01WrapperEffect {
   /* animation: tst 2s ease-in-out 1s forwards; */
@@ -71,7 +85,7 @@
   background: linear-gradient(90deg, #000, #fff, #000);
   background-repeat: no-repeat;
   background-size: 80%;
-  animation: animate 3s ease 1 forwards;
+  /* animation: animate 3s ease 1 forwards; */
   -webkit-background-clip: text;
   -webkit-text-fill-color: rgba(255, 255, 255, 0);
   margin-right: 10px;
@@ -98,7 +112,7 @@
 /* effect end */
 .page01Container {
   /* outline: 2px solid white; */
-  height: 60vh;
+  height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -112,7 +126,6 @@
 .topText {
   /* outline: 2px solid blue; */
   text-align: center;
-  margin-bottom: 20px;
 }
 .topText h1 {
   color: #fff;
@@ -120,7 +133,7 @@
   /* margin-bottom: 10px; */
 }
 .topText p {
-  margin-bottom: 10px;
+  margin: 10px auto; 
   font-size: 0.4rem;
 }
 
@@ -169,7 +182,7 @@
   } */
 
   .topText p {
-    margin-bottom: 20px;
+    margin: 20px auto;
     font-size: 0.9rem;
   }
   .bottomText p {
@@ -214,7 +227,7 @@
   } */
 
   .topText p {
-    margin-bottom: 30px;
+    margin: 30px auto;
     font-size: 1rem;
   }
   .bottomText p {
@@ -234,7 +247,7 @@
     font-size: 3.75rem;
   }
   .topText p {
-    margin-bottom: 30px;
+    margin: 30px auto;
     font-size: 1.2rem;
   }
   .bottomText p {

@@ -1,56 +1,54 @@
 import React, { useState, useMemo } from "react";
 import styles from "../../styles/Admin.module.css";
-
+//firebase
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { storage } from "../../config/firbase";
 //hook form
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import axios from "axios";
-
-import { editAbout, urlAbout } from "../../ApiUrl/Api";
 import { useEffect } from "react";
 import { Button } from "@mui/material";
+import CheckboxEffect from "./CheckboxEffect";
+import { editLandingPageData } from "../../ApiUrl/landingpageApi/landingApi";
+import { toast } from "react-toastify";
 const schema = yup.object().shape({
   title1: yup.string(),
-  title2: yup.string(),
-  title3: yup.string(),
   content1Line1: yup.string(),
-  content1Line2: yup.string(),
-  content1Line3: yup.string(),
-  content1Line4: yup.string(),
-  content1Line5: yup.string(),
-  content1Line6: yup.string(),
   content2Line1: yup.string(),
-  content2Line2: yup.string(),
-  content2Line3: yup.string(),
-  content2Line4: yup.string(),
-  content2Line5: yup.string(),
   content3Line1: yup.string(),
   content3Line2: yup.string(),
-  content3Line3: yup.string(),
-  content3Line4: yup.string(),
-  content3Line5: yup.string(),
-  content3Line6: yup.string(),
-  content3Line7: yup.string(),
-  content3Line8: yup.string(),
-  content3Line9: yup.string(),
-  content3Line10: yup.string(),
   content4Line1: yup.string(),
   content4Line2: yup.string(),
-  content4Line3: yup.string(),
-  content4Line4: yup.string(),
-  content4Line5: yup.string(),
   content5Line1: yup.string(),
   content5Line2: yup.string(),
-  content5Line3: yup.string(),
   image1: yup.mixed().required(),
   image2: yup.mixed().required(),
+  image3: yup.mixed().required(),
 });
-const LandingPageForm = ({ preLoadValue }) => {
+const LandingPageForm = ({ preLoadValue, fullData }) => {
+  const [dadEffectArr, setDadEffectArr] = useState(() => {
+    let obj = {};
+    fullData.title.forEach((item, idx) => {
+      obj[idx] = item.effect;
+    });
+    return obj;
+  });
+  const [dadEffectArr1, setDadEffectArr1] = useState(() => {
+    let obj = {};
+    fullData.subTitle.forEach((item, idx) => {
+      obj[idx] = item.effect;
+    });
+    return obj;
+  });
+  const [trigger, setTrigger] = useState(false);
+  const [trigger1, setTrigger1] = useState(false);
   const {
     register,
     handleSubmit,
     reset,
+    getValues,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -59,84 +57,73 @@ const LandingPageForm = ({ preLoadValue }) => {
     }, [preLoadValue]),
   });
 
-  const submitNewsEditor = (data) => {
-    // console.log(data);
-    const newFormBanner = new FormData();
-    newFormBanner.append("firstLine", data.title1);
-    newFormBanner.append("secondLine", data.title2);
-    newFormBanner.append("thirdLine", data.title3);
-    newFormBanner.append("img", data.image1[0]);
-    axios({
-      url: `${editAbout}/1`,
-      method: "POST",
-      headers: { "Content-Type": "multipart/form-data" },
-      data: newFormBanner,
-    })
-      .then((res) => {
-   
-        console.log(res);
+  const submitNewsEditor = async (data) => {
+    let arrImg = [data.image1[0], data.image2[0], data.image3[0]];
+    arrImg = await Promise.all(
+      arrImg.map(async (item, index) => {
+        try {
+          let downloadURL;
+          const sotrageRef = ref(storage, `web/${item.name}`);
+          if (item.name === undefined) {
+            throw new Error("No file selected");
+          }
+          const uploadTask = uploadBytesResumable(sotrageRef, item);
+          downloadURL = await new Promise((resolve, reject) => {
+            uploadTask.on(
+              "state_changed",
+              () => {},
+              (error) => console.log("err ", error),
+              async () => {
+                let url = await getDownloadURL(uploadTask.snapshot.ref);
+                resolve(url);
+              }
+            );
+          });
+          return downloadURL;
+        } catch (error) {
+          console.log(error);
+          return preLoadValue[`image${index + 1}`];
+        }
       })
-      .catch((error) => {
-       
-        console.log(error);
-      });
-
-    const objSection1 = {
-      firstLine: data.content1Line1,
-      secondLine: data.content1Line2,
-      thirdLine: data.content1Line3,
-      fourthLine: data.content1Line4,
-      fifthLine: data.content1Line5,
-      sixthLine: data.content1Line6,
+    );
+    console.log(arrImg);
+    let bodyTitle = data.title1.split("\n").map((item, idx) => {
+      return { content: item, effect: dadEffectArr[idx] };
+    });
+    let bodyDescription = data.content1Line1.split("\n").map((item, idx) => {
+      return { content: item };
+    });
+    let bodySubTitle = data.content2Line1.split("\n").map((item, idx) => {
+      return { content: item, effect: dadEffectArr1[idx] };
+    });
+    let bodyListContent = [
+      {
+        content: data.content3Line1,
+        description: data.content3Line2,
+        image: arrImg[1],
+      },
+      {
+        content: data.content4Line1,
+        description: data.content4Line2,
+        image: arrImg[2],
+      },
+      { content: data.content5Line1, description: data.content5Line2 },
+    ];
+    let body = {
+      title: bodyTitle,
+      description: bodyDescription,
+      subTitle: bodySubTitle,
+      listContent: bodyListContent,
+      mainImage: arrImg[0],
     };
-    axios.post(`${editAbout}/2`, objSection1);
-    const objSection2 = {
-      firstLine: data.content2Line1,
-      secondLine: data.content2Line2,
-      thirdLine: data.content2Line3,
-      fourthLine: data.content2Line4,
-      fifthLine: data.content2Line5,
-    };
-    axios.post(`${editAbout}/3`, objSection2);
-    const newFormObjecSection3 = new FormData();
-    newFormObjecSection3.append("firstLine", data.content3Line1);
-    newFormObjecSection3.append("secondLine", data.content3Line2);
-    newFormObjecSection3.append("thirdLine", data.content3Line3);
-    newFormObjecSection3.append("fourthLine", data.content3Line4);
-    newFormObjecSection3.append("fifthLine", data.content3Line5);
-    newFormObjecSection3.append("sixthLine", data.content3Line6);
-    newFormObjecSection3.append("seventhLine", data.content3Line7);
-    newFormObjecSection3.append("eighthLine", data.content3Line8);
-    newFormObjecSection3.append("ninthLine", data.content3Line9);
-    newFormObjecSection3.append("tenthLine", data.content3Line10);
-    newFormObjecSection3.append("img", data.image2[0]);
-    axios({
-      url: `${editAbout}/4`,
-      method: "POST",
-      headers: { "Content-Type": "multipart/form-data" },
-      data: newFormObjecSection3,
-    })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    const objSection4 = {
-      firstLine: data.content4Line1,
-      secondLine: data.content4Line2,
-      thirdLine: data.content4Line3,
-      fourthLine: data.content4Line4,
-      fifthLine: data.content4Line5,
-    };
-    axios.post(`${editAbout}/5`, objSection4);
-    const objSection5 = {
-      firstLine: data.content5Line1,
-      secondLine: data.content5Line2,
-      thirdLine: data.content5Line3,
-    };
-    axios.post(`${editAbout}/6`, objSection5);
+    console.log(body);
+    try {
+      await editLandingPageData(body);
+      toast.success("Edit Landing Page Success");
+    } catch (error) {
+      console.log(error);
+      toast.error("Edit Landing Page Fail, Please Try Again");
+    }
   };
   useEffect(() => {
     reset(preLoadValue);
@@ -153,35 +140,44 @@ const LandingPageForm = ({ preLoadValue }) => {
               <div className={styles.bannerBanner}>EDIT BANNER :</div>
               <div className={styles.row1}>
                 <div className={styles.titleEdit}>
-                  <h3>Line 1 : </h3>
+                  <h3>Banner</h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
                     name='title1'
                     {...register("title1")}
+                    onChange={(e) => {
+                      setValue("title1", e.target.value);
+                      setTrigger(!trigger);
+                      if (e.target.value === "") {
+                        setDadEffectArr({});
+                        setTrigger1(!trigger1);
+                      }
+                    }}
                   />
-
                   <p>{errors.title1?.message}</p>
                 </div>
                 <div className={styles.titleEdit}>
-                  <h3>Line 2 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='title2'
-                    {...register("title2")}
-                  />
-                  <p>{errors.title2?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Line 3 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='title3'
-                    {...register("title3")}
-                  />
-                  <p>{errors.title2?.message}</p>
+                  <h3>Check Box Effect</h3>
+                  <div>
+                    {getValues("title1")
+                      .split("\n")
+                      .map((row, idx) => {
+                        if (row.trim().length > 0)
+                          return (
+                            <CheckboxEffect
+                              charArr={row.split(" ")}
+                              key={idx}
+                              idxOfLine={idx}
+                              setDadEffectArr={setDadEffectArr}
+                              arrEffectData={
+                                dadEffectArr[idx] ? dadEffectArr[idx] : []
+                              }
+                              trigger1={trigger1}
+                            />
+                          );
+                      })}
+                  </div>
                 </div>
               </div>
             </div>
@@ -189,7 +185,7 @@ const LandingPageForm = ({ preLoadValue }) => {
               <div className={styles.bannerBanner}>EDIT CONTENT 1 :</div>
               <div className={styles.row1}>
                 <div className={styles.titleEdit}>
-                  <h3>Content 1 - Line 1 : </h3>
+                  <h3>Content 1 </h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
@@ -198,114 +194,50 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                   <p>{errors.content1Line1?.message}</p>
                 </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 1 - Line 2 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content1Line2'
-                    {...register("content1Line2")}
-                  />
-                  <p>{errors.content1Line2?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 1 - Line 3 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content1Line3'
-                    {...register("content1Line3")}
-                  />
-                  <p>{errors.content1Line3?.message}</p>
-                </div>
-              </div>
-              <div className={styles.row1}>
-                <div className={styles.titleEdit}>
-                  <h3>Content 1 - Line 4 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content1Line4'
-                    {...register("content1Line4")}
-                  />
-                  <p>{errors.content1Line4?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 1 - Line 5 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content1Line5'
-                    {...register("content1Line5")}
-                  />
-                  <p>{errors.content1Line5?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 1 - Line 6 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content1Line6'
-                    {...register("content1Line6")}
-                  />
-                  <p>{errors.content1Line6?.message}</p>
-                </div>
               </div>
             </div>
             <div className={styles.content2Edit}>
               <div className={styles.bannerBanner}>EDIT CONTENT 2 :</div>
               <div className={styles.row1}>
                 <div className={styles.titleEdit}>
-                  <h3>Content 2 - Line 1 : </h3>
+                  <h3>Content 2 </h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
                     name='content2Line1'
                     {...register("content2Line1")}
+                    onChange={(e) => {
+                      setValue("content2Line1", e.target.value);
+                      setTrigger(!trigger);
+                      if (e.target.value === "") {
+                        setDadEffectArr1({});
+                        setTrigger1(!trigger1);
+                      }
+                    }}
                   />
                   <p>{errors.content2Line1?.message}</p>
                 </div>
                 <div className={styles.titleEdit}>
-                  <h3>Content 2 - Line 2 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content2Line2'
-                    {...register("content2Line2")}
-                  />
-                  <p>{errors.content2Line2?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 2 - Line 3 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content2Line3'
-                    {...register("content2Line3")}
-                  />
-                  <p>{errors.content2Line3?.message}</p>
-                </div>
-              </div>
-              <div className={styles.row1}>
-                <div className={styles.titleEdit}>
-                  <h3>Content 2 - Line 4 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content2Line4'
-                    {...register("content2Line4")}
-                  />
-                  <p>{errors.content2Line4?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 2 - Line 5 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content2Line5'
-                    {...register("content2Line5")}
-                  />
-                  <p>{errors.content2Line5?.message}</p>
+                  <h3>Check Box Effect</h3>
+                  <div>
+                    {getValues("content2Line1")
+                      .split("\n")
+                      .map((row, idx) => {
+                        if (row.trim().length > 0)
+                          return (
+                            <CheckboxEffect
+                              charArr={row.split(" ")}
+                              key={idx}
+                              idxOfLine={idx}
+                              setDadEffectArr={setDadEffectArr1}
+                              arrEffectData={
+                                dadEffectArr1[idx] ? dadEffectArr1[idx] : []
+                              }
+                              trigger1={trigger1}
+                            />
+                          );
+                      })}
+                  </div>
                 </div>
               </div>
             </div>
@@ -313,7 +245,7 @@ const LandingPageForm = ({ preLoadValue }) => {
               <div className={styles.bannerBanner}>EDIT CONTENT 3 :</div>
               <div className={styles.row1}>
                 <div className={styles.titleEdit}>
-                  <h3>Content 3 - Line 1 : </h3>
+                  <h3>Content 3 : Content</h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
@@ -323,7 +255,7 @@ const LandingPageForm = ({ preLoadValue }) => {
                   <p>{errors.content3Line1?.message}</p>
                 </div>
                 <div className={styles.titleEdit}>
-                  <h3>Content 3 - Line 2 : </h3>
+                  <h3>Content 3 : Description </h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
@@ -332,99 +264,13 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                   <p>{errors.content3Line2?.message}</p>
                 </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 3 - Line 3 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content3Line3'
-                    {...register("content3Line3")}
-                  />
-                  <p>{errors.content3Line3?.message}</p>
-                </div>
-              </div>
-              <div className={styles.row1}>
-                <div className={styles.titleEdit}>
-                  <h3>Content 3 - Line 4 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content3Line4'
-                    {...register("content3Line4")}
-                  />
-                  <p>{errors.content3Line4?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 3 - Line 5 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content3Line5'
-                    {...register("content3Line5")}
-                  />
-                  <p>{errors.content3Line5?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 3 - Line 6 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content3Line6'
-                    {...register("content3Line6")}
-                  />
-                  <p>{errors.content3Line6?.message}</p>
-                </div>
-              </div>
-              <div className={styles.row1}>
-                <div className={styles.titleEdit}>
-                  <h3>Content 3 - Line 7 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content3Line7'
-                    {...register("content3Line7")}
-                  />
-                  <p>{errors.content3Line7?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 3 - Line 8 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content3Line8'
-                    {...register("content3Line8")}
-                  />
-                  <p>{errors.content3Line8?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 3 - Line 9 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content3Line9'
-                    {...register("content3Line9")}
-                  />
-                  <p>{errors.content3Line9?.message}</p>
-                </div>
-              </div>
-              <div className={styles.row1}>
-                <div className={styles.titleEdit}>
-                  <h3>Content 3 - Line 10 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content3Line10'
-                    {...register("content3Line10")}
-                  />
-                  <p>{errors.content3Line10?.message}</p>
-                </div>
               </div>
             </div>
             <div className={styles.content4Edit}>
               <div className={styles.bannerBanner}>EDIT CONTENT 4 :</div>
               <div className={styles.row1}>
                 <div className={styles.titleEdit}>
-                  <h3>Content 4 - Line 1 : </h3>
+                  <h3>Content 4 : Content</h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
@@ -434,7 +280,7 @@ const LandingPageForm = ({ preLoadValue }) => {
                   <p>{errors.content4Line1?.message}</p>
                 </div>
                 <div className={styles.titleEdit}>
-                  <h3>Content 4 - Line 2 : </h3>
+                  <h3>Content 4 : Description </h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
@@ -443,45 +289,13 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                   <p>{errors.content4Line2?.message}</p>
                 </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 4 - Line 3 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content4Line3'
-                    {...register("content4Line3")}
-                  />
-                  <p>{errors.content4Line3?.message}</p>
-                </div>
-              </div>
-              <div className={styles.row1}>
-                <div className={styles.titleEdit}>
-                  <h3>Content 4 - Line 4 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content4Line4'
-                    {...register("content4Line4")}
-                  />
-                  <p>{errors.content4Line4?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 4 - Line 5 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content4Line5'
-                    {...register("content4Line5")}
-                  />
-                  <p>{errors.content4Line5?.message}</p>
-                </div>
               </div>
             </div>
             <div className={styles.content5Edit}>
               <div className={styles.bannerBanner}>EDIT CONTENT 5 :</div>
               <div className={styles.row1}>
                 <div className={styles.titleEdit}>
-                  <h3>Content 5 - Line 1 : </h3>
+                  <h3>Content 5 : Content</h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
@@ -491,7 +305,7 @@ const LandingPageForm = ({ preLoadValue }) => {
                   <p>{errors.content5Line1?.message}</p>
                 </div>
                 <div className={styles.titleEdit}>
-                  <h3>Content 5 - Line 2 : </h3>
+                  <h3>Content 5 : Description</h3>
                   <textarea
                     type='text'
                     className={styles.inputField}
@@ -499,16 +313,6 @@ const LandingPageForm = ({ preLoadValue }) => {
                     {...register("content5Line2")}
                   />
                   <p>{errors.content5Line2?.message}</p>
-                </div>
-                <div className={styles.titleEdit}>
-                  <h3>Content 5 - Line 3 : </h3>
-                  <textarea
-                    type='text'
-                    className={styles.inputField}
-                    name='content5Line3'
-                    {...register("content5Line3")}
-                  />
-                  <p>{errors.content5Line3?.message}</p>
                 </div>
               </div>
             </div>
@@ -526,13 +330,23 @@ const LandingPageForm = ({ preLoadValue }) => {
                   />
                 </div>
                 <div className={styles.titleEdit}>
-                  <h3>Choose a image for content : </h3>
+                  <h3>Choose first image for content : </h3>
                   <input
                     type='file'
                     accept='image/*'
                     className={styles.inputField}
                     name='image2'
                     {...register("image2")}
+                  />
+                </div>
+                <div className={styles.titleEdit}>
+                  <h3>Choose second image for content : </h3>
+                  <input
+                    type='file'
+                    accept='image/*'
+                    className={styles.inputField}
+                    name='image3'
+                    {...register("image3")}
                   />
                 </div>
               </div>
@@ -551,3 +365,70 @@ const LandingPageForm = ({ preLoadValue }) => {
 };
 
 export default LandingPageForm;
+
+// const submitNewsEditor = (data) => {
+//   let titleArr = data.title1.split("\n");
+//   const newFormBanner = new FormData();
+//   newFormBanner.append("firstLine", titleArr[0]);
+//   newFormBanner.append("secondLine", titleArr[1]);
+//   newFormBanner.append("thirdLine", titleArr[2]);
+//   newFormBanner.append("img", data.image1[0]);
+//   console.log(newFormBanner);
+//   //if not success add to headers: { "Content-Type": "multipart/form-data" },
+//   editInfoLandingPage(1, newFormBanner);
+
+//   const section1Arr = data.content1Line1.split("\n");
+//   const objSection1 = {
+//     firstLine: section1Arr[0],
+//     secondLine: section1Arr[1],
+//     thirdLine: section1Arr[2],
+//     fourthLine: section1Arr[3],
+//     fifthLine: section1Arr[4],
+//     sixthLine: section1Arr[5],
+//   };
+//   // console.log(objSection1);
+//   editInfoLandingPage(2, objSection1);
+
+//   const section2Arr = data.content2Line1.split("\n");
+//   const objSection2 = {
+//     firstLine: section2Arr[0],
+//     secondLine: section2Arr[1],
+//     thirdLine: section2Arr[2],
+//     fourthLine: section2Arr[3],
+//     fifthLine: section2Arr[4],
+//   };
+//   editInfoLandingPage(3, objSection2);
+
+//   const section3Arr = data.content3Line1.split("\n");
+//   const newFormObjecSection3 = new FormData();
+//   newFormObjecSection3.append("firstLine", section3Arr[0]);
+//   newFormObjecSection3.append("secondLine", section3Arr[1]);
+//   newFormObjecSection3.append("thirdLine", section3Arr[2]);
+//   newFormObjecSection3.append("fourthLine", section3Arr[3]);
+//   newFormObjecSection3.append("fifthLine", section3Arr[4]);
+//   newFormObjecSection3.append("sixthLine", section3Arr[5]);
+//   newFormObjecSection3.append("seventhLine", section3Arr[6]);
+//   newFormObjecSection3.append("eighthLine", section3Arr[7]);
+//   newFormObjecSection3.append("ninthLine", section3Arr[8]);
+//   newFormObjecSection3.append("tenthLine", section3Arr[9]);
+//   newFormObjecSection3.append("img", data.image2[0]);
+//   editInfoLandingPage(4, newFormObjecSection3);
+
+//   const section4Arr = data.content4Line1.split("\n");
+//   const objSection4 = {
+//     firstLine: section4Arr[0],
+//     secondLine: section4Arr[1],
+//     thirdLine: section4Arr[2],
+//     fourthLine: section4Arr[3],
+//     fifthLine: section4Arr[4],
+//   };
+//   editInfoLandingPage(5, objSection4);
+
+//   const section5Arr = data.content5Line1.split("\n");
+//   const objSection5 = {
+//     firstLine: section5Arr[0],
+//     secondLine: section5Arr[1],
+//     thirdLine: section5Arr[2],
+//   };
+//   editInfoLandingPage(6, objSection5);
+// };

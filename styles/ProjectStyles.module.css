@@ -45,7 +45,6 @@
   font-family: "Times New Roman", Times, serif !important;
 }
 
-
 .listJobBox {
   /* border: 2px solid red; */
   display: flex;
@@ -62,8 +61,7 @@
   height: 50vw;
   margin-bottom: 200px;
   padding: 1% 3%;
-  transition: transform 1s ease;
-  /* transform: translateY(-100%); */
+  transition: all 2s ease-in-out;
 }
 
 .jobBox h1 {
@@ -81,13 +79,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  padding: 0px 5px;
 }
 
 .move {
   /* border: 2px solid red; */
-  transition: transform 1.5s ease;
+  /* transition: transform 1.5s ease; */
   /* animation:  rightFly 3s ease-in-out infinite; */
-  transform: translateY(20%);
+  /* transform: translateY(20%); */
 }
 
 .listJobContainer {
@@ -97,10 +97,11 @@
 }
 .outerMove {
   /* border: 2px solid white; */
-  transform: translateY(60%);
-  transition: transform 1.1s cubic-bezier(0.215, 0.61, 0.355, 1);
+  /* transform: translateY(60%); */
+  transform: translateY(102vh);
+  /* transition: transform 1.1s cubic-bezier(0.215, 0.61, 0.355, 1); */
 }
-.innerBox h1{
+.innerBox h1 {
   font-size: 1.35rem;
 }
 
@@ -142,11 +143,11 @@
   .jobBox {
     height: 18vw;
     width: 600px;
-   /* flex: 50%; */
+    /* flex: 50%; */
   }
   .outerMove {
     /* border: 2px solid white; */
-    transform: translateY(200%);
+    /* transform: translateY(200%); */
   }
 }
 @media (min-width: 1024px) {
@@ -181,10 +182,9 @@
   .innerBox p {
     font-size: 1rem;
   }
-
 }
-@media(min-width: 2000px){
-  .jobBox{
+@media (min-width: 2000px) {
+  .jobBox {
     height: 16vw;
   }
 }

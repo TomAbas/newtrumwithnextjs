@@ -4,7 +4,6 @@ import React from "react";
 import axios from "axios";
 import { Button } from "@mui/material";
 
-import { urlNews } from "../../ApiUrl/Api";
 import { useEffect, useRef } from "react";
 import { useState } from "react";
 
@@ -15,10 +14,6 @@ const NewsCkEditor = ({
   setNewContent1,
   setNewContent2,
   submitNewsCKEditor,
-  // isAddNews,
-  // submitNewNewsCKEditor,
-  // setNewNewsContent1,
-  // setNewNewsContent2,
   didNotSubmitHeadForm,
 }) => {
   const editorRef = useRef();
@@ -56,47 +51,24 @@ const NewsCkEditor = ({
                   <CKEditor
                     className={styles.ckEditor}
                     editor={ClassicEditor}
-                    data=''
+                    data={currentContent1 ? currentContent1 : ""}
                     onReady={(editor) => {
                       // You can store the "editor" and use when it is needed.
                       console.log("Editor is ready to use!", editor);
                     }}
                     onChange={(event, editor) => {
                       const data = editor.getData();
-
                       setNewContent1(data);
-                      console.log({ event, editor, data });
+                      console.log(data);
                     }}
                   />
                 ) : (
                   <div>Editor loading</div>
                 )}
-                {/* <CKEditor
-                  className={styles.ckEditor}
-                  editor={Editor}
-                  name='content1'
-                  data=''
-                  onReady={(editor) => {
-                    // You can store the "editor" and use when it is needed.
-                    console.log("Editor is ready to use!", editor);
-                  }}
-                  onChange={(event, editor) => {
-                    const data = editor.getData();
-
-                    isAddNews ? setNewNewsContent1(data) : setNewContent1(data);
-                    console.log({ event, editor, data });
-                  }}
-                  onBlur={(event, editor) => {
-                    // console.log("Blur.", editor);
-                  }}
-                  onFocus={(event, editor) => {
-                    // console.log("Focus.", editor);
-                  }}
-                /> */}
               </div>
             </div>
           </div>
-          <div className={styles.content4Edit}>
+          {/* <div className={styles.content4Edit}>
             <div className={styles.bannerBanner}> EDIT CONTENT 2</div>
             <h3>Content 2 - Text : </h3>
             <div className={styles.currentContent}>
@@ -110,14 +82,13 @@ const NewsCkEditor = ({
                   <CKEditor
                     className={styles.ckEditor}
                     editor={ClassicEditor}
-                    data=''
+                    data={currentContent2 ? currentContent2 : ""}
                     onReady={(editor) => {
                       // You can store the "editor" and use when it is needed.
                       console.log("Editor is ready to use!", editor);
                     }}
                     onChange={(event, editor) => {
                       const data = editor.getData();
-
                       setNewContent2(data);
                       console.log({ event, editor, data });
                     }}
@@ -125,33 +96,9 @@ const NewsCkEditor = ({
                 ) : (
                   <div>Editor loading</div>
                 )}
-                {/* <CKEditor
-                  className={styles.ckEditor}
-                  editor={Editor}
-                  data=''
-                  onReady={(editor) => {
-                    // You can store the "editor" and use when it is needed.
-                    //   console.log("Editor is ready to use!", editor);
-                    // setValue(editor);
-                  }}
-                  onChange={(event, editor) => {
-                    const data = editor.getData();
-                    isAddNews ? setNewNewsContent2(data) : setNewContent2(data);
-                    //   console.log({ event, editor, data });
-                  }}
-                  onBlur={(event, editor) => {
-                    //   console.log("Blur.", editor);
-                  }}
-                  onFocus={(event, editor) => {
-                    //   console.log("Focus.", editor);
-                  }}
-                /> */}
               </div>
             </div>
-          </div>
-          {/* <button className={styles.btnSubmit} type='submit'>
-            submit
-          </button> */}
+          </div> */}
           <Button
             variant='outlined'
             type='submit'

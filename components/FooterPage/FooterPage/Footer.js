@@ -10,18 +10,19 @@ const Footer = () => {
     <>
       <div className={styles.landingPageIcon}>
         <div className={styles.leftIconBox}>
-          <Image
+          {/* <Image
             src={footerLogo}
             alt='footer-logo'
             className={styles.iconLeft}
           />
-          <p>about</p>
+          <p>about</p> */}
         </div>
         <div className={styles.rightIconBox}>
           <div className={styles.leftIconBoxInside}>
-            <p>En</p>
+            {/* <p>En</p> */}
           </div>
           <Link href='/contact'>
+            <a className={styles.rightIconBoxInside}>
             <div className={styles.rightIconBoxInside}>
               <FontAwesomeIcon
                 icon={faPaperPlane}
@@ -29,6 +30,7 @@ const Footer = () => {
               />
               <p>Contact Us</p>
             </div>
+            </a>
           </Link>
         </div>
       </div>

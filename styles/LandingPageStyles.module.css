@@ -146,6 +146,8 @@
   right: -12%;
   top: 0;
   bottom: 0;
+  /* background: url("/public/imgs/landingpagepic.png") no-repeat fixed center
+    center/cover; */
   object-fit: cover;
   background-attachment: fixed;
   background-size: contain;
@@ -173,6 +175,15 @@
   /* border: 2px solid white; */
   transform: translateY(100%);
   margin-right: 6px;
+}
+@media (min-width: 360px) {
+  .landingPagePicInside {
+    object-fit: cover;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+  }
 }
 @media (min-width: 425px) {
   .test {
@@ -207,6 +218,9 @@
 }
 
 @media (min-width: 1024px) {
+  .landingPagePicInside {
+    background-attachment: fixed;
+  }
   .test {
     height: 100vh;
   }

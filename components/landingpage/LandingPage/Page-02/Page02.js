@@ -3,16 +3,18 @@ import { useRouter } from "next/router";
 import arrowLeft from "../../../../public/imgs/arrowLeft.svg";
 import arrowRight from "../../../../public/imgs/arrowRight.svg";
 import plusicon from "../../../../public/imgs/plusicon.svg";
-
 import styles from "../../../../styles/Page02Styles.module.css";
 import gridpic from "../../../../public/imgs/grid.svg";
 import { urlNews } from "../../../../ApiUrl/Api";
 import { useInView } from "framer-motion";
 import Image from "next/future/image";
 import axios from "axios";
-import Link from "next/link";
+//img
+
+
 const Page02 = () => {
   const router = useRouter();
+  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDown, setIsDown] = useState(false);
   const [walk, setWalk] = useState(0);
   const [render, setRender] = useState(false);
@@ -44,6 +46,14 @@ const Page02 = () => {
       setArrayListJob(a);
     });
   };
+
+  const arrJob =[
+    {
+      banner:'',
+      title:'',
+      title1:''
+    }
+  ]
   const createSlideItems = () => {
     let b = arrayListJob.map((job, idx) => {
       return (
@@ -55,6 +65,7 @@ const Page02 = () => {
           style={{
             background: `url(${job.banner}) no-repeat center center/cover`,
           }}
+          onPointerMove={(e) => handleMouseEnterInside(e)}
           onDoubleClick={() => router.push(`/projects/${job.postId}`)}
         >
           <div className={styles.item}>
@@ -77,24 +88,25 @@ const Page02 = () => {
     sliderContainer.current.style.cursor = "grabbing";
     startX.current = slider.current.offsetLeft;
     check0.current = e.clientX;
+    console.log(check0.current);
     // console.log(slider.current.offsetLeft);
     // console.log(slider.current.children);
   };
   const mouseMove = (e) => {
-    handleMouseEnterInside(e);
+    // handleMouseEnterInside(e);
 
-    if (!isDown) return;
-    x.current = e.clientX;
-    // console.log("startX "+startX.current);
-    // console.log(x.current)
-    const test = e.clientX - check0.current;
-    // console.log(startX.current + test);
-    slider.current.style.transition = "";
-    setWalk(startX.current + test);
-    slider.current.style.left = `${walk}px`;
-    //check left or right negative => right to left
+		if (!isDown) return;
+		x.current = e.clientX;
+		// console.log("startX "+startX.current);
+		// console.log(x.current)
+		const test = e.clientX - check0.current;
+		// console.log(startX.current + test);
+		slider.current.style.transition = "";
+		setWalk(startX.current + test);
+		slider.current.style.left = `${walk}px`;
+		//check left or right negative => right to left
 
-    check1.current = x.current - check0.current;
+    // check1.current = x.current - check0.current;
     // console.log(check1.current)
   };
   const mouseUp = () => {
@@ -102,15 +114,23 @@ const Page02 = () => {
     setIsDown(false);
     //swift from right to left
 
-    const widthOfItem = refItem0.current.offsetWidth;
+		const widthOfItem = refItem0.current.offsetWidth;
 
-    if (check1.current < -50) {
+    // if (check1.current < -50) {
+    //   count.current = count.current - 1;
+    // }
+    // if (check1.current > 50) {
+    //   count.current = count.current + 1;
+    // }
+
+    console.log(position.x - check0.current < 0);
+    if (position.x - check0.current < 0) {
+      console.log("+1");
       count.current = count.current - 1;
-    }
-    if (check1.current > 50) {
+    } else {
+      console.log("-1");
       count.current = count.current + 1;
     }
-
     if (count.current === -slider.current.children.length) {
       count.current = -(slider.current.children.length - 1);
     }
@@ -125,43 +145,43 @@ const Page02 = () => {
     setIsDown(false);
   };
 
-  const tounchStart = (e) => {
-    setIsDown(true);
-    sliderContainer.current.style.cursor = "grabbing";
-    startX.current = slider.current.offsetLeft;
-    check0.current = e.touches[0].clientX;
-    // console.log(slider.current.offsetLeft);
-  };
+	const tounchStart = (e) => {
+		setIsDown(true);
+		sliderContainer.current.style.cursor = "grabbing";
+		startX.current = slider.current.offsetLeft;
+		check0.current = e.touches[0].clientX;
+		// console.log(slider.current.offsetLeft);
+	};
 
-  const tounchMove = (e) => {
-    if (!isDown) return;
-    x.current = e.touches[0].clientX;
-    // console.log("startX "+startX.current);
-    // console.log(x.current)
-    const test = e.touches[0].clientX - check0.current;
-    // console.log(startX.current + test);
-    slider.current.style.transition = "";
-    slider.current.style.left = `${startX.current + test}px`;
+	const tounchMove = (e) => {
+		if (!isDown) return;
+		x.current = e.touches[0].clientX;
+		// console.log("startX "+startX.current);
+		// console.log(x.current)
+		const test = e.touches[0].clientX - check0.current;
+		// console.log(startX.current + test);
+		slider.current.style.transition = "";
+		slider.current.style.left = `${startX.current + test}px`;
 
-    //check left or right negative => right to left
+		//check left or right negative => right to left
 
-    check1.current = x.current - check0.current;
-    // console.log(check1.current)
-  };
+		check1.current = x.current - check0.current;
+		// console.log(check1.current)
+	};
 
-  const TouchEnd = () => {
-    sliderContainer.current.style.cursor = "grab";
-    setIsDown(false);
-    //swift from right to left
+	const TouchEnd = () => {
+		sliderContainer.current.style.cursor = "grab";
+		setIsDown(false);
+		//swift from right to left
 
-    const widthOfItem = refItem0.current.offsetWidth;
-    setWalk(count.current * (widthOfItem + 120));
-    if (check1.current < -50) {
-      count.current = count.current - 1;
-    }
-    if (check1.current > 50) {
-      count.current = count.current + 1;
-    }
+		const widthOfItem = refItem0.current.offsetWidth;
+		setWalk(count.current * (widthOfItem + 120));
+		if (check1.current < -50) {
+			count.current = count.current - 1;
+		}
+		if (check1.current > 50) {
+			count.current = count.current + 1;
+		}
 
     if (count.current === -slider.current.children.length) {
       count.current = -(slider.current.children.length - 1);
@@ -188,6 +208,9 @@ const Page02 = () => {
       offsetY < heightOfItem
     ) {
       if (document.body.clientWidth >= 950) {
+        // setPosition({ x: offsetX, y: offsetY });
+        setPosition({ x: e.clientX, y: e.clientY });
+
         plusBoxRef.current.style.display = "inline-block";
         plusBoxRef.current.style.transform = `translate3d(${offsetX}px,${offsetY}px,0)`;
         arrowLeftBoxRef.current.style.display = "none";
@@ -196,6 +219,7 @@ const Page02 = () => {
       }
     }
   };
+
   const handleMouseEnterOutside = (e) => {
     let offsetX = e.nativeEvent.offsetX;
     let offsetY = e.nativeEvent.offsetY;
@@ -210,54 +234,52 @@ const Page02 = () => {
 
       }
 
-      if (offsetX - sliderContainer.current.offsetLeft > 0) {
-        plusBoxRef.current.style.display = "none";
-        arrowLeftBoxRef.current.style.display = "none";
-        arrowRightBoxRef.current.style.display = "inline-block";
-        arrowRightBoxRef.current.style.left = `${offsetX}px`;
-        arrowRightBoxRef.current.style.top = `${offsetY - 50}px`;
-        // itemWordRef.current.style.transform = "scale(1)";
-        // itemWordRef1.current.style.transform = "scale(1)";
-        // itemWordRef2.current.style.transform = "scale(1)";
-      }
-    }
+			if (offsetX - sliderContainer.current.offsetLeft > 0) {
+				plusBoxRef.current.style.display = "none";
+				arrowLeftBoxRef.current.style.display = "none";
+				arrowRightBoxRef.current.style.display = "inline-block";
+				arrowRightBoxRef.current.style.left = `${offsetX}px`;
+				arrowRightBoxRef.current.style.top = `${offsetY - 50}px`;
+				// itemWordRef.current.style.transform = "scale(1)";
+				// itemWordRef1.current.style.transform = "scale(1)";
+				// itemWordRef2.current.style.transform = "scale(1)";
+			}
+		}
 
-    if (offsetY > 550) {
-      arrowRightBoxRef.current.style.display = "none";
-      arrowLeftBoxRef.current.style.display = "none";
-      plusBoxRef.current.style.display = "none";
-    }
-  };
+		if (offsetY > 550) {
+			arrowRightBoxRef.current.style.display = "none";
+			arrowLeftBoxRef.current.style.display = "none";
+			plusBoxRef.current.style.display = "none";
+		}
+	};
 
-  const ClickMoveSlide = (e) => {
-    let a = slider.current.children;
-    let offsetX = e.nativeEvent.offsetX;
-    const widthOfItem = refItem0.current.offsetWidth;
-    if (
-      offsetX - sliderContainer.current.offsetLeft > 0 &&
-      count.current > -a.length
-    ) {
-      count.current = count.current - 1;
-    }
-    if (offsetX - sliderContainer.current.offsetLeft < 0 && count.current < 0) {
-      count.current = count.current + 1;
-    }
+	const ClickMoveSlide = (e) => {
+		let a = slider.current.children;
+		let offsetX = e.nativeEvent.offsetX;
+		const widthOfItem = refItem0.current.offsetWidth;
+		if (offsetX - sliderContainer.current.offsetLeft > 0 && count.current > -a.length) {
+			count.current = count.current - 1;
+		}
+		if (offsetX - sliderContainer.current.offsetLeft < 0 && count.current < 0) {
+			count.current = count.current + 1;
+		}
 
-    if (count.current === -slider.current.children.length) {
-      count.current = -(slider.current.children.length - 1);
-    }
-    if (count.current === 1) {
-      count.current = 0;
-    }
-    setWalk(count.current * (widthOfItem + 120));
-    slider.current.style.left = `${count.current * (widthOfItem + 120)}px`;
-    slider.current.style.transition = "all 0.5s ease-in-out";
-    adjustSlideItem();
-  };
+		if (count.current === -slider.current.children.length) {
+			count.current = -(slider.current.children.length - 1);
+		}
+		if (count.current === 1) {
+			count.current = 0;
+		}
+		setWalk(count.current * (widthOfItem + 120));
+		slider.current.style.left = `${count.current * (widthOfItem + 120)}px`;
+		slider.current.style.transition = "all 0.5s ease-in-out";
+   
+		adjustSlideItem();
+	};
 
   const adjustSlideItem = () => {
     let a = slider.current.children;
-    console.log(count.current);
+    // console.log(count.current);
     for (let i = 0; i < a.length; i++) {
       if (count.current === -i) {
         a[i].style.transform = "rotate(0deg) translateY(0%) scale(1)";
@@ -290,35 +312,24 @@ const Page02 = () => {
     checkClientWidth();
   }, [walk, count]);
 
-  return (
-    <>
-      <div className={styles.page02Container}>
-        <div
-          className={styles.gridPicBox}
-          onMouseMove={handleMouseEnterOutside}
-          ref={gridBoxRef}
-          onClick={ClickMoveSlide}
-        >
-          <div
-            className={
-              inViewGridPicref
-                ? `${styles.gridBox} ${styles.gridShow}`
-                : styles.gridBox
-            }
-          >
-            <Image src={gridpic} alt='grid-pic' className={styles.gridPic} />
-          </div>
-          <div className={styles.arrowLeftBox}>
-            <div className={styles.arrow} ref={arrowLeftBoxRef}>
-              <Image src={arrowLeft} alt='+' className={styles.arrowImg} />
-            </div>
-          </div>{" "}
-          <div className={styles.arrowRightBox}>
-            <div className={styles.arrow} ref={arrowRightBoxRef}>
-              <Image src={arrowRight} alt='+' className={styles.arrowImg} />
-            </div>
-          </div>
-        </div>
+	return (
+		<>
+			<div className={styles.page02Container}>
+				<div className={styles.gridPicBox} onMouseMove={handleMouseEnterOutside} ref={gridBoxRef} onClick={ClickMoveSlide}>
+					<div className={inViewGridPicref ? `${styles.gridBox} ${styles.gridShow}` : styles.gridBox}>
+						<Image src={gridpic} alt="grid-pic" className={styles.gridPic} />
+					</div>
+					<div className={styles.arrowLeftBox}>
+						<div className={styles.arrow} ref={arrowLeftBoxRef}>
+							<Image src={arrowLeft} alt="+" className={styles.arrowImg} />
+						</div>
+					</div>{" "}
+					<div className={styles.arrowRightBox}>
+						<div className={styles.arrow} ref={arrowRightBoxRef}>
+							<Image src={arrowRight} alt="+" className={styles.arrowImg} />
+						</div>
+					</div>
+				</div>
 
         <div
           className={styles.page02Slider}
@@ -329,7 +340,7 @@ const Page02 = () => {
           onMouseDown={mouseDown}
           onMouseMove={mouseMove}
           onMouseLeave={mouseLeave}
-          onMouseUp={mouseUp}
+          onMouseUp={(e) => mouseUp(e)}
         >
           <div className={styles.plusIconBox} ref={plusBoxRef}>
             <div>

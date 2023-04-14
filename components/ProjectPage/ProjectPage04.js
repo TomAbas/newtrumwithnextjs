@@ -57,8 +57,22 @@ const ProjectPage04 = ({
     }
   };
   const produceArray = () => {
-    if (subTitle1) {
-      let subTitleArr1 = subTitle1.split("");
+    // if (subTitle1) {
+    //   let subTitleArr1 = subTitle1.split("");
+    //   // console.log(subTitleArr1);
+    //   setSubTitleAr1(subTitleArr1);
+    //   // console.log(typeof img);
+    //   let imgArr = [];
+
+    //   imgArr.push(img1);
+    //   imgArr.push(img2);
+    //   imgArr.push(img3);
+    //   imgArr.push(img4);
+    //   imgArr.push(img5);
+    //   setImgArr(imgArr);
+    // }
+    if (true) {
+      let subTitleArr1 = "Innovation".split("");
       // console.log(subTitleArr1);
       setSubTitleAr1(subTitleArr1);
       // console.log(typeof img);
@@ -75,7 +89,8 @@ const ProjectPage04 = ({
   const createSlideItems = () => {
     let b = imgArr.map((img, idx) => {
       return (
-        <div key={idx}
+        <div
+          key={idx}
           className={styles.slideItem}
           ref={refItem0}
           style={{ background: `url(${img}) no-repeat center center/cover` }}
@@ -90,7 +105,7 @@ const ProjectPage04 = ({
     let b = subTitleAr1.map((word, idx) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s` };
       return (
-        <h1 
+        <h1
           key={idx}
           className={isArrWordIn ? `${styles.fadeInUp0}` : " "}
           style={delay}
@@ -354,7 +369,19 @@ const ProjectPage04 = ({
               {animationWords()}
             </div>
 
-            <div dangerouslySetInnerHTML={{ __html: content1 }} />
+            {/* <div dangerouslySetInnerHTML={{ __html: content1 }} /> */}
+            <p>
+              A consistent content marketing strategy and simplification of the
+              e-commerce contract are the key. Taking advantage of our rich
+              digital KOL resource and the Facebook Fanpage community to
+              distribute content, TRUM quickly helps brands capture and attract
+              customers.
+            </p>
+            <p>
+              As a result, in just 3 days of sale event, TRUM has boosted
+              revenue on e-commerce platforms by 350% (~ 4 billionVND) compared
+              to previous seasons.
+            </p>
           </div>
         </div>
         <div className={styles.page02Container}>
@@ -406,14 +433,6 @@ const ProjectPage04 = ({
                 {createSlideItems()}
               </div>
             </div>
-            {/* <div className='slide-pagination'>
-        <div className='current-pagination paginate'>
-          {-count.current + 1}
-        </div>
-        <div className='total-pagination paginate'>
-          {slider.current && slider.current.children.length}
-        </div>
-      </div> */}
           </div>
         </div>
         <div className={styles.newsNextNews}>
@@ -421,6 +440,7 @@ const ProjectPage04 = ({
           <div className={styles.nextNewsBackground}>
             {nextNews && (
               <Link href={`/projects/${nextNews.postId}`}>
+                <a>
                 <div className={styles.newsBackground}>
                   <div className={styles.headlineNextNews}>
                     <h1>{nextNews.title}</h1>
@@ -428,6 +448,7 @@ const ProjectPage04 = ({
                     <p>{nextNews.category}</p>
                   </div>
                 </div>
+                </a>
               </Link>
             )}
           </div>

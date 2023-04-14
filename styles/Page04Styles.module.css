@@ -35,7 +35,6 @@
 }
 .scaleIn1 {
   animation: scaleIn1 0.8s ease-in-out forwards;
-  /* opacity: 1 !important; */
 }
 @keyframes fadeTopDown {
   0% {
@@ -96,6 +95,10 @@
   width: 60%;
   transform: translateX(15%);
 }
+.page04Img1 {
+  width: 100%;
+  transform: translateX(-12%);
+}
 .imgBox {
   /* border: 2px solid white; */
   width: 100%;
@@ -114,8 +117,22 @@
 .page04ContentText1 {
   /* border: 2px solid red; */
   color: #fff;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.emptyDiv{
+  position: relative;
+}
+
+.emptyDiv img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  top:0;
+  bottom: 0;
+  left: -10%;
+  
 }
 
 .team-pic-img {
@@ -129,14 +146,11 @@
 }
 .contentText1 h1 {
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.65rem;
 }
 
 .textBox {
   padding-top: 3%;
-  width: fit-content;
-  /* margin-inline: auto; */
-  margin: 0 auto;
   word-spacing: 1px;
 }
 .textBox p {
@@ -151,7 +165,7 @@
 }
 
 .contentText2 h1 {
-  font-size: 2rem;
+  font-size: 1.65rem;
   padding-bottom: 15px;
 }
 .textBox1 {
@@ -162,8 +176,8 @@
   padding-bottom: 15px;
 }
 .h1EffectBox {
+  width: 80%;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 .h1EffectBox1 {
@@ -209,9 +223,14 @@
   }
   .page04ContentText1 {
     justify-content: flex-end;
+
   }
+
+  .emptyDiv img{
+    object-fit: cover;
+  }
+
   .contentText1 {
-    width: 42.5%;
     padding: 15% 0px;
   }
   .contentText1 h1 {

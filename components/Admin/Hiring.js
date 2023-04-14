@@ -4,40 +4,19 @@ import styles from "../../styles/Admin.module.css";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import Box from "@mui/material/Box";
-import { Button } from "@mui/material";
-import Drawer from "@mui/material/Drawer";
-import CssBaseline from "@mui/material/CssBaseline";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import IconButton from "@mui/material/IconButton";
-// import InboxIcon from "@mui/icons-material/MoveToInbox";
-// import MailIcon from "@mui/icons-material/Mail";
-
-//
-import axios from "axios";
-
-import {
-  urlDeleteNewsId,
-  urlEditNewsId,
-  urlListContributorIdPost,
-  urlNews,
-  urlNewsId,
-  urlListJobs,
-  urlJobId,
-  urlDeleteJob,
-} from "../../ApiUrl/Api";
 import { useEffect } from "react";
 import { useState } from "react";
 import HiringEditor from "./HringEdior";
 import AddHiring from "./AddHiring";
+import {
+  deleteRecuiterData,
+  getRecuiterData,
+} from "../../ApiUrl/recuiter/recuiter";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import { Button } from "@mui/material";
 const drawerWidth = 240;
 const Hiring = () => {
   const [arrNews, setArrNews] = useState([]);
@@ -49,37 +28,24 @@ const Hiring = () => {
   const [reDelete, setReDelete] = useState(true);
 
   const deleteJobs = async (id) => {
-    await axios
-      .post(`${urlDeleteJob}/${id}`)
-      .then((res) => {
-        console.log(res);
-        setReDelete(!reDelete);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      await deleteRecuiterData(id);
+      setReDelete(!reDelete);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const fetchListJobs = async () => {
-    await axios
-      .get(urlListJobs)
-      .then(({ data }) => {
-        console.log(data);
-        setArrNews(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    setArrNews(await getRecuiterData().then((data) => data.listJob));
   };
   const fetchJobId = async (id) => {
-    await axios.get(`${urlJobId}/${id}`).then(({ data }) => {
-      // console.log(data);
-      let preLoadValue = {
-        title1: data[0].title,
-        title2: data[0].content,
-      };
-      setDefaultValues(preLoadValue);
-      setTrigger(true);
-    });
+    let jobEdit = arrNews.find((item) => item._id === id);
+    let preLoadValue = {
+      title1: jobEdit.title,
+      title2: jobEdit.description,
+    };
+    setDefaultValues(preLoadValue);
+    setTrigger(true);
   };
 
   useEffect(() => {
@@ -103,29 +69,19 @@ const Hiring = () => {
         subheader={<li />}
       >
         <li key={`section-${1}`}>
-          <div className={styles.itemNews}>
-            {/* <div className={styles.btnGroup}>
-              <div>
-                <Button
-                  onClick={async () => {
-                    console.log("click");
-                    setAddNewJob(true);
-                  }}
-                >
-                  <p>Add New Position </p>
-                  <IconButton
-                    size='small'
-                    sx={{ flex: "30%" }}
-                    variant='contained'
-                    // className={styles.btnEditNews}
-                  >
-                    <PersonAddIcon />
-                  </IconButton>
-                </Button>
-              </div>
-            </div> */}
+          <div>
+            <div className={styles.btnGroup}>
+              <Button
+                sx={{ width: "  100%" }}
+                onClick={() => {
+                  setAddNewJob(true);
+                }}
+              >
+                <PersonAddIcon />
+              </Button>
+            </div>
             <ul className={styles.ulList}>
-              {arrNews.map((item, idx) => (
+              {arrNews?.map((item, idx) => (
                 <div key={idx}>
                   <div className={styles.itemNews}>
                     <List>
@@ -133,10 +89,9 @@ const Hiring = () => {
                         <ListItemButton
                           key={`item-${idx}`}
                           onClick={async () => {
-                            await fetchJobId(item.id);
-                            setNewsIdx(item.id);
+                            await fetchJobId(item._id);
+                            setNewsIdx(item._id);
                             setAddNewJob(false);
-                            // console.log(`${urlNewsId}/${newsIdx}`);
                           }}
                         >
                           <ListItemText
@@ -153,9 +108,8 @@ const Hiring = () => {
                           sx={{ flex: "30%" }}
                           variant='contained'
                           // className={styles.btnEditNews}
-                          onClick={async () => {
-                            await deleteJobs(item.id);
-                            console.log("click");
+                          onClick={() => {
+                            deleteJobs(item._id);
                           }}
                         >
                           <DeleteForeverIcon />
