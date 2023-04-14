@@ -15,8 +15,6 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   experimental: { images: { allowFutureImage: true } },
-  output: 'export', 
-  distDir: 'build',
 };
 
 module.exports = nextConfig;
