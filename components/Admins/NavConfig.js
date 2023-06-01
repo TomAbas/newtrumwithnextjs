@@ -8,63 +8,63 @@ const getIcon = (name) => <Iconify icon={name} width={22} height={22} />;
 const navConfig = [
   {
     title: "Lading Page",
-    path: "/admins/landingpage",
+    path: "/admin/landingpage",
     icon: getIcon("eva:pie-chart-2-fill"),
   },
   {
     title: "Edit Projects",
-    path: "/admins/editprojects",
+    path: "/admin/editprojects",
     icon: getIcon("eva:people-fill"),
   },
   {
     title: "Add Projects",
-    path: "/admins/addprojects",
+    path: "/admin/addprojects",
     icon: getIcon("eva:shopping-bag-fill"),
   },
   {
     title: "Recuiter",
-    path: "/admins/recuiter",
+    path: "/admin/recuiter",
     icon: getIcon("mdi:advertisements"),
   },
   {
     title: "Company Info",
-    path: "/admins/companyinfo",
+    path: "/admin/companyinfo",
     icon: getIcon("mdi:advertisements"),
   },
   // {
   //   title: "Analytics",
-  //   path: "/admins/google-analytic",
+  //   path: "/admin/google-analytic",
   //   icon: getIcon("akar-icons:statistic-up"),
   // },
   // // {
   // //   title: 'Import NFT',
-  // //   path: '/admins/import-nft',
+  // //   path: '/admin/import-nft',
   // //   icon: getIcon('dashicons:database-import'),
   // // },
   // {
   //   title: "INO",
-  //   path: "/admins/step-ino",
+  //   path: "/admin/step-ino",
   //   icon: getIcon("clarity:deploy-solid"),
   // },
   // {
   //   title: "Auction",
-  //   path: "/admins/step-auction",
+  //   path: "/admin/step-auction",
   //   icon: getIcon("clarity:deploy-solid"),
   // },
   // {
   //   title: "INO Request",
-  //   path: "/admins/request-ino",
+  //   path: "/admin/request-ino",
   //   icon: getIcon("carbon:request-quote"),
   // },
   // {
   //   title: "INOs",
-  //   path: "/admins/inos",
+  //   path: "/admin/inos",
   //   icon: getIcon("carbon:request-quote"),
   // },
 
   // {
   //   title: 'blog',
-  //   path: '/admins/blog',
+  //   path: '/admin/blog',
   //   icon: getIcon('eva:file-text-fill'),
   // },
   // {
