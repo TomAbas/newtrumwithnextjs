@@ -1,8 +1,8 @@
-import axios from "axios";
+import axios from 'axios';
 
 const axiosClient = axios.create({
-  baseURL: "https://pagesmanagementapi.com/",
-  // baseURL: "http://192.168.0.185:3000",
+  // baseURL: "https://pagesmanagementapi.com/",
+  baseURL: 'https://evalley-backend.herokuapp.com/',
   // baseURL: "http://localhost:3001",
 });
 
