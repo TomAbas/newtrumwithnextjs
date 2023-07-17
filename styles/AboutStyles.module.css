@@ -1,0 +1,294 @@
+@keyframes fadeInUpS {
+  0% {
+    opacity: 0;
+
+    -webkit-transform: scale(1.2) translateY(7%);
+    -ms-transform: scale(1.2) translateY(7%);
+    transform: scale(1.2) translateY(7%);
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+
+    -webkit-transform: scale(1) translateY(0);
+    -ms-transform: scale(1) translateY(0);
+    transform: scale(1) translateY(0);
+    display: block;
+  }
+}
+.fadeInUpS {
+  animation: fadeInUpS 0.8s ease forwards;
+  margin-right: 10px;
+}
+
+/* About01 */
+.aboutVideoContainer {
+  /* border: 2px solid white; */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutVideoWrapper {
+  border: 2px soldi greenyellow;
+  width: 40vw;
+  height: 40vw;
+  background-color: white;
+  border-radius: 50%;
+}
+.aboutVideoWrapper video {
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+/* About02 */
+.aboutNumberContainer {
+  /* border: 2px solid white; */
+  min-height: 70vh;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 2;
+}
+.aboutPictureContainer {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  width: 100vw;
+  height: 70vh;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.aboutRow1,
+.aboutRow2 {
+  /* border: 2px solid white; */
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  flex-wrap: wrap;
+  width: fit-content;
+  margin: auto;
+}
+.containerNumber {
+  /* border: 2px solid red; */
+  color: white;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.number {
+  font-size: 100px;
+  color: white;
+}
+
+.content {
+  width: 120px;
+  word-wrap: normal;
+  font-size: 13px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: flex-end;
+  font-weight: 500;
+}
+.content div {
+  height: 100%;
+  margin-top: 25px;
+}
+
+.aboutContentText {
+  color: white;
+  font-size: 24px;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  font-weight: 300 !important;
+}
+.aboutContentText p {
+  font-weight: 300 !important;
+}
+.aboutWrapper {
+  z-index: 3;
+}
+
+/* page 04 */
+.page04Container {
+  position: relative;
+}
+.page04Content00 {
+  padding: 50px 0px;
+  border-bottom: 1px solid gainsboro;
+}
+.page04Content00 p {
+  width: 40%;
+  color: white;
+  font-size: 25px;
+  font-weight: 500;
+  text-align: center;
+  margin: auto;
+}
+.page04Content2 {
+  margin: 80px auto;
+  color: #fff;
+  font-size: 45px;
+}
+.page04Content2 p {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+.page04Content1 {
+  margin: 50px auto;
+}
+.page04ContentText1 {
+  color: #fff;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 50px;
+}
+.page04Img1 {
+  width: 100%;
+}
+.imgBox {
+  width: 100%;
+  height: 100%;
+}
+.imgBox img {
+  width: 100%;
+  height: 100%;
+}
+.contentText1 {
+  width: 100%;
+  padding: 10% 0px;
+}
+.contentText1 h1 {
+  text-align: center;
+  font-size: 1.65rem;
+}
+.h1EffectBox {
+  width: 80%;
+  display: flex;
+  align-items: center;
+}
+.textBox {
+  padding-top: 3%;
+  word-spacing: 1px;
+}
+.textBox p {
+  font-size: 0.7rem;
+  width: fit-content;
+}
+
+/* About03 */
+.about03TitleBrand {
+  /* border: 2px solid red; */
+  color: #fff;
+  font-size: 24px;
+  width: 50%;
+  margin: 30px auto;
+  text-align: center;
+}
+.brandContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  margin: 10px auto;
+}
+.wrapperBrand {
+  border-radius: 50px;
+  padding: 5px;
+  border: 1px solid gainsboro;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  flex: 1;
+  gap: 5px;
+}
+
+.logoBrand {
+  /* width: 30px;
+  height: 30px;
+  border-radius: 50%; */
+}
+.logoBrand img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.brandName {
+  font-size: 24px;
+  text-transform: capitalize;
+  text-align: center;
+  flex: 1;
+}
+.brandName p {
+  margin-bottom: 12px;
+}
+.aboutContainer03 {
+  margin: 50px auto 100px auto;
+}
+@media (min-width: 425px) {
+  .contentText1 h1 {
+    font-size: 2rem;
+  }
+  .textBox p {
+    font-size: 0.7rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .contentText1 {
+    padding: 15% 0px;
+  }
+  .contentText1 h1 {
+    text-align: center;
+    font-size: 3rem;
+  }
+  .textBox p {
+    font-size: 0.6rem;
+    width: fit-content;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contentText1 h1 {
+    font-size: 4rem;
+  }
+  .fadeInUpS {
+    margin-right: 20px;
+  }
+  .textBox p {
+    font-size: 0.82rem;
+    width: fit-content;
+  }
+}
+
+@media (min-width: 1440px) {
+  .contentText1 h1 {
+    font-size: 5.2rem;
+  }
+  .textBox p {
+    font-size: 1.05rem;
+    width: fit-content;
+  }
+}

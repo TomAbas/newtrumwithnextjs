@@ -115,24 +115,22 @@
 }
 
 .page04ContentText1 {
-  /* border: 2px solid red; */
   color: #fff;
   display: grid;
   grid-template-columns: 50% 50%;
 }
-.emptyDiv{
+.emptyDiv {
   position: relative;
 }
 
-.emptyDiv img{
+.emptyDiv img {
   position: absolute;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  top:0;
+  top: 0;
   bottom: 0;
   left: -10%;
-  
 }
 
 .team-pic-img {
@@ -223,10 +221,9 @@
   }
   .page04ContentText1 {
     justify-content: flex-end;
-
   }
 
-  .emptyDiv img{
+  .emptyDiv img {
     object-fit: cover;
   }
 

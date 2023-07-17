@@ -1,19 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 // Import Swiper React components
 import { Swiper } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import styles from "../../styles/SwiperStyles.module.css";
-import SlideItem from "./SlideItem";
 // import required modules
 import { Box } from "@mui/material";
-import Image from "next/future/image";
-import { Pagination, EffectFade } from "swiper";
 import { useSwiper } from "swiper/react";
-import useMoveIcon from "../../hooks/useMoveIcon";
-import arrowLeft from "../../public/imgs/arrowLeft.svg";
-import arrowRight from "../../public/imgs/arrowRight.svg";
+
 
 const BtnLeft = ({ children }) => {
   const swiper = useSwiper();
