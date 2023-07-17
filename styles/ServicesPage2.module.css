@@ -1,0 +1,22 @@
+.service2Container {
+ min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  max-width: 1180px;
+  margin: auto;
+}
+
+.service2IntroText {
+  font-size: 86px;
+  color: #858585;
+  width: 100%;
+  line-height: 98px;
+}
+
+.service2IntroTextHighlight {
+  font-size: inherit;
+  color: #fff;
+  width: fit-content;
+}

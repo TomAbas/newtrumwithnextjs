@@ -1,0 +1,17 @@
+.service1Container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.serviceTitle {
+  font-size: 96px;
+  text-transform: uppercase;
+  font-weight: 800;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-95%, -50%);
+}

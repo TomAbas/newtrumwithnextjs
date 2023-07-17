@@ -1,0 +1,39 @@
+.service4Container {
+  min-height: 100vh;
+  margin: auto;
+  margin: auto;
+}
+.title {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  font-size: 52px;
+  text-align: center;
+}
+
+.wrapCard {
+  max-width: 300px;
+  border: 1px solid #858585;
+  border-radius: 15px;
+  padding: 1rem;
+  margin: auto;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cardImage {
+  width: 120px;
+  height: 120px;
+  margin: auto;
+  border-radius: 50%;
+}
+
+.cardImage img {
+  width: 100px !important;
+  height: 100px !important;
+  border-radius: 50%;
+  display: block;
+  object-fit: contain;
+}

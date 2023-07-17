@@ -1,0 +1,36 @@
+.service3Container {
+ min-height: 100vh;
+  max-width: 1180px;
+  margin: auto;
+  margin-top: 2rem;
+}
+.wrapItemService {
+  border-bottom: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapTextCard {
+  max-width: 70%;
+  padding: 1rem 0;
+}
+.titleCard {
+  font-size: 52px;
+}
+.subTitleCard {
+  font-size: 36px;
+}
+.desc {
+  font-size: 18px;
+}
+.wrapCircle {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+}
+.wrapCircle img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
