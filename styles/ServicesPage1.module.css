@@ -5,13 +5,42 @@
   justify-content: center;
   position: relative;
 }
-
 .serviceTitle {
-  font-size: 96px;
+  font-size: 46px;
   text-transform: uppercase;
   font-weight: 800;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-95%, -50%);
+  transform: translate(-50%, -50%);
+}
+@media screen and (min-width: 375px) {
+  .serviceTitle {
+    font-size: 56px;
+  }
+}
+@media screen and (min-width: 576px) {
+  .serviceTitle {
+    font-size: 72px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .serviceTitle {
+    transform: translate(-75%, -50%);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .serviceTitle {
+    font-size: 96px;
+    transform: translate(-95%, -50%);
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .serviceTitle {
+    font-size: 126px;
+    transform: translate(-95%, -50%);
+  }
 }

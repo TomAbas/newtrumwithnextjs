@@ -1,0 +1,9 @@
+.serviceContainer {
+ min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  width: min(90%, 1600px);
+  margin: auto;
+}

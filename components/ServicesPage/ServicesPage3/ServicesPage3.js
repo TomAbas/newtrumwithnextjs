@@ -1,22 +1,6 @@
 import React from 'react'
 import styles from "../../../styles/ServicesPage3.module.css"
-import imgCircle from "../../../public/imgs/img-circle.webp"
-import Image from 'next/image'
-
-const ItemService = ({ title, desc, subTitle }) => {
-  return <div className={styles.wrapItemService}>
-    <div className={styles.wrapTextCard}>
-      <h3 className={styles.titleCard}>{title}</h3>
-      <h5 className={styles.subTitleCard}>{subTitle}</h5>
-      <span className={styles.desc}>{desc}</span>
-    </div>
-    {
-      subTitle && <div className={styles.wrapCircle}>
-        <Image src={imgCircle} alt="circle" className={styles.imgCircle} />
-      </div>
-    }
-  </div>
-}
+import ItemService from './components/ItemService/ItemService'
 
 const ServicesPage3 = () => {
   const listCardServices = [

@@ -2,8 +2,11 @@ import React from 'react'
 import styles from "../../../styles/ServicesPage4.module.css"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import 'swiper/css/free-mode';
+import 'swiper/css/scrollbar';
+import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+
+
 import Rating from '@mui/material/Rating';
 import Image from 'next/image';
 import Img1 from "../../../public/imgs/weare.webp"
@@ -30,12 +33,35 @@ const ServicesPage4 = () => {
       <h3 className={styles.title}>Industry Recognition</h3>
       <div>
         <Swiper
-          slidesPerView={5}
-          spaceBetween={30}
-          freeMode={true}
-          pagination={{
-            clickable: true,
+          slidesPerView={1}
+          centeredSlides={false}
+          spaceBetween={10}
+          breakpoints={{
+            576: {
+              slidesPerView: 2,
+            },
+            786: {
+              slidesPerView: 2,
+            },
+            992: {
+              slidesPerView: 3,
+              spaceBetween: 20,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+            1200: {
+              slidesPerView: 4,
+              spaceBetween: 20,
+
+            },
+            1500: {
+              slidesPerView: 5,
+              spaceBetween: 10,
+
+            },
           }}
+
           className="mySwiper"
         >
           <SwiperSlide>  <CardSwiper /></SwiperSlide>
