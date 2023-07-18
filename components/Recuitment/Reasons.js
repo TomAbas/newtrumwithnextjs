@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/RecuitmentStyles.module.css";
-import { Chip, Avatar } from "@mui/material";
+import { Chip, Avatar, Box } from "@mui/material";
 
 const styleAvatar = {
   width: "30px",
@@ -53,7 +53,7 @@ const Reasons = () => {
   return (
     <div>
       <div className={styles.titleMd}>7 Reasons Why You Should Hire TRUM</div>
-      <div>
+      <Box sx={{ pt: 2 }}>
         {data.map((item) => {
           return (
             <Chip
@@ -70,7 +70,7 @@ const Reasons = () => {
             />
           );
         })}
-      </div>
+      </Box>
     </div>
   );
 };
