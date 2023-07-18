@@ -247,6 +247,9 @@
 .aboutContainer03 {
   margin: 50px auto 100px auto;
 }
+@media (min-width: 350px) {
+  
+}
 @media (min-width: 425px) {
   .contentText1 h1 {
     font-size: 2rem;

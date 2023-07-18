@@ -1,8 +1,10 @@
+.footerContainer {
+  width: min(90%, 1600px);
+  margin: 0 auto;
+}
 .landingPageIcon {
-  /* outline: 2px solid wheat; */
   color: #fff;
   display: flex;
-  /* width: var(--width-containers); */
   margin: 0 auto;
   justify-content: space-between;
   font-size: 15px;
@@ -13,43 +15,67 @@
   right: 2%;
 }
 .leftIconBox {
-  /* outline: 2px solid blue; */
   text-align: center;
   text-transform: capitalize;
 }
 .iconLeft {
   position: relative;
   width: 25px;
-  /* outline: 1px solid white; */
   padding: 5px;
-  /* outline-radius: 50%; */
 }
-.iconRight{
+.iconRight {
   height: 1em;
 }
 .rightIconBox {
-  /* outline: 2px solid white; */
   display: flex;
 }
 .rightIconBoxInside {
-  /* outline: 2px solid red; */
   text-align: center;
   margin-left: 10px;
 }
 .leftIconBoxInside {
   display: flex;
-  /* outline: 2px solid aliceblue; */
   align-items: flex-end;
 }
 .rightIconBoxInside {
   display: flex;
   flex-direction: column;
-  /* outline: 2px solid aliceblue; */
   justify-content: flex-end;
 }
 
+.footerLogo img {
+  width: 150px;
+  height: auto;
+}
+.footerTop {
+  font-size: 17px;
+  text-transform: uppercase;
+  color: #fff;
+}
+.footerMedia,
+.footerNav {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 0px;
+}
+.footerNav {
+  border-bottom: 1px solid gainsboro;
+}
+.footerBottom {
+  /* border: 1px solid red; */
+  display: flex;
+  gap: 100px;
+  align-items: center;
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #fff;
+}
+.footerInfo {
+  margin-bottom: 12px;
+}
+@media (min-width:350px){
 
-
+}
 @media (min-width: 425px) {
   .test {
     height: 60vh;

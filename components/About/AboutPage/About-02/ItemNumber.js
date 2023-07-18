@@ -19,6 +19,7 @@ const ItemNumber = ({ start = 0, end, timer = 1000, title }) => {
         setNumber(end);
       }
       setNumber(result);
+
       ref.current = result;
     }
     // setTimeout(updateCounterState, timer);
@@ -41,7 +42,7 @@ const ItemNumber = ({ start = 0, end, timer = 1000, title }) => {
 
     return () => {
       isMouted = false;
-      clearInterval(test);
+      // clearInterval(test);
     };
   }, [end, start, isNumberInview]);
 

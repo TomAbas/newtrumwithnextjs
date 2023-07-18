@@ -1,24 +1,26 @@
-
 .container {
   background-color: #131313;
   width: min(90%, 1600px);
-  /* position: relative; */
-  /* margin-inline: auto; */
   margin: 0 auto;
-  font-family: "galano", "montserrat";
+  font-family: 'galano', 'montserrat';
 }
 .navContainer {
-  /* border: 2px solid white; */
-  /* width: var(--width-containers); */
   position: fixed;
   margin: 0px auto;
   z-index: 1;
-  /* border: 2px solid wheat; */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  left: 2%;
-  right: 2%;
+  left: 4%;
+  right: 4%;
+  color: white;
+  transition: transform ease-in-out 0.8s;
+}
+.navMoveUp {
+  transform: translateY(-80%);
+}
+.navMoveDown {
+  transform: translateY(0%);
 }
 .navBrandLogo img {
   width: 50px;
@@ -32,6 +34,50 @@
 .projectLogo {
   width: 20px;
 }
+.navBox {
+  font-size: 17px;
+  text-transform: uppercase;
+}
+.navBox ul {
+  display: flex;
+  gap: 50px;
+}
+.navBox ul li {
+  list-style: none;
+}
+.navBox a {
+  position: relative;
+}
+.navBox a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 0.1em;
+  background-color: white;
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+}
+.navBox li a::after {
+  opacity: 1;
+  transform: scale(0);
+  transform-origin: center;
+}
+
+.navBox li a:hover::after,
+.navBox li a:focus::after {
+  transform: scale(1);
+}
+
+@media (min-width: 350px) {
+  .navBox {
+    font-size: 10px;
+  }
+  .navBox ul {
+    gap: 10px;
+  }
+}
 @media (min-width: 425px) {
   .navBrandLogo img {
     width: 80px;
@@ -39,8 +85,14 @@
   .projectLogo {
     width: 20px;
   }
-  .navProject{
+  .navProject {
     font-size: 10px;
+  }
+  .navBox {
+    font-size: 12px;
+  }
+  .navBox ul {
+    gap: 15px;
   }
 }
 
@@ -54,8 +106,14 @@
   .projectLogo {
     width: 25px;
   }
-  .navProject{
+  .navProject {
     font-size: 12px;
+  }
+  .navBox {
+    font-size: 15px;
+  }
+  .navBox ul {
+    gap: 20px;
   }
 }
 
@@ -66,8 +124,14 @@
   .projectLogo {
     width: 27px;
   }
-  .navProject{
+  .navProject {
     font-size: 15px;
+  }
+  .navBox {
+    font-size: 17px;
+  }
+  .navBox ul {
+    gap: 50px;
   }
 }
 
