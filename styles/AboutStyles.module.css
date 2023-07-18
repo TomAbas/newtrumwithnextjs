@@ -225,11 +225,6 @@
   gap: 5px;
 }
 
-.logoBrand {
-  /* width: 30px;
-  height: 30px;
-  border-radius: 50%; */
-}
 .logoBrand img {
   width: 60px;
   height: 60px;
@@ -248,7 +243,21 @@
   margin: 50px auto 100px auto;
 }
 @media (min-width: 350px) {
-  
+  .aboutRow1,
+  .aboutRow2 {
+    gap: 10px;
+  }
+  .number {
+    font-size: 20px;
+  }
+  .content {
+    width: 65px;
+    font-size: 8px;
+  }
+  .aboutContentText {
+    font-size: 12px;
+    width: 100%;
+  }
 }
 @media (min-width: 425px) {
   .contentText1 h1 {

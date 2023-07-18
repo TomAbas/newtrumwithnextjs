@@ -48,7 +48,6 @@
   height: auto;
 }
 .footerTop {
-  font-size: 17px;
   text-transform: uppercase;
   color: #fff;
 }
@@ -62,19 +61,31 @@
   border-bottom: 1px solid gainsboro;
 }
 .footerBottom {
-  /* border: 1px solid red; */
   display: flex;
-  gap: 100px;
   align-items: center;
-  font-size: 15px;
   text-transform: uppercase;
   color: #fff;
 }
-.footerInfo {
-  margin-bottom: 12px;
-}
-@media (min-width:350px){
 
+@media (min-width: 350px) {
+  .footerMedia,
+  .footerNav {
+    display: flex;
+    font-size: 10px;
+    justify-content: space-between;
+    padding: 50px 0px;
+  }
+  .footerLogo img {
+    width: 80px;
+    height: auto;
+  }
+  .footerBottom {
+    gap: 20px;
+    font-size: 8px;
+  }
+  .footerInfo {
+    margin-bottom: 3px;
+  }
 }
 @media (min-width: 425px) {
   .test {
@@ -82,6 +93,20 @@
   }
   .logan-container h1 {
     font-size: clamp(2rem, 7.7vw, 4.197rem);
+  }
+  .footerMedia,
+  .footerNav {
+    font-size: 12px;
+  }
+  .footerLogo img {
+    width: 100px;
+  }
+  .footerBottom {
+    gap: 20px;
+    font-size: 10px;
+  }
+  .footerInfo {
+    margin-bottom: 3px;
   }
 }
 
@@ -91,6 +116,20 @@
   }
   .logan-container h1 {
     font-size: clamp(3rem, 7.7vw, 5.6rem);
+  }
+  .footerMedia,
+  .footerNav {
+    font-size: 14px;
+  }
+  .footerLogo img {
+    width: 120px;
+  }
+  .footerBottom {
+    gap: 20px;
+    font-size: 12px;
+  }
+  .footerInfo {
+    margin-bottom: 5px;
   }
 }
 
@@ -111,10 +150,38 @@
     /* font-size: 7.13rem; */
     font-size: clamp(4.197rem, 7.7vw, 7.13rem);
   }
+  .footerMedia,
+  .footerNav {
+    font-size: 16px;
+  }
+  .footerLogo img {
+    width: 130px;
+  }
+  .footerBottom {
+    gap: 20px;
+    font-size: 14px;
+  }
+  .footerInfo {
+    margin-bottom: 7px;
+  }
 }
 @media (min-width: 1440px) {
   .landing-page-pic {
     height: 90.9vh;
     /* position: absolute; */
+  }
+  .footerMedia,
+  .footerNav {
+    font-size: 17px;
+  }
+  .footerLogo img {
+    width: 150px;
+  }
+  .footerBottom {
+    gap: 80px;
+    font-size: 15px;
+  }
+  .footerInfo {
+    margin-bottom: 12px;
   }
 }
