@@ -8,8 +8,13 @@ import AddIcon from "@mui/icons-material/Add";
 import List from "@mui/material/List";
 import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
-import { ListItemButton, ListItemIcon } from "@mui/material";
+import { ListItemButton, ListItemIcon, Typography } from "@mui/material";
 import useGetContact from "../../hooks/useGetContect";
+import FormContact from "./FormContact";
+import Reasons from "./Reasons";
+import { Stack, Box } from "@mui/material";
+import BtnSubmit from "../Form/BtnSubmit";
+import Industry from "./Industry/Industry";
 
 const ListJobItem = ({ job }) => {
   const [activeSelectOption, setActiveSelectOption] = useState(false);
@@ -27,8 +32,8 @@ const ListJobItem = ({ job }) => {
           <AddIcon sx={{ color: "#858585" }} />
         </ListItemIcon>
       </ListItemButton>
-      <Collapse in={activeSelectOption} timeout='auto' unmountOnExit>
-        <List component='div' disablePadding>
+      <Collapse in={activeSelectOption} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
           <ListItemText
             primary={job.description}
             sx={{ padding: "8px 16px" }}
@@ -56,11 +61,28 @@ const Recuitment = () => {
       {companyInfo ? (
         <>
           <div className={styles.bigContainer}>
-            <div className={styles.container}>
+            <Stack direction={{ sm: "column", md: "row" }} spacing={2} gap={2}>
+              <Box sx={{ minWidth: "50%" }}>
+                <FormContact />
+              </Box>
+              <Box sx={{ minWidth: "50%" }}>
+                <Reasons />
+              </Box>
+            </Stack>
+            <BtnSubmit label="BOOK YOUR CALL" sx={{ mt: 4, mb: 2 }} />
+            <Typography
+              variant="caption"
+              sx={{ display: "block", fontWeight: "light" }}
+            >
+              We look forward to help you get started.
+            </Typography>
+
+            <Industry />
+
+            {/* <div className={styles.container}>
               <div className={styles.textHolder}>
                 <div className={styles.titleMd}>{companyInfo.address}</div>
               </div>
-
               <div className={`${styles.textHolder} ${styles.phone}`}>
                 <div className={styles.textHolder}>
                   <div className={styles.titleMd}>{companyInfo.phone}</div>
@@ -74,7 +96,14 @@ const Recuitment = () => {
                   <p> {companyInfo.email}</p>{" "}
                 </div>
               </div>
-            </div>
+            </div> */}
+            <div className={styles.titleMd}>We're hiring</div>
+            <Typography variant="caption">
+              {" "}
+              TRUM is an open and inclusive work environment, with flexible
+              hours and sane workweeks. We are always on the lookout for new
+              talent!
+            </Typography>
             <div className={styles.recruitInfo}>
               <div className={styles.textHolder}>
                 <div className={styles.titleMd}>{listJob.title}</div>
@@ -82,30 +111,30 @@ const Recuitment = () => {
               </div>
               <List className={styles.itemHolder}>{createListJobItem()}</List>
             </div>
-            <div className={styles.bottomWidget}>
+            {/* <div className={styles.bottomWidget}>
               <ul>
-                <Link href={`${companyInfo.instagram}`} target='_blank'>
+                <Link href={`${companyInfo.instagram}`} target="_blank">
                   <a>
                     <li className={styles.link}>Instagram</li>
                   </a>
                 </Link>
-                <Link href={`${companyInfo.facebook}`} target='_blank'>
+                <Link href={`${companyInfo.facebook}`} target="_blank">
                   <a>
                     <li className={styles.link}>Facebook</li>
                   </a>
                 </Link>
-                <Link href={`${companyInfo.twitter}`} target='_blank'>
+                <Link href={`${companyInfo.twitter}`} target="_blank">
                   <a>
                     <li className={styles.link}>Twitter</li>
                   </a>
                 </Link>
-                <Link href={`${companyInfo.linkedin}`} target='_blank'>
+                <Link href={`${companyInfo.linkedin}`} target="_blank">
                   <a>
                     <li className={styles.link}>Linkedin</li>
                   </a>
                 </Link>
               </ul>
-            </div>
+            </div> */}
           </div>
         </>
       ) : (

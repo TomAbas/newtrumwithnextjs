@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css';
 import LandingPage from '../Views/LandingPage';
 import { getLandingPageData } from '../ApiUrl/landingpageApi/landingApi';
 
+
 // export async function getServerSideProps() {
 //   let res = await getLandingPageData();
 //   // console.log(res);
