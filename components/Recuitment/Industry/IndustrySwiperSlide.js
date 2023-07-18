@@ -21,7 +21,9 @@ const IndustrySwiperSlide = () => {
           <Typography variant="overline">MM DD, YYYY</Typography>
         </Stack>
         <Box sx={{ my: "10px" }}>
-            <Typography variant="caption">How Music Marketing Is Evolving from Viral to Virtual</Typography>
+          <Typography variant="caption">
+            How Music Marketing Is Evolving from Viral to Virtual
+          </Typography>
         </Box>
       </Box>
     </div>
