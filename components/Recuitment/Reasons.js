@@ -52,7 +52,7 @@ const data = [
 const Reasons = () => {
   return (
     <div>
-      <div className={styles.titleMd}>Start Your Music Marketing Here</div>
+      <div className={styles.titleMd}>7 Reasons Why You Should Hire TRUM</div>
       <div>
         {data.map((item) => {
           return (
