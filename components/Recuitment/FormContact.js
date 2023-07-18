@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/RecuitmentStyles.module.css";
 import InputField from "../Form/InputField";
-import { Button, Box } from "@mui/material";
+import { Button, Box, Typography } from "@mui/material";
 import BtnSubmit from "../Form/BtnSubmit";
 
 const FormContact = () => {
@@ -16,10 +16,13 @@ const FormContact = () => {
       <Box sx={{ my: "20px" }}>
         <BtnSubmit label="Submit" />
       </Box>
-      <p style={{ width: "100vw" }}>
+      <Typography
+        variant="caption"
+        sx={{ display: "block", fontWeight: "light" }}
+      >
         Once you click 'Submit', wait till your submission is processed, it'll
         take 5 seconds.
-      </p>
+      </Typography>
     </div>
   );
 };
