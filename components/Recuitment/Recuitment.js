@@ -8,7 +8,7 @@ import AddIcon from "@mui/icons-material/Add";
 import List from "@mui/material/List";
 import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
-import { ListItemButton, ListItemIcon } from "@mui/material";
+import { ListItemButton, ListItemIcon, Typography } from "@mui/material";
 import useGetContact from "../../hooks/useGetContect";
 import FormContact from "./FormContact";
 import Reasons from "./Reasons";
@@ -70,15 +70,19 @@ const Recuitment = () => {
               </Box>
             </Stack>
             <BtnSubmit label="BOOK YOUR CALL" sx={{ mt: 4, mb: 2 }} />
-            <p>We look forward to help you get started.</p>
+            <Typography
+              variant="caption"
+              sx={{ display: "block", fontWeight: "light" }}
+            >
+              We look forward to help you get started.
+            </Typography>
 
             <Industry />
 
-            <div className={styles.container}>
+            {/* <div className={styles.container}>
               <div className={styles.textHolder}>
                 <div className={styles.titleMd}>{companyInfo.address}</div>
               </div>
-
               <div className={`${styles.textHolder} ${styles.phone}`}>
                 <div className={styles.textHolder}>
                   <div className={styles.titleMd}>{companyInfo.phone}</div>
@@ -92,7 +96,14 @@ const Recuitment = () => {
                   <p> {companyInfo.email}</p>{" "}
                 </div>
               </div>
-            </div>
+            </div> */}
+            <div className={styles.titleMd}>We're hiring</div>
+            <Typography variant="caption">
+              {" "}
+              TRUM is an open and inclusive work environment, with flexible
+              hours and sane workweeks. We are always on the lookout for new
+              talent!
+            </Typography>
             <div className={styles.recruitInfo}>
               <div className={styles.textHolder}>
                 <div className={styles.titleMd}>{listJob.title}</div>
@@ -100,7 +111,7 @@ const Recuitment = () => {
               </div>
               <List className={styles.itemHolder}>{createListJobItem()}</List>
             </div>
-            <div className={styles.bottomWidget}>
+            {/* <div className={styles.bottomWidget}>
               <ul>
                 <Link href={`${companyInfo.instagram}`} target="_blank">
                   <a>
@@ -123,7 +134,7 @@ const Recuitment = () => {
                   </a>
                 </Link>
               </ul>
-            </div>
+            </div> */}
           </div>
         </>
       ) : (

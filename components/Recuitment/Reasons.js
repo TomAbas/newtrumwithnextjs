@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/RecuitmentStyles.module.css";
 import { Chip, Avatar, Box } from "@mui/material";
+import { text } from "@fortawesome/fontawesome-svg-core";
 
 const styleAvatar = {
   width: "30px",
@@ -65,6 +66,7 @@ const Reasons = () => {
                 "& .MuiChip-label": {
                   display: "block",
                   whiteSpace: "normal",
+                  fontWeight: "light",
                 },
               }}
             />

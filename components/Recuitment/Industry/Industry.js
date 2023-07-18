@@ -64,7 +64,9 @@ const breakpoints = {
 const Industry = () => {
   return (
     <div>
-      <div className={styles.titleMd}>Industry Recognition</div>
+      <Box className={styles.titleMd} sx={{ textAlign: "center", mt: 8 }}>
+        Industry Recognition
+      </Box>
 
       <Box sx={{ my: "20px" }}>
         <Swiper
@@ -89,10 +91,6 @@ const Industry = () => {
           })}
         </Swiper>
       </Box>
-      <p style={{ width: "100vw" }}>
-        Once you click 'Submit', wait till your submission is processed, it'll
-        take 5 seconds.
-      </p>
     </div>
   );
 };
