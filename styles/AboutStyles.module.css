@@ -251,12 +251,24 @@
     font-size: 20px;
   }
   .content {
-    width: 65px;
-    font-size: 8px;
+    width: 50px;
+    font-size: 6px;
   }
   .aboutContentText {
     font-size: 12px;
-    width: 100%;
+    width: 90%;
+    margin: 50px auto;
+  }
+  .icon {
+    font-size: 10px;
+  }
+  .content div {
+    height: 100%;
+    margin-top: 10px;
+  }
+  .page04Content00 p {
+    width: 80%;
+    font-size: 12px;
   }
 }
 @media (min-width: 425px) {
