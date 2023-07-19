@@ -54,7 +54,7 @@ const ItemNumber = ({ start = 0, end, timer = 1000, title }) => {
         </div>
         <div className={styles.content} ref={numberRef}>
           <div>
-            <AddIcon color='white' fontSize='large' />
+            <AddIcon color='white' fontSize='large' className={styles.icon} />
             <p>{title}</p>
           </div>
         </div>
