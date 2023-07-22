@@ -5,6 +5,7 @@ import ServicesPage3 from './ServicesPage3/ServicesPage3'
 import ServicesPage4 from './ServicesPage4/ServicesPage4'
 import styles from "../../styles/ServicesPage.module.css"
 import { getListCardIndustryData, getServicesData } from '../../ApiUrl/servicesApi/servicesApi'
+import ServicesPage5 from './ServicesPage5/ServicesPage5'
 
 const ServicesPage = () => {
   const [listCardIndustry, setListCardIndustry] = useState(null || [])
@@ -28,6 +29,7 @@ const ServicesPage = () => {
       <ServicesPage2 dataServices={dataServices} />
       <ServicesPage3 dataServices={dataServices} />
       <ServicesPage4 listCardIndustry={listCardIndustry} />
+      <ServicesPage5 />
     </div>
   )
 }

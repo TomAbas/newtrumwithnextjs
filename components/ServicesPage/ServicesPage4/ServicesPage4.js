@@ -27,7 +27,6 @@ const CardSwiper = ({ title, description }) => {
   </div>
 }
 const ServicesPage4 = ({ listCardIndustry }) => {
-
   return (
     <div className={styles.service4Container}>
       <h3 className={styles.title}>Industry Recognition</h3>
