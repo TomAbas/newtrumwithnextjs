@@ -40,6 +40,7 @@ const IndustryEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
   };
 
   useEffect(() => {
+    console.log(preLoadValue);
     reset(preLoadValue);
   }, [preLoadValue]);
 
