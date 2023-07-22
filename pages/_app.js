@@ -14,7 +14,9 @@ function MyApp({ Component, pageProps, ...appProps }) {
       [`/admin/companyinfo`].includes(appProps.router.pathname) ||
       [`/admin/about-us`].includes(appProps.router.pathname) ||
       [`/admin/service`].includes(appProps.router.pathname) ||
-      ['/admin/industry-recognition'].includes(appProps.router.pathname)
+      ['/admin/industry-recognition'].includes(appProps.router.pathname) ||
+      ['/admin/comment'].includes(appProps.router.pathname) ||
+      ['/admin/reason'].includes(appProps.router.pathname)
     )
       return (
         <LayoutAdmin>
