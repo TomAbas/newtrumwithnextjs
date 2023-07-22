@@ -56,7 +56,7 @@ const Comment = () => {
   };
 
   useEffect(() => {
-    // fetchListComment();
+    fetchListComment();
   }, [reDelete, trigger]);
 
   const ListNews = ({ arrComment }) => {

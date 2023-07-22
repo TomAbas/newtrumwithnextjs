@@ -30,7 +30,7 @@ const AddReason = ({ setTrigger, trigger }) => {
       .then((res) => {
         setTrigger(!trigger);
         toast.success('Add Success');
-        reset({});
+        reset({ title: '' });
       })
       .catch((err) => {
         toast.error('Add Failed');

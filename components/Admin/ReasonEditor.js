@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from '../../styles/Admin.module.css';
 //mui
 import { Button } from '@mui/material';

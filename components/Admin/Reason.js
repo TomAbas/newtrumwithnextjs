@@ -11,12 +11,10 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { Button } from '@mui/material';
-import {
-  getListRatingData,
-  deleteRatingData,
-} from '../../ApiUrl/rating/ratingApi';
+
 import ReasonEditor from './ReasonEditor';
 import AddReason from './AddReason';
+import { deleteReasonData, getListReasonData } from '../../ApiUrl/reason/reasonApi';
 
 const Reason = () => {
   const [arrReason, setArrReason] = useState([]);
@@ -28,7 +26,7 @@ const Reason = () => {
 
   const deleteReason = async (id) => {
     try {
-      await deleteRatingData(id);
+      await deleteReasonData(id);
       setReDelete(!reDelete);
     } catch (error) {
       console.log(error);
@@ -36,7 +34,7 @@ const Reason = () => {
   };
   const fetchListReason = async () => {
     setArrReason(
-      await getListRatingData().then((data) => {
+      await getListReasonData().then((data) => {
         console.log(data);
         return data;
       })
@@ -54,7 +52,7 @@ const Reason = () => {
   };
 
   useEffect(() => {
-    // fetchListReason();
+    fetchListReason();
   }, [reDelete, trigger]);
 
   const ListNews = ({ arrReason }) => {
