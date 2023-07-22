@@ -25,7 +25,6 @@ const LandingPage = ({ data }) => {
     video: "",
     _id: ''
   });
-  console.log("🚀 ~ file: About.js:28 ~ aboutData:", aboutData)
 
   useEffect(() => {
     getAboutData().then((res) => {
