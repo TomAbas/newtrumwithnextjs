@@ -56,6 +56,7 @@ const AboutUsForm = ({ aboutUsData, aboutUsNumber, aboutUsPartner }) => {
     register,
     handleSubmit,
     reset,
+    setError,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -87,13 +88,19 @@ const AboutUsForm = ({ aboutUsData, aboutUsNumber, aboutUsPartner }) => {
     await updateAboutData(data).then((res) => {
       console.log(res);
       const newData = makeData(res.data);
+      // reset data about number, about brand
       reset(newData);
     });
   }
   function handleSubmitFc(data) {
     console.log(data);
+    if (data.aboutImage1.length === 0) {
+    }
+    if (data.aboutImage2.length === 0) {
+    }
+    if (data.aboutVideo.length === 0) {
+    }
     setAboutUs(data);
-    reset({});
   }
   useEffect(() => {
     if (aboutUsData) {
