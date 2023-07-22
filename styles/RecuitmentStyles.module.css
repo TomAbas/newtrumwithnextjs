@@ -84,13 +84,10 @@
   font-size: 0.8rem;
 }
 .recruitInfo {
-  padding-right: 15px;
-  padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
   /* padding-top: 50px; */
   padding-bottom: 50px;
-  max-width: 1100px;
 }
 .recruitInfoText {
   color: #858585;
@@ -162,11 +159,12 @@
 
 .titleMd {
   font-size: 1.5rem;
+  max-width: 500px;
 }
 
 @media (min-width: 768px) {
   .bigContainer {
-    padding: 15% 10%;
+    padding: 15% 4.5%;
   }
   .titleMd {
     font-size: 1.7rem;
@@ -257,5 +255,3 @@
   margin-top: 20px;
   font-size: 0.8rem;
 }
-
-

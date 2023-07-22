@@ -3,6 +3,8 @@ import styles from '../../../../styles/AboutStyles.module.css';
 import AddIcon from '@mui/icons-material/Add';
 import { useInView } from 'framer-motion';
 import { set } from 'react-hook-form';
+import Image from 'next/image';
+import ImgPlus from "../../../../public/imgs/plus-img.webp"
 
 const ItemNumber = ({ start = 0, end, timer = 1000, title }) => {
   const numberRef = useRef();
@@ -48,13 +50,13 @@ const ItemNumber = ({ start = 0, end, timer = 1000, title }) => {
 
   return (
     <>
-      <div className={styles.containerNumber}>
+      <div className={styles.wrapItemNumber}>
         <div className={styles.number}>
           <p>{number}</p>
         </div>
         <div className={styles.content} ref={numberRef}>
-          <div>
-            <AddIcon color='white' fontSize='large' className={styles.icon} />
+          <div className={styles.wrapDesc}>
+            <Image src={ImgPlus} alt='#' className={styles.icon} />
             <p>{title}</p>
           </div>
         </div>

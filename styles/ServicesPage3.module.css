@@ -1,0 +1,62 @@
+.wrapItemService {
+  border-bottom: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapTextCard {
+  max-width: 80%;
+  padding: 1rem 0;
+}
+.titleCard {
+  font-size: 26px;
+}
+.subTitleCard {
+  font-size: 18px;
+}
+.desc {
+  font-size: 14px;
+}
+.wrapCircle {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+}
+.wrapCircle img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+@media screen and (min-width: 375px) {
+}
+@media screen and (min-width: 576px) {
+}
+@media screen and (min-width: 768px) {
+  .titleCard {
+    font-size: 52px;
+  }
+  .subTitleCard {
+    font-size: 36px;
+  }
+  .desc {
+    font-size: 18px;
+  }
+  .wrapCircle {
+    width: 42px;
+    height: 42px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .wrapTextCard {
+    max-width: 80%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .wrapTextCard {
+    max-width: 60%;
+  }
+}
+@media screen and (min-width: 1200px) {
+}

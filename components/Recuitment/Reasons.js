@@ -8,6 +8,7 @@ const styleAvatar = {
   height: "30px",
   marginLeft: "0",
   backgroundColor: "#fff",
+  fontSize: '20px'
 };
 
 const styleChip = {
@@ -16,6 +17,7 @@ const styleChip = {
   backgroundColor: "#3A3A3A",
   margin: "0 10px 10px 0",
   lineHeight: "1.1",
+
 };
 
 const data = [
@@ -67,7 +69,19 @@ const Reasons = () => {
                   display: "block",
                   whiteSpace: "normal",
                   fontWeight: "light",
+                  fontSize: "8px",
+
                 },
+                "@media (min-width: 375px)": {
+                  "& .MuiChip-label": {
+                    fontSize: "10px",
+                  },
+                },
+                "@media (min-width: 992px)": {
+                  "& .MuiChip-label": {
+                    fontSize: "13px",
+                  },
+                }
               }}
             />
           );

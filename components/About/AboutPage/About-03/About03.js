@@ -46,15 +46,15 @@ const About03 = () => {
         organizations.
       </p>
       <div className={styles.brandContainer}>
-        {new Array(5).fill(null).map((item, idx) => {
+        {new Array(10).fill(null).map((item, idx) => {
           return <Fragment key={idx}>{<Brand />}</Fragment>;
         })}
       </div>
-      <div className={styles.brandContainer}>
+      {/* <div className={styles.brandContainer}>
         {new Array(5).fill(null).map((item, idx) => {
           return <Fragment key={idx}>{<Brand />}</Fragment>;
         })}
-      </div>
+      </div> */}
     </div>
   );
 };
