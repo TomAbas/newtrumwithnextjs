@@ -19,21 +19,8 @@ const Index = () => {
   const [aboutUsPartner, setAboutUsPartner] = useState([]);
   function getAboutUsData() {
     getAboutData().then((data) => {
-      console.log(data);
+      // console.log(data);
       const dataAbout = makeData(data);
-      //  {
-      //   about01FirstDescription: data.about01.description,
-      //   about01SecondDescription: data.description01,
-      //   about02Title: data.about02.title,
-      //   about02FirstDescription: data.about02.description,
-      //   about02SecondDescription: data.description02,
-      //   about03Title: data.about03.title,
-      //   // aboutImage1: data.aboutImage1,
-      //   // aboutImage2: data.aboutImage2,
-      //   // aboutVideo: data.aboutVideo,
-      //   // aboutNumber: data.about01.list,
-      //   // aboutPartner: data.about03.listBrand,
-      // };
       setAboutUsNumber(data.about01.list);
       setAboutUsPartner(data.about03.listBrand);
       setAboutUsData(dataAbout);
