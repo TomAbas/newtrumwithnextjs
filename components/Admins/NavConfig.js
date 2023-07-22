@@ -41,6 +41,11 @@ const navConfig = [
     path: '/admin/service',
     icon: getIcon('dashicons:database-import'),
   },
+  {
+    title: 'Industry Recognition',
+    path: '/admin/industry-recognition',
+    icon: getIcon('dashicons:database-import'),
+  },
   // {
   //   title: "INO",
   //   path: "/admin/step-ino",

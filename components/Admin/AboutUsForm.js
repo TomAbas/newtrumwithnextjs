@@ -87,6 +87,7 @@ const AboutUsForm = ({ aboutUsData, aboutUsNumber, aboutUsPartner }) => {
     await updateAboutData(data).then((res) => {
       console.log(res);
       const newData = makeData(res.data);
+      // reset data about number, about brand
       reset(newData);
     });
   }
