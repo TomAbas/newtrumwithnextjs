@@ -4,12 +4,13 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Image from 'next/future/image';
 
-const Page04 = ({ page4Data }) => {
+const Page04 = ({ page4Data, aboutData }) => {
+  const { description, image, title } = aboutData.about02
   const h1Ref1 = useRef();
   const inViewH1ref1 = useInView(h1Ref1);
 
   const animationWords = () => {
-    let b = page4Data[1]?.content.split(' ').map((word, idx) => {
+    let b = title?.split(' ').map((word, idx) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s` };
       return (
         <h1
@@ -33,8 +34,7 @@ const Page04 = ({ page4Data }) => {
       <div className={styles.page04Container}>
         <div className={styles.page04Content00}>
           <p>
-            We apply creativity across every corner of our clients businesses -
-            from creative, media, CXM, commerce and data.
+            {aboutData.description01}
           </p>
         </div>
         <div className={styles.page04Content1}>
@@ -55,18 +55,17 @@ const Page04 = ({ page4Data }) => {
                 {animationWords()}
               </div>
               <div className={styles.textBox}>
-                <p>{page4Data[1]?.description}</p>
+                <p>{description}</p>
               </div>
-              <div className={styles.textBox}>
-                <p>{page4Data[1]?.description}</p>
-              </div>
+
             </div>
           </div>
         </div>
         <div className={styles.page04Content2}>
           <p>
-            LEVENT - Fashion brand increased sales up to 350% despite the
-            Covid-19 pandemic
+            {
+              aboutData.description02
+            }
           </p>
         </div>
       </div>
