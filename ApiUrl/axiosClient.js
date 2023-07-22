@@ -2,8 +2,13 @@ import axios from 'axios';
 
 const axiosClient = axios.create({
   // baseURL: "https://pagesmanagementapi.com/",
-  baseURL: 'https://evalley-backend.herokuapp.com/',
+  // baseURL: 'https://evalley-backend.herokuapp.com/',
   // baseURL: "http://localhost:3001",
+  baseURL: 'https://trum-api.onrender.com/',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjg5ODcwMDA1fQ.zF27DDsuucQM-GvO9Q-rsmRKqYHCmVhT21ziC3Xcxtk`,
+  },
 });
 
 axiosClient.interceptors.request.use(

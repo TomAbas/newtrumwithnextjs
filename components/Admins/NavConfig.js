@@ -31,16 +31,16 @@ const navConfig = [
     path: "/admin/companyinfo",
     icon: getIcon("mdi:advertisements"),
   },
-  // {
-  //   title: "Analytics",
-  //   path: "/admin/google-analytic",
-  //   icon: getIcon("akar-icons:statistic-up"),
-  // },
-  // // {
-  // //   title: 'Import NFT',
-  // //   path: '/admin/import-nft',
-  // //   icon: getIcon('dashicons:database-import'),
-  // // },
+  {
+    title: "About us",
+    path: "/admin/about-us",
+    icon: getIcon("akar-icons:statistic-up"),
+  },
+  {
+    title: 'Service',
+    path: '/admin/service',
+    icon: getIcon('dashicons:database-import'),
+  },
   // {
   //   title: "INO",
   //   path: "/admin/step-ino",
