@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../../../../styles/AboutStyles.module.css';
+import { getAboutData } from '../../../../ApiUrl/about/aboutApi';
 
-const AboutVideoPage = () => {
+const AboutVideoPage = ({ aboutData }) => {
+  const { video } = aboutData
   return (
     <div className={styles.aboutVideoContainer}>
       <div className={styles.aboutVideoWrapper}>
         <video autoPlay playsInline muted>
           <source
-            src='http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+            src={video}
             type='video/mp4'
           />
         </video>

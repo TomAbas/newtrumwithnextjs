@@ -1,31 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../../../../styles/AboutStyles.module.css';
 import { Fragment } from 'react';
 import { useInView } from 'framer-motion';
 import ItemNumber from './ItemNumber';
 import { useRef } from 'react';
+import { getAboutData } from '../../../../ApiUrl/about/aboutApi';
 
-const About02 = ({ mainImage }) => {
+const About02 = ({ aboutData, mainImage }) => {
+ 
+  const { description, image, list } = aboutData.about01
   const numberRef = useRef();
   const isNumberInview = useInView(numberRef);
+
+
+
   return (
     <div className={styles.aboutNumberContainer}>
       <div
         className={styles.aboutPictureContainer}
         style={{
-          backgroundImage: mainImage && `url(${mainImage})`,
+          backgroundImage: image && `url(${image})`,
         }}
       >
         <div className={styles.aboutWrapper}>
           <div className={styles.aboutContentNumber}>
             <div className={styles.aboutRow1}>
-              {new Array(3).fill(null).map((item, idx) => {
+              {list?.slice(0, 3).map((item, idx) => {
                 return (
                   <Fragment key={idx}>
                     <ItemNumber
-                      title={'brand đã hợp tác'}
+                      title={item.title}
                       start={0}
-                      end={6969}
+                      end={item.number}
                       timer={50}
                     />
                   </Fragment>
@@ -33,13 +39,13 @@ const About02 = ({ mainImage }) => {
               })}
             </div>
             <div className={styles.aboutRow2}>
-              {new Array(2).fill(null).map((item, idx) => {
+              {list?.slice(3, 5).map((item, idx) => {
                 return (
                   <Fragment key={idx}>
                     <ItemNumber
-                      title={'sản phẩm đã truyền thông'}
+                      title={item.title}
                       start={0}
-                      end={6969}
+                      end={item.number}
                       timer={50}
                     />
                   </Fragment>
@@ -49,9 +55,7 @@ const About02 = ({ mainImage }) => {
           </div>
           <div className={styles.aboutContentText}>
             <p>
-              We operate an extensive network of community channels and
-              influencers, all managed professionally. Our services are trusted
-              by top companis in the industry, as well as independent artists
+              {description}
             </p>
           </div>
         </div>

@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import styles from '../../../../styles/AboutStyles.module.css';
 import Image from 'next/future/image';
 import logo from '../../../../public/imgs/slideImgs/MultiMediaProduction1.webp';
-export const Brand = ({ title = 'BrandName' }) => {
+export const Brand = ({ item }) => {
   return (
     <div className={styles.wrapperBrand}>
       <div className={styles.logoBrand}>
@@ -15,12 +15,13 @@ export const Brand = ({ title = 'BrandName' }) => {
         />
       </div>
       <div className={styles.brandName}>
-        <p>{title}</p>
+        <p>{item.title}</p>
       </div>
     </div>
   );
 };
-const About03 = () => {
+const About03 = ({ aboutData }) => {
+  const { listBrand, title } = aboutData.about03
   // const Brand = () => {
   //   return (
   //     <div className={styles.wrapperBrand}>
@@ -42,17 +43,16 @@ const About03 = () => {
   return (
     <div className={styles.aboutContainer03}>
       <p className={styles.about03TitleBrand}>
-        Trusted by multinational companies, local entrepreneurs, and cultural
-        organizations.
+        {title}
       </p>
       <div className={styles.brandContainer}>
-        {new Array(10).fill(null).map((item, idx) => {
-          return <Fragment key={idx}>{<Brand />}</Fragment>;
+        {listBrand?.map((item, idx) => {
+          return <Fragment key={idx}>{<Brand item={item} />}</Fragment>;
         })}
       </div>
       {/* <div className={styles.brandContainer}>
-        {new Array(5).fill(null).map((item, idx) => {
-          return <Fragment key={idx}>{<Brand />}</Fragment>;
+        {listBrand?.map((item, idx) => {
+          return <Fragment key={idx}>{<Brand item={item} />}</Fragment>;
         })}
       </div> */}
     </div>

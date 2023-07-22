@@ -14,7 +14,6 @@ const ItemNumber = ({ start = 0, end, timer = 1000, title }) => {
   const accumulator = end / 5;
 
   const updateCounterState = () => {
-    console.log(ref.current);
     if (ref.current < end) {
       const result = Math.ceil(ref.current + accumulator);
       if (result > end) {
@@ -29,7 +28,6 @@ const ItemNumber = ({ start = 0, end, timer = 1000, title }) => {
 
   useEffect(() => {
     if (!isNumberInview) {
-      console.log('k chay');
       setNumber(null);
       ref.current = 0;
       clearInterval(updateCounterState);
@@ -37,7 +35,6 @@ const ItemNumber = ({ start = 0, end, timer = 1000, title }) => {
     }
     let isMouted = true;
     if (isMouted && isNumberInview) {
-      console.log('chajy');
       let test = setInterval(updateCounterState, timer);
       //   updateCounterState();
     }
