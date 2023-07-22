@@ -57,6 +57,9 @@ const Page04 = ({ page4Data }) => {
               <div className={styles.textBox}>
                 <p>{page4Data[1]?.description}</p>
               </div>
+              <div className={styles.textBox}>
+                <p>{page4Data[1]?.description}</p>
+              </div>
             </div>
           </div>
         </div>

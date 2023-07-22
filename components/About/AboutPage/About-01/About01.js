@@ -12,6 +12,13 @@ const AboutVideoPage = () => {
           />
         </video>
       </div>
+      <div className={styles.textAbout1}>
+        TRUM
+      </div>
+      <div className={styles.textAbout2}>
+        Opening <br />
+        worlds.
+      </div>
     </div>
   );
 };

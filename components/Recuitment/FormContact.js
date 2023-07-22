@@ -7,7 +7,7 @@ import BtnSubmit from "../Form/BtnSubmit";
 const FormContact = () => {
   return (
     <div>
-      <div className={styles.titleMd}>Start your music marketing here</div>
+      <div className={styles.titleMd}>Start your<br /> music marketing here</div>
       <InputField placeholder="Name" required={true} />
       <InputField placeholder="Email" required={true} type="email" />
       <InputField placeholder="Telephone" required={true} type="tel" />

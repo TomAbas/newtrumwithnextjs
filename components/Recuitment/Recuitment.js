@@ -18,6 +18,7 @@ import Industry from "./Industry/Industry";
 
 const ListJobItem = ({ job }) => {
   const [activeSelectOption, setActiveSelectOption] = useState(false);
+
   return (
     <>
       <ListItemButton
@@ -25,7 +26,7 @@ const ListJobItem = ({ job }) => {
         onClick={(e) => {
           setActiveSelectOption(!activeSelectOption);
         }}
-        // data-idx={idx}
+      // data-idx={idx}
       >
         <ListItemText primary={job.title} className={styles.item} />
         <ListItemIcon>
@@ -36,7 +37,7 @@ const ListJobItem = ({ job }) => {
         <List component="div" disablePadding>
           <ListItemText
             primary={job.description}
-            sx={{ padding: "8px 16px" }}
+            sx={{ padding: "8px 16px", fontSize: '12px' }}
           />
         </List>
       </Collapse>
@@ -62,10 +63,10 @@ const Recuitment = () => {
         <>
           <div className={styles.bigContainer}>
             <Stack direction={{ sm: "column", md: "row" }} spacing={2} gap={2}>
-              <Box sx={{ minWidth: "50%" }}>
+              <Box sx={{ minWidth: "45%" }}>
                 <FormContact />
               </Box>
-              <Box sx={{ minWidth: "50%" }}>
+              <Box sx={{ minWidth: "55%" }}>
                 <Reasons />
               </Box>
             </Stack>
@@ -99,7 +100,6 @@ const Recuitment = () => {
             </div> */}
             <div className={styles.titleMd}>We're hiring</div>
             <Typography variant="caption">
-              {" "}
               TRUM is an open and inclusive work environment, with flexible
               hours and sane workweeks. We are always on the lookout for new
               talent!

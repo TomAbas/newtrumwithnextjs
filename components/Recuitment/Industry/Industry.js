@@ -55,8 +55,16 @@ const breakpoints = {
     slidesPerView: 3,
     spaceBetween: 30,
   },
-  1024: {
+  992: {
+    slidesPerView: 3,
+    spaceBetween: 40,
+  },
+  1200: {
     slidesPerView: 4,
+    spaceBetween: 40,
+  },
+  1480: {
+    slidesPerView: 5,
     spaceBetween: 40,
   },
 };
@@ -64,7 +72,7 @@ const breakpoints = {
 const Industry = () => {
   return (
     <div>
-      <Box className={styles.titleMd} sx={{ textAlign: "center", mt: 8 }}>
+      <Box className={styles.titleMd} sx={{ margin: 'auto', fontSize: '45px', textAlign: "center", mt: 8 }}>
         Industry Recognition
       </Box>
 
@@ -81,6 +89,7 @@ const Industry = () => {
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
           style={{ padding: "10px 0 40px 0" }}
+
         >
           {dataIndustry.map((item, index) => {
             return (
