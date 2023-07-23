@@ -12,8 +12,6 @@ const About02 = ({ aboutData, mainImage }) => {
   const numberRef = useRef();
   const isNumberInview = useInView(numberRef);
 
-
-
   return (
     <div className={styles.aboutNumberContainer}>
       <div
