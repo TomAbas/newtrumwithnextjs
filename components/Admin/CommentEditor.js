@@ -30,11 +30,12 @@ const CommentEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
   });
   const submitAddComment = async (data) => {
     console.log(data);
-    if (data.image.length === 0) {
-      setError('image', { message: 'missing field' });
-      return;
+    let imgUrl;
+    if (data.image.length > 0) {
+      imgUrl = await uploadImg(data.image[0]);
+    } else {
+      imgUrl = undefined;
     }
-    const imgUrl = await uploadImg(data.image[0]);
     console.log(imgUrl);
     const body = {
       ...data,

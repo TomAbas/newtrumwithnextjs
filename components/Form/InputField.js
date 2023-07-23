@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import styles from "../../styles/RecuitmentStyles.module.css";
+import React, { useState, useEffect } from 'react';
+import styles from '../../styles/RecuitmentStyles.module.css';
 
 const InputField = ({
-  placeholder = "",
-  type = "text",
-  name = "",
-  value = "",
+  placeholder = '',
+  type = 'text',
+  name = '',
   onChange = null,
-  error = "",
-  label = "",
+  error = '',
+  label = '',
   required = false,
+  register,
 }) => {
   return (
     <div className={styles.inputField}>
@@ -18,9 +18,9 @@ const InputField = ({
         className={styles.input}
         type={type}
         name={name}
-        value={value}
         onChange={onChange}
-        placeholder={placeholder + (required ? "*" : "")}
+        placeholder={placeholder + (required ? '*' : '')}
+        {...register}
       />
       {error && <div className={styles.error}>{error}</div>}
     </div>

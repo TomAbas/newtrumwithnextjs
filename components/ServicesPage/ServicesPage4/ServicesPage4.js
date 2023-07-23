@@ -8,16 +8,23 @@ import 'swiper/css/pagination';
 import Rating from '@mui/material/Rating';
 import Image from 'next/image';
 import Img1 from '../../../public/imgs/weare.webp';
-const CardSwiper = ({ title, description }) => {
+const CardSwiper = ({ title, description, img, rating }) => {
   return (
     <div className={styles.wrapCard}>
       <div className={styles.card}>
         <div className={styles.cardImage}>
-          <Image style={{ borderRadius: '50%' }} src={Img1} alt='#' />
+          <Image
+            height={110}
+            width={110}
+            layout='fixed'
+            objectFit='cover'
+            src={img}
+            alt='#'
+          />
         </div>
         <span>{title}</span>
         <div>
-          <Rating name='read-only' value={5} readOnly />
+          <Rating name='read-only' value={rating} readOnly />
         </div>
         <span className={styles.descCard}>{description}</span>
       </div>
@@ -27,7 +34,6 @@ const CardSwiper = ({ title, description }) => {
 const ServicesPage4 = ({ listCardIndustry }) => {
   return (
     <div className={styles.service4Container}>
-      <h3 className={styles.title}>Industry Recognition</h3>
       <div>
         <Swiper
           slidesPerView={1}
@@ -61,7 +67,12 @@ const ServicesPage4 = ({ listCardIndustry }) => {
           {listCardIndustry.map((item, idx) => {
             return (
               <SwiperSlide key={idx}>
-                <CardSwiper title={item.title} description={item.description} />
+                <CardSwiper
+                  title={item.title}
+                  description={item.description}
+                  img={item.image}
+                  rating={item.rating}
+                />
               </SwiperSlide>
             );
           })}

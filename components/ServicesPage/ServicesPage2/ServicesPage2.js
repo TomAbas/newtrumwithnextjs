@@ -4,9 +4,7 @@ import styles from '../../../styles/ServicesPage2.module.css';
 const ServicesPage2 = ({ dataServices }) => {
   const test = useCallback(() => {
     if (!dataServices.title.content) return <></>;
-    console.log(dataServices.title.content);
     const br = dataServices.title.content.replaceAll(/\n/g, '<br/>');
-    console.log(br);
     let arr = br.split(' ').map((item, idx) => {
       if (dataServices.title.effect.indexOf(idx) !== -1) {
         return `<span>${item}</span>`;
@@ -14,7 +12,6 @@ const ServicesPage2 = ({ dataServices }) => {
       return item;
     });
     let newArr = arr.join(' ');
-    console.log(newArr);
     return <div dangerouslySetInnerHTML={{ __html: newArr }} />;
   }, [dataServices]);
   return (

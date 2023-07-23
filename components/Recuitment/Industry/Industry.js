@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import styles from "../../../styles/RecuitmentStyles.module.css";
-import InputField from "../../Form/InputField";
-import { Button, Box } from "@mui/material";
-import BtnSubmit from "../../Form/BtnSubmit";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper";
-import IndustrySwiperSlide from "./IndustrySwiperSlide";
-import "swiper/css";
-import "swiper/css/pagination";
-import { getListIndustryData } from "../../../ApiUrl/industry/industryApi";
+import React, { useState, useEffect } from 'react';
+import styles from '../../../styles/RecuitmentStyles.module.css';
+import InputField from '../../Form/InputField';
+import { Button, Box } from '@mui/material';
+import BtnSubmit from '../../Form/BtnSubmit';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper';
+import IndustrySwiperSlide from './IndustrySwiperSlide';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { getListIndustryData } from '../../../ApiUrl/industry/industryApi';
 
 const breakpoints = {
   320: {
@@ -48,12 +48,17 @@ const Industry = () => {
     <div>
       <Box
         className={styles.titleMd}
-        sx={{ margin: "auto", fontSize: "45px", textAlign: "center", mt: 8 }}
+        sx={{
+          margin: 'auto',
+          fontSize: '45px !important',
+          textAlign: 'center',
+          mt: 8,
+        }}
       >
         Industry Recognition
       </Box>
 
-      <Box sx={{ my: "20px" }}>
+      <Box sx={{ my: '20px' }}>
         <Swiper
           breakpoints={breakpoints}
           modules={[Pagination]}
@@ -63,9 +68,9 @@ const Industry = () => {
             disableOnInteraction: false,
           }}
           pagination={{ clickable: true }}
-          onSlideChange={() => console.log("slide change")}
+          onSlideChange={() => console.log('slide change')}
           onSwiper={(swiper) => console.log(swiper)}
-          style={{ padding: "10px 0 40px 0" }}
+          style={{ padding: '10px 0 40px 0' }}
         >
           {dataIndustry.map((item, index) => {
             return (

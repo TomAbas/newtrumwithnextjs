@@ -32,6 +32,7 @@
   font-weight: 600;
   text-transform: capitalize;
   /* padding-right: 10px; */
+  color: #fff;
 }
 
 .titleSm {
@@ -237,6 +238,7 @@
   padding: 0 10px;
   margin-top: 10px;
   font-size: 0.8rem;
+  color: #fff;
 }
 
 .label {
@@ -254,4 +256,5 @@
   padding: 0 25px;
   margin-top: 20px;
   font-size: 0.8rem;
+  color: #fff;
 }

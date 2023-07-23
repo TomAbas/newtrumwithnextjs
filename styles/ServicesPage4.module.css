@@ -9,6 +9,8 @@
 }
 
 .wrapCard {
+  overflow: hidden;
+  height: 340px;
   width: 270px;
   border: 1px solid #858585;
   border-radius: 15px;
@@ -26,11 +28,13 @@
   height: 120px;
   margin: auto;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
 }
 
 .cardImage img {
-  width: 100px !important;
-  height: 100px !important;
+  width: 110px !important;
+  height: 110px !important;
   border-radius: 50%;
   display: block;
   object-fit: contain;
