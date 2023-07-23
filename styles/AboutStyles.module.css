@@ -291,6 +291,7 @@
   }
   .number {
     font-size: 20px;
+    margin-bottom: 12px;
   }
 
   .aboutContentText {
@@ -391,6 +392,7 @@
 @media (min-width: 768px) {
   .number {
     font-size: 52px;
+    margin-bottom: 20px;
   }
   .contentText1 {
     padding: 15% 0px;
