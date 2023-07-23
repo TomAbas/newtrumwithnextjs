@@ -11,11 +11,12 @@ import * as yup from 'yup';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { updateRatingData } from '../../ApiUrl/rating/ratingApi';
+import { uploadImg } from '../../config/firbase';
 const schema = yup.object().shape({
   title: yup.string().required('missing field'),
   description: yup.string().required('missing field'),
   rating: yup.number().required('missing field').typeError('invalid rating'),
-  image: yup.string().required('missing field').typeError('invalid image'),
+  image: yup.mixed().required('missing field').typeError('invalid image'),
 });
 
 const CommentEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
@@ -95,7 +96,7 @@ const CommentEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
               <p>{errors.rating?.message}</p>
             </div>
             <div className={styles.titleEdit}>
-              <h3>Logo </h3>
+              <h3>Image </h3>
               <input
                 type='file'
                 accept='image/*'

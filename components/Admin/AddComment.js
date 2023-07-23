@@ -95,7 +95,7 @@ const AddComment = ({ setTrigger, trigger }) => {
               <p>{errors.rating?.message}</p>
             </div>
             <div className={styles.titleEdit}>
-              <h3>Logo </h3>
+              <h3>image </h3>
               <input
                 type='file'
                 accept='image/*'

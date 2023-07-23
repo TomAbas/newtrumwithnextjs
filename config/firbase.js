@@ -16,7 +16,7 @@ const firebaseConfig = {
   appId: '1:759986985964:web:430af438ca26dd29883ec9',
   measurementId: 'G-XQ5TRREDHN',
 };
-
+import { ref, uploadBytesResumable } from 'firebase/storage';
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
@@ -40,6 +40,7 @@ export async function uploadImg(img) {
         }
       );
     });
+    console.log(downloadURL);
     return downloadURL;
   } catch (error) {
     console.log(error);

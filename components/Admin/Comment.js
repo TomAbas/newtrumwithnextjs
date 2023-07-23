@@ -49,7 +49,8 @@ const Comment = () => {
     let preLoadValue = {
       title: commentEdit.title,
       description: commentEdit.description,
-      date: new Date(commentEdit.date),
+      rating: commentEdit.rating,
+      logo: commentEdit.logo,
     };
     setDefaultValues(preLoadValue);
     setTrigger(true);
