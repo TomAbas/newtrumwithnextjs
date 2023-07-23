@@ -10,10 +10,13 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { updateAboutData } from '../../ApiUrl/about/aboutApi';
 import { makeData } from '../../pages/admin/about-us';
+import { uploadImg } from '../../config/firbase';
+import { toast } from 'react-toastify';
 const AboutUsForm = ({ aboutUsData, aboutUsNumber, aboutUsPartner }) => {
   const [aboutUs, setAboutUs] = useState();
   const [numberAboutUs, setNumberAboutUs] = useState([]);
   const [partnerAboutUs, setPartnerAboutUs] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const schema = yup.object().shape({
     about01FirstDescription: yup
       .string()
@@ -62,26 +65,50 @@ const AboutUsForm = ({ aboutUsData, aboutUsNumber, aboutUsPartner }) => {
     resolver: yupResolver(schema),
   });
   async function handleUpdateAboutUs() {
+    setIsLoading(true);
     const arrMedia = [
       aboutUs.aboutImage1,
       aboutUs.aboutImage2,
       aboutUs.aboutVideo,
     ];
-    arrMedia = await Promise.all(
-      arrMedia.map(async (item) => {
-            // let url
-      })
-    );
+    // arrMedia = await Promise.all(
+    //   arrMedia.map(async (item) => {
+    //     if (item.length === 0) return undefined;
+    //     try {
+    //       let url = await uploadImg(item[0]);
+    //       return url;
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+    //   })
+    // );
+    async function uploadMedia() {
+      arrMedia = await Promise.all(
+        arrMedia.map(async (item) => {
+          if (item.length === 0) return undefined;
+          try {
+            let url = await uploadImg(item[0]);
+            return url;
+          } catch (error) {
+            console.log(error);
+          }
+        })
+      );
+    }
+    await toast.promise(uploadMedia(), {
+      pending: 'Upload media',
+      success: 'Upload media success',
+      error: 'Upload media failed',
+    });
+    console.log(arrMedia);
     const data = {
       about01: {
-        // image: aboutUs.aboutImage1,
-        image: 'string',
+        image: arrMedia[0],
         list: numberAboutUs,
         description: aboutUs.about01FirstDescription,
       },
       about02: {
-        // image: aboutUs.aboutImage2,
-        image: 'string',
+        image: arrMedia[1],
         title: aboutUs.about02Title,
         description: aboutUs.about02FirstDescription,
       },
@@ -91,26 +118,32 @@ const AboutUsForm = ({ aboutUsData, aboutUsNumber, aboutUsPartner }) => {
       },
       description01: aboutUs.about01SecondDescription,
       description02: aboutUs.about02SecondDescription,
-      // video: aboutUs.aboutVideo,
-      video: 'string',
+      video: arrMedia[2],
     };
     // console.log(data);
+    async function uploadData() {
+      try {
+        await updateAboutData(data).then((res) => {
+          console.log(res);
+          const newData = makeData(res.data);
+          reset(newData);
+          setIsLoading(false);
+        });
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
+    }
 
-    await updateAboutData(data).then((res) => {
-      console.log(res);
-      const newData = makeData(res.data);
-      // reset data about number, about brand
-      reset(newData);
+    toast.promise(uploadData(), {
+      pending: 'loading',
+      success: 'success',
+      error: 'error',
     });
   }
   function handleSubmitFc(data) {
     console.log(data);
-    if (data.aboutImage1.length === 0) {
-    }
-    if (data.aboutImage2.length === 0) {
-    }
-    if (data.aboutVideo.length === 0) {
-    }
+
     setAboutUs(data);
   }
   useEffect(() => {
@@ -231,7 +264,7 @@ const AboutUsForm = ({ aboutUsData, aboutUsNumber, aboutUsPartner }) => {
                 <h3>About 02 : Video </h3>
                 <input
                   type='file'
-                  accept='image/*'
+                  accept='video/*'
                   className={styles.inputField}
                   name='aboutVideo'
                   {...register('aboutVideo')}
@@ -264,7 +297,7 @@ const AboutUsForm = ({ aboutUsData, aboutUsNumber, aboutUsPartner }) => {
       <Button
         onClick={handleUpdateAboutUs}
         variant='contained'
-        disabled={!aboutUs ? true : false}
+        disabled={!aboutUs || isLoading ? true : false}
       >
         Submit Form Update About Content
       </Button>

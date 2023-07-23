@@ -3,6 +3,7 @@ import styles from '../../../../styles/AboutStyles.module.css';
 import Image from 'next/future/image';
 import logo from '../../../../public/imgs/slideImgs/MultiMediaProduction1.webp';
 export const Brand = ({ item }) => {
+  console.log(item);
   return (
     <div className={styles.wrapperBrand}>
       <div className={styles.logoBrand}>
@@ -10,7 +11,7 @@ export const Brand = ({ item }) => {
           layout='responsive'
           width={100}
           height={100}
-          src={logo}
+          src={item.image}
           alt='logo'
         />
       </div>
@@ -21,30 +22,11 @@ export const Brand = ({ item }) => {
   );
 };
 const About03 = ({ aboutData }) => {
-  const { listBrand, title } = aboutData.about03
-  // const Brand = () => {
-  //   return (
-  //     <div className={styles.wrapperBrand}>
-  //       <div className={styles.logoBrand}>
-  //         <Image
-  //           layout='responsive'
-  //           width={100}
-  //           height={100}
-  //           src={logo}
-  //           alt='logo'
-  //         />
-  //       </div>
-  //       <div className={styles.brandName}>
-  //         <p>Brand Name</p>
-  //       </div>
-  //     </div>
-  //   );
-  // };
+  const { listBrand, title } = aboutData.about03;
+  // console.log(listBrand);
   return (
     <div className={styles.aboutContainer03}>
-      <p className={styles.about03TitleBrand}>
-        {title}
-      </p>
+      <p className={styles.about03TitleBrand}>{title}</p>
       <div className={styles.brandContainer}>
         {listBrand?.map((item, idx) => {
           return <Fragment key={idx}>{<Brand item={item} />}</Fragment>;

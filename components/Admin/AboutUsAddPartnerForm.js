@@ -81,7 +81,7 @@ const AboutUsAddPartnerForm = ({ partnerAboutUs, setPartnerAboutUs }) => {
           return (
             <div style={{ display: 'flex' }} key={idx}>
               <div>
-                <Brand title={item.title} />
+                <Brand item={item} />
               </div>
               <Button onClick={() => handleDeletePartner(idx)}>Xóa</Button>
             </div>
