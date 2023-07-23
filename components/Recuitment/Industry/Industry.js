@@ -8,39 +8,7 @@ import { Pagination } from "swiper";
 import IndustrySwiperSlide from "./IndustrySwiperSlide";
 import "swiper/css";
 import "swiper/css/pagination";
-
-const dataIndustry = [
-  {
-    title: "logo",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    date: "2021-10-10",
-  },
-  {
-    title: "logo",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    date: "2021-10-10",
-  },
-  {
-    title: "logo",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    date: "2021-10-10",
-  },
-  {
-    title: "logo",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    date: "2021-10-10",
-  },
-  {
-    title: "logo",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    date: "2021-10-10",
-  },
-  {
-    title: "logo",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    date: "2021-10-10",
-  },
-];
+import { getListIndustryData } from "../../../ApiUrl/industry/industryApi";
 
 const breakpoints = {
   320: {
@@ -70,9 +38,18 @@ const breakpoints = {
 };
 
 const Industry = () => {
+  const [dataIndustry, setDataIndustry] = useState([]);
+  useEffect(() => {
+    getListIndustryData().then((res) => {
+      setDataIndustry(res);
+    });
+  }, []);
   return (
     <div>
-      <Box className={styles.titleMd} sx={{ margin: 'auto', fontSize: '45px', textAlign: "center", mt: 8 }}>
+      <Box
+        className={styles.titleMd}
+        sx={{ margin: "auto", fontSize: "45px", textAlign: "center", mt: 8 }}
+      >
         Industry Recognition
       </Box>
 
@@ -89,12 +66,11 @@ const Industry = () => {
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
           style={{ padding: "10px 0 40px 0" }}
-
         >
           {dataIndustry.map((item, index) => {
             return (
               <SwiperSlide key={index}>
-                <IndustrySwiperSlide />
+                <IndustrySwiperSlide item={item} />
               </SwiperSlide>
             );
           })}

@@ -12,18 +12,24 @@ const stylesSwiperSlide = {
   justifyContent: "space-between",
 };
 
-const IndustrySwiperSlide = () => {
+const IndustrySwiperSlide = ({ item }) => {
+  const displayDate = (date) => {
+    // MM DD, YYYY
+    const dateObj = new Date(date);
+    const month = dateObj.toLocaleString("en-US", { month: "numeric" });
+    const day = dateObj.toLocaleString("en-US", { day: "numeric" });
+    const year = dateObj.toLocaleString("en-US", { year: "numeric" });
+    return `${month} ${day}, ${year}`;
+  };
   return (
     <div>
       <Box sx={stylesSwiperSlide}>
         <Stack direction="row" spacing={2} justifyContent="space-between">
-          <Typography variant="h6">LOGO</Typography>
-          <Typography variant="overline">MM DD, YYYY</Typography>
+          <Typography variant="h6">{item.title}</Typography>
+          <Typography variant="overline">{displayDate(item.date)}</Typography>
         </Stack>
         <Box sx={{ my: "10px" }}>
-          <Typography variant="caption">
-            How Music Marketing Is Evolving from Viral to Virtual
-          </Typography>
+          <Typography variant="caption">{item.description}</Typography>
         </Box>
       </Box>
     </div>
