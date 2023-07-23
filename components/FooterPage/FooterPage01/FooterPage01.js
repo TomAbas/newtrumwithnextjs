@@ -13,17 +13,17 @@ const FooterPage01 = () => {
             <Link href='/'>Home</Link>
           </div>
           <div className={styles.footerNavItem}>
-            <Link href='/'>Project</Link>
+            <Link href='/projects'>Project</Link>
           </div>
           <div className={styles.footerNavItem}>
-            <Link href='/'>service</Link>
+            <Link href='/service'>service</Link>
           </div>
           <div className={styles.footerNavItem}>
-            <Link href='/'>about</Link>
+            <Link href='/about'>about</Link>
           </div>
-          <div className={styles.footerNavItem}>
+          {/* <div className={styles.footerNavItem}>
             <Link href='/'>news</Link>
-          </div>
+          </div> */}
         </div>
         <div className={styles.footerMedia}>
           <div className={styles.footerNavItem}>

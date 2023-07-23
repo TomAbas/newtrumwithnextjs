@@ -142,7 +142,7 @@
 
   .jobBox {
     height: 18vw;
-    width: 600px;
+    width: 300px;
     /* flex: 50%; */
   }
   .outerMove {
@@ -150,6 +150,15 @@
     /* transform: translateY(200%); */
   }
 }
+
+@media (min-width: 992px) {
+  .jobBox {
+    height: 18vw;
+    width: 500px;
+    /* flex: 50%; */
+  }
+}
+
 @media (min-width: 1024px) {
   .listJobTitlePage {
     font-size: 3rem;
@@ -170,6 +179,9 @@
   }
   .innerBox p {
     font-size: 0.9rem;
+  }
+  .jobBox {
+    width: 600px;
   }
 }
 @media (min-width: 1700px) {

@@ -9,9 +9,8 @@ const NavPage = () => {
   return (
     <>
       <div
-        className={` ${styles.navContainer} ${
-          scrollDir === 'down' ? styles.navMoveUp : styles.navMoveDown
-        }`}
+        className={` ${styles.navContainer} ${scrollDir === 'down' ? styles.navMoveUp : styles.navMoveDown
+          }`}
       >
         <Link href='/'>
           <a>
@@ -26,17 +25,17 @@ const NavPage = () => {
               <Link href='/'>Home</Link>
             </li>
             <li>
-              <Link href='/'>project</Link>
+              <Link href='/projects'>project</Link>
             </li>
             <li>
-              <Link href='/'>sevices</Link>
+              <Link href='/service'>sevices</Link>
             </li>
             <li>
-              <Link href='/'>about</Link>
+              <Link href='/about'>about</Link>
             </li>
-            <li>
+            {/* <li>
               <Link href='/'>news</Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

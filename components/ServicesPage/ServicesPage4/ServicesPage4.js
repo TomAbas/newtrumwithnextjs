@@ -10,24 +10,23 @@ import 'swiper/css/pagination';
 import Rating from '@mui/material/Rating';
 import Image from 'next/image';
 import Img1 from "../../../public/imgs/weare.webp"
-const CardSwiper = () => {
+const CardSwiper = ({ title, description }) => {
 
   return <div className={styles.wrapCard}>
     <div className={styles.card}>
       <div className={styles.cardImage}>
         <Image style={{ borderRadius: "50%" }} src={Img1} alt="#" /></div>
-      <span>Name Title</span>
+      <span>{title}</span>
       <div>
         <Rating name="read-only" value={5} readOnly />
       </div>
       <span className={styles.descCard}>
-        Music Promo Today is by far the best music promotion, PR and marketing company
-        I have ever used for my music career! They delivered on everything they promised.
+        {description}
       </span>
     </div>
   </div>
 }
-const ServicesPage4 = () => {
+const ServicesPage4 = ({ listCardIndustry }) => {
   return (
     <div className={styles.service4Container}>
       <h3 className={styles.title}>Industry Recognition</h3>
@@ -61,20 +60,17 @@ const ServicesPage4 = () => {
 
             },
           }}
-
           className="mySwiper"
         >
-          <SwiperSlide>  <CardSwiper /></SwiperSlide>
-          <SwiperSlide>  <CardSwiper /></SwiperSlide>
-          <SwiperSlide>  <CardSwiper /></SwiperSlide>
-          <SwiperSlide>  <CardSwiper /></SwiperSlide>
-          <SwiperSlide>  <CardSwiper /></SwiperSlide>
-          <SwiperSlide>  <CardSwiper /></SwiperSlide>
-          <SwiperSlide>  <CardSwiper /></SwiperSlide>
-          <SwiperSlide>  <CardSwiper /></SwiperSlide>
-          <SwiperSlide>  <CardSwiper /></SwiperSlide>
-          <SwiperSlide>  <CardSwiper /></SwiperSlide>
-          <SwiperSlide>  <CardSwiper /></SwiperSlide>
+          {
+            listCardIndustry.map((item, idx) => {
+              console.log("🚀 ~ file: ServicesPage4.js:70 ~ item:", item)
+              return <SwiperSlide key={idx}>
+                <CardSwiper
+                  title={item.title} description={item.description} />
+              </SwiperSlide>
+            })
+          }
         </Swiper>
       </div>
     </div>
