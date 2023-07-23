@@ -62,6 +62,16 @@ const AboutUsForm = ({ aboutUsData, aboutUsNumber, aboutUsPartner }) => {
     resolver: yupResolver(schema),
   });
   async function handleUpdateAboutUs() {
+    const arrMedia = [
+      aboutUs.aboutImage1,
+      aboutUs.aboutImage2,
+      aboutUs.aboutVideo,
+    ];
+    arrMedia = await Promise.all(
+      arrMedia.map(async (item) => {
+            // let url
+      })
+    );
     const data = {
       about01: {
         // image: aboutUs.aboutImage1,
@@ -85,6 +95,7 @@ const AboutUsForm = ({ aboutUsData, aboutUsNumber, aboutUsPartner }) => {
       video: 'string',
     };
     // console.log(data);
+
     await updateAboutData(data).then((res) => {
       console.log(res);
       const newData = makeData(res.data);

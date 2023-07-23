@@ -15,7 +15,7 @@ export const Brand = ({ item }) => {
         />
       </div>
       <div className={styles.brandName}>
-        <p>{item.title}</p>
+        <p>{item?.title}</p>
       </div>
     </div>
   );

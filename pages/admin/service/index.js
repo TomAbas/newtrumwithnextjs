@@ -7,13 +7,13 @@ const Index = () => {
   const [serviceListData, setServiceListData] = useState([]);
   function getServiceDataFc() {
     getServiceData().then((data) => {
-      console.log(data)
-      // // const dataService = {
-      // //   title: data.title.content,
-      // //   subTitle: data.content,
-      // // };
-      // setServiceData(dataService);
-      // setServiceListData(data.listService);
+      // console.log(data)
+      const dataService = {
+        title: data.title.content,
+        subTitle: data.subTitle,
+      };
+      setServiceData(dataService);
+      setServiceListData(data.listService);
     });
   }
   useEffect(() => {
@@ -21,7 +21,10 @@ const Index = () => {
   }, []);
   return (
     <div>
-      <ServiceForm serviceData={serviceData} serviceListData={serviceListData} />
+      <ServiceForm
+        serviceData={serviceData}
+        serviceListData={serviceListData}
+      />
     </div>
   );
 };

@@ -13,6 +13,11 @@
   line-height: 36px;
 }
 
+.service2IntroText span {
+  font-size: inherit;
+  color: #fff;
+  width: fit-content;
+}
 .service2IntroTextHighlight {
   font-size: inherit;
   color: #fff;

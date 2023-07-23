@@ -27,7 +27,7 @@ const ServiceForm = ({ serviceData, serviceListData }) => {
     const data = {
       title: {
         content: service.title,
-        effect: [],
+        effect: [4, 7, 11, 13, 15, 17],
       },
       subTitle: service.subTitle,
       listService: serviceList,
@@ -46,6 +46,7 @@ const ServiceForm = ({ serviceData, serviceListData }) => {
   useEffect(() => {
     if (serviceData) {
       setServiceList(serviceListData);
+      console.log(serviceData);
       reset(serviceData);
     }
   }, [serviceData]);
