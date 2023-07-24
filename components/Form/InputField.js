@@ -21,6 +21,7 @@ const InputField = ({
         onChange={onChange}
         placeholder={placeholder + (required ? '*' : '')}
         {...register}
+        required={required}
       />
       {error && <div className={styles.error}>{error}</div>}
     </div>
