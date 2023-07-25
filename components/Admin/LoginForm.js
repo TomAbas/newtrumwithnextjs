@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaLogin } from "../../validations/schema.js";
-import { ErrorMessage } from "@hookform/error-message";
 
 const LoginForm = () => {
   const router = useRouter();
