@@ -26,7 +26,7 @@ const IndustrySwiperSlide = ({ item }) => {
     <div>
       <Box sx={stylesSwiperSlide}>
         <Stack direction='row' spacing={2} justifyContent='space-between'>
-          <Typography variant='h6'>{item.title}</Typography>
+          <Typography sx={{ fontSize: '16px' }} variant='h6'>{item.title}</Typography>
           <Typography variant='overline'>{displayDate(item.date)}</Typography>
         </Stack>
         <Box sx={{ my: '10px' }}>

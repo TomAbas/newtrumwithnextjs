@@ -367,6 +367,10 @@
     font-size: 16px;
   }
 
+  .aboutContentText {
+    font-size: 16px;
+  }
+
   .brandContainer {
     grid-template-columns: 1fr 1fr;
   }
@@ -557,6 +561,11 @@
   .content {
     font-size: 20px;
   }
+
+  .aboutContentText {
+    font-size: 32px;
+  }
+
   .wrapDesc img {
     height: 16px !important;
     width: 16px !important;
@@ -595,6 +604,9 @@
   .textBox p {
     font-size: 1.05rem;
     width: fit-content;
+  }
+  .aboutContentText {
+    font-size: 38px;
   }
   .textAbout1,
   .textAbout2 {

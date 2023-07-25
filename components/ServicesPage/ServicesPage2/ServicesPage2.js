@@ -23,9 +23,8 @@ const ServicesPage2 = ({ dataServices }) => {
   return (
     <div className={styles.service2Container}>
       <div
-        className={`${styles.service2IntroText} ${
-          isTextIn && aniStyles.fadeInUp
-        }`}
+        className={`${styles.service2IntroText} ${isTextIn && aniStyles.fadeInUp
+          }`}
         ref={textRef}
       >
         {render()}

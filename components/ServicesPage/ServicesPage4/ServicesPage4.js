@@ -23,8 +23,14 @@ const CardSwiper = ({ title, description, img, rating }) => {
           />
         </div>
         <span>{title}</span>
-        <div>
-          <Rating name='read-only' value={rating} readOnly />
+        <div className='wrap-rating'>
+          <Rating
+            sx={{
+              "& .MuiRating-iconEmpty": {
+                color: "#fff"
+              }
+            }}
+            name='read-only' value={4} readOnly />
         </div>
         <span className={styles.descCard}>{description}</span>
       </div>
