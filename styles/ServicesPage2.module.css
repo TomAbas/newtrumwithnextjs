@@ -7,7 +7,7 @@
 }
 
 .service2IntroText {
-  font-size: 26px;
+  font-size: 27px;
   color: #858585;
   width: 100%;
   line-height: 36px;
@@ -26,31 +26,31 @@
 
 @media screen and (min-width: 375px) {
   .service2IntroText {
-    font-size: 28px;
+    font-size: 29px;
     line-height: 34px;
   }
 }
 @media screen and (min-width: 576px) {
   .service2IntroText {
-    font-size: 42px;
+    font-size: 43px;
     line-height: 52px;
   }
 }
 @media screen and (min-width: 768px) {
   .service2IntroText {
-    font-size: 60px;
+    font-size: 61px;
     line-height: 72px;
   }
 }
 @media screen and (min-width: 1024px) {
   .service2IntroText {
-    font-size: 72px;
+    font-size: 73px;
     line-height: 82px;
   }
 }
 @media screen and (min-width: 1200px) {
   .service2IntroText {
-    font-size: 92px;
+    font-size: 93px;
     line-height: 100px;
   }
 }

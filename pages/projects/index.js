@@ -26,7 +26,11 @@ const index = ({ res }) => {
     <div className={styles.container}>
       <Head>
         <title>Trum's Projects</title>
-        <link rel='icon' href='/logo300px.ico' />
+        <link rel='icon' href='/logo300px.ico' />{' '}
+        <link
+          href='https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,500&display=swap'
+          rel='stylesheet'
+        />
         {/* metatag google  */}
         <meta
           name='description'

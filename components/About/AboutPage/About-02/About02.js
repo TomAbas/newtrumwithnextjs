@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../../../../styles/AboutStyles.module.css';
 import { Fragment } from 'react';
-import { useInView } from 'framer-motion';
 import ItemNumber from './ItemNumber';
-import { useRef } from 'react';
-import { getAboutData } from '../../../../ApiUrl/about/aboutApi';
 
-const About02 = ({ aboutData, mainImage }) => {
- 
-  const { description, image, list } = aboutData.about01
-  const numberRef = useRef();
-  const isNumberInview = useInView(numberRef);
-
+const About02 = ({ aboutData }) => {
+  const { description, image, list } = aboutData.about01;
+  console.log(aboutData);
   return (
     <div className={styles.aboutNumberContainer}>
       <div
@@ -52,9 +46,7 @@ const About02 = ({ aboutData, mainImage }) => {
             </div>
           </div>
           <div className={styles.aboutContentText}>
-            <p>
-              {description}
-            </p>
+            <p>{description}</p>
           </div>
         </div>
         <div className={styles.overlay}></div>

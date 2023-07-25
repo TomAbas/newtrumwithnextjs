@@ -50,7 +50,10 @@ const Projectsidx0 = ({ res }) => {
       {' '}
       <Head>
         <link rel='icon' href='/logo300px.ico' />
-
+        <link
+          href='https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,500&display=swap'
+          rel='stylesheet'
+        />
         {/* metatag google  */}
         <meta name='description' content={res.listContent[0].description} />
         <meta

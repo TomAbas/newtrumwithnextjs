@@ -1,13 +1,33 @@
 import Head from 'next/head';
 import React from 'react';
 import ServicesPage from '../components/ServicesPage/ServicesPage';
-const service = () => {
+import { getServicesData } from '../ApiUrl/servicesApi/servicesApi';
+
+export async function getStaticProps() {
+  let res = await getServicesData();
+  // console.log(res);
+
+  if (!res) {
+    return {
+      notFound: true,
+    };
+  }
+  return {
+    props: { res }, // will be passed to the page component as props
+    revalidate: 30,
+  };
+}
+
+const Service = ({ res }) => {
   return (
     <>
       <Head>
         <title>Service</title>
         <link rel='icon' href='/logo300px.ico' />
-
+        <link
+          href='https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,500&display=swap'
+          rel='stylesheet'
+        />
         {/* metatag google  */}
         <meta name='description' content='We are hiring' />
         <meta
@@ -28,9 +48,9 @@ const service = () => {
         <meta property='og:image:width' content='1200' />
         <meta property='og:image:height' content='630' />
       </Head>
-      <ServicesPage/>
+      <ServicesPage data={res} />
     </>
   );
 };
 
-export default service;
+export default Service;
