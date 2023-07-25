@@ -42,7 +42,7 @@
 }
 
 .project {
-  font-family: "Times New Roman", Times, serif !important;
+  font-family: 'Times New Roman', Times, serif !important;
 }
 
 .listJobBox {
@@ -131,6 +131,7 @@
   }
   .listJobContainer {
     height: 800vh;
+    overflow: hidden;
   }
   .listJobBox {
     flex-direction: row;
