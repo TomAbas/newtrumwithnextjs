@@ -10,7 +10,6 @@ import { ErrorMessage } from "@hookform/error-message";
 
 const LoginForm = () => {
   const router = useRouter();
-  //   const { login } = useAuth();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const {
