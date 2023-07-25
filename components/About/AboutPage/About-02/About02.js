@@ -5,7 +5,7 @@ import ItemNumber from './ItemNumber';
 
 const About02 = ({ aboutData }) => {
   const { description, image, list } = aboutData.about01;
-
+  console.log(aboutData);
   return (
     <div className={styles.aboutNumberContainer}>
       <div
