@@ -1,9 +1,9 @@
-import '../styles/globals.css';
+import "../styles/globals.css";
 
-import Layout from '../components/Layout.js';
-import LayoutAdmin from '../components/LayoutAdmin';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import Layout from "../components/Layout.js";
+import LayoutAdmin from "../components/LayoutAdmin";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function MyApp({ Component, pageProps, ...appProps }) {
   const getContent = () => {
     if (
@@ -15,9 +15,9 @@ function MyApp({ Component, pageProps, ...appProps }) {
       [`/admin/companyinfo`].includes(appProps.router.pathname) ||
       [`/admin/about-us`].includes(appProps.router.pathname) ||
       [`/admin/service`].includes(appProps.router.pathname) ||
-      ['/admin/industry-recognition'].includes(appProps.router.pathname) ||
-      ['/admin/comment'].includes(appProps.router.pathname) ||
-      ['/admin/reason'].includes(appProps.router.pathname)
+      ["/admin/industry-recognition"].includes(appProps.router.pathname) ||
+      ["/admin/comment"].includes(appProps.router.pathname) ||
+      ["/admin/reason"].includes(appProps.router.pathname)
     )
       return (
         <LayoutAdmin>
@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps, ...appProps }) {
 
     return (
       <Layout>
-        <Component {...pageProps} />{' '}
+        <Component {...pageProps} />{" "}
       </Layout>
     );
   };

@@ -1,19 +1,23 @@
-import axios from 'axios';
+import axios from "axios";
 
 const axiosClient = axios.create({
   // baseURL: "https://pagesmanagementapi.com/",
-  baseURL: 'https://evalley-backend.herokuapp.com/',
+  baseURL: "https://evalley-backend.herokuapp.com/",
   // baseURL: "http://localhost:5001",
   // baseURL: 'https://trum-api.onrender.com/',
   headers: {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjg5ODcwMDA1fQ.zF27DDsuucQM-GvO9Q-rsmRKqYHCmVhT21ziC3Xcxtk`,
+    "Content-Type": "application/json",
   },
 });
 
 axiosClient.interceptors.request.use(
   function (config) {
     // Do something before request is sent
+    // Get token from LocalStorage and set to header
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
     return config;
   },
   function (error) {
@@ -26,11 +30,16 @@ axios.interceptors.response.use(
   function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
+
     return response.data;
   },
   function (error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
+    if (error.status === 401) {
+      window.location.href = "/login";
+      return;
+    }
     return error;
   }
 );
