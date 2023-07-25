@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+
 import Layout from '../components/Layout.js';
 import LayoutAdmin from '../components/LayoutAdmin';
 import { ToastContainer } from 'react-toastify';

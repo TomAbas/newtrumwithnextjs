@@ -3,7 +3,6 @@ import styles from '../styles/Home.module.css';
 import About from '../Views/About';
 import { getAboutData } from '../ApiUrl/about/aboutApi';
 
-
 export async function getStaticProps() {
   let res = await getAboutData();
   console.log(res);
@@ -24,7 +23,10 @@ export default function Home({ res }) {
       <Head>
         <title>Trum Agency</title>
         <link rel='icon' href='/logo300px.ico' />
-
+        <link
+          rel='stylesheet'
+          href='https://fonts.googleapis.com/css?family=montserrat&display=optional'
+        />
         <meta
           name='description'
           // content={res.title.map((item) => item.content).join(' ')}

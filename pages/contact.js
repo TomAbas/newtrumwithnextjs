@@ -7,7 +7,10 @@ const recuitment = () => {
       <Head>
         <title>Contact</title>
         <link rel='icon' href='/logo300px.ico' />
-
+        <link
+          rel='stylesheet'
+          href='https://fonts.googleapis.com/css?family=montserrat&display=optional'
+        />
         {/* metatag google  */}
         <meta name='description' content='We are hiring' />
         <meta

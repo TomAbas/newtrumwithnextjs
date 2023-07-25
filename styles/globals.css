@@ -1,15 +1,16 @@
-@font-face {
+/* @font-face {
   font-family: 'galano';
   src: url(/fonts/GalanoGrotesque-Medium.woff2) format('woff2');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
-}
+} */
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'galano', 'Times New Roman', Times, serif;
+  font-family: 'montserrat', 'Times New Roman', Times, serif;
+  /* font-family: 'galano', 'Times New Roman', Times, serif; */
   background-color: #131313;
 }
 .container {
@@ -18,7 +19,7 @@ body {
   /* position: relative; */
   /* margin-inline: auto; */
   margin: 0 auto;
-  font-family: 'galano', 'Times New Roman', Times, serif;
+  font-family: 'montserrat', 'Times New Roman', Times, serif;
 }
 
 a {
@@ -35,7 +36,7 @@ a {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-family: 'galano', 'Times New Roman', Times, serif;
+  font-family: 'montserrat', 'Times New Roman', Times, serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -54,4 +55,3 @@ a {
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
   background-color: #3a3a3a !important;
 }
-
