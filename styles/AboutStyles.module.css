@@ -139,10 +139,13 @@
   font-weight: 500;
   max-width: 45%;
 }
+.content p {
+  line-height: 6px;
+}
 .content div {
   height: 100%;
   align-items: flex-start;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.2rem;
 }
 .content img {
   width: 4px !important;
@@ -372,6 +375,15 @@
     font-size: 18px;
   }
 
+  .content p {
+    line-height: 12px;
+    font-size: 10px;
+  }
+  .content div {
+    height: 100%;
+    align-items: flex-start;
+    padding-bottom: 0.3rem;
+  }
   /* end page03 */
   /* page04 */
   .page04Content00 p {
@@ -413,6 +425,13 @@
     border-radius: 50%;
   }
 
+  .content p {
+    line-height: 16px;
+    font-size: 12px;
+  }
+  .content div {
+    padding-bottom: 0.05rem;
+  }
   /* page03 */
   .about03TitleBrand {
     font-size: 16px;
@@ -453,7 +472,13 @@
   .page04ContentText1 {
     gap: 20px;
   }
-
+  .content p {
+    line-height: 18px;
+    font-size: 14px;
+  }
+  .content div {
+    padding-bottom: 0.2rem;
+  }
   .textBox p {
     font-size: 1.15rem;
   }
@@ -540,7 +565,13 @@
   .textAbout2 {
     line-height: 96px;
   }
-
+  .content p {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .content div {
+    padding-bottom: 0.2rem;
+  }
   /* page03 */
   .about03TitleBrand {
     font-size: 24px;
