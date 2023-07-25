@@ -4,7 +4,7 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Image from 'next/future/image';
 
-const Page04 = ({ page4Data, aboutData }) => {
+const Page04 = ({ aboutData }) => {
   const { description, image, title } = aboutData.about02;
   const h1Ref1 = useRef();
   const inViewH1ref1 = useInView(h1Ref1);
@@ -53,6 +53,7 @@ const Page04 = ({ page4Data, aboutData }) => {
                   width={800}
                   height={800}
                   // src={page4Data[1]?.image}
+                  src={image}
                   alt='weare'
                 />
               </div>
