@@ -1,8 +1,13 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import styles from '../../../styles/ServicesPage2.module.css';
+import aniStyles from '../../../styles/Animation.module.css';
+
+import { useInView } from 'framer-motion';
 
 const ServicesPage2 = ({ dataServices }) => {
-  const test = useCallback(() => {
+  const textRef = useRef();
+  const isTextIn = useInView(textRef);
+  const render = useCallback(() => {
     if (!dataServices.title.content) return <></>;
     const br = dataServices.title.content.replaceAll(/\n/g, '<br/>');
     let arr = br.split(' ').map((item, idx) => {
@@ -14,28 +19,16 @@ const ServicesPage2 = ({ dataServices }) => {
     let newArr = arr.join(' ');
     return <div dangerouslySetInnerHTML={{ __html: newArr }} />;
   }, [dataServices]);
+
   return (
     <div className={styles.service2Container}>
-      <div className={styles.service2IntroText}>
-        {/* We design and produce{' '}
-        <span className={styles.service2IntroTextHighlight}>interactive</span>{' '}
-        and
-        <br /> immersive{' '}
-        <span className={styles.service2IntroTextHighlight}>
-          experiences
-        </span>{' '}
-        <br />
-        that mesh the{' '}
-        <span className={styles.service2IntroTextHighlight}>virtual</span>
-        <br /> and{' '}
-        <span className={styles.service2IntroTextHighlight}>physical</span>,
-        <br /> generating{' '}
-        <span className={styles.service2IntroTextHighlight}>
-          wonder
-        </span> and <br />
-        <span className={styles.service2IntroTextHighlight}>engagement</span>. */}
-        {/* <div dangerouslySetInnerHTML={{ __html: test }} /> */}
-        {test()}
+      <div
+        className={`${styles.service2IntroText} ${
+          isTextIn && aniStyles.fadeInUp
+        }`}
+        ref={textRef}
+      >
+        {render()}
       </div>
     </div>
   );

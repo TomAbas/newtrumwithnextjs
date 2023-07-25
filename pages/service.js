@@ -1,7 +1,24 @@
 import Head from 'next/head';
 import React from 'react';
 import ServicesPage from '../components/ServicesPage/ServicesPage';
-const service = () => {
+import { getServicesData } from '../ApiUrl/servicesApi/servicesApi';
+
+export async function getStaticProps() {
+  let res = await getServicesData();
+  // console.log(res);
+
+  if (!res) {
+    return {
+      notFound: true,
+    };
+  }
+  return {
+    props: { res }, // will be passed to the page component as props
+    revalidate: 30,
+  };
+}
+
+const Service = ({ res }) => {
   return (
     <>
       <Head>
@@ -28,9 +45,9 @@ const service = () => {
         <meta property='og:image:width' content='1200' />
         <meta property='og:image:height' content='630' />
       </Head>
-      <ServicesPage/>
+      <ServicesPage data={res} />
     </>
   );
 };
 
-export default service;
+export default Service;

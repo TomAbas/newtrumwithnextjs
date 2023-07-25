@@ -5,9 +5,13 @@ import { useRef } from 'react';
 import Image from 'next/future/image';
 
 const Page04 = ({ page4Data, aboutData }) => {
-  const { description, image, title } = aboutData.about02
+  const { description, image, title } = aboutData.about02;
   const h1Ref1 = useRef();
   const inViewH1ref1 = useInView(h1Ref1);
+  const descriptionRef = useRef();
+  const inViewDescriptionRef = useInView(descriptionRef);
+  const descriptionRef2 = useRef();
+  const inViewDescriptionRef2 = useInView(descriptionRef2);
 
   const animationWords = () => {
     let b = title?.split(' ').map((word, idx) => {
@@ -33,7 +37,10 @@ const Page04 = ({ page4Data, aboutData }) => {
     <>
       <div className={styles.page04Container}>
         <div className={styles.page04Content00}>
-          <p>
+          <p
+            ref={descriptionRef}
+            className={inViewDescriptionRef && `${styles.fadeInUpS}`}
+          >
             {aboutData.description01}
           </p>
         </div>
@@ -45,7 +52,7 @@ const Page04 = ({ page4Data, aboutData }) => {
                   layout='responsive'
                   width={800}
                   height={800}
-                  src={page4Data[1]?.image}
+                  // src={page4Data[1]?.image}
                   alt='weare'
                 />
               </div>
@@ -57,15 +64,15 @@ const Page04 = ({ page4Data, aboutData }) => {
               <div className={styles.textBox}>
                 <p>{description}</p>
               </div>
-
             </div>
           </div>
         </div>
         <div className={styles.page04Content2}>
-          <p>
-            {
-              aboutData.description02
-            }
+          <p
+            ref={descriptionRef2}
+            className={inViewDescriptionRef2 && `${styles.fadeInUpS}`}
+          >
+            {aboutData.description02}
           </p>
         </div>
       </div>

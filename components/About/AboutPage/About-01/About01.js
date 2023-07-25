@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from '../../../../styles/AboutStyles.module.css';
-import { getAboutData } from '../../../../ApiUrl/about/aboutApi';
 
 const AboutVideoPage = ({ aboutData }) => {
   const { video } = aboutData;
-  console.log(video);
   return (
     <>
       {video && (
@@ -15,7 +13,7 @@ const AboutVideoPage = ({ aboutData }) => {
             </video>
           </div>
           <div className={styles.textAbout1}>TRUM</div>
-          <div className={styles.textAbout2}>
+          <div className={`${styles.textAbout2} ${styles.fadeInUpS}`}>
             Opening <br />
             worlds.
           </div>

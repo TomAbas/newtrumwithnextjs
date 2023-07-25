@@ -3,7 +3,6 @@ import styles from '../../../../styles/AboutStyles.module.css';
 import Image from 'next/future/image';
 import logo from '../../../../public/imgs/slideImgs/MultiMediaProduction1.webp';
 export const Brand = ({ item }) => {
-  console.log(item);
   return (
     <div className={styles.wrapperBrand}>
       <div className={styles.logoBrand}>
@@ -23,7 +22,6 @@ export const Brand = ({ item }) => {
 };
 const About03 = ({ aboutData }) => {
   const { listBrand, title } = aboutData.about03;
-  // console.log(listBrand);
   return (
     <div className={styles.aboutContainer03}>
       <p className={styles.about03TitleBrand}>{title}</p>
@@ -32,11 +30,6 @@ const About03 = ({ aboutData }) => {
           return <Fragment key={idx}>{<Brand item={item} />}</Fragment>;
         })}
       </div>
-      {/* <div className={styles.brandContainer}>
-        {listBrand?.map((item, idx) => {
-          return <Fragment key={idx}>{<Brand item={item} />}</Fragment>;
-        })}
-      </div> */}
     </div>
   );
 };

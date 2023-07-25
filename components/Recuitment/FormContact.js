@@ -9,7 +9,7 @@ const FormContact = () => {
   const [data, setData] = useState({
     name: "",
     email: "",
-    telephone: "",
+    phone: "",
     content: "",
     budget: "",
   });
@@ -53,8 +53,8 @@ const FormContact = () => {
           placeholder="Telephone"
           required={true}
           type="tel"
-          name="telephone"
-          value={data.telephone}
+          name="phone"
+          value={data.phone}
           onChange={handleChange}
         />
         <InputField

@@ -1,24 +1,12 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import About from '../Views/About';
-import { getLandingPageData } from '../ApiUrl/landingpageApi/landingApi';
+import { getAboutData } from '../ApiUrl/about/aboutApi';
 
-// export async function getServerSideProps() {
-//   let res = await getLandingPageData();
-//   // console.log(res);
 
-//   if (!res) {
-//     return {
-//       notFound: true,
-//     };
-//   }
-//   return {
-//     props: { res }, // will be passed to the page component as props
-//   };
-// }
 export async function getStaticProps() {
-  let res = await getLandingPageData();
-  // console.log(res);
+  let res = await getAboutData();
+  console.log(res);
 
   if (!res) {
     return {
@@ -39,7 +27,7 @@ export default function Home({ res }) {
 
         <meta
           name='description'
-          content={res.title.map((item) => item.content).join(' ')}
+          // content={res.title.map((item) => item.content).join(' ')}
         />
         <meta
           name='keywords'
@@ -53,7 +41,7 @@ export default function Home({ res }) {
         <meta property='og:title' content='Trum Agency' />
         <meta
           property='og:description'
-          content={res.title.map((item) => item.content).join(' ')}
+          // content={res.title.map((item) => item.content).join(' ')}
         />
         <meta
           property='og:image'
