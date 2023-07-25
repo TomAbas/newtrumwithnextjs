@@ -138,12 +138,12 @@
   max-width: 45%;
 }
 .content p {
-  line-height: 6px;
+  line-height: 8px;
 }
 .content div {
   height: 100%;
   align-items: flex-start;
-  padding-bottom: 0.2rem;
+  padding-bottom: 0.8rem;
 }
 .content img {
   width: 4px !important;
@@ -381,7 +381,7 @@
   .content div {
     height: 100%;
     align-items: flex-start;
-    padding-bottom: 0.3rem;
+    padding-bottom: 1rem;
   }
   /* end page03 */
   /* page04 */
@@ -430,7 +430,7 @@
     font-size: 12px;
   }
   .content div {
-    padding-bottom: 0.05rem;
+    padding-bottom: 1.05rem;
   }
   /* page03 */
   .about03TitleBrand {
@@ -477,7 +477,7 @@
     font-size: 14px;
   }
   .content div {
-    padding-bottom: 0.2rem;
+    padding-bottom: 1.2rem;
   }
   .textBox p {
     font-size: 1.15rem;
@@ -570,7 +570,7 @@
     line-height: 24px;
   }
   .content div {
-    padding-bottom: 0.2rem;
+    padding-bottom: 0.8rem;
   }
   /* page03 */
   .about03TitleBrand {
