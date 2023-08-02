@@ -1,5 +1,5 @@
 .service5Container {
-  min-height: 100vh;
+  min-height: 30vh;
   display: flex;
   justify-content: center;
   position: relative;
@@ -22,5 +22,13 @@
 @media screen and (min-width: 576px) {
   .wrapBtn {
     flex-direction: row;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .service5Container {
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    position: relative;
   }
 }

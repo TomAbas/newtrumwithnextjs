@@ -25,6 +25,11 @@
 }
 
 @media screen and (min-width: 375px) {
+  .service2Container {
+    min-height: 30vh;
+    margin-bottom: 3rem;
+  }
+
   .service2IntroText {
     font-size: 27px;
     line-height: 34px;
@@ -43,6 +48,9 @@
   }
 }
 @media screen and (min-width: 1024px) {
+  .service2Container {
+    min-height: 100vh;
+  }
   .service2IntroText {
     font-size: 73px;
     line-height: 82px;

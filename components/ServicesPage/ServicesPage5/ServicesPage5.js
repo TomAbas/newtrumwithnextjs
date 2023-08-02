@@ -9,7 +9,6 @@ const ServicesPage5 = () => {
         <BtnSubmit label="ALL PROJECT" />
         <BtnSubmit label="BOOK YOUR CALL" />
       </div>
-
     </div>
   )
 }
