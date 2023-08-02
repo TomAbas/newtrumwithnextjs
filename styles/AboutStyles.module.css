@@ -25,7 +25,7 @@
 /* About01 */
 .aboutVideoContainer {
   /* border: 2px solid white; */
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,8 +39,8 @@
 }
 .aboutVideoWrapper {
   border: 2px soldi greenyellow;
-  width: 40vw;
-  height: 40vw;
+  width: 280px;
+  height: 280px;
   background-color: white;
   border-radius: 50%;
 }
@@ -75,7 +75,7 @@
 .textAbout1,
 .textAbout2 {
   position: absolute;
-  font-size: 28px;
+  font-size: 32px;
   color: #fff;
 }
 
@@ -285,7 +285,16 @@
   margin: 50px auto 100px auto;
 }
 
-@media (min-width: 350px) {
+@media (min-width: 375px) {
+  .textAbout1 {
+    left: 47%;
+    top: 50%;
+    transform: translate(-160%, -50%);
+  }
+  .aboutVideoWrapper {
+    width: 280px;
+    height: 280px;
+  }
   .aboutRow1,
   .aboutRow2 {
     gap: 10px;
@@ -348,6 +357,10 @@
 }
 
 @media (min-width: 576px) {
+  .aboutVideoWrapper {
+    width: 400px;
+    height: 400px;
+  }
   .number {
     font-size: 36px;
   }
@@ -450,11 +463,19 @@
   .page04Content2 p {
     font-size: 26px;
   }
-
   /* end page04 */
 }
 
 @media (min-width: 992px) {
+  .textAbout1 {
+    left: 50%;
+    top: 50%;
+    transform: translate(-160%, -50%);
+  }
+  .aboutVideoWrapper {
+    width: 500px;
+    height: 500px;
+  }
   .number {
     font-size: 56px;
   }
@@ -510,6 +531,10 @@
 }
 
 @media (min-width: 1024px) {
+  .aboutVideoContainer {
+    min-height: 100vh;
+  }
+
   .contentText1 h1 {
     font-size: 4rem;
   }
@@ -555,6 +580,10 @@
   /* end page4 */
 }
 @media (min-width: 1200px) {
+  .aboutVideoWrapper {
+    width: 40vw;
+    height: 40vw;
+  }
   .number {
     font-size: 86px;
   }
