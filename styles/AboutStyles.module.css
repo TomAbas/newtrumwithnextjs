@@ -64,13 +64,13 @@
   object-fit: contain;
 }
 .textAbout1 {
-  left: 50%;
+  left: 43%;
   top: 50%;
   transform: translate(-160%, -50%);
 }
 .textAbout2 {
   left: 5%;
-  bottom: 15%;
+  bottom: 5%;
 }
 .textAbout1,
 .textAbout2 {
