@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
 }
 .wrapTextCard {
   max-width: 80%;
@@ -20,12 +21,21 @@
 .desc {
   font-size: 14px;
 }
+
 .wrapCircle {
   width: 26px;
   height: 26px;
   display: flex;
   align-items: center;
+  background-size: contain;
 }
+.wrapItemService:not(:first-child):hover .wrapTextCard {
+  opacity: 0.7;
+}
+.wrapItemService:hover .wrapCircle {
+  background-image: url("~/public/imgs/img-circle-full.webp"); /* Default image */
+}
+
 .wrapCircle img {
   height: 100%;
   width: 100%;

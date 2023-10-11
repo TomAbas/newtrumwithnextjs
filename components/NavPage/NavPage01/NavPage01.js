@@ -33,9 +33,12 @@ const NavPage = () => {
             <li>
               <Link href='/about'>about</Link>
             </li>
-            {/* <li>
-              <Link href='/'>news</Link>
-            </li> */}
+            <li>
+              <Link href='/news'>news</Link>
+            </li>
+            <li>
+              <Link href='/'>EN</Link>
+            </li>
           </ul>
         </div>
       </div>

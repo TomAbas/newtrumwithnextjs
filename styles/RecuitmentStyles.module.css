@@ -258,3 +258,6 @@
   font-size: 0.8rem;
   color: #fff;
 }
+.btnSubmit:hover {
+  opacity: 0.8;
+}
