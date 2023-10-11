@@ -1,0 +1,16 @@
+.newPageContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  margin: auto;
+}
+
+.newPageSubContainer {
+  width: min(90%, 1600px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  margin: auto;
+}

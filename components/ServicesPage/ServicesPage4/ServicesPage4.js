@@ -79,6 +79,7 @@ const ServicesPage4 = ({ listCardIndustry }) => {
                   img={item.image}
                   rating={item.rating}
                 />
+                
               </SwiperSlide>
             );
           })}

@@ -21,9 +21,9 @@ const FooterPage01 = () => {
           <div className={styles.footerNavItem}>
             <Link href='/about'>about</Link>
           </div>
-          {/* <div className={styles.footerNavItem}>
-            <Link href='/'>news</Link>
-          </div> */}
+          <div className={styles.footerNavItem}>
+            <Link href='/news'>news</Link>
+          </div>
         </div>
         <div className={styles.footerMedia}>
           <div className={styles.footerNavItem}>

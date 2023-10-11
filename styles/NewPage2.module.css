@@ -1,0 +1,39 @@
+.NewPage2Container {
+  margin-top: 1rem;
+}
+.NewPage2Text1,
+.NewPage2Text2,
+.NewPage2Text3,
+.NewPage2Text4 {
+  font-size: 16px;
+  margin-top: 1rem;
+  color: #fff;
+}
+.video {
+  width: 100%;
+  margin: 2rem 0rem;
+  height: 300px;
+}
+@media (min-width: 768px) {
+  .video {
+    height: 450px;
+  }
+}
+@media (min-width: 1024px) {
+  .NewPage2Container {
+    margin-top: 3rem;
+  }
+  .NewPage2Text1,
+  .NewPage2Text2,
+  .NewPage2Text3,
+  .NewPage2Text4 {
+    font-size: 18px;
+    margin-top: 1.5rem;
+    color: #fff;
+  }
+  .video {
+    width: 100%;
+    margin: 2rem 0rem;
+    height: 580px;
+  }
+}
