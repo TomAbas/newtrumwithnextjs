@@ -10,6 +10,7 @@ const InputField = ({
   label = '',
   required = false,
   register,
+  value
 }) => {
   return (
     <div className={styles.inputField}>
@@ -17,6 +18,7 @@ const InputField = ({
       <input
         className={styles.input}
         type={type}
+        value={value}
         name={name}
         onChange={onChange}
         placeholder={placeholder + (required ? '*' : '')}

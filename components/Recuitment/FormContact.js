@@ -17,6 +17,7 @@ const FormContact = () => {
 
 
   const [data, setData] = useState(initialFormData);
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prev) => ({ ...prev, [name]: value }));
@@ -27,7 +28,12 @@ const FormContact = () => {
     try {
       await sendContact(data);
       setShowSuccessMessage(true);
+
+
       setData(initialFormData);
+
+
+
       setTimeout(() => {
         setShowSuccessMessage(false);
       }, 5000);
