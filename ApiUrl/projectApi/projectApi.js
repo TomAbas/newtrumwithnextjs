@@ -6,8 +6,8 @@ export async function getDetailProjectData(title) {
     .then(({ data }) => data);
 }
 
-export async function getAllProject() {
-  return axiosClient.get("project").then(({ data }) => data);
+export async function getAllProject(params) {
+  return axiosClient.get("project", { params }).then(({ data }) => data);
 }
 export async function deleteProject(id) {
   return axiosClient.delete(`project/delete/${id}`).then(({ data }) => data);

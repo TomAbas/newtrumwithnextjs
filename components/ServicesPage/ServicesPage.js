@@ -23,7 +23,6 @@ const ServicesPage = ({ data, listAllProject }) => {
     getListRatingData().then((res) => {
       setListCardIndustry(res);
     });
-    console.log(listAllProject);
     setListCategory(getCategoryFromListAllProject(listAllProject));
   }, []);
   useEffect(() => {

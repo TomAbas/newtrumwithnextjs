@@ -7,7 +7,7 @@ import { getAllProject } from "../ApiUrl/projectApi/projectApi";
 export async function getStaticProps() {
   let servicesData = await getServicesData();
   // console.log(res);
-  let listAllProject = await getAllProject();
+  let listAllProject = await getAllProject({ isCategory: 1 });
   if (!servicesData || !listAllProject) {
     return {
       notFound: true,
@@ -54,7 +54,10 @@ const Service = ({ res }) => {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
       </Head>
-      <ServicesPage data={res.servicesData} listAllProject={res.listAllProject} />
+      <ServicesPage
+        data={res.servicesData}
+        listAllProject={res.listAllProject}
+      />
     </>
   );
 };
