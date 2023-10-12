@@ -6,19 +6,18 @@ import { getAllProject } from "../../../ApiUrl/projectApi/projectApi";
 const ServicesPage3 = ({ dataServices, listCategory }) => {
   const { listService, subTitle } = dataServices;
   const mainTitle = {
-    mainTitle: "SERVICES",
+    category: "SERVICES",
     description: subTitle,
   };
-  const newData = [mainTitle, ...listService];
+  const newData = [mainTitle, ...listCategory];
   console.log(mainTitle);
   return (
     <div className={styles.service3Container}>
-      {listCategory.map((item, idx) => {
+      {newData.map((item, idx) => {
         return (
           <ItemService
             key={idx}
-            // desc={item.description}
-            desc={""}
+            desc={item.description}
             title={item.category}
             subTitle={item.title}
           />
