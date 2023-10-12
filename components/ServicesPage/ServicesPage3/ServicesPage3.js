@@ -10,14 +10,7 @@ const ServicesPage3 = ({ dataServices, listCategory }) => {
     description: subTitle,
   };
   const newData = [mainTitle, ...listService];
-  // async function test() {
-  //   let listAllProject = await getAllProject({ isCategory: 1 });
-  //   console.log(listAllProject);
-  // }
-  // // isCategory: 0/1
-  // useEffect(() => {
-  //   test();
-  // }, []);
+  console.log(mainTitle);
   return (
     <div className={styles.service3Container}>
       {listCategory.map((item, idx) => {
