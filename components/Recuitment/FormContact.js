@@ -87,7 +87,7 @@ const FormContact = () => {
         />
         <Box sx={{ my: "20px", display: 'flex', alignItems: 'center', gap: 1 }}>
           <BtnSubmit label="Submit" />
-          {showSuccessMessage && <p>*Thành công</p>}
+          {showSuccessMessage && <p>*Success</p>}
         </Box>
       </form>
       <Typography
