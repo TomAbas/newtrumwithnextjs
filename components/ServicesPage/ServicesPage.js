@@ -5,8 +5,8 @@ import ServicesPage3 from './ServicesPage3/ServicesPage3';
 import ServicesPage4 from './ServicesPage4/ServicesPage4';
 import styles from '../../styles/ServicesPage.module.css';
 import ServicesPage5 from './ServicesPage5/ServicesPage5';
-import Industry from '../Recuitment/Industry/Industry';
 import { getListRatingData } from '../../ApiUrl/rating/ratingApi';
+import Industry from './ServicesPage6/Industry';
 
 const ServicesPage = ({ data }) => {
   const [listCardIndustry, setListCardIndustry] = useState(null || []);

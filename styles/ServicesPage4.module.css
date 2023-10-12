@@ -2,6 +2,7 @@
   margin-top: 3rem;
   color: #fff;
 }
+
 .title {
   margin-bottom: 1.5rem;
   font-size: 52px;
@@ -11,11 +12,11 @@
 .wrapCard {
   overflow: hidden;
   height: 340px;
-  width: 270px;
+  /* max-width: 309px; */
   border: 1px solid #858585;
   border-radius: 15px;
   padding: 1rem;
-  margin: auto;
+  /* margin: auto; */
 }
 .card {
   display: flex;

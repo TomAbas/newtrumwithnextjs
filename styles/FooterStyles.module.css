@@ -14,6 +14,10 @@
   left: 2%;
   right: 2%;
 }
+
+.iconRight {
+  height: 1em;
+}
 .leftIconBox {
   text-align: center;
   text-transform: capitalize;
@@ -65,8 +69,14 @@
   align-items: center;
   text-transform: uppercase;
   color: #fff;
+  position: relative;
 }
-
+.iconContactFooter {
+  position: absolute;
+  top: 46%;
+  right: 0;
+  transform: translateY(-50%);
+}
 @media (min-width: 350px) {
   .footerMedia,
   .footerNav {

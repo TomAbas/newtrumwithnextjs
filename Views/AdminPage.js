@@ -133,7 +133,7 @@ export default function BasicTabs() {
           value={value}
           onChange={handleChange}
         >
-          <Tab label='Landing Page' onClick={() => {}} />
+          <Tab label='Landing Page' onClick={() => { }} />
           <Tab
             label='Edit News'
             onClick={() => {
@@ -146,7 +146,7 @@ export default function BasicTabs() {
               setIsAddNews(true);
             }}
           />
-          <Tab label='Hiring' onClick={() => {}} />
+          <Tab label='Hiring' onClick={() => { }} />
           <Tab
             label='Company Info'
             onClick={async () => {

@@ -6,13 +6,17 @@ import BtnSubmit from "../Form/BtnSubmit";
 import { sendContact } from "../../ApiUrl/contact/contact";
 
 const FormContact = () => {
-  const [data, setData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    content: "",
-    budget: "",
-  });
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const initialFormData = {
+    name: '',
+    email: '',
+    phone: '',
+    content: '',
+    budget: '',
+  };
+
+
+  const [data, setData] = useState(initialFormData);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prev) => ({ ...prev, [name]: value }));
@@ -21,8 +25,12 @@ const FormContact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await sendContact(data);
-      console.log(res);
+      await sendContact(data);
+      setShowSuccessMessage(true);
+      setData(initialFormData);
+      setTimeout(() => {
+        setShowSuccessMessage(false);
+      }, 5000);
     } catch (error) {
       console.log(error);
     }
@@ -71,8 +79,9 @@ const FormContact = () => {
           value={data.budget}
           onChange={handleChange}
         />
-        <Box sx={{ my: "20px" }}>
+        <Box sx={{ my: "20px", display: 'flex', alignItems: 'center', gap: 1 }}>
           <BtnSubmit label="Submit" />
+          {showSuccessMessage && <p>*Thành công</p>}
         </Box>
       </form>
       <Typography

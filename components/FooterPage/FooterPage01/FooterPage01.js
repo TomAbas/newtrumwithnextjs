@@ -3,6 +3,9 @@ import Image from 'next/future/image';
 import brandLogo from '../../../public/imgs/logo-white.png';
 import styles from '../../../styles/FooterStyles.module.css';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaperPlane } from '@fortawesome/free-regular-svg-icons';
+
 
 const FooterPage01 = () => {
   return (
@@ -48,6 +51,19 @@ const FooterPage01 = () => {
         <div className={styles.footerInfo}>
           <p>contact us: contact@trumagency.com</p>
           <p>call us: +84903079937</p>
+        </div>
+        <div className={styles.iconContactFooter} >
+          <Link href='/contact'>
+            <a className={styles.rightIconBoxInside}>
+              <div className={styles.rightIconBoxInside}>
+                <FontAwesomeIcon
+                  icon={faPaperPlane}
+                  className={styles.iconRight}
+                />
+                <p>Contact Us</p>
+              </div>
+            </a>
+          </Link>
         </div>
       </div>
     </div>

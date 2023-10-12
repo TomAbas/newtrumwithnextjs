@@ -70,19 +70,20 @@ const ServicesPage4 = ({ listCardIndustry }) => {
           }}
           className='mySwiper'
         >
-          {listCardIndustry.map((item, idx) => {
-            return (
-              <SwiperSlide key={idx}>
-                <CardSwiper
-                  title={item.title}
-                  description={item.description}
-                  img={item.image}
-                  rating={item.rating}
-                />
-                
-              </SwiperSlide>
-            );
-          })}
+          {
+            listCardIndustry.map((item, idx) => {
+              return (
+                <SwiperSlide key={idx}>
+                  <CardSwiper
+                    title={item.title}
+                    description={item.description}
+                    img={item.image}
+                    rating={item.rating}
+                  />
+                </SwiperSlide>
+              );
+            })
+          }
         </Swiper>
       </div>
     </div>
