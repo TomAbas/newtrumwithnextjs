@@ -1,0 +1,36 @@
+.WrapLogin {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  width: min(90%, 1600px);
+  margin: auto;
+}
+.WrapLogin .WrapLogin__form {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff0f;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.WrapLogin .Input {
+  margin-top: 1rem;
+}
+.WrapLogin .Input input {
+  margin-top: 0.5rem;
+}
+
+.WrapLogin .BtnSubmit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.WrapLogin .BtnSubmit button {
+  padding: 0.4rem 1.5rem;
+  margin-top: 0.5rem;
+}
