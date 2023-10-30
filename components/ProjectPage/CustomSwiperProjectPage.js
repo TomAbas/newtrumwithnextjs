@@ -48,7 +48,7 @@ const CustomSwiperProjectPage = ({ data, slidesPerView, width, height, breakpoin
         breakpoints={breakpoints}
       >
         <div className={styles.wrapBtn}>
-          <div>Title</div>
+          <div className={styles.Title}>Title</div>
           <div className={styles.Btn}>
             <BtnLeft>
               <Image src={ArrowLeft} alt='#' />
@@ -63,7 +63,7 @@ const CustomSwiperProjectPage = ({ data, slidesPerView, width, height, breakpoin
             data.map((item) => {
               return <SwiperSlide key={item._id}>
                 <Image
-                  
+
                   src={item.image}
                   alt="#"
                   width={width}

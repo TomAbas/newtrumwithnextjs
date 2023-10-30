@@ -18,3 +18,12 @@
 .wrapImage {
   margin-top: 1rem;
 }
+
+@media screen and (min-width: 1480px) {
+  .Btn div {
+    width: 2rem;
+  }
+  .Title {
+    font-size: 20px;
+  }
+}

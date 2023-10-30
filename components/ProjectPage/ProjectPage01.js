@@ -81,11 +81,11 @@ const ProjectPage01 = ({ title, category, bannerImg, isCategory, swiper }) => {
                 spaceBetween: 15,
               },
               1200: {
-                slidesPerView: 5,
+                slidesPerView: 4,
                 spaceBetween: 15,
               },
               1480: {
-                slidesPerView: 6,
+                slidesPerView: 4,
                 spaceBetween: 15,
               }
             }}
@@ -117,7 +117,7 @@ const ProjectPage01 = ({ title, category, bannerImg, isCategory, swiper }) => {
                   spaceBetween: 15,
                 },
                 1480: {
-                  slidesPerView: 5,
+                  slidesPerView: 3,
                   spaceBetween: 15,
                 }
               }}

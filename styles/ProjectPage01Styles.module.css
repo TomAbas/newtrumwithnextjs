@@ -179,9 +179,18 @@
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1480px) {
   .headlineWord {
     font-size: 6rem;
+  }
+  .TitleRight {
+    font-size: 46px;
+  }
+  .DescRight {
+    font-size: 20px;
+  }
+  .Breadcrumb li a {
+    font-size: 20px;
   }
 }
 @media (min-width: 1800px) {
