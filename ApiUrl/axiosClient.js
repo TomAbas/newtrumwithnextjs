@@ -14,7 +14,6 @@ const axiosClient = axios.create({
 
 axiosClient.interceptors.request.use(
   (config) => {
-    console.log("🚀 ~ file: axiosClient.js:17 ~ config:", config)
     if (typeof window !== 'undefined') {
       const token = localStorage.getItem('Authorization');
       if (token) {
@@ -25,7 +24,6 @@ axiosClient.interceptors.request.use(
       }
     }
     return config;
-
   },
   function (error) {
     // Do something with request error
@@ -35,13 +33,13 @@ axiosClient.interceptors.request.use(
 
 axios.interceptors.response.use(
   function (response) {
-    const token = localStorage.getItem('Authorization');
-    if (token) {
-      response.config.headers = {
-        ...response.config.headers,
-        Authorization: `Bearer ${token}`,
-      };
-    }
+
+
+
+
+
+
+    
     return response.data;
   },
   function (error) {
