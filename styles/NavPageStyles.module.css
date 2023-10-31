@@ -2,7 +2,7 @@
   background-color: #131313;
   width: min(90%, 1600px);
   margin: 0 auto;
-  font-family: 'galano', 'montserrat';
+  font-family: "galano", "montserrat";
 }
 .navContainer {
   position: fixed;
@@ -40,6 +40,7 @@
 }
 .navBox ul {
   display: flex;
+  align-items: center;
   gap: 50px;
 }
 .navBox ul li {
@@ -49,7 +50,7 @@
   position: relative;
 }
 .navBox a::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -5px;
   left: 0;
@@ -145,4 +146,12 @@
   .projectLogo {
     width: 30px;
   }
+}
+
+.language {
+  background: #d9d9d9;
+  width: fit-content;
+  border-radius: 50%;
+  padding: 3.5px;
+  color: #000;
 }

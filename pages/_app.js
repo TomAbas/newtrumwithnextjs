@@ -4,10 +4,11 @@ import Layout from "../components/Layout.js";
 import LayoutAdmin from "../components/LayoutAdmin";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
 function MyApp({ Component, pageProps, ...appProps }) {
   const getContent = () => {
     if (
-      [`/admin`].includes(appProps.router.pathname) ||
+      // [`/admin`].includes(appProps.router.pathname) ||
       [`/admin/landingpage`].includes(appProps.router.pathname) ||
       [`/admin/editprojects`].includes(appProps.router.pathname) ||
       [`/admin/addprojects`].includes(appProps.router.pathname) ||
@@ -18,19 +19,30 @@ function MyApp({ Component, pageProps, ...appProps }) {
       ["/admin/industry-recognition"].includes(appProps.router.pathname) ||
       ["/admin/comment"].includes(appProps.router.pathname) ||
       ["/admin/reason"].includes(appProps.router.pathname)
-    )
-      return (
-        <LayoutAdmin>
-          <ToastContainer />
-          <Component {...pageProps} />
-        </LayoutAdmin>
-      );
+    ) {
+      if (typeof window !== 'undefined') {
+        const token = localStorage.getItem('Authorization');
+        if (!token) {
+          appProps.router.push("/login");
+        } else {
+          return (
+            <LayoutAdmin>
+              <ToastContainer />
+              <Component {...pageProps} />
+            </LayoutAdmin>
+          );
+        }
+      }
 
-    return (
-      <Layout>
-        <Component {...pageProps} />{" "}
-      </Layout>
-    );
+
+    }
+    else {
+      return (
+        <Layout>
+          <Component {...pageProps} />{" "}
+        </Layout>
+      );
+    }
   };
   return (
     // <Layout>

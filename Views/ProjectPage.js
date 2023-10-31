@@ -75,14 +75,15 @@ const ProjectPage = ({ projectsidx, data }) => {
           title={newsBigTitle}
           category={category}
           bannerImg={bannerImg}
+          swiper={swiper}
         />
         <div className={styles.container}>
-          <ProjectPage02
+          {/* <ProjectPage02
             tagLine={tagLine}
             projectsidx={projectsidx}
             contributor={contributor}
-          />
-          <ProjectPage03
+          /> */}
+          {/* <ProjectPage03
             openTitle={openTitle}
             subTitle={subTitle}
             content={content}
@@ -97,7 +98,7 @@ const ProjectPage = ({ projectsidx, data }) => {
             youtubeUrl={youtubeUrl}
             isCategory={isCategory}
             category={category}
-          />
+          /> */}
           {/* <ProjectPage04
             subTitle1={subTitle1}
             content1={content1}

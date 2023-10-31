@@ -16,7 +16,7 @@
   transform: translate(-50%, -50%);
 }
 .wrapBtn button {
-  min-width: 200px;
+  min-width: 300px;
 }
 
 @media screen and (min-width: 576px) {
@@ -30,5 +30,10 @@
     display: flex;
     justify-content: center;
     position: relative;
+  }
+}
+@media screen and (min-width: 1480px) {
+  .wrapBtn button {
+    min-width: 450px;
   }
 }

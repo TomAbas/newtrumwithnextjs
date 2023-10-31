@@ -1,0 +1,29 @@
+.wrapBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+.Btn {
+  display: flex;
+  gap: 15px;
+  justify-content: end;
+  align-items: center;
+}
+.wrapBtn img {
+  object-fit: contain;
+}
+.wrapImage {
+  margin-top: 1rem;
+}
+
+@media screen and (min-width: 1480px) {
+  .Btn div {
+    width: 2rem;
+  }
+  .Title {
+    font-size: 20px;
+  }
+}
