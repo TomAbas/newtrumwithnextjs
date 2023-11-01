@@ -7,6 +7,7 @@ const nextConfig = {
       'pagesmanagementapi.com',
       's3-alpha-sig.figma.com',
       'firebasestorage.googleapis.com',
+      'picsum.photos',
     ],
   },
   eslint: {

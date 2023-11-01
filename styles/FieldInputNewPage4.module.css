@@ -1,0 +1,42 @@
+.FindGroup {
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+.FindGroup input {
+  width: 100%;
+  height: 40px;
+  padding: 0 4.1rem 0 2.3rem;
+}
+.FindGroup .IconFind,
+.FindGroup .ArrowRight {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.FindGroup .ArrowRight {
+  padding-left: 1.3rem;
+}
+.FindGroup .WrapIconRight {
+  position: absolute;
+  top: 50%;
+  right: 18%;
+  transform: translateY(-50%);
+}
+
+@media screen and (min-width: 576px) {
+  .FindGroup .WrapIconRight {
+    right: 10%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .FindGroup .WrapIconRight {
+    right: 8%;
+  }
+}
+@media screen and (min-width: 1124px) {
+  .FindGroup .WrapIconRight {
+    right: 5%;
+  }
+}

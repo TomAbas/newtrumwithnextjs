@@ -1,0 +1,88 @@
+.NewPage4Container {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.WrapContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.WrapContent .ContentLeft {
+  width: 100%;
+}
+.WrapContent .ContentRight {
+  width: 100%;
+  padding: 1rem 0rem 1rem 0.2rem;
+}
+.ContentLeft .NormalNews {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.ContentLeft .NormalNews .ItemNews {
+  background: #fffefe3f;
+  padding: 0.8rem;
+  width: 100%;
+  font-size: 14px;
+}
+
+.HotNews {
+  background: #fffefe3f;
+  padding: 0.8rem;
+  margin-bottom: 0.3rem;
+  font-size: 14px;
+}
+
+.WrapRightNews {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.WrapContentRight {
+  display: flex;
+  gap: 5px;
+}
+.WrapContentRight div {
+  width: 80%;
+  background: #fffefe3f;
+  padding: 0.8rem;
+  font-size: 14px;
+}
+@media screen and (min-width: 768px) {
+  .ContentLeft .NormalNews .ItemNews,
+  .HotNews,
+  .WrapContentRight div {
+    font-size: 16px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .WrapContent {
+    flex-direction: row;
+  }
+  .WrapContent .ContentLeft {
+    width: 60%;
+  }
+  .ContentLeft .NormalNews .ItemNews {
+    background: #fffefe3f;
+    padding: 0.8rem;
+    width: calc(100% - 50.4%);
+  }
+
+  .WrapContent .ContentRight {
+    width: 40%;
+  }
+  .HotNews {
+    margin-bottom: 0.8rem;
+  }
+}
+
+@media screen and (min-width: 1480px) {
+  .ContentLeft .NormalNews .ItemNews,
+  .HotNews,
+  .WrapContentRight div {
+    font-size: 18px;
+  }
+}
