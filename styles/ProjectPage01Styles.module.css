@@ -53,12 +53,13 @@
   height: 100%;
   /* margin: auto; */
   margin-top: 1rem;
-  padding: 2.6rem;
+  padding: 2.6rem 0rem;
 }
 .ContentLeft {
   margin-top: 1rem;
 }
 .ContentRight {
+  color: #fff;
 }
 
 .TitleRight {
@@ -144,9 +145,15 @@
     width: 45%;
     margin-top: 0;
   }
+  .ContentLeft {
+    height: 60vw;
+    margin: 1.8rem auto;
+  }
+
   .ContentRight {
     width: 55%;
     padding: 1.8rem 1.5rem;
+    padding-right: 0px;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -154,9 +161,9 @@
 
   .headlineNewsBox {
     flex-direction: row;
-    padding: 0;
-    padding-left: 3.9rem;
-    padding-top: 4rem;
+    padding-top: 5rem;
+    width: min(92%, 1600px);
+    margin: 0 auto;
   }
 
   .DescRight {

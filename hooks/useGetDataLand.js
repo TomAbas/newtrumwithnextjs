@@ -7,6 +7,7 @@ const useGetDataLand = (data) => {
   const [page3Data, setPage3Data] = useState([]);
   const [page4Data, setPage4Data] = useState([]);
   const [imgArr, setImgArr] = useState([]);
+  const [projectArr, setProjectArr] = useState([]);
   const [mainImage, setMainImage] = useState([]);
   const setData = () => {
     setLandingPageData(data.title);
@@ -17,6 +18,18 @@ const useGetDataLand = (data) => {
   };
   const getListNews = async () => {
     try {
+      const data = await getAllProject();
+      setProjectArr(
+        data
+          .filter((item) => !item.isCategory)
+          .map((item) => {
+            return {
+              img: item.mainImage,
+              title: item.title,
+              postId: item.title,
+            };
+          })
+      );
       setImgArr(
         await getAllProject().then((data) => {
           return data
@@ -45,6 +58,7 @@ const useGetDataLand = (data) => {
     page4Data,
     imgArr,
     mainImage,
+    projectArr,
   };
 };
 

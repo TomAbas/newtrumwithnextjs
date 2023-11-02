@@ -45,14 +45,11 @@ const ProjectPage = ({ projectsidx, data }) => {
         await getAllProject().then((project) => {
           return project
             .filter((item) => {
-              console.log(data.category);
-              console.log(item.category);
               return item.category === data.category && !item.isCategory;
             })
             .map((item) => {
-              console.log(item);
               return {
-                img: item.mainImage,
+                img: "https://picsum.photos/200",
                 title: item.title,
                 postId: item.title,
               };
@@ -60,7 +57,30 @@ const ProjectPage = ({ projectsidx, data }) => {
         })
       );
     } else {
-      setSwiper(data.swiper);
+      const dataSwiperTest = [
+        {
+          image: "https://picsum.photos/200",
+          title: "Content Marketing",
+          postId: "Content Marketing",
+        },
+        {
+          image: "https://picsum.photos/200",
+          title: "Content Marketing",
+          postId: "Content Marketing",
+        },
+        {
+          image: "https://picsum.photos/200",
+          title: "Content Marketing",
+          postId: "Content Marketing",
+        },
+        {
+          image: "https://picsum.photos/200",
+          title: "Content Marketing",
+          postId: "Content Marketing",
+        },
+      ];
+      // setSwiper(data.swiper);
+      setSwiper(dataSwiperTest);
     }
   };
 

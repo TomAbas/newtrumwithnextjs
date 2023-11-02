@@ -4,9 +4,10 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: [
-      'pagesmanagementapi.com',
-      's3-alpha-sig.figma.com',
-      'firebasestorage.googleapis.com',
+      "pagesmanagementapi.com",
+      "s3-alpha-sig.figma.com",
+      "firebasestorage.googleapis.com",
+      "picsum.photos",
     ],
   },
   eslint: {

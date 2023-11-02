@@ -79,6 +79,12 @@
   color: white;
 }
 
+
+.btnBanner svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
 .btnBanner:hover {
   transition: all 0.3s ease-in-out;
   backdrop-filter: blur(15px);
