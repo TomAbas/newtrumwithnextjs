@@ -8,6 +8,7 @@ import ServicesPage5 from "./ServicesPage5/ServicesPage5";
 import Industry from "../Recuitment/Industry/Industry";
 import { getListRatingData } from "../../ApiUrl/rating/ratingApi";
 import { getCategoryFromListAllProject } from "../../services/projectApiSerivces";
+import BestProjects from "../landingpage/LandingPage/BestProjects/BestProjects";
 
 const ServicesPage = ({ data, listAllProject }) => {
   const [listCardIndustry, setListCardIndustry] = useState(null || []);
@@ -30,13 +31,38 @@ const ServicesPage = ({ data, listAllProject }) => {
       setDataServices(data);
     }
   }, [data]);
+
+  const dataTest = [
+    {
+      img: "https://picsum.photos/200",
+      title: "Content Marketing",
+      content: "We help yo",
+    },
+    {
+      img: "https://picsum.photos/200",
+      title: "Content Marketing",
+      content: "We help yo",
+    },
+    {
+      img: "https://picsum.photos/200",
+      title: "Content Marketing",
+      content: "We help yo",
+    },
+    {
+      img: "https://picsum.photos/200",
+      title: "Content Marketing",
+      content: "We help yo",
+    },
+  ];
+  
   return (
     <div className={styles.serviceContainer}>
       <ServicesPage1 />
       <ServicesPage2 dataServices={dataServices} />
       <ServicesPage3 dataServices={dataServices} listCategory={listCategory} />
-      <Industry />
-      <ServicesPage4 listCardIndustry={listCardIndustry} />
+      {/* <Industry /> */}
+      {/* <ServicesPage4 listCardIndustry={listCardIndustry} /> */}
+      <BestProjects imgArr={dataTest} />
       <ServicesPage5 />
     </div>
   );

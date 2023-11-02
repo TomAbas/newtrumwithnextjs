@@ -15,6 +15,7 @@ const LandingPage = ({ data }) => {
     page4Data,
     imgArr,
     mainImage,
+    projectArr,
   } = useGetDataLand(data);
 
   return (
@@ -24,7 +25,7 @@ const LandingPage = ({ data }) => {
       <Page02 isLandingPage={true} imgArr={imgArr} />
       <Page03 page3Data={page3Data} />
       {/* <Page04 page4Data={page4Data} /> */}
-      <BestProjects imgArr={imgArr} />
+      <BestProjects imgArr={projectArr} />
     </>
   );
 };

@@ -32,7 +32,14 @@ const Banner = () => {
           <h1>join our artist roster</h1>
         </div>
         <button className={styles.btnBanner}>
-          <div style={{ backdropFilter: "15px" }}>
+          <div
+            style={{
+              backdropFilter: "15px",
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+            }}
+          >
             {" "}
             read out case studies <FontAwesomeIcon icon={faArrowRight} />
           </div>
