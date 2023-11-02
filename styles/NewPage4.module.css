@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  color: #fff;
 }
 .WrapContent .ContentLeft {
   width: 100%;
@@ -21,6 +22,7 @@
   justify-content: space-between;
   gap: 4px;
   flex-wrap: wrap;
+  height: 50%;
 }
 .ContentLeft .NormalNews .ItemNews {
   background: #fffefe3f;
@@ -34,6 +36,7 @@
   padding: 0.8rem;
   margin-bottom: 0.3rem;
   font-size: 14px;
+  height: 50%;
 }
 
 .WrapRightNews {
