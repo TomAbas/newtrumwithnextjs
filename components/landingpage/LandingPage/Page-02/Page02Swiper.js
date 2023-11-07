@@ -53,9 +53,8 @@ const Page02Swiper = ({ isLandingPage, imgArr, isCategory = false }) => {
   const variants = {
     visible: (i) => ({
       opacity: 1,
-      transform: `translateY(-${
-        i * textRef?.current?.getBoundingClientRect().height
-      }px)`,
+      transform: `translateY(-${i * textRef?.current?.getBoundingClientRect().height
+        }px)`,
     }),
     hidden: { opacity: 0 },
   };

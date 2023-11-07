@@ -4,6 +4,7 @@ import Image from "next/future/image";
 import React from "react";
 import styles from "/styles/BestProjectStyles.module.css";
 import bg from "/public/imgs/slideImgs/MultiMediaProduction1.webp";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const BestProjectItem = ({ project }) => {
   return (

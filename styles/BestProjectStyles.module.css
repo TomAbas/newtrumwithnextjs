@@ -4,9 +4,10 @@
 
 .bestProjectBox {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .projectItem {
@@ -78,7 +79,6 @@
   display: block;
   color: white;
 }
-
 
 .btnBanner svg {
   width: 1.25rem;
