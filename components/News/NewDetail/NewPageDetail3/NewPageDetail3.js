@@ -1,20 +1,20 @@
-import React, { useEffect } from "react";
-import styles from "../../../styles/ServicesPage3.module.css";
-import ItemService from "./components/ItemService/ItemService";
-import { getAllProject } from "../../../ApiUrl/projectApi/projectApi";
 
-const ServicesPage3 = ({ dataServices, listCategory }) => {
+import React, { useEffect } from "react";
+import styles from "../../../../styles/NewPageDetail3.module.css";
+import ItemNewPageDetail3 from "./ItemNewPageDetail3";
+
+const NewPageDetail3 = ({ dataServices, listCategory }) => {
   const { listService, subTitle } = dataServices;
   const mainTitle = {
     category: "SERVICES",
-    description: subTitle,
   };
   const newData = [mainTitle, ...listCategory];
   return (
     <div className={styles.service3Container}>
+      <h3 className={styles.titleCard}>LASTEST NEWS</h3>
       {newData.map((item, idx) => {
         return (
-          <ItemService
+          <ItemNewPageDetail3
             key={idx}
             desc={item.description}
             title={item.category}
@@ -26,4 +26,4 @@ const ServicesPage3 = ({ dataServices, listCategory }) => {
   );
 };
 
-export default ServicesPage3;
+export default NewPageDetail3;

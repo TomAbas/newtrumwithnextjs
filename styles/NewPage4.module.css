@@ -1,221 +1,248 @@
 .NewPage4Container {
-    margin-top: 3rem;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .WrapContent {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #fff;
 }
 
 .WrapContent .ContentLeft {
-    width: 100%;
+  width: 100%;
 }
 
 .WrapContent .ContentRight {
-    width: 100%;
-    padding: 1rem 0 1rem 0.2rem;
+  width: 100%;
+  padding: 1rem 0 1rem 0.2rem;
 }
 
 .ContentLeft .NormalNews {
-    display: flex;
-    justify-content: space-between;
-    gap: 32px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
 }
 
 .ContentLeft .NormalNews .ItemNews:hover {
-    transition: all 0.2s linear;
+  transition: all 0.2s linear;
 }
 
 .ContentLeft .NormalNews .ItemNews {
-    position: relative;
-    padding: 0.8rem;
-    width: 100%;
-    font-size: 14px;
-    height: 300px;
+  position: relative;
+  padding: 0.8rem;
+  width: 100%;
+  font-size: 14px;
+  height: 300px;
 }
 
 .ContentLeft .NormalNews .ItemNews .BackGroundItemNews {
-    background-image: url("../public/imgs/img-banner-new.webp");
+  background-image: url("../public/imgs/img-banner-new.webp");
 }
 
 .ItemNews:hover .BackGroundItemNews {
-    opacity: 0.5;
-    transition: all 0.2s linear;
+  opacity: 0.5;
+  transition: all 0.2s linear;
 }
 
-.ItemNews:hover .TextItemNews, .WrapContentRight:hover .TextItemRight {
-    transform: translateY(-5%);
-    transition: all 0.2s linear;
+.ItemNews:hover .TextItemNews,
+.WrapContentRight:hover .TextItemRight {
+  transform: translateY(-5%);
+  transition: all 0.2s linear;
 }
 
-.ItemNews:hover .TextItemNews .TextItem1, .WrapContentRight:hover .TextItemRight .TextItem1 {
-    text-decoration: underline;
+.ItemNews:hover .TextItemNews .TextItem1,
+.WrapContentRight:hover .TextItemRight .TextItem1 {
+  text-decoration: underline;
 }
 
-.ItemNews:hover .TextItemNews .TextItem2, .WrapContentRight:hover .TextItemRight .TextItem2 {
-    opacity: 1 !important;
-    position: relative !important;
-    transition: all 0.5s linear;
+.ItemNews:hover .TextItemNews .TextItem2,
+.WrapContentRight:hover .TextItemRight .TextItem2 {
+  opacity: 1 !important;
+  position: relative !important;
+  transition: all 0.5s linear;
 }
 
 .HotNews {
-    padding: 0.8rem;
-    margin-bottom: 0.3rem;
-    font-size: 14px;
-    height: 250px;
-    position: relative;
-    overflow: hidden;
+  padding: 0.8rem;
+  margin-bottom: 0.3rem;
+  font-size: 14px;
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
 }
 
-.HotNews .WrapIconShare, .ItemNews .WrapIconShare,.WrapContentRight .WrapIconShare {
-    visibility: hidden;
-    position: absolute;
-    right: 15px;
-    top: 15px;
+.HotNews .WrapIconShare,
+.ItemNews .WrapIconShare,
+.WrapContentRight .WrapIconShare {
+  visibility: hidden;
+  position: absolute;
+  right: 15px;
+  top: 15px;
 }
 
 .BackGroundNews {
-    background-image: url("../public/imgs/img-banner-new.webp");
+  background-image: url("../public/imgs/img-banner-new.webp");
 }
 
-.BackGroundNews, .ContentLeft .NormalNews .ItemNews .BackGroundItemNews {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+.BackGroundNews,
+.ContentLeft .NormalNews .ItemNews .BackGroundItemNews {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.HotNews:hover .WrapIconShare, .ItemNews:hover .WrapIconShare , .WrapContentRight:hover .WrapIconShare{
-    visibility: visible;
-    transition: all 0.2s linear;
-    cursor: pointer;
+.HotNews:hover .WrapIconShare,
+.ItemNews:hover .WrapIconShare,
+.WrapContentRight:hover .WrapIconShare {
+  visibility: visible;
+  transition: all 0.2s linear;
+  cursor: pointer;
 }
 
-.HotNews:hover .BackGroundNews,.WrapContentRight:hover .BackGroundItemRight{
-    opacity: 0.5;
-    transition: all 0.2s linear;
+.HotNews:hover .BackGroundNews,
+.WrapContentRight:hover .BackGroundItemRight {
+  opacity: 0.5;
+  transition: all 0.2s linear;
 }
 
-.WrapTextHotNewsDetail, .TextItemNews, .WrapContentRight .TextItemRight {
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    align-items: start;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 10px;
-    transition: all 0.2s linear;
-    gap: 10px;
+.WrapTextHotNewsDetail,
+.TextItemNews,
+.WrapContentRight .TextItemRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: start;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  transition: all 0.2s linear;
+  gap: 10px;
 }
 
-.WrapTextHotNewsDetail p:first-child, .TextItemNews .TextItem1 {
-    font-size: 18px;
+.WrapTextHotNewsDetail p:first-child,
+.TextItemNews .TextItem1 {
+  font-size: 18px;
 }
 
-.WrapTextHotNewsDetail p:last-child, .TextItemNews .TextItem2, .WrapContentRight .TextItemRight .TextItem2 {
-    color: rgba(217, 217, 217, 0.69);
-    font-size: 16px;
-    opacity: 0;
-    position: absolute;
+.WrapTextHotNewsDetail p:last-child,
+.TextItemNews .TextItem2,
+.WrapContentRight .TextItemRight .TextItem2 {
+  color: rgba(217, 217, 217, 0.69);
+  font-size: 16px;
+  opacity: 0;
+  position: absolute;
 }
 
 .HotNews:hover .WrapTextHotNewsDetail {
-    transform: translateY(-5%);
-    transition: all 0.2s linear;
+  transform: translateY(-5%);
+  transition: all 0.2s linear;
 }
 
 .HotNews:hover .WrapTextHotNewsDetail p:first-child {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .HotNews:hover .WrapTextHotNewsDetail p:last-child {
-    opacity: 1;
-    position: relative;
+  opacity: 1;
+  position: relative;
 }
 
 .WrapRightNews {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .WrapContentRight {
-    gap: 5px;
-    position: relative;
-    width: 100%;
-    font-size: 14px;
+  gap: 5px;
+  position: relative;
+  width: 100%;
+  font-size: 14px;
 }
 
 .WrapContentRight img {
-    width: 100%;
-    object-fit: cover;
+  width: 100%;
+  object-fit: cover;
 }
-
 
 .BackGroundItemRight {
-    height: 200px;
-    width: 100%;
-    background-image: url("https://picsum.photos/500");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+  height: 200px;
+  width: 100%;
+  background-image: url("https://picsum.photos/500");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-
 @media screen and (min-width: 768px) {
-    .ContentLeft .NormalNews .ItemNews,
-    .HotNews,
-    .WrapContentRight div {
-        font-size: 16px;
-    }
+  .ContentLeft .NormalNews .ItemNews,
+  .HotNews,
+  .WrapContentRight div {
+    font-size: 16px;
+  }
 }
 
 @media screen and (min-width: 992px) {
-    .HotNews {
-        height: 265px;
-    }
+  .HotNews {
+    height: 265px;
+  }
 
-    .WrapContent {
-        flex-direction: row;
-        justify-content: space-between;
-    }
+  .WrapContent {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
-    .WrapContent .ContentLeft {
-        width: 60%;
-        height: fit-content;
-    }
+  .WrapContent .ContentLeft {
+    width: 60%;
+    height: fit-content;
+  }
 
-    .ContentLeft .NormalNews .ItemNews {
-        padding: 0.8rem;
-        width: calc(100% - 52.5%);
-    }
+  .ContentLeft .NormalNews .ItemNews {
+    padding: 0.8rem;
+    width: calc(100% - 53.5%);
+    height: 250px;
+  }
 
-    .WrapContent .ContentRight {
-        width: 35%;
-    }
+  .WrapContent .ContentRight {
+    width: 35%;
+  }
 
-    .HotNews {
-        margin-bottom: 0.8rem;
-    }
+  .HotNews {
+    margin-bottom: 0.8rem;
+  }
+
+  .BackGroundItemRight {
+    height: 174px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .ContentLeft .NormalNews .ItemNews {
+    height: 300px;
+  }
+
+  .BackGroundItemRight {
+    height: 198px;
+  }
 }
 
 @media screen and (min-width: 1480px) {
-    .ContentLeft .NormalNews .ItemNews,
-    .HotNews,
-    .WrapContentRight div {
-        font-size: 18px;
-    }
+  .ContentLeft .NormalNews .ItemNews,
+  .HotNews,
+  .WrapContentRight div {
+    font-size: 18px;
+  }
 }

@@ -13,7 +13,6 @@ const NewPage = () => {
                 {/*<NewPage2/>*/}
                 {/*<NewPage3/>*/}
                 <NewPage4/>
-
             </div>
         </div>
     )

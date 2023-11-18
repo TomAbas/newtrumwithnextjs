@@ -1,5 +1,5 @@
-import {Divider, IconButton, Input} from "@mui/material";
-import React, {useRef, useState} from "react";
+import { Divider, IconButton, Input } from "@mui/material";
+import React, { useRef, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import styles from "../../../styles/NewPage4.module.css";
 import EastIcon from "@mui/icons-material/East";
@@ -53,7 +53,7 @@ const ListNews2 = [{
 const NewPage4 = () => {
 
     return (<div className={styles.NewPage4Container}>
-        <FieldInput/>
+        <FieldInput />
         <div className={styles.WrapContent}>
             <div className={styles.ContentLeft}>
                 <Link href="/daily-news">
@@ -66,7 +66,7 @@ const NewPage4 = () => {
                                 fluids simulations.
                             </p>
                         </div>
-                        <IconShareComponent/>
+                        <IconShareComponent />
                     </div>
                 </Link>
                 <div className={styles.NormalNews}>
@@ -81,14 +81,14 @@ const NewPage4 = () => {
                                         {item.content}
                                     </p>
                                 </div>
-                                <IconShareComponent/>
+                                <IconShareComponent />
                             </div>
                         </Link>);
                     })}
                 </div>
             </div>
             <div className={styles.ContentRight}>
-                <h1 style={{marginBottom: "1rem"}}>MOST READ</h1>
+                <h1 style={{ marginBottom: "1rem" }}>MOST READ</h1>
                 <div className={styles.WrapRightNews}>
                     {ListNews2.map((item) => {
                         return (<Link href="/news" key={item.id}>
@@ -101,7 +101,7 @@ const NewPage4 = () => {
                                         {item.content}
                                     </p>
                                 </div>
-                                <IconShareComponent/>
+                                <IconShareComponent />
                             </div>
                         </Link>);
                     })}

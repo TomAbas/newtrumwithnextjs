@@ -1,0 +1,127 @@
+.wrapContent {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-direction: column;
+}
+
+.contentRight {
+  max-width: 650px;
+  font-size: 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.titleRight {
+  font-size: 32px;
+  color: #fff;
+}
+
+.descRight {
+  color: #fff;
+  font-size: 14px;
+}
+
+.contentLeft {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentLeft div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ffffff91;
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  color: #fff;
+  margin-top: 0.5rem;
+}
+
+.contentLeft div:hover {
+  background: #ffffff33;
+  cursor: pointer;
+}
+
+.subText {
+  margin-top: 1rem;
+  color: #fff;
+  max-width: 900px;
+
+  text-align: justify;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: 150%; /* 25.5px */
+}
+@media screen and (min-width: 768px) {
+  .descRight {
+    font-size: 16px;
+  }
+  .subText {
+    font-size: 16px;
+  }
+  .wrapContent {
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .wrapContent {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+
+  .contentRight {
+    font-size: 17px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .titleRight {
+    font-size: 32px;
+    color: #fff;
+  }
+
+  .descRight {
+    color: #fff;
+  }
+
+  .contentLeft {
+    display: flex;
+    gap: 30px;
+  }
+
+  .contentLeft div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.5px solid #ffff;
+    height: 180px;
+    width: 180px;
+    border-radius: 50%;
+  }
+
+  .contentLeft div:hover {
+    background: #ffffff33;
+    cursor: pointer;
+  }
+
+  .subText {
+    margin-top: 3rem;
+    color: #fff;
+    max-width: 900px;
+
+    text-align: justify;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: 150%; /* 25.5px */
+  }
+}
