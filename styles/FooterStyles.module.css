@@ -97,6 +97,18 @@
     margin-bottom: 3px;
   }
 }
+@media (max-width: 480px) {
+  .footerInfo p:first-child {
+    width: 50%;
+  }
+  .footerInfo p {
+    font-size: 8px;
+    text-wrap: wrap;
+  }
+  .contactUs {
+    font-size: 10px !important;
+  }
+}
 @media (min-width: 425px) {
   .test {
     height: 60vh;
