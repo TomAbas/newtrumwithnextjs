@@ -33,13 +33,6 @@ axiosClient.interceptors.request.use(
 
 axios.interceptors.response.use(
   function (response) {
-
-
-
-
-
-
-    
     return response.data;
   },
   function (error) {

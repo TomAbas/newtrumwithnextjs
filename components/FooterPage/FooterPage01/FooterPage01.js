@@ -60,7 +60,7 @@ const FooterPage01 = () => {
                   icon={faPaperPlane}
                   className={styles.iconRight}
                 />
-                <p style={{ fontSize: 14 }}>Contact Us</p>
+                <p className={styles.contactUs} style={{ fontSize: 14 }}>Contact Us</p>
               </div>
             </a>
           </Link>

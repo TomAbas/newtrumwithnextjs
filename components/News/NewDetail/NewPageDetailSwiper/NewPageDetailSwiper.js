@@ -2,15 +2,15 @@ import { Box, Container, Stack, Typography, useTheme } from "@mui/material";
 import React, { useEffect, useRef } from "react";
 import { SwiperSlide } from "swiper/react";
 import stylesSlide from "../../../../styles/SwiperStyles.module.css";
-import styles from "../../../../styles/Page02Styles.module.css";
+import styles from "../../../../styles/NewPageDetailSwiper.module.css";
 import CustomSwiper from "../../../CustomSwiper/CustomSwiper";
 import SlideItem from "../../../CustomSwiper/SlideItem";
 import arrowLeft from "../../../../public/imgs/arrowLeft.svg";
 import arrowRight from "../../../../public/imgs/arrowRight.svg";
-import gridpic from "../../../../public/imgs/grid.svg";
 import Image from "next/future/image";
 import useMoveIcon from "../../../../hooks/useMoveIcon";
 import { motion, useInView } from "framer-motion";
+import SlideItemNewDetail from "./SlideItemNewDetail";
 
 const CSlideItem = (imgArr, isCategory) => {
   return imgArr.map((item, idx) => {
@@ -18,7 +18,7 @@ const CSlideItem = (imgArr, isCategory) => {
       <SwiperSlide key={idx}>
         {({ isActive, isPrev }) => {
           return (
-            <SlideItem
+            <SlideItemNewDetail
               item={item}
               isActive={isActive}
               isPrev={isPrev}
@@ -30,7 +30,7 @@ const CSlideItem = (imgArr, isCategory) => {
     );
   });
 };
-const Page02Swiper = ({ isLandingPage, imgArr, isCategory = false }) => {
+const NewPageDetailSwiper = ({ isLandingPage, imgArr, isCategory = false }) => {
   const theme = useTheme();
   const gridBoxRef = useRef();
   const inViewGridPicref = useInView(gridBoxRef);
@@ -78,19 +78,7 @@ const Page02Swiper = ({ isLandingPage, imgArr, isCategory = false }) => {
           transition: "1.1s cubic-bezier(0.215, 0.61, 0.355, 1)",
         }}
       >
-        {" "}
-        {isLandingPage && (
-          <Box
-            ref={gridBoxRef}
-            className={
-              inViewGridPicref
-                ? `${styles.gridBox} ${styles.gridShow}`
-                : styles.gridBox
-            }
-          >
-            <Image src={gridpic} alt="grid-pic" className={styles.gridPic} />
-          </Box>
-        )}
+
         <Box
           className={stylesSlide.boxArrLeft}
           style={{
@@ -171,8 +159,13 @@ const Page02Swiper = ({ isLandingPage, imgArr, isCategory = false }) => {
           </Typography>
         </motion.div>
       </Stack>
+      <div className={styles.desc}>
+        The artistic direction, inspired in part by the style of artist David Hockney, required colossal work in modeling and textures and makes viewers feel like they are inside a three dimension, living, painting. The project features several innovative real-time approaches and technologies, including volumetric capture of actors, motion capture, as well as physics and fluids simulations.
+        The artistic direction, inspired in part by the style of artist David Hockney, required colossal work in modeling and textures and makes viewers feel like they are inside a three dimension, living, painting. The project features several innovative real-time approaches and technologies, including volumetric capture of actors, motion capture, as well as physics and fluids simulations.
+
+      </div>
     </>
   );
 };
 
-export default Page02Swiper;
+export default NewPageDetailSwiper;

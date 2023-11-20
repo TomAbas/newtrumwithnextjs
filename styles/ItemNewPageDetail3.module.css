@@ -1,0 +1,90 @@
+.service3Container {
+  color: #fff;
+  margin-bottom: 100px;
+}
+.wrapItemService {
+  border-bottom: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.wrapTextCard {
+  max-width: 80%;
+  padding: 1rem 0;
+}
+.titleCard {
+  font-size: 16px;
+}
+.wrapTextCard:hover .titleCard {
+  text-decoration: underline;
+}
+.subTitleCard {
+  font-size: 14px;
+  text-overflow: ellipsis;
+  height: 15px;
+  overflow: hidden;
+}
+
+.activeExpand {
+  height: max-content;
+}
+
+.desc {
+  font-size: 14px;
+}
+
+.wrapCircle {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  background-size: contain;
+}
+.wrapItemService:not(:first-child):hover .wrapTextCard {
+  opacity: 0.8;
+}
+
+.wrapCircle img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+@media screen and (min-width: 375px) {
+  .titleCard {
+    font-size: 16px;
+  }
+}
+@media screen and (min-width: 576px) {
+  .titleCard {
+    font-size: 29px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .titleCard {
+    font-size: 38px;
+  }
+  .subTitleCard {
+    font-size: 18px;
+  }
+  .desc {
+    font-size: 18px;
+  }
+  .wrapCircle {
+    width: 42px;
+    height: 42px;
+  }
+  .subTitleCard {
+    height: 25px;
+  }
+  .activeExpand {
+    height: max-content !important;
+  }
+}
+@media screen and (min-width: 992px) {
+}
+@media screen and (min-width: 1024px) {
+}
+@media screen and (min-width: 1200px) {
+}

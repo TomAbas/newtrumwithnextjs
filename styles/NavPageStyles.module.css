@@ -76,7 +76,8 @@
     font-size: 10px;
   }
   .navBox ul {
-    gap: 10px;
+    gap: 8px;
+    margin-bottom: 0.2rem;
   }
 }
 @media (min-width: 425px) {
@@ -90,10 +91,10 @@
     font-size: 10px;
   }
   .navBox {
-    font-size: 12px;
+    font-size: 10px;
   }
   .navBox ul {
-    gap: 15px;
+    gap: 10px;
   }
 }
 

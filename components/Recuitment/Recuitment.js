@@ -18,7 +18,6 @@ import Industry from "./Industry/Industry";
 
 const ListJobItem = ({ job }) => {
   const [activeSelectOption, setActiveSelectOption] = useState(false);
-
   return (
     <>
       <ListItemButton
