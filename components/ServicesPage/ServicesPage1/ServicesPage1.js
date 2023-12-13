@@ -5,7 +5,7 @@ const ServicesPage1 = () => {
   return (
     <div className={styles.service1Container}>
       <h1 className={`${styles.serviceTitle} ${aniStyles.fadeInUp}`}>
-        SERVICES
+        SERVICES.
       </h1>
     </div>
   );

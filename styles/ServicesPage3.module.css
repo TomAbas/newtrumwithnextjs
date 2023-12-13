@@ -10,6 +10,7 @@
   cursor: pointer;
 }
 .wrapTextCard {
+  font-style: normal;
   max-width: 80%;
   padding: 1rem 0;
 }
@@ -17,7 +18,8 @@
   font-size: 26px;
 }
 .subTitleCard {
-  font-size: 18px;
+  font-size: 14px;
+  font-weight: 400;
 }
 .desc {
   font-size: 14px;
@@ -52,7 +54,7 @@
     font-size: 52px;
   }
   .subTitleCard {
-    font-size: 36px;
+    font-size: 18px;
   }
   .desc {
     font-size: 18px;

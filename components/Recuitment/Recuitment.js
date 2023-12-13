@@ -79,24 +79,7 @@ const Recuitment = () => {
 
             <Industry />
 
-            {/* <div className={styles.container}>
-              <div className={styles.textHolder}>
-                <div className={styles.titleMd}>{companyInfo.address}</div>
-              </div>
-              <div className={`${styles.textHolder} ${styles.phone}`}>
-                <div className={styles.textHolder}>
-                  <div className={styles.titleMd}>{companyInfo.phone}</div>
-                  <div className={styles.titleXs}>Contact Us</div>
-                </div>
-              </div>
-              <div className={styles.iconBox}>
-                <FontAwesomeIcon icon={faPaperPlane} className={styles.icon} />
-                <div className={styles.email}>
-                  {" "}
-                  <p> {companyInfo.email}</p>{" "}
-                </div>
-              </div>
-            </div> */}
+
             <div className={styles.titleMd}>We're hiring</div>
             <Typography variant="caption">
               TRUM is an open and inclusive work environment, with flexible
@@ -110,30 +93,6 @@ const Recuitment = () => {
               </div>
               <List className={styles.itemHolder}>{createListJobItem()}</List>
             </div>
-            {/* <div className={styles.bottomWidget}>
-              <ul>
-                <Link href={`${companyInfo.instagram}`} target="_blank">
-                  <a>
-                    <li className={styles.link}>Instagram</li>
-                  </a>
-                </Link>
-                <Link href={`${companyInfo.facebook}`} target="_blank">
-                  <a>
-                    <li className={styles.link}>Facebook</li>
-                  </a>
-                </Link>
-                <Link href={`${companyInfo.twitter}`} target="_blank">
-                  <a>
-                    <li className={styles.link}>Twitter</li>
-                  </a>
-                </Link>
-                <Link href={`${companyInfo.linkedin}`} target="_blank">
-                  <a>
-                    <li className={styles.link}>Linkedin</li>
-                  </a>
-                </Link>
-              </ul>
-            </div> */}
           </div>
         </>
       ) : (

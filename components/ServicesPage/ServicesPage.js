@@ -63,7 +63,7 @@ const ServicesPage = ({ data, listAllProject }) => {
       {/* <Industry /> */}
       {/* <ServicesPage4 listCardIndustry={listCardIndustry} /> */}
       <BestProjects imgArr={dataTest} />
-      <ServicesPage5 />
+      {/*<ServicesPage5 />*/}
     </div>
   );
 };

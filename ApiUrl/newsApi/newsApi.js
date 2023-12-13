@@ -18,4 +18,14 @@ function getPost(id) {
     });
 }
 
+export function addPost(data) {
+    return axios
+        .post(`news/add`,data)
+        .then(({ data }) => data)
+        .catch((error) => {
+            console.log(error);
+        });
+}
+
+
 export { getAllPosts, getPost };

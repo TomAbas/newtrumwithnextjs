@@ -6,6 +6,7 @@ import Page03 from "../components/landingpage/LandingPage/Page-03/Page03";
 import Page04 from "../components/landingpage/LandingPage/Page-04/Page04";
 import useGetDataLand from "../hooks/useGetDataLand";
 import BestProjects from "../components/landingpage/LandingPage/BestProjects/BestProjects";
+import ZoomAble from "../components/ZoomAble/ZoomAble";
 
 const LandingPage = ({data}) => {
     const {

@@ -98,37 +98,6 @@ const ProjectPage = ({ projectsidx, data }) => {
           swiper={swiper}
         />
         <div className={styles.container}>
-          {/* <ProjectPage02
-            tagLine={tagLine}
-            projectsidx={projectsidx}
-            contributor={contributor}
-          /> */}
-          {/* <ProjectPage03
-            openTitle={openTitle}
-            subTitle={subTitle}
-            content={content}
-            img={img}
-          />
-          <ProjectPage04Swiper
-            subTitle1={subTitle1}
-            content1={content1}
-            projectsidx={projectsidx}
-            swiper={swiper}
-            newsBigTitle={newsBigTitle}
-            youtubeUrl={youtubeUrl}
-            isCategory={isCategory}
-            category={category}
-          /> */}
-          {/* <ProjectPage04
-            subTitle1={subTitle1}
-            content1={content1}
-            img1={img1}
-            img2={img2}
-            img3={img3}
-            img4={img4}
-            img5={img5}
-            projectsidx={projectsidx}
-          /> */}
         </div>
       </div>
     </>

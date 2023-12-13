@@ -125,6 +125,7 @@ const Page02Swiper = ({ isLandingPage, imgArr, isCategory = false }) => {
           }}
         >
           <CustomSwiper
+              imgArr={imgArr}
             renderSlide={() =>
               CSlideItem(
                 imgArr?.filter((item) => item.img),
