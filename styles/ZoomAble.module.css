@@ -19,29 +19,36 @@
     align-items: center;
     justify-content: center;
 }
-.wrapContent{
-    width: 80vw;
-    height:400px;
+
+.wrapContent {
+    width: fit-content;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
 }
+
+.content {
+    padding: 1rem;
+}
+
 @media (min-width: 768px) {
-    .wrapContent{
+    .wrapContent {
         width: 40vw;
     }
 }
 
 @media (min-width: 1024px) {
-    .wrapContent{
+    .wrapContent {
         width: 30vw;
     }
 }
-.close{
+
+.close {
     position: absolute;
-    top: -20px;
-    right: 20px;
+    top: 0;
+    transform: translate(155px, 35px);
     z-index: 999999;
     font-size: 20px;
     font-weight: 600;

@@ -92,6 +92,7 @@
 
 .BackGroundNews,
 .ContentLeft .NormalNews .ItemNews .BackGroundItemNews {
+  border-radius: 20px;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -186,6 +187,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  border-radius: 20px;
 }
 
 @media screen and (min-width: 768px) {

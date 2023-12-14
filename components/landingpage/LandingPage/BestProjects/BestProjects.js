@@ -52,12 +52,12 @@ const Banner = () => {
     );
 };
 
-const BestProjects = ({imgArr}) => {
+const BestProjects = ({imgArr, isShowButton = true}) => {
     const router = useRouter()
 
     return (
         <div className={styles.bestProjectContainer}>
-            <div className={`${styles.bestProjectBox} bestProjectBox`}>
+            {imgArr && <div className={`${styles.bestProjectBox} bestProjectBox`}>
                 <Swiper
 
                     pagination={{
@@ -112,10 +112,10 @@ const BestProjects = ({imgArr}) => {
                         </SwiperSlide>
                     })}
                 </Swiper>
-
             </div>
+            }
             <Banner/>
-            <div className={styles.WrapBtn}>
+            {isShowButton && <div className={styles.WrapBtn}>
                 <Button
                     onClick={() => router.push("/projects")}
                     style={{border: '2px solid #393939', minWidth: 250, backgroundColor: '#000', color: '#fff'}}
@@ -125,6 +125,7 @@ const BestProjects = ({imgArr}) => {
                     style={{border: '2px solid #393939', minWidth: 250}}
                     btnName={'BOOK YOUR CALL'}/>
             </div>
+            }
         </div>
     );
 };

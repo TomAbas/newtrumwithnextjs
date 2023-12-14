@@ -1,0 +1,95 @@
+.WrapItem {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    height: 400px;
+    padding-bottom: 4.5rem;
+    overflow: hidden;
+}
+
+.WrapItem img {
+    border: 3px solid #393939 !important;
+    border-radius: 10px;
+}
+
+.WrapItem:hover img {
+    height: 310px !important;
+    width: 300px;
+}
+
+.WrapBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 10.5rem;
+    z-index: 100;
+    border: 1px solid #393939;
+    border-radius: 20px;
+    padding: 0 0.5rem;
+    width: 250px;
+}
+
+.BtnLeft, .BtnRight {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.3rem;
+}
+
+.BtnLeft:hover, .BtnRight:hover {
+    background: #393939;
+    transition: all 0.2s ease-in-out;
+    border-radius: 50%;
+}
+
+.WrapItem:hover .wrapItroduceItem {
+    height: auto;
+    border-right: none;
+    border-left: none;
+}
+
+.wrapItroduceItem {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: linear-gradient(180deg, #131313 0%, rgba(19, 19, 19, 0.85) 100%);
+    height: 45px;
+    overflow: hidden;
+    max-width: 305px;
+    border-radius: 0 0 10px 10px;
+    border: 2px solid #393939;
+    border-top: none;
+}
+
+.titleItem {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    padding-top: 0.7rem;
+    text-transform: uppercase;
+}
+
+.descItem {
+    font-size: 0.7rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    color: #fff;
+
+}
+
+@media screen and (min-width: 576px) {
+    .WrapBtn {
+        width: unset;
+    }
+}

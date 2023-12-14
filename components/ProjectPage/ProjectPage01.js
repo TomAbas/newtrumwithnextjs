@@ -6,8 +6,7 @@ import imgXlogo from "../../public/imgs/XLogo.svg"
 import imgInsta from "../../public/imgs/Instagram.svg"
 import Image from "next/image";
 import ZoomAble from "../ZoomAble/ZoomAble";
-import {Swiper, SwiperSlide} from "swiper/react";
-import {Pagination} from "swiper";
+import SwiperListImageForPopup from "../SwiperListImage/SwiperListImageForPopup";
 
 const ProjectPage01 = ({title, category, bannerImg, isCategory, swiper}) => {
     const [isZoomed, setIsZoomed] = useState(false);
@@ -177,25 +176,29 @@ const ProjectPage01 = ({title, category, bannerImg, isCategory, swiper}) => {
                             height={300}
                             data={swiper}
                         />
-                        <ZoomAble isZoomed={isZoomed} setIsZoomed={setIsZoomed} content={
-                            <Swiper
-                                slidesPerView={1}
-                                pagination={true} modules={[Pagination]}>
-                                {
-                                    swiper.map((item, idx) => {
-                                        return (
-                                            <SwiperSlide key={idx}>
-                                                <Image
-                                                    style={{borderRadius: 20}}
-                                                    src={item.image}
-                                                    width={500}
-                                                    height={500}/>
-                                            </SwiperSlide>
-                                        )
-                                    })
-                                }
+                        {/*<ZoomAble isZoomed={isZoomed} setIsZoomed={setIsZoomed} content={*/}
+                        {/*    <Swiper*/}
+                        {/*        slidesPerView={1}*/}
+                        {/*        pagination={true} modules={[Pagination]}>*/}
+                        {/*        {*/}
+                        {/*            swiper.map((item, idx) => {*/}
+                        {/*                return (*/}
+                        {/*                    <SwiperSlide key={idx}>*/}
+                        {/*                        <Image*/}
+                        {/*                            style={{borderRadius: 20}}*/}
+                        {/*                            src={item.image}*/}
+                        {/*                            width={500}*/}
+                        {/*                            height={500}/>*/}
+                        {/*                    </SwiperSlide>*/}
+                        {/*                )*/}
+                        {/*            })*/}
+                        {/*        }*/}
 
-                            </Swiper>
+                        {/*    </Swiper>*/}
+                        {/*}/>*/}
+                        <ZoomAble isZoomed={isZoomed} setIsZoomed={setIsZoomed} content={
+                           <SwiperListImageForPopup isShowNumPagination={true}
+                            imgArr={swiper}/>
                         }/>
                     </div>
                 </div>

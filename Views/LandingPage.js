@@ -7,6 +7,7 @@ import Page04 from "../components/landingpage/LandingPage/Page-04/Page04";
 import useGetDataLand from "../hooks/useGetDataLand";
 import BestProjects from "../components/landingpage/LandingPage/BestProjects/BestProjects";
 import ZoomAble from "../components/ZoomAble/ZoomAble";
+import SwiperListImage from "../components/SwiperListImage/SwiperListImage";
 
 const LandingPage = ({data}) => {
     const {
@@ -26,7 +27,8 @@ const LandingPage = ({data}) => {
             <Page02 isLandingPage={true} imgArr={imgArr}/>
             <Page03 page3Data={page3Data}/>
             {/* <Page04 page4Data={page4Data} /> */}
-            <BestProjects imgArr={projectArr}/>
+            <SwiperListImage imgArr={projectArr}/>
+            <BestProjects />
         </>
     );
 };

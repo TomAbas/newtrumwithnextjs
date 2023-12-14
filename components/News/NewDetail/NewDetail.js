@@ -5,6 +5,8 @@ import NewPageDetail3 from './NewPageDetail3/NewPageDetail3';
 import { getListRatingData } from '../../../ApiUrl/rating/ratingApi';
 import { getCategoryFromListAllProject } from '../../../services/projectApiSerivces';
 import Page02Swiper from '../../landingpage/LandingPage/Page-02/Page02Swiper';
+import NewPage2 from '../NewPage2/NewPage2';
+import NewPage3 from '../NewPage3/NewPage3';
 
 function NewDetail({ data, listAllProject }) {
     const [imgArr, setImgArr] = useState([{
@@ -42,9 +44,13 @@ function NewDetail({ data, listAllProject }) {
         }
     }, [data]);
     return (<>
-        <NewPageDetail2 />
-        <NewPageDetailSwiper isLandingPage={true} imgArr={imgArr} />
-        <NewPageDetail3 dataServices={dataServices} listCategory={listCategory} />
+        {/*<NewPageDetail2 />*/}
+        {/*<NewPageDetailSwiper isLandingPage={true} imgArr={imgArr} />*/}
+        {/*<NewPageDetail3 dataServices={dataServices} listCategory={listCategory} />*/}
+
+        <NewPage2 />
+        <NewPage3/>
+
     </>);
 }
 

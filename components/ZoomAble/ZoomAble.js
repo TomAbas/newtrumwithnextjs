@@ -11,16 +11,17 @@ const ZoomAble = ({content, isZoomed, setIsZoomed}) => {
 
     return (
         <div className={isZoomed ? `${styles.zoomed} zoomAble` : `${styles.zoom}`} >
-
             <div className={styles.wrapContent}>
                 <div
                     onClick={handleImageClick}
                     className={styles.close}>
                     X
                 </div>
-                {
-                    content
-                }
+               <div className={styles.content}>
+                   {
+                       content
+                   }
+               </div>
             </div>
         </div>
     );
