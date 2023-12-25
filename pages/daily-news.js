@@ -8,6 +8,7 @@ import NewPageDetail1 from "../components/News/NewDetail/NewPageDetail1/NewPageD
 import { getServicesData } from "../ApiUrl/servicesApi/servicesApi";
 import { getAllProject } from "../ApiUrl/projectApi/projectApi";
 import NewDetail from "../components/News/NewDetail/NewDetail";
+import NewPage1 from "../components/News/NewPage1/NewPage1";
 
 export async function getStaticProps() {
     let servicesData = await getServicesData();
@@ -64,9 +65,10 @@ function ListNews({ res }) {
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
             </Head>
-            <NewPageDetail1 />
+            {/*<NewPageDetail1 />*/}
+            <NewPage1/>
 
-            <Image src={imgBanner} alt="#" />
+            {/*<Image src={imgBanner} alt="#" />*/}
             <div className={listNewsStyles.newPageContainer}>
                 <div className={listNewsStyles.newPageSubContainer}>
                     <NewDetail

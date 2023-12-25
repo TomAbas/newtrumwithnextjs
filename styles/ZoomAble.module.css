@@ -1,0 +1,57 @@
+.zoom {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    object-fit: contain;
+    opacity: 0;
+    display: none;
+}
+
+.zoomed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapContent {
+    width: fit-content;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.content {
+    padding: 1rem;
+}
+
+@media (min-width: 768px) {
+    .wrapContent {
+        width: 40vw;
+    }
+}
+
+@media (min-width: 1024px) {
+    .wrapContent {
+        width: 30vw;
+    }
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    transform: translate(155px, 35px);
+    z-index: 999999;
+    font-size: 20px;
+    font-weight: 600;
+    font-style: normal;
+    cursor: pointer;
+}

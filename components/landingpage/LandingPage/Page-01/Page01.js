@@ -20,7 +20,13 @@ const Page01 = ({ page1Data }) => {
       } else {
         return (
           <div className={styles.page01WrapperEffect} key={idx}>
-            <h1 className={styles.h1Word}> {item.content}</h1>
+            {
+              item.content.split(' ').map((word, idx) => {
+                return <h1 className={`${word === 'ICON,' || word === 'DESIRES' || word === 'MAD' ? styles.h1WordAnim : styles.h1Word}`} key={idx}>
+                  {word}&nbsp;	
+                </h1>
+              })
+            }
           </div>
         );
       }

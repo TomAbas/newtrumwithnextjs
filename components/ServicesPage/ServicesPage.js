@@ -9,6 +9,7 @@ import Industry from "../Recuitment/Industry/Industry";
 import { getListRatingData } from "../../ApiUrl/rating/ratingApi";
 import { getCategoryFromListAllProject } from "../../services/projectApiSerivces";
 import BestProjects from "../landingpage/LandingPage/BestProjects/BestProjects";
+import SwiperListImage from "../SwiperListImage/SwiperListImage";
 
 const ServicesPage = ({ data, listAllProject }) => {
   const [listCardIndustry, setListCardIndustry] = useState(null || []);
@@ -53,6 +54,16 @@ const ServicesPage = ({ data, listAllProject }) => {
       title: "Content Marketing",
       content: "We help yo",
     },
+    {
+      img: "https://picsum.photos/200",
+      title: "Content Marketing",
+      content: "We help yo",
+    },
+    {
+      img: "https://picsum.photos/200",
+      title: "Content Marketing",
+      content: "We help yo",
+    },
   ];
   
   return (
@@ -62,8 +73,9 @@ const ServicesPage = ({ data, listAllProject }) => {
       <ServicesPage3 dataServices={dataServices} listCategory={listCategory} />
       {/* <Industry /> */}
       {/* <ServicesPage4 listCardIndustry={listCardIndustry} /> */}
-      <BestProjects imgArr={dataTest} />
-      <ServicesPage5 />
+      <SwiperListImage imgArr={dataTest}/>
+      <BestProjects />
+      {/*<ServicesPage5 />*/}
     </div>
   );
 };

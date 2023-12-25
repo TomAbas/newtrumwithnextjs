@@ -7,7 +7,6 @@ const NewPage1 = () => {
       <>
         <div
           className={styles.headlineNewsBox}
-          ư
         >
           <div className={styles.backgroundImgBox}>
             <div className={styles.headlineContent}>
