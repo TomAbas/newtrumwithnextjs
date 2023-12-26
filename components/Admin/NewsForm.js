@@ -221,36 +221,4 @@ const NewsForm = () => {
 
 export default NewsForm;
 
-// const newForm = new FormData();
-// console.log(newsHeadContent);
-// newForm.append("banner", newsHeadContent.image1[0]);
-// newForm.append("img", newsHeadContent.image2[0]);
-// newForm.append("img1", newsHeadContent.image3[0]);
-// newForm.append("img2", newsHeadContent.image4[0]);
-// newForm.append("img3", newsHeadContent.image5[0]);
-// newForm.append("img4", newsHeadContent.image6[0]);
-// newForm.append("img5", newsHeadContent.image6[0]);
-// newForm.append("thumbnail", newsHeadContent.thumbnail[0]);
-// newForm.append("postId", newsIdx);
-// newForm.append("title", newsHeadContent.title1);
-// newForm.append("title2", newsHeadContent.title2);
-// newForm.append("category", newsHeadContent.category);
-// newForm.append("subtitle", newsHeadContent.tagLine1);
-// newForm.append("subtitle2", newsHeadContent.tagLine2);
-// newForm.append("youtubeLink", newsHeadContent.youtubeUrl);
-// newForm.append("tagline11", newsHeadContent.headLine1);
-// newForm.append("tagline12", newsHeadContent.headLine2);
-// newForm.append("tagline21", newsHeadContent.subHeadLine);
-// newForm.append("deleted", 0);
-// newForm.append("content", newContent1);
-// newForm.append("contetn2", newContent2);
-// console.log(newForm);
-// if (newForm) {
-//   await axios({
-//     url: `${urlEditNewsId}/${newsIdx}`,
-//     method: "POST",
-//     headers: { "Content-Type": "multipart/form-data" },
-//     data: newForm,
-//   })
-//     .then((res) => {
-//       console.log(res);
+
