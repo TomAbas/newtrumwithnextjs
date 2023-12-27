@@ -1,149 +1,253 @@
-import React, {useEffect} from 'react';
-import styles from '../../styles/Admin.module.css';
-import {Button} from "@mui/material";
-import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
+import React, { useEffect } from "react";
+import styles from "../../styles/Admin.module.css";
+import { Button } from "@mui/material";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import {addPost} from "../../ApiUrl/newsApi/newsApi";
+import { addPostNews } from "../../ApiUrl/newsApi/newsApi";
+import "react-quill/dist/quill.snow.css";
+import dynamic from "next/dynamic";
+import { useMemo } from "react";
+import { useState } from "react";
+import ServiceAddServiceForm from "./ServiceAddServiceForm";
+import KeywordForm from "./keywordForm";
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { storage } from "../../config/firbase";
+import { toast } from "react-toastify";
 
-const News = () => {
-    const schema = yup.object().shape({
-        mainTitle: yup.string().required('missing field').typeError('missing field'),
-        secondTitle: yup.string().required('missing field').typeError('missing field'),
-    });
-    const {
-        register,
-        handleSubmit,
-        reset,
-        formState: {errors},
-    } = useForm({
-        resolver: yupResolver(schema),
-    });
-    useEffect(() => {
-        errors && console.log(errors);
-    }, [errors]);
+const NewsCreator = ({ newsDetail, handleUpdateNews }) => {
+  const ReactQuill = useMemo(
+    () => dynamic(() => import("react-quill"), { ssr: false }),
+    []
+  );
+  const [loading, setLoading] = useState(false);
+  const [creditList, setCreditList] = useState([]);
+  const [keywordList, setKeywordList] = useState([]);
+  const schema = yup.object().shape({
+    title: yup.string().required("missing field").typeError("missing field"),
+    description: yup
+      .string()
+      .required("missing field")
+      .typeError("missing field"),
+    category: yup.string().required("missing field").typeError("missing field"),
+    mainImage: yup.mixed().required("missing field").typeError("missing field"),
+    sliderImg: yup.mixed().required("missing field").typeError("missing field"),
+  });
 
-    const handleOnSubmit = (data) => {
-        const processedData = {
-            title: {
-                mainTitle: data.mainTitle,
-                secondTitle: data.secondTitle,
-                desc1: data.desc1,
-                desc2: data.desc2,
-                desc3: data.desc3
-            },
-            category: data.category,
-            description: data.description,
-            mainImage: data.mainImage,
-            sliderImage: data.sliderImage,
-            mainTitle: data.mainTitle
-        };
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-        const formData = new FormData();
-        for (let key in processedData) {
-            formData.append(key, processedData[key]);
+  const onEditorStateChange = (editorState) => {
+    setValue("description", editorState);
+  };
+
+  const editorContent = watch("description");
+
+  const handleUploadSlideImgs = async (data) => {
+    if (!data) return null;
+    const uploadSlideImg = await Promise.all(
+      Array.from(data).map(async (img) => {
+        try {
+          let downloadURL;
+          if (img.name === undefined) {
+            throw new Error("No file selected");
+          }
+          const id = new Date().getTime();
+          const sotrageRef = ref(storage, `web/${img.name}${id}}`);
+          const uploadTask = uploadBytesResumable(sotrageRef, img);
+          downloadURL = await new Promise((resolve, reject) => {
+            uploadTask.on(
+              "state_changed",
+              () => {},
+              (error) => console.log("err ", error),
+              async () => {
+                let url = await getDownloadURL(uploadTask.snapshot.ref);
+                resolve(url);
+              }
+            );
+          });
+          return downloadURL;
+        } catch (error) {
+          console.log(error);
         }
-        addPost(formData);
-    }
-    return (<>
-        <div className={styles.landingpageformContainer}>
-            <div className={styles.titleForm}>
-                <h1>News</h1>
-            </div>
-            <div className={styles.landingpageform}>
-                <form onSubmit={handleSubmit(handleOnSubmit)}>
-                    <div className={styles.content3Edit}>
-                        <div className={styles.bannerBanner}>EDIT NEWS :</div>
-                        <div className={styles.titleEdit}>
-                            <h3>Title</h3>
-                            <textarea
-                                type='text'
-                                className={styles.inputField}
-                                name='mainTitle'
-                                {...register('mainTitle')}
+      })
+    );
+    return uploadSlideImg;
+  };
 
-                            />
-                        </div>
-                        <div className={styles.titleEdit}>
-                            <h3>Second Title</h3>
-                            <textarea
-                                type='text'
-                                className={styles.inputField}
-                                name='secondTitle'
-                                {...register('secondTitle')}
-                            />
-                        </div>
-                        <div className={styles.titleEdit}>
-                            <h3>Description 1</h3>
-                            <textarea
-                                type='text'
-                                className={styles.inputField}
-                                name='desc1'
-                                {...register('desc1')}
-                            />
-                        </div>
-                        <div className={styles.titleEdit}>
-                            <h3>Description 2</h3>
-                            <textarea
-                                type='text'
-                                className={styles.inputField}
-                                name='desc2'
-                                {...register('desc2')}
-                            />
-                        </div>
-                        <div className={styles.titleEdit}>
-                            <h3>Description 3</h3>
-                            <textarea
-                                type='text'
-                                className={styles.inputField}
-                                name='desc3'
-                                {...register('desc3')}
-                            />
-                        </div>
-                        <div className={styles.titleEdit}>
-                            <h3>Category</h3>
-                            <textarea
-                                type='text'
-                                className={styles.inputField}
-                                name='category'
-                                {...register('category')}
-                            />
-                        </div>
-                        <div className={styles.titleEdit}>
-                            <h3>Description</h3>
-                            <textarea
-                                type='text'
-                                className={styles.inputField}
-                                name='description'
-                                {...register('description')}
-                            />
-                        </div>
-                        <div className={styles.titleEdit}>
-                            <h3>Main Image</h3>
-                            <input
-                                className={styles.inputField}
-                                type={"file"}
-                                {...register('mainImage')}
-                            />
-                        </div>
-                        <div className={styles.titleEdit}>
-                            <h3>Slider Image</h3>
-                            <input
-                                className={styles.inputField}
-                                type={"file"}
-                                name="sliderImage"
-                                multiple
-                                {...register('sliderImage')}
-                            />
-                        </div>
-                    </div>
-                    <Button variant='outlined' type='submit'>
-                        Update content
-                    </Button>
-                </form>
+  const handleUploadMainImg = async (data) => {
+    if (!data) return null;
+    const imgUrl = await handleUploadSlideImgs(data);
+    return imgUrl;
+  };
+
+  const handleAddNews = async (data) => {
+    try {
+      const res = await addPostNews(data);
+      console.log(res);
+      toast.success("Add news successfully");
+    } catch (error) {
+      toast.error("Add news failed, please try again");
+      console.log(error);
+    }
+  };
+
+  const handleOnSubmit = async (data) => {
+    setLoading(true);
+    try {
+      const slideImgUrl = await handleUploadSlideImgs(data.sliderImg);
+      const mainImgUrl = await handleUploadMainImg(data.mainImage);
+      const body = {
+        title: data.title,
+        category: data.category,
+        description: data.description,
+        mainImage: mainImgUrl ? mainImgUrl[0] : newsDetail.mainImage,
+        sliderImg: slideImgUrl ? slideImgUrl : newsDetail.sliderImg,
+        credit: { creditList },
+        keywords: keywordList.map((item) => item.title),
+      };
+
+      const res = newsDetail
+        ? await handleUpdateNews(newsDetail._id, body)
+        : await handleAddNews(body);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      reset();
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    console.log(errors);
+  }, [errors]);
+
+  useEffect(() => {
+    register("description", { required: true });
+  }, [register]);
+
+  useEffect(() => {
+    if (newsDetail) {
+      console.log(newsDetail);
+      // setCreditList
+      const body = {
+        title: newsDetail.title,
+        description: newsDetail.description,
+        category: newsDetail.category,
+      };
+      setKeywordList(
+        newsDetail.keywords.map((item) => {
+          return { title: item };
+        })
+      );
+
+      setCreditList(
+        newsDetail.keywords.map((item) => {
+          return { title: item, description: item };
+        })
+      );
+      reset(body);
+    }
+  }, [newsDetail]);
+  return (
+    <>
+      <div>
+        <div className={styles.landingpageform}>
+          <div className={styles.titleEdit}>
+            <h3>Credit</h3>
+            <ServiceAddServiceForm
+              serviceList={creditList}
+              setServiceList={setCreditList}
+            />
+          </div>
+
+          <div className={styles.titleEdit}>
+            <h3>Keyword</h3>
+            <KeywordForm
+              serviceList={keywordList}
+              setServiceList={setKeywordList}
+            />
+          </div>
+
+          <form
+            onSubmit={handleSubmit(handleOnSubmit)}
+            className={styles.formNews}
+          >
+            <div className={styles.content3Edit}>
+              <div className={styles.bannerBanner}>EDIT NEWS :</div>
+              <div className={styles.titleEdit}>
+                <h3>News Title</h3>
+                <textarea
+                  type="text"
+                  className={styles.inputField}
+                  name="title"
+                  {...register("title")}
+                />
+              </div>
+
+              <div className={styles.titleEdit}>
+                <h3>Category</h3>
+                <input
+                  type="text"
+                  className={styles.inputField}
+                  name="category"
+                  {...register("category")}
+                />
+              </div>
+
+              <div className={styles.titleEdit}>
+                <h3>Description</h3>
+                <ReactQuill
+                  theme="snow"
+                  value={editorContent}
+                  onChange={onEditorStateChange}
+                />
+              </div>
+
+              <div className={styles.titleEdit}>
+                <h3>Main Image</h3>
+                <input
+                  className={styles.inputField}
+                  type={"file"}
+                  {...register("mainImage")}
+                />
+              </div>
+              <div className={styles.titleEdit}>
+                <h3>Slider Image</h3>
+                <input
+                  className={styles.inputField}
+                  type={"file"}
+                  name="sliderImg"
+                  multiple
+                  {...register("sliderImg")}
+                />
+              </div>
             </div>
+            <Button
+              variant="outlined"
+              type="submit"
+              disabled={
+                keywordList.length === 0 || creditList.length === 0 || loading
+                  ? true
+                  : false
+              }
+            >
+              Update content
+            </Button>
+          </form>
         </div>
-    </>);
+      </div>
+    </>
+  );
 };
 
-export default News;
+export default NewsCreator;

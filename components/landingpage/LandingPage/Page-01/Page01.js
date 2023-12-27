@@ -1,9 +1,8 @@
-import React, { useState } from "react";
 import { useInView } from "framer-motion";
+import React from "react";
 
-import styles from "../../../../styles/Page01Styles.module.css";
 import { useRef } from "react";
-import { useEffect } from "react";
+import styles from "../../../../styles/Page01Styles.module.css";
 
 const Page01 = ({ page1Data }) => {
   const arrWordRef = useRef();

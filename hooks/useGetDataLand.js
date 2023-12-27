@@ -19,6 +19,7 @@ const useGetDataLand = (data) => {
   const getListNews = async () => {
     try {
       const data = await getAllProject();
+
       setProjectArr(
         data
           .filter((item) => !item.isCategory)
@@ -27,6 +28,7 @@ const useGetDataLand = (data) => {
               img: item.mainImage,
               title: item.title,
               postId: item.title,
+              content: item.listContent[0].description,
             };
           })
       );

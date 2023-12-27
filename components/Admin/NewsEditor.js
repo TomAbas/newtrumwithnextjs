@@ -87,7 +87,8 @@ const NewsEditor = ({
           if (img.name === undefined) {
             throw new Error("No file selected");
           }
-          const sotrageRef = ref(storage, `web/${img.name}`);
+          const id = new Date().getTime();
+          const sotrageRef = ref(storage, `web/${img.name}${id}}`);
           const uploadTask = uploadBytesResumable(sotrageRef, img);
           downloadURL = await new Promise((resolve, reject) => {
             uploadTask.on(
@@ -268,15 +269,15 @@ const NewsEditor = ({
                         <p>
                           {item.contributorName} : {item.role}{" "}
                         </p>{" "}
-                        <div className=''>
+                        <div className="">
                           <IconButton
-                            size='small'
+                            size="small"
                             sx={{
                               width: "fix-content",
                               flex: "10%",
                               justifyContent: "space-between",
                             }}
-                            variant='contained'
+                            variant="contained"
                             // className={styles.btnEditNews}
                             onClick={async () => {
                               await deleteContributor(item.contributorId);
@@ -295,10 +296,10 @@ const NewsEditor = ({
             <div className={styles.titleEdit}>
               <h3>Add Contributor Name: </h3>
               <textarea
-                type='text'
+                type="text"
                 // defaultValue={preLoadValue.title2}
                 className={styles.inputField}
-                name='contributorName'
+                name="contributorName"
                 {...register("contributorName")}
               />
               <p>{errors.contributorName?.message}</p>
@@ -307,10 +308,10 @@ const NewsEditor = ({
             <div className={styles.titleEdit}>
               <h3>Add Contributor Role: </h3>
               <textarea
-                type='text'
+                type="text"
                 // defaultValue={preLoadValue.title2}
                 className={styles.inputField}
-                name='contributorRole'
+                name="contributorRole"
                 {...register("contributorRole")}
               />
               <p>{errors.contributorRole?.message}</p>
@@ -321,7 +322,7 @@ const NewsEditor = ({
         {/* <button className={styles.btnSubmit} type='submit'>
           submit
         </button> */}
-        <Button variant='outlined' type='submit'>
+        <Button variant="outlined" type="submit">
           submit
         </Button>
       </form>
@@ -336,10 +337,10 @@ const NewsEditor = ({
           <div className={styles.row1}>
             <div className={styles.titleEdit}>
               <textarea
-                type='text'
+                type="text"
                 defaultValue={preLoadValue.title}
                 className={styles.inputField}
-                name='title'
+                name="title"
                 {...register("title")}
               />
               <p>{errors.title?.message}</p>
@@ -351,10 +352,10 @@ const NewsEditor = ({
           <div className={styles.row1}>
             <div className={styles.titleEdit}>
               <textarea
-                type='text'
+                type="text"
                 defaultValue={preLoadValue.category}
                 className={styles.inputField}
-                name='category'
+                name="category"
                 {...register("category")}
               />
               <p>{errors.category?.message}</p>
@@ -367,10 +368,10 @@ const NewsEditor = ({
             <div className={styles.titleEdit}>
               <h3>Image : </h3>
               <input
-                type='file'
-                accept='image/*'
+                type="file"
+                accept="image/*"
                 className={styles.inputField}
-                name='mainImage'
+                name="mainImage"
                 {...register("mainImage")}
                 onChange={() => {
                   console.log("change");
@@ -380,18 +381,6 @@ const NewsEditor = ({
               />
               <p>{errors.mainImage?.message}</p>
             </div>
-
-            {/* <div className={styles.titleEdit}>
-              <h3>Description : </h3>
-              <textarea
-                type='text'
-                defaultValue={preLoadValue.mainImageAlt}
-                className={styles.inputField}
-                name='mainImageAlt'
-                {...register("mainImageAlt")}
-              />
-              <p>{errors.mainImageAlt?.message}</p>
-            </div> */}
           </div>
         </div>
         <div className={styles.content1Edit}>
@@ -400,10 +389,10 @@ const NewsEditor = ({
             <div className={styles.titleEdit}>
               <h3>Video </h3>
               <textarea
-                type='text'
+                type="text"
                 defaultValue={preLoadValue.video}
                 className={styles.inputField}
-                name='video'
+                name="video"
                 {...register("video")}
               />
               <p>{errors.video?.message}</p>
@@ -412,10 +401,10 @@ const NewsEditor = ({
             <div className={styles.titleEdit}>
               <h3>Description : </h3>
               <textarea
-                type='text'
+                type="text"
                 defaultValue={preLoadValue.videoAlt}
                 className={styles.inputField}
-                name='videoAlt'
+                name="videoAlt"
                 {...register("videoAlt")}
               />
               <p>{errors.videoAlt?.message}</p>
@@ -431,8 +420,8 @@ const NewsEditor = ({
                   <div className={styles.titleEdit}>
                     <h3>Image {idx + 1} : </h3>
                     <input
-                      type='file'
-                      accept='image/*'
+                      type="file"
+                      accept="image/*"
                       className={styles.inputField}
                       name={`image${idx + 1}`}
                       {...register(`image${idx + 1}`)}
@@ -456,10 +445,10 @@ const NewsEditor = ({
             <div className={styles.titleEdit}>
               <h3>Title : </h3>
               <textarea
-                type='text'
+                type="text"
                 defaultValue={preLoadValue?.listContent[0].title}
                 className={styles.inputField}
-                name='content1Title'
+                name="content1Title"
                 {...register("content1Title")}
               />
               <p>{errors.content1Title?.message}</p>
@@ -468,10 +457,10 @@ const NewsEditor = ({
             <div className={styles.titleEdit}>
               <h3>Choose a image for content: </h3>
               <input
-                type='file'
-                accept='image/*'
+                type="file"
+                accept="image/*"
                 className={styles.inputField}
-                name='content1Image'
+                name="content1Image"
                 {...register("content1Image")}
                 onChange={() => {
                   console.log("change");
@@ -517,7 +506,7 @@ const NewsEditor = ({
             >
               <h3>Is add category :</h3>
               <input
-                type='checkbox'
+                type="checkbox"
                 className={styles.checkBox}
                 {...register("isCategory")}
                 onChange={() => {
@@ -528,10 +517,8 @@ const NewsEditor = ({
             </div>
           </div>
         </div>
-        {/* <button className={styles.btnSubmit} type='submit'>
-          submit
-        </button> */}
-        <Button variant='outlined' type='submit'>
+
+        <Button variant="outlined" type="submit">
           submit
         </Button>
       </form>

@@ -1,24 +1,17 @@
-import React from "react";
-import { useState } from "react";
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import styles from "../../styles/Admin.module.css";
 //hook form
-import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { Button } from "@mui/material";
-import { useMemo } from "react";
-import { useEffect } from "react";
-const ServiceAddServiceForm = ({ serviceList, setServiceList }) => {
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+
+const KeywordForm = ({ serviceList, setServiceList }) => {
   const schema = yup.object().shape({
     title: yup
       .string()
-      .required("Please enter title")
-      .typeError("Please enter title"),
-    description: yup
-      .string()
-      .required("Please enter description")
-      .typeError("Please enter description"),
+      .required("Please enter keyword")
+      .typeError("Please enter keyword"),
   });
   const {
     register,
@@ -28,10 +21,10 @@ const ServiceAddServiceForm = ({ serviceList, setServiceList }) => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
   function handleSubmitFc(data) {
-    console.log(data);
     setServiceList([...serviceList, data]);
-    reset({ description: "", title: "" });
+    reset({ title: "" });
   }
   function handDeleteService(idx) {
     const newServiceList = serviceList.filter((item, index) => {
@@ -39,9 +32,7 @@ const ServiceAddServiceForm = ({ serviceList, setServiceList }) => {
     });
     setServiceList(newServiceList);
   }
-  useEffect(() => {
-    console.log(serviceList);
-  }, [serviceList]);
+
   return (
     <Fragment>
       <div className={styles.partnerDisplay}>
@@ -49,8 +40,10 @@ const ServiceAddServiceForm = ({ serviceList, setServiceList }) => {
           return (
             <div key={idx} className={styles.partnerDisplayBox}>
               <div>
-                <div> Title : {item.title}</div>
-                <div> Description : {item.description}</div>
+                <div>
+                  {" "}
+                  <strong>Keyword</strong> : {item.title}
+                </div>
               </div>
 
               <Button onClick={() => handDeleteService(idx)}>Xóa</Button>
@@ -70,23 +63,13 @@ const ServiceAddServiceForm = ({ serviceList, setServiceList }) => {
             />
             <p>{errors.title?.message}</p>
           </div>
-          <div className={styles.titleEdit}>
-            <h3> Description </h3>
-            <textarea
-              type="text"
-              className={styles.inputField}
-              name="description"
-              {...register("description")}
-            />
-            <p>{errors.description?.message}</p>
-          </div>
         </div>
         <Button variant="outlined" type="submit">
-          Add Content
+          Add keyword
         </Button>
       </form>
     </Fragment>
   );
 };
 
-export default ServiceAddServiceForm;
+export default KeywordForm;
