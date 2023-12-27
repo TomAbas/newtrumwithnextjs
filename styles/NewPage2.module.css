@@ -1,10 +1,14 @@
 .NewPage2Container {
   margin-top: 1rem;
 }
-.NewPage2Text1,
-.NewPage2Text2,
-.NewPage2Text3,
-.NewPage2Text4 {
+
+.NewPage2Container p {
+  font-size: 16px;
+  margin-top: 1rem;
+  color: #fff;
+}
+
+.NewPage2Text1 {
   font-size: 16px;
   margin-top: 1rem;
   color: #fff;
@@ -23,10 +27,13 @@
   .NewPage2Container {
     margin-top: 3rem;
   }
-  .NewPage2Text1,
-  .NewPage2Text2,
-  .NewPage2Text3,
-  .NewPage2Text4 {
+
+  .NewPage2Container p {
+    font-size: 18px;
+    margin-top: 1.5rem;
+    color: #fff;
+  }
+  .NewPage2Text1 {
     font-size: 18px;
     margin-top: 1.5rem;
     color: #fff;
