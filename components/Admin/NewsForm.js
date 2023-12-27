@@ -89,7 +89,6 @@ const NewsForm = () => {
     return (
       <List
         sx={{
-          // width: "100%",
           maxWidth: "1000px",
           border: "1px solid #ccc",
           bgcolor: "background.paper",
@@ -132,9 +131,9 @@ const NewsForm = () => {
                     <div className={styles.btnGroup}>
                       <div>
                         <IconButton
-                          size='small'
+                          size="small"
                           sx={{ flex: "30%" }}
-                          variant='contained'
+                          variant="contained"
                           // className={styles.btnEditNews}
                           onClick={() => {
                             deleteNews(item._id);
@@ -159,7 +158,7 @@ const NewsForm = () => {
     <>
       <div className={styles.landingpageformContainer}>
         <div className={styles.titleForm}>
-          <h1>EDIT NEWS</h1>
+          <h1>EDIT PROJECT</h1>
         </div>
         <div className={styles.newsEditorForm}>
           <ListNews className={styles.listNews} arrNews={arrNews} />
@@ -192,12 +191,12 @@ const NewsForm = () => {
             ) : (
               <>
                 <div className={styles.waitingForm}>
-                  choose news on left panel to edit
+                  choose project on left panel to edit
                 </div>
               </>
             )}
             <div
-              className=''
+              className=""
               style={{
                 display: trigger && !isAddContributor ? "block" : "none",
               }}
@@ -220,5 +219,3 @@ const NewsForm = () => {
 };
 
 export default NewsForm;
-
-

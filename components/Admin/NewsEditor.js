@@ -381,18 +381,6 @@ const NewsEditor = ({
               />
               <p>{errors.mainImage?.message}</p>
             </div>
-
-            {/* <div className={styles.titleEdit}>
-              <h3>Description : </h3>
-              <textarea
-                type='text'
-                defaultValue={preLoadValue.mainImageAlt}
-                className={styles.inputField}
-                name='mainImageAlt'
-                {...register("mainImageAlt")}
-              />
-              <p>{errors.mainImageAlt?.message}</p>
-            </div> */}
           </div>
         </div>
         <div className={styles.content1Edit}>
@@ -529,9 +517,7 @@ const NewsEditor = ({
             </div>
           </div>
         </div>
-        {/* <button className={styles.btnSubmit} type='submit'>
-          submit
-        </button> */}
+
         <Button variant="outlined" type="submit">
           submit
         </Button>
