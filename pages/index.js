@@ -5,7 +5,6 @@ import { getLandingPageData } from "../ApiUrl/landingpageApi/landingApi";
 
 export async function getStaticProps() {
   let res = await getLandingPageData();
-
   if (!res) {
     return {
       notFound: true,
@@ -17,6 +16,8 @@ export async function getStaticProps() {
   };
 }
 export default function Home({ res }) {
+  console.log('12312o3k123ok123', res)
+
   return (
     <div className={styles.container}>
       <Head>
