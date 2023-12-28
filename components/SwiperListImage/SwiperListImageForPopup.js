@@ -89,11 +89,22 @@ const SwiperListImageForPopup = ({ imgArr, isShowNumPagination }) => {
             <Image src={imgArrowRight} width={15} height={15} />
           </BtnRight>
         </div>
-        {imgArr?.map((item, idx) => {
+        {[
+          "https://firebasestorage.googleapis.com/v0/b/trum-project.appspot.com/o/web%2Fimg2.webp?alt=media&token=71603e74-bce9-49a4-94b7-f2c6d856b52c",
+          "https://firebasestorage.googleapis.com/v0/b/trum-project.appspot.com/o/web%2Fimg2.webp?alt=media&token=71603e74-bce9-49a4-94b7-f2c6d856b52c",
+        ]?.map((item, idx) => {
           return (
             <SwiperSlide key={idx}>
               <div className={styles.WrapItem}>
-                <Image width={300} height={300} src={item.image} />
+                <Image
+                  alt="item.image"
+                  width={300}
+                  height={300}
+                  // src={item.image ? item.image : item}
+                  src={
+                    "https://firebasestorage.googleapis.com/v0/b/trum-project.appspot.com/o/web%2Fimg2.webp?alt=media&token=71603e74-bce9-49a4-94b7-f2c6d856b52c"
+                  }
+                />
               </div>
             </SwiperSlide>
           );

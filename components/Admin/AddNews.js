@@ -1,54 +1,54 @@
-import React from 'react';
+import React from "react";
 
 // import { useEffect } from "react";
-import { useState } from 'react';
-import NewsEditor from './NewsEditor';
+import { useState } from "react";
+import NewsEditor from "./NewsEditor";
 // import NewsCkEditor from "./NewsCkEditor";
-import axios from 'axios';
-import styles from '../../styles/Admin.module.css';
-import { urlAddNews } from '../../ApiUrl/Api';
-import NewsCkEditorAddNews from './NewsCkEditorAddNews';
-import { createProjectData } from '../../ApiUrl/projectApi/projectApi';
-import { toast } from 'react-toastify';
+import axios from "axios";
+import styles from "../../styles/Admin.module.css";
+import { urlAddNews } from "../../ApiUrl/Api";
+import NewsCkEditorAddNews from "./NewsCkEditorAddNews";
+import { createProjectData } from "../../ApiUrl/projectApi/projectApi";
+import { toast } from "react-toastify";
 const AddNews = ({ isAddNews }) => {
   let preloadValue = {
-    title: '',
-    category: '',
-    video: '',
+    title: "",
+    category: "",
+    video: "",
     listContent: [
       {
-        title: '',
-        image: '',
+        title: "",
+        image: "",
       },
       {
-        title: '',
-        image: '',
+        title: "",
+        image: "",
       },
     ],
-    videoAlt: '',
-    mainImage: '',
-    mainImageAlt: '',
+    videoAlt: "",
+    mainImage: "",
+    mainImageAlt: "",
     swiper: [
       {
-        image: '',
+        image: "",
       },
       {
-        image: '',
+        image: "",
       },
       {
-        image: '',
+        image: "",
       },
       {
-        image: '',
+        image: "",
       },
       {
-        image: '',
+        image: "",
       },
     ],
   };
   const [newNewsHeadContent, setNewNewsHeadContent] = useState();
   const [newNewsContent1, setNewNewsContent1] = useState();
-  const [newNewsContent2, setNewNewsContent2] = useState('');
+  const [newNewsContent2, setNewNewsContent2] = useState("");
   const [didNotSubmitHeadForm2, setDidNotSubmitHeadForm2] = useState(true);
 
   const submitNewNewsCKEditor = async (e) => {
@@ -65,10 +65,10 @@ const AddNews = ({ isAddNews }) => {
     console.log(body);
     try {
       await createProjectData(body);
-      toast.success('News added successfully');
+      toast.success("News added successfully");
     } catch (error) {
       console.log(error);
-      toast.error('News added failed,plesae try again');
+      toast.error("News added failed,plesae try again");
     }
   };
   return (
@@ -85,7 +85,7 @@ const AddNews = ({ isAddNews }) => {
               isAddNews={isAddNews}
               setDidNotSubmitHeadForm2={setDidNotSubmitHeadForm2}
             />
-            <div className=''>
+            {/* <div className="">
               <NewsCkEditorAddNews
                 className={styles.ckForm}
                 setNewNewsContent1={setNewNewsContent1}
@@ -93,7 +93,7 @@ const AddNews = ({ isAddNews }) => {
                 submitNewNewsCKEditor={submitNewNewsCKEditor}
                 didNotSubmitHeadForm2={didNotSubmitHeadForm2}
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
