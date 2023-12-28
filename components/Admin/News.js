@@ -115,8 +115,8 @@ const NewsCreator = ({arrNews, newsDetail, handleUpdateNews }) => {
         category: data.category,
         description: data.description,
         mainImage: mainImgUrl ? mainImgUrl[0] : newsDetail.mainImage,
-        sliderImg: slideImgUrl ? slideImgUrl : newsDetail.sliderImg,
-        credit: { creditList },
+        sliderImages: slideImgUrl ? slideImgUrl : newsDetail.sliderImg,
+        credits: { creditList },
         keywords: keywordList.map((item) => item.title),
       };
 
@@ -156,8 +156,14 @@ const NewsCreator = ({arrNews, newsDetail, handleUpdateNews }) => {
       );
 
       setCreditList(
-        newsDetail.keywords.map((item) => {
-          return { title: item, description: item };
+        newsDetail.credits.creditList.map((item) => {
+          return item;
+        })
+      );
+
+      console.log(
+        newsDetail.credits.creditList.map((item) => {
+          return item;
         })
       );
       reset(body);

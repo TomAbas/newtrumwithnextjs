@@ -6,40 +6,25 @@ import ProjectPage03 from "../components/ProjectPage/ProjectPage03";
 import ProjectPage04Swiper from "../components/ProjectPage/ProjectPage04Swiper";
 import { getAllProject } from "../ApiUrl/projectApi/projectApi";
 // img
-const ProjectPage = ({ projectsidx, data }) => {
+const ProjectPage = ({ data }) => {
+  console.log(data);
   const [newsBigTitle, setNewsBigTitle] = useState();
-  const [openTitle, setOpenTitle] = useState();
-  const [subTitle, setSubTitle] = useState();
-  const [subTitle1, setSubTitle1] = useState();
-  const [tagLine, setTagLine] = useState();
-  const [contributor, setContributor] = useState();
   const [category, setCategory] = useState();
   const [content, setContent] = useState();
-  const [content1, setContent1] = useState();
-  const [youtubeUrl, setYoutubeUrl] = useState();
   const [bannerImg, setBannerImg] = useState();
-  const [img, setImg] = useState();
   const [swiper, setSwiper] = useState([]);
   const [isCategory, setIsCategory] = useState(false);
+  const [listContent, setListContent] = useState([]);
   //
   const fetchData = async () => {
     //1
     setCategory(data.category);
     setNewsBigTitle(data.title);
     setBannerImg(data.mainImage);
-    //2
-    setTagLine(data.mainImageAlt);
-    setContributor(data.Credits);
-    //3
-    setOpenTitle(data.videoAlt);
-    setSubTitle(data.listContent[0].title);
-    setContent(data.listContent[0].description);
-    setYoutubeUrl(data.video);
-    setImg(data.listContent[0].image);
-    //4
-    setSubTitle1(data.listContent[1].title);
-    setContent1(data.listContent[1].description);
+    setContent(data.videoAlt);
     setIsCategory(data.isCategory);
+    setListContent(data.listContent);
+    //
     if (data.isCategory) {
       setSwiper(
         await getAllProject().then((project) => {
@@ -96,9 +81,10 @@ const ProjectPage = ({ projectsidx, data }) => {
           category={category}
           bannerImg={bannerImg}
           swiper={swiper}
+          content={content}
+          listContent={listContent}
         />
-        <div className={styles.container}>
-        </div>
+        <div className={styles.container}></div>
       </div>
     </>
   );
