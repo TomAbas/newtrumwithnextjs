@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from '../../styles/Admin.module.css';
 
 //mui
@@ -12,6 +12,8 @@ import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { updateRatingData } from '../../ApiUrl/rating/ratingApi';
 import { uploadImg } from '../../config/firbase';
+import {handleChangeFile} from "../../Utils/handleChangeFileImage";
+import Image from "next/image";
 const schema = yup.object().shape({
   title: yup.string().required('missing field'),
   description: yup.string().required('missing field'),
@@ -20,6 +22,7 @@ const schema = yup.object().shape({
 });
 
 const CommentEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
+  const [imgUrl, setImgUrl] = useState(preLoadValue.logo);
   const {
     register,
     handleSubmit,
@@ -104,7 +107,11 @@ const CommentEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
                 className={styles.inputField}
                 name='image'
                 {...register('image')}
+                  onChange={(e)=>{
+                    handleChangeFile(e,setImgUrl)
+                  }}
               />
+              <Image src={imgUrl} width={150} height={150} alt={''} />
               <p>{errors.image?.message}</p>
             </div>
           </div>

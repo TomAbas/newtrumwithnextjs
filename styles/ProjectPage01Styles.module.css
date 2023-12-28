@@ -76,7 +76,9 @@
 .Breadcrumb {
     display: flex;
     gap: 0.5rem;
+    font-size:12px;
 }
+
 .Breadcrumb li {
     display: inline;
     border: 1px solid #393939;
@@ -197,7 +199,7 @@
 
 @media (min-width: 1024px) {
     .headlineWord {
-        font-size: 5rem;
+        font-size: 4rem;
     }
 
     .fadeInUp0 {
@@ -207,7 +209,7 @@
 
 @media (min-width: 1224px) {
     .headlineWord {
-        font-size: 5.5rem;
+        font-size: 4rem;
     }
 }
 
@@ -226,12 +228,14 @@
 
     .Breadcrumb li a {
         font-size: 20px;
+
     }
+
 }
 
 @media (min-width: 1800px) {
     .headlineWord {
-        font-size: 8rem;
+        font-size: 4rem;
     }
 }
 

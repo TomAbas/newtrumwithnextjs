@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AboutUsForm from '../../../components/Admin/AboutUsForm';
 import { useEffect } from 'react';
 import { getAboutData } from '../../../ApiUrl/about/aboutApi';
+import Loading from "../../../components/Loading/Loading";
 
 export function makeData(data) {
   return {
@@ -17,9 +18,10 @@ const Index = () => {
   const [aboutUsData, setAboutUsData] = useState();
   const [aboutUsNumber, setAboutUsNumber] = useState([]);
   const [aboutUsPartner, setAboutUsPartner] = useState([]);
+  const [aboutUsDataImage, setAboutUsDataImage] = useState();
   function getAboutUsData() {
     getAboutData().then((data) => {
-      // console.log(data);
+      setAboutUsDataImage(data);
       const dataAbout = makeData(data);
       setAboutUsNumber(data.about01.list);
       setAboutUsPartner(data.about03.listBrand);
@@ -32,6 +34,7 @@ const Index = () => {
   return (
     <div>
       <AboutUsForm
+          aboutUsDataImage={aboutUsDataImage}
         aboutUsData={aboutUsData}
         aboutUsNumber={aboutUsNumber}
         aboutUsPartner={aboutUsPartner}

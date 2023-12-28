@@ -14,8 +14,10 @@ import KeywordForm from "./keywordForm";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../../config/firbase";
 import { toast } from "react-toastify";
+import {handleChangeFile} from "../../Utils/handleChangeFileImage";
+import Image from "next/image";
 
-const NewsCreator = ({ newsDetail, handleUpdateNews }) => {
+const NewsCreator = ({arrNews, newsDetail, handleUpdateNews }) => {
   const ReactQuill = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
     []
@@ -23,6 +25,9 @@ const NewsCreator = ({ newsDetail, handleUpdateNews }) => {
   const [loading, setLoading] = useState(false);
   const [creditList, setCreditList] = useState([]);
   const [keywordList, setKeywordList] = useState([]);
+  const [img1, setImg1] = useState();
+    const [img2, setImg2] = useState();
+
   const schema = yup.object().shape({
     title: yup.string().required("missing field").typeError("missing field"),
     description: yup
@@ -219,7 +224,11 @@ const NewsCreator = ({ newsDetail, handleUpdateNews }) => {
                   className={styles.inputField}
                   type={"file"}
                   {...register("mainImage")}
+                    onChange={(e)=>{
+                      handleChangeFile(e, setImg1)
+                    }}
                 />
+                <Image alt={''} src={img1} width={150} height={150} />
               </div>
               <div className={styles.titleEdit}>
                 <h3>Slider Image</h3>
@@ -229,7 +238,12 @@ const NewsCreator = ({ newsDetail, handleUpdateNews }) => {
                   name="sliderImg"
                   multiple
                   {...register("sliderImg")}
+                    onChange={(e)=>{
+                      handleChangeFile(e, setImg2)
+                      console.log(img2)
+                    }}
                 />
+                <Image alt={''} src={img2} width={150} height={150} />
               </div>
             </div>
             <Button

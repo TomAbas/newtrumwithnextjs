@@ -5,6 +5,7 @@ import LayoutAdmin from "../components/LayoutAdmin";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
+import Loading from "../components/Loading/Loading";
 
 function MyApp({ Component, pageProps, ...appProps }) {
   const getContent = () => {
@@ -32,6 +33,7 @@ function MyApp({ Component, pageProps, ...appProps }) {
             <LayoutAdmin>
               <ToastContainer />
               <Component {...pageProps} />
+
             </LayoutAdmin>
           );
         }
@@ -40,6 +42,7 @@ function MyApp({ Component, pageProps, ...appProps }) {
       return (
         <Layout>
           <Component {...pageProps} />{" "}
+
         </Layout>
       );
     }

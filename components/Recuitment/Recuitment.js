@@ -15,6 +15,7 @@ import Reasons from "./Reasons";
 import { Stack, Box } from "@mui/material";
 import BtnSubmit from "../Form/BtnSubmit";
 import Industry from "./Industry/Industry";
+import Loading from "../Loading/Loading";
 
 const ListJobItem = ({ job }) => {
   const [activeSelectOption, setActiveSelectOption] = useState(false);
@@ -96,7 +97,7 @@ const Recuitment = () => {
           </div>
         </>
       ) : (
-        <div>loading...</div>
+       <Loading/>
       )}
     </>
   );
