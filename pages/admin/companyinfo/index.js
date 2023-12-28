@@ -32,6 +32,7 @@ const Index = () => {
     <>
       {" "}
       {defaultValuesCom ? (
+        
         <CompanyInfo defaultValuesCom={defaultValuesCom} />
       ) : (
        <Loading/>

@@ -1,29 +1,30 @@
 import React from "react";
 import styles from "../../styles/Admin.module.css";
 //firebase
-import {storage} from "../../config/firbase";
-import {ref, getDownloadURL, uploadBytesResumable} from "firebase/storage";
+import { storage } from "../../config/firbase";
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 //mui
-import {Button} from "@mui/material";
+import { Button } from "@mui/material";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import IconButton from "@mui/material/IconButton";
 //form
-import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 //editor
 import axios from "axios";
 
-import {useEffect} from "react";
-import {useState} from "react";
-import {useMemo} from "react";
-import {urlDeleteContributor} from "../../ApiUrl/Api";
-import {urlAddContributor, urlListContributorIdPost} from "../../ApiUrl/Api";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useMemo } from "react";
+import { urlDeleteContributor } from "../../ApiUrl/Api";
+import { urlAddContributor, urlListContributorIdPost } from "../../ApiUrl/Api";
 import Image from "next/image";
-import {getValue} from "@testing-library/user-event/dist/utils";
+import { getValue } from "@testing-library/user-event/dist/utils";
+import Loading from "../Loading/Loading";
 
 const schema = yup.object().shape({
     contributorName: yup.string().required('missing field'),
@@ -49,20 +50,20 @@ const schema = yup.object().shape({
 
 
 const NewsEditor = ({
-                        newsIdx,
-                        preLoadValue,
-                        content1,
-                        setNewsHeadContent,
-                        isAddNews,
-                        setNewNewsHeadContent,
-                        isAddContributor,
-                        contributorList,
-                        setDidNotSubmitHeadForm = () => {
-                        },
-                        setDidNotSubmitHeadForm2 = () => {
-                        },
-                        setContributorList,
-                    }) => {
+    newsIdx,
+    preLoadValue,
+    content1,
+    setNewsHeadContent,
+    isAddNews,
+    setNewNewsHeadContent,
+    isAddContributor,
+    contributorList,
+    setDidNotSubmitHeadForm = () => {
+    },
+    setDidNotSubmitHeadForm2 = () => {
+    },
+    setContributorList,
+}) => {
     console.log(preLoadValue);
     const [img1, setImg1] = useState(preLoadValue.image1);
     const [img2, setImg2] = useState(preLoadValue.image2);
@@ -71,11 +72,12 @@ const NewsEditor = ({
     const [img5, setImg5] = useState(preLoadValue.image5);
     const [img6, setImg6] = useState(preLoadValue.image5);
     const [img7, setImg7] = useState(preLoadValue.image5);
+    const [isLoading, setIsLoading] = useState(false);
     const {
         register,
         handleSubmit,
         reset,
-        formState: {errors},
+        formState: { errors },
     } = useForm({
         resolver: yupResolver(schema),
         defaultValues: useMemo(() => {
@@ -130,10 +132,10 @@ const NewsEditor = ({
                             }
                         );
                     });
-                    return {image: downloadURL};
+                    return { image: downloadURL };
                 } catch (error) {
                     console.log(error);
-                    return {image: preLoadValue.swiper[index].image};
+                    return { image: preLoadValue.swiper[index].image };
                 }
             })
         );
@@ -218,8 +220,8 @@ const NewsEditor = ({
             videoAlt: data.videoAlt,
             swiper: swiper,
             listContent: [
-                {title: data.content1Title, image: data.content1Image},
-                {title: "data.content2Title", image: " data.content2Image"},
+                { title: data.content1Title, image: data.content1Image },
+                { title: "data.content2Title", image: " data.content2Image" },
             ],
             id: data._id,
             isCategory: data.isCategory,
@@ -236,6 +238,7 @@ const NewsEditor = ({
         }
     };
     const submitAddContributor = async (data) => {
+        setIsLoading(true)
         await axios
             .post(urlAddContributor, {
                 contributorName: data.contributorName,
@@ -246,7 +249,7 @@ const NewsEditor = ({
                 console.log(res);
                 await axios
                     .get(`${urlListContributorIdPost}/${newsIdx}`)
-                    .then(({data}) => {
+                    .then(({ data }) => {
                         console.log(data);
 
                         setContributorList(data);
@@ -255,13 +258,14 @@ const NewsEditor = ({
             .catch((error) => {
                 console.log(error);
             });
+        setIsLoading(false)
     };
     const deleteContributor = async (id) => {
         await axios.post(`${urlDeleteContributor}/${id}`).then(async (res) => {
             console.log(res);
             await axios
                 .get(`${urlListContributorIdPost}/${newsIdx}`)
-                .then(({data}) => {
+                .then(({ data }) => {
                     console.log(data);
 
                     setContributorList(data);
@@ -283,7 +287,7 @@ const NewsEditor = ({
             <form
                 onSubmit={handleSubmit(submitAddContributor)}
                 className={styles.formNewsSubmit}
-                style={{display: !isAddContributor && "none"}}
+                style={{ display: !isAddContributor && "none" }}
             >
                 <div className={styles.bannerEdit}>
                     <div className={styles.bannerBanner}>Contributor :</div>
@@ -295,7 +299,7 @@ const NewsEditor = ({
                                     contributorList.map((item, idx) => {
                                         return (
                                             <ListItem
-                                                sx={{borderBottom: " 2px solid #ccc"}}
+                                                sx={{ borderBottom: " 2px solid #ccc" }}
                                                 key={idx}
                                             >
                                                 <p>
@@ -316,7 +320,7 @@ const NewsEditor = ({
                                                             // console.log("click");
                                                         }}
                                                     >
-                                                        <DeleteForeverIcon/>
+                                                        <DeleteForeverIcon />
                                                     </IconButton>
                                                 </div>
                                             </ListItem>
@@ -362,19 +366,19 @@ const NewsEditor = ({
             <form
                 onSubmit={handleSubmit(submitNewsEditor)}
                 className={styles.formNewsSubmit}
-                style={{display: isAddContributor && "none"}}
+                style={{ display: isAddContributor && "none" }}
             >
                 <div className={styles.bannerEdit}>
                     <div className={styles.bannerBanner}>TITLE :</div>
                     <div className={styles.row1}>
                         <div className={styles.titleEdit}>
-              <textarea
-                  type="text"
-                  defaultValue={preLoadValue.title}
-                  className={styles.inputField}
-                  name="title"
-                  {...register("title")}
-              />
+                            <textarea
+                                type="text"
+                                defaultValue={preLoadValue.title}
+                                className={styles.inputField}
+                                name="title"
+                                {...register("title")}
+                            />
                             <p>{errors.title?.message}</p>
                         </div>
                     </div>
@@ -383,13 +387,13 @@ const NewsEditor = ({
                     <div className={styles.bannerBanner}>CATEGORY :</div>
                     <div className={styles.row1}>
                         <div className={styles.titleEdit}>
-              <textarea
-                  type="text"
-                  defaultValue={preLoadValue.category}
-                  className={styles.inputField}
-                  name="category"
-                  {...register("category")}
-              />
+                            <textarea
+                                type="text"
+                                defaultValue={preLoadValue.category}
+                                className={styles.inputField}
+                                name="category"
+                                {...register("category")}
+                            />
                             <p>{errors.category?.message}</p>
                         </div>
                     </div>
@@ -413,9 +417,10 @@ const NewsEditor = ({
                                 }}
                             />
                             {
-                                img1 ? <Image src={img1} width={150} height={150}/> :
-                                    <Image src={preLoadValue.mainImage} width={150} height={150}/>
+                                img1 ? <Image src={img1} width={150} height={150} /> :
+                                    <Image src={preLoadValue.mainImage} width={150} height={150} />
                             }
+                            <Button>Xóa</Button>
 
                             <p>{errors.mainImage?.message}</p>
                         </div>
@@ -474,19 +479,61 @@ const NewsEditor = ({
                                         }}
                                     />
                                     {
-                                        idx === 0 && img2 && <Image src={img2} width={150} height={150}/>
+                                        idx === 0 && img2 && <>
+                                            <Image src={img2} width={150} height={150} />
+                                            <Button>Xóa</Button>
+                                        </>
+
                                     }
 
-                                    {   idx === 1 && img3 && <Image src={img3} width={150} height={150}/>}
-                                    {   idx === 2 && img4 && <Image src={img4} width={150} height={150}/>}
-                                    {   idx === 3 && img5 && <Image src={img5} width={150} height={150}/>}
-                                    {   idx === 4 && img6 && <Image src={img6} width={150} height={150}/>}
+                                    {idx === 1 && img3 && <>
+                                        <Image src={img3} width={150} height={150} />
+                                        <Button>Xóa</Button>
+                                    </>}
+                                    {idx === 2 && img4 &&
+                                        <>
+                                            <Image src={img4} width={150} height={150} />
+                                            <Button>Xóa</Button>
+                                        </>
+                                    }
+                                    {idx === 3 && img5 &&
+                                        <>
+                                            <Image src={img5} width={150} height={150} />
+                                            <Button>Xóa</Button>
+                                        </>
+                                    }
+                                    {idx === 4 && img6 &&
+                                        <>
+                                            <Image src={img6} width={150} height={150} />
+                                            <Button>Xóa</Button>
+                                        </>
+                                    }
                                     {/*show old image*/}
-                                    {idx === 0 && !img2 && <Image src={preLoadValue.swiper[idx].image} width={150} height={150}/>}
-                                    {idx === 1 && !img3 && <Image src={preLoadValue.swiper[idx].image} width={150} height={150}/>}
-                                    {idx === 2 && !img4 && <Image src={preLoadValue.swiper[idx].image} width={150} height={150}/>}
-                                    {idx === 3 && !img5 && <Image src={preLoadValue.swiper[idx].image} width={150} height={150}/>}
-                                    {idx === 4 && !img6 && <Image src={preLoadValue.swiper[idx].image} width={150} height={150}/>}
+                                    {idx === 0 && !img2 && <>
+                                        <Image src={preLoadValue.swiper[idx].image} width={150} height={150} />
+                                        <Button>Xóa</Button>
+
+                                    </>}
+                                    {idx === 1 && !img3 && <>
+                                        <Image src={preLoadValue.swiper[idx].image} width={150} height={150} />
+                                        <Button>Xóa</Button>
+
+                                    </>}
+                                    {idx === 2 && !img4 && <>
+                                        <Image src={preLoadValue.swiper[idx].image} width={150} height={150} />
+                                        <Button>Xóa</Button>
+
+                                    </>}
+                                    {idx === 3 && !img5 && <>
+                                        <Image src={preLoadValue.swiper[idx].image} width={150} height={150} />
+                                        <Button>Xóa</Button>
+
+                                    </>}
+                                    {idx === 4 && !img6 && <>
+                                        <Image src={preLoadValue.swiper[idx].image} width={150} height={150} />
+                                        <Button>Xóa</Button>
+
+                                    </>}
 
                                     <p>{errors.listImage?.message}</p>
                                 </div>
@@ -526,9 +573,10 @@ const NewsEditor = ({
                                 }}
                             />
                             {
-                                img7 ? <Image src={img7} width={150} height={150}/> :
-                                    <Image src={preLoadValue.listContent[0].image} width={150} height={150}/>
+                                img7 ? <Image src={img7} width={150} height={150} /> :
+                                    <Image src={preLoadValue.listContent[0].image} width={150} height={150} />
                             }
+                            <Button>Xóa</Button>
                         </div>
                     </div>
                     {/* <h2>Content 2: </h2> */}
@@ -563,7 +611,7 @@ const NewsEditor = ({
             </div> */}
                         <div
                             className={styles.titleEdit}
-                            style={{display: "flex", gap: "20px", alignItems: "center"}}
+                            style={{ display: "flex", gap: "20px", alignItems: "center" }}
                         >
                             <h3>Is add category :</h3>
                             <input
@@ -583,6 +631,10 @@ const NewsEditor = ({
                     submit
                 </Button>
             </form>
+            {
+                isLoading && <Loading />
+            }
+
         </div>
     );
 };

@@ -1,21 +1,23 @@
 import React from 'react';
 import styles from '../../styles/Admin.module.css';
-import {useForm} from 'react-hook-form';
-import {yupResolver} from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import AboutUsAddPartnerForm from './AboutUsAddPartnerForm';
 import AboutUsAddNumberForm from './AboutUsAddNumberForm';
-import {Button} from '@mui/material';
-import {useState} from 'react';
-import {useEffect} from 'react';
-import {updateAboutData} from '../../ApiUrl/about/aboutApi';
-import {makeData} from '../../pages/admin/about-us';
-import {uploadImg} from '../../config/firbase';
-import {toast} from 'react-toastify';
-import {handleChangeFile} from "../../Utils/handleChangeFileImage";
+import { Button } from '@mui/material';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { updateAboutData } from '../../ApiUrl/about/aboutApi';
+import { makeData } from '../../pages/admin/about-us';
+import { uploadImg } from '../../config/firbase';
+import { toast } from 'react-toastify';
+import { handleChangeFile } from "../../Utils/handleChangeFileImage";
 import Image from "next/image";
+import Loading from '../Loading/Loading';
 
-const AboutUsForm = ({aboutUsDataImage, aboutUsData, aboutUsNumber, aboutUsPartner}) => {
+const AboutUsForm = ({ aboutUsDataImage, aboutUsData, aboutUsNumber, aboutUsPartner }) => {
+    const [loadingPage, setLoadingPage] = useState(false)
     const [aboutUs, setAboutUs] = useState();
     const [numberAboutUs, setNumberAboutUs] = useState([]);
     const [partnerAboutUs, setPartnerAboutUs] = useState([]);
@@ -27,39 +29,39 @@ const AboutUsForm = ({aboutUsDataImage, aboutUsData, aboutUsNumber, aboutUsPartn
         setImg2(aboutUsDataImage?.about02?.image)
         setImg1(aboutUsDataImage?.about01?.image)
         setImg3(aboutUsDataImage?.video)
-    },[aboutUsDataImage])
+    }, [aboutUsDataImage])
     const schema = yup.object().shape({
         about01FirstDescription: yup
             .string()
             .required('Please enter content')
             .typeError('Please enter content'), about01SecondDescription: yup
-            .string()
-            .required('Please enter content')
-            .typeError('Please enter content'), about02Title: yup
-            .string()
-            .required('Please enter content')
-            .typeError('Please enter content'), about02FirstDescription: yup
-            .string()
-            .required('Please enter content')
-            .typeError('Please enter content'), about02SecondDescription: yup
-            .string()
-            .required('Please enter content')
-            .typeError('Please enter content'), about03Title: yup
-            .string()
-            .required('Please enter content')
-            .typeError('Please enter content'), aboutImage1: yup
-            .mixed()
-            .required('Please enter image')
-            .typeError('Please enter image'), aboutImage2: yup
-            .mixed()
-            .required('Please enter image')
-            .typeError('Please enter image'), aboutVideo: yup
-            .mixed()
-            .required('Please enter video')
-            .typeError('Please enter video'),
+                .string()
+                .required('Please enter content')
+                .typeError('Please enter content'), about02Title: yup
+                    .string()
+                    .required('Please enter content')
+                    .typeError('Please enter content'), about02FirstDescription: yup
+                        .string()
+                        .required('Please enter content')
+                        .typeError('Please enter content'), about02SecondDescription: yup
+                            .string()
+                            .required('Please enter content')
+                            .typeError('Please enter content'), about03Title: yup
+                                .string()
+                                .required('Please enter content')
+                                .typeError('Please enter content'), aboutImage1: yup
+                                    .mixed()
+                                    .required('Please enter image')
+                                    .typeError('Please enter image'), aboutImage2: yup
+                                        .mixed()
+                                        .required('Please enter image')
+                                        .typeError('Please enter image'), aboutVideo: yup
+                                            .mixed()
+                                            .required('Please enter video')
+                                            .typeError('Please enter video'),
     });
     const {
-        register, handleSubmit, reset, setError, formState: {errors},
+        register, handleSubmit, reset, setError, formState: { errors },
     } = useForm({
         resolver: yupResolver(schema),
     });
@@ -131,8 +133,10 @@ const AboutUsForm = ({aboutUsDataImage, aboutUsData, aboutUsNumber, aboutUsPartn
 
     function handleSubmitFc(data) {
         console.log(data);
+        setLoadingPage(true)
 
         setAboutUs(data);
+        setLoadingPage(false)
     }
 
     useEffect(() => {
@@ -238,7 +242,8 @@ const AboutUsForm = ({aboutUsDataImage, aboutUsData, aboutUsNumber, aboutUsPartn
                                     handleChangeFile(e, setImg1)
                                 }}
                             />
-                            <Image src={img1} alt="Picture of the author" width={150} height={150}/>
+                            <Image src={img1} alt="Picture of the author" width={150} height={150} />
+                            <Button>Xóa</Button>
 
                             <p>{errors.aboutImage1?.message}</p>
                         </div>
@@ -254,7 +259,9 @@ const AboutUsForm = ({aboutUsDataImage, aboutUsData, aboutUsNumber, aboutUsPartn
                                     handleChangeFile(e, setImg2)
                                 }}
                             />
-                            <Image src={img2} alt="Picture of the author" width={150} height={150}/>
+                            <Image src={img2} alt="Picture of the author" width={150} height={150} />
+                            <Button>Xóa</Button>
+
                             <p>{errors.aboutImage2?.message}</p>
                         </div>
                         <div className={styles.titleEdit}>
@@ -269,7 +276,9 @@ const AboutUsForm = ({aboutUsDataImage, aboutUsData, aboutUsNumber, aboutUsPartn
                                     handleChangeFile(e, setImg3)
                                 }}
                             />
-                            <video src={img3} alt="Video of the author" width={150} height={150}/>
+                            <video src={img3} alt="Video of the author" width={150} height={150} />
+                            <Button>Xóa</Button>
+
                             <p>{errors.aboutVideo?.message}</p>
                         </div>
                     </div>
@@ -302,6 +311,9 @@ const AboutUsForm = ({aboutUsDataImage, aboutUsData, aboutUsNumber, aboutUsPartn
         >
             Submit Form Update About Content
         </Button>
+        {
+            loadingPage && <Loading />
+        }
     </div>);
 };
 

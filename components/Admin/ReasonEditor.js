@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../../styles/Admin.module.css';
 //mui
 import { Button } from '@mui/material';
@@ -9,12 +9,14 @@ import * as yup from 'yup';
 //editor
 import { toast } from 'react-toastify';
 import { updateReasonData } from '../../ApiUrl/reason/reasonApi';
+import Loading from '../Loading/Loading';
 
 const schema = yup.object().shape({
   title: yup.string().required('missing field').typeError('invalid title'),
 });
 
 const ReasonEditor = ({ newsIdx, preLoadValue, setTrigger, trigger }) => {
+  const [isLoading, setIsLoading] = useState(false)
   const {
     register,
     handleSubmit,
@@ -26,6 +28,7 @@ const ReasonEditor = ({ newsIdx, preLoadValue, setTrigger, trigger }) => {
   });
 
   const submitEditReason = async (data) => {
+    setIsLoading(true)
     await updateReasonData(newsIdx, data)
       .then((res) => {
         setTrigger(!trigger);
@@ -36,6 +39,7 @@ const ReasonEditor = ({ newsIdx, preLoadValue, setTrigger, trigger }) => {
         toast.error('Add Failed');
         console.log(err);
       });
+    setIsLoading(false)
   };
   useEffect(() => {
     console.log(preLoadValue);
@@ -66,6 +70,9 @@ const ReasonEditor = ({ newsIdx, preLoadValue, setTrigger, trigger }) => {
           submit
         </Button>
       </form>
+      {
+        isLoading && <Loading />
+      }
     </div>
   );
 };

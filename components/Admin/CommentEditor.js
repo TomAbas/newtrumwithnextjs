@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styles from '../../styles/Admin.module.css';
 
 //mui
@@ -12,8 +12,9 @@ import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { updateRatingData } from '../../ApiUrl/rating/ratingApi';
 import { uploadImg } from '../../config/firbase';
-import {handleChangeFile} from "../../Utils/handleChangeFileImage";
+import { handleChangeFile } from "../../Utils/handleChangeFileImage";
 import Image from "next/image";
+import Loading from '../Loading/Loading';
 const schema = yup.object().shape({
   title: yup.string().required('missing field'),
   description: yup.string().required('missing field'),
@@ -22,6 +23,7 @@ const schema = yup.object().shape({
 });
 
 const CommentEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
+  const [isLoading, setIsLoading] = useState(false)
   const [imgUrl, setImgUrl] = useState(preLoadValue.logo);
   const {
     register,
@@ -32,6 +34,7 @@ const CommentEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
     resolver: yupResolver(schema),
   });
   const submitAddComment = async (data) => {
+    setIsLoading(true)
     console.log(data);
     let imgUrl;
     if (data.image.length > 0) {
@@ -52,6 +55,7 @@ const CommentEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
       toast.error('Edit Failed');
       console.log(error);
     }
+    setIsLoading(false)
   };
 
   useEffect(() => {
@@ -107,11 +111,13 @@ const CommentEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
                 className={styles.inputField}
                 name='image'
                 {...register('image')}
-                  onChange={(e)=>{
-                    handleChangeFile(e,setImgUrl)
-                  }}
+                onChange={(e) => {
+                  handleChangeFile(e, setImgUrl)
+                }}
               />
               <Image src={imgUrl} width={150} height={150} alt={''} />
+              <Button>Xóa</Button>
+
               <p>{errors.image?.message}</p>
             </div>
           </div>
@@ -120,6 +126,9 @@ const CommentEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
           submit
         </Button>
       </form>
+      {
+        isLoading && <Loading />
+      }
     </div>
   );
 };

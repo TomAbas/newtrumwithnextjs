@@ -1,18 +1,19 @@
-import React, {useState, useMemo} from "react";
+import React, { useState, useMemo } from "react";
 import styles from "../../styles/Admin.module.css";
 //firebase
-import {ref, getDownloadURL, uploadBytesResumable} from "firebase/storage";
-import {storage} from "../../config/firbase";
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { storage } from "../../config/firbase";
 //hook form
-import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import {useEffect} from "react";
-import {Button} from "@mui/material";
+import { useEffect } from "react";
+import { Button } from "@mui/material";
 import CheckboxEffect from "./CheckboxEffect";
-import {editLandingPageData} from "../../ApiUrl/landingpageApi/landingApi";
-import {toast} from "react-toastify";
+import { editLandingPageData } from "../../ApiUrl/landingpageApi/landingApi";
+import { toast } from "react-toastify";
 import Image from "next/image";
+import Loading from "../Loading/Loading";
 
 const schema = yup.object().shape({
     title1: yup.string().required('Vui lòng nhập "Banner"'),
@@ -28,11 +29,11 @@ const schema = yup.object().shape({
     image2: yup.mixed().required('Vui lòng chọn ảnh'),
     image3: yup.mixed().required('Vui lòng chọn ảnh'),
 });
-const LandingPageForm = ({preLoadValue, fullData}) => {
+const LandingPageForm = ({ preLoadValue, fullData }) => {
     const [imgSrc1, setImgSrc1] = useState("");
     const [imgSrc2, setImgSrc2] = useState("");
     const [imgSrc3, setImgSrc3] = useState("");
-
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
         console.log(imgSrc3)
     }, [imgSrc3])
@@ -58,7 +59,7 @@ const LandingPageForm = ({preLoadValue, fullData}) => {
         reset,
         getValues,
         setValue,
-        formState: {errors},
+        formState: { errors },
     } = useForm({
         resolver: yupResolver(schema),
         defaultValues: useMemo(() => {
@@ -67,6 +68,7 @@ const LandingPageForm = ({preLoadValue, fullData}) => {
     });
 
     const submitNewsEditor = async (data) => {
+        setLoading(true)
         let arrImg = [data.image1[0], data.image2[0], data.image3[0]];
         arrImg = await Promise.all(
             arrImg.map(async (item, index) => {
@@ -98,13 +100,13 @@ const LandingPageForm = ({preLoadValue, fullData}) => {
         );
         console.log(arrImg);
         let bodyTitle = data.title1.split("\n").map((item, idx) => {
-            return {content: item, effect: dadEffectArr[idx]};
+            return { content: item, effect: dadEffectArr[idx] };
         });
         let bodyDescription = data.content1Line1.split("\n").map((item, idx) => {
-            return {content: item};
+            return { content: item };
         });
         let bodySubTitle = data.content2Line1.split("\n").map((item, idx) => {
-            return {content: item, effect: dadEffectArr1[idx]};
+            return { content: item, effect: dadEffectArr1[idx] };
         });
         let bodyListContent = [
             {
@@ -117,7 +119,7 @@ const LandingPageForm = ({preLoadValue, fullData}) => {
                 description: data.content4Line2,
                 image: arrImg[2],
             },
-            {content: data.content5Line1, description: data.content5Line2},
+            { content: data.content5Line1, description: data.content5Line2 },
         ];
         let body = {
             title: bodyTitle,
@@ -134,6 +136,7 @@ const LandingPageForm = ({preLoadValue, fullData}) => {
             console.log(error);
             toast.error("Edit Landing Page Fail, Please Try Again");
         }
+        setLoading(false)
     };
     useEffect(() => {
         reset(preLoadValue);
@@ -359,10 +362,10 @@ const LandingPageForm = ({preLoadValue, fullData}) => {
                                         }}
                                     />
                                     {
-                                        imgSrc1 ? <Image src={imgSrc1} width={150} height={150}/> :
-                                            <Image src={getValues("image1")} width={150} height={150}/>
+                                        imgSrc1 ? <Image src={imgSrc1} width={150} height={150} /> :
+                                            <Image src={getValues("image1")} width={150} height={150} />
                                     }
-
+                                    <Button>Xóa</Button>
                                 </div>
                                 <div className={styles.titleEdit}>
                                     <h3>Choose first image for content : </h3>
@@ -377,9 +380,10 @@ const LandingPageForm = ({preLoadValue, fullData}) => {
                                         }}
                                     />
                                     {
-                                        imgSrc2 ? <Image src={imgSrc2} width={150} height={150}/> :
-                                            <Image src={getValues("image2")} width={150} height={150}/>
+                                        imgSrc2 ? <Image src={imgSrc2} width={150} height={150} /> :
+                                            <Image src={getValues("image2")} width={150} height={150} />
                                     }
+                                    <Button>Xóa</Button>
 
                                 </div>
                                 <div className={styles.titleEdit}>
@@ -395,9 +399,10 @@ const LandingPageForm = ({preLoadValue, fullData}) => {
                                         }}
                                     />
                                     {
-                                        imgSrc3 ? <Image src={imgSrc3} width={150} height={150}/> :
-                                            <Image src={getValues("image3")} width={150} height={150}/>
+                                        imgSrc3 ? <Image src={imgSrc3} width={150} height={150} /> :
+                                            <Image src={getValues("image3")} width={150} height={150} />
                                     }
+                                    <Button>Xóa</Button>
 
 
                                 </div>
@@ -412,6 +417,9 @@ const LandingPageForm = ({preLoadValue, fullData}) => {
                     </form>
                 </div>
             </div>
+            {
+                loading && <Loading />
+            }
         </>
     );
 };

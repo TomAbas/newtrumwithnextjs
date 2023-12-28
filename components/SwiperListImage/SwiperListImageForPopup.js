@@ -42,7 +42,8 @@ const BtnRight = ({ children }) => {
   );
 };
 
-const SwiperListImageForPopup = ({ imgArr, isShowNumPagination }) => {
+const SwiperListImageForPopup = ({ listContent, imgArr, isShowNumPagination }) => {
+  console.log(listContent, 'listContentlistContentlistContent')
   const [currentActiveSlide, setCurrentActiveSlide] = useState(1);
 
   const pagination = {
@@ -72,6 +73,7 @@ const SwiperListImageForPopup = ({ imgArr, isShowNumPagination }) => {
 
   return (
     <>
+
       <Swiper
         pagination={pagination}
         modules={[Pagination]}
@@ -89,16 +91,20 @@ const SwiperListImageForPopup = ({ imgArr, isShowNumPagination }) => {
             <Image src={imgArrowRight} width={15} height={15} />
           </BtnRight>
         </div>
-        {imgArr?.map((item, idx) => {
-          return (
-            <SwiperSlide key={idx}>
-              <div className={styles.WrapItem}>
-                <Image width={300} height={300} src={item.image} />
-              </div>
-            </SwiperSlide>
-          );
-        })}
+        {
+          listContent.map((item, idx) => {
+              return <SwiperSlide key={idx}>
+                <div className={styles.WrapItem}>
+                  {/* <Image width={300} height={300} src={item?.image} alt="#" /> */}
+                </div>
+              </SwiperSlide>
+         
+          })
+        }
+
+
       </Swiper>
+
     </>
   );
 };

@@ -14,10 +14,12 @@ import KeywordForm from "./keywordForm";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../../config/firbase";
 import { toast } from "react-toastify";
-import {handleChangeFile} from "../../Utils/handleChangeFileImage";
+import { handleChangeFile } from "../../Utils/handleChangeFileImage";
 import Image from "next/image";
+import Loading from "../Loading/Loading";
 
-const NewsCreator = ({arrNews, newsDetail, handleUpdateNews }) => {
+const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
+  const [isLoading, setIsLoading] = useState(false)
   const ReactQuill = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
     []
@@ -26,7 +28,7 @@ const NewsCreator = ({arrNews, newsDetail, handleUpdateNews }) => {
   const [creditList, setCreditList] = useState([]);
   const [keywordList, setKeywordList] = useState([]);
   const [img1, setImg1] = useState();
-    const [img2, setImg2] = useState();
+  const [img2, setImg2] = useState();
 
   const schema = yup.object().shape({
     title: yup.string().required("missing field").typeError("missing field"),
@@ -71,7 +73,7 @@ const NewsCreator = ({arrNews, newsDetail, handleUpdateNews }) => {
           downloadURL = await new Promise((resolve, reject) => {
             uploadTask.on(
               "state_changed",
-              () => {},
+              () => { },
               (error) => console.log("err ", error),
               async () => {
                 let url = await getDownloadURL(uploadTask.snapshot.ref);
@@ -203,6 +205,9 @@ const NewsCreator = ({arrNews, newsDetail, handleUpdateNews }) => {
                   name="title"
                   {...register("title")}
                 />
+                <p>
+                  {errors.title?.message}
+                </p>
               </div>
 
               <div className={styles.titleEdit}>
@@ -213,6 +218,9 @@ const NewsCreator = ({arrNews, newsDetail, handleUpdateNews }) => {
                   name="category"
                   {...register("category")}
                 />
+                <p>
+                  {errors.category?.message}
+                </p>
               </div>
 
               <div className={styles.titleEdit}>
@@ -222,6 +230,9 @@ const NewsCreator = ({arrNews, newsDetail, handleUpdateNews }) => {
                   value={editorContent}
                   onChange={onEditorStateChange}
                 />
+                <p>
+                  {errors.description?.message}
+                </p>
               </div>
 
               <div className={styles.titleEdit}>
@@ -230,11 +241,17 @@ const NewsCreator = ({arrNews, newsDetail, handleUpdateNews }) => {
                   className={styles.inputField}
                   type={"file"}
                   {...register("mainImage")}
-                    onChange={(e)=>{
-                      handleChangeFile(e, setImg1)
-                    }}
+                  onChange={(e) => {
+                    handleChangeFile(e, setImg1)
+                  }}
                 />
+
                 <Image alt={''} src={img1} width={150} height={150} />
+                <Button>Xóa</Button>
+
+                <p>
+                  {errors.mainImage?.message}
+                </p>
               </div>
               <div className={styles.titleEdit}>
                 <h3>Slider Image</h3>
@@ -244,12 +261,17 @@ const NewsCreator = ({arrNews, newsDetail, handleUpdateNews }) => {
                   name="sliderImg"
                   multiple
                   {...register("sliderImg")}
-                    onChange={(e)=>{
-                      handleChangeFile(e, setImg2)
-                      console.log(img2)
-                    }}
+                  onChange={(e) => {
+                    handleChangeFile(e, setImg2)
+                    console.log(img2)
+                  }}
                 />
                 <Image alt={''} src={img2} width={150} height={150} />
+                <Button>Xóa</Button>
+
+                <p>
+                  {errors.sliderImg?.message}
+                </p>
               </div>
             </div>
             <Button
@@ -266,6 +288,9 @@ const NewsCreator = ({arrNews, newsDetail, handleUpdateNews }) => {
           </form>
         </div>
       </div>
+      {
+        isLoading && <Loading />
+      }
     </>
   );
 };
