@@ -4,11 +4,12 @@ import SearchIcon from "@mui/icons-material/Search";
 import EastIcon from "@mui/icons-material/East";
 import styles from "../../../styles/FieldInputNewPage4.module.css";
 import { getAllPostNews } from "../../../ApiUrl/newsApi/newsApi";
+import { useRouter } from "next/router";
 
 const FieldInput = () => {
     const [dropdownVisible, setDropdownVisible] = useState(false)
     const [dropdownItems, setDropdownItems] = useState([]);
-
+    const router = useRouter();
     const InputRef = useRef(null);
 
     const handleInput = (e) => {
@@ -17,6 +18,7 @@ const FieldInput = () => {
         }
         InputRef.current = setTimeout(async () => {
             const data = await getAllPostNews(e.target.value);
+            console.log("🚀 ~ file: FieldInput.js:20 ~ data:", data)
             const datafilter = data.map((item) => item.title).filter((item) => item.includes(e.target.value));
 
             setDropdownItems(datafilter)
@@ -52,7 +54,9 @@ const FieldInput = () => {
             {dropdownVisible && (
                 <div className={styles.dropDownList}>
                     {dropdownItems.map((item, index) => (
-                        <div key={index} >
+                        <div key={index} onClick={() => {
+                            router.push(`/daily-news/${item}`)
+                        }}>
                             {item}
                         </div>
                     ))}
