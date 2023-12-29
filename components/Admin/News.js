@@ -1,24 +1,21 @@
-import React, { useEffect } from "react";
-import styles from "../../styles/Admin.module.css";
-import { Button } from "@mui/material";
-import { get, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Button } from "@mui/material";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import dynamic from "next/dynamic";
+import React, { useEffect, useMemo, useState } from "react";
+import { useForm } from "react-hook-form";
+import "react-quill/dist/quill.snow.css";
+import { toast } from "react-toastify";
 import * as yup from "yup";
 import { addPostNews } from "../../ApiUrl/newsApi/newsApi";
-import "react-quill/dist/quill.snow.css";
-import dynamic from "next/dynamic";
-import { useMemo } from "react";
-import { useState } from "react";
+import { handleChangeFile } from "../../Utils/handleChangeFileImage";
+import { storage } from "../../config/firbase";
+import styles from "../../styles/Admin.module.css";
+import Loading from "../Loading/Loading";
 import ServiceAddServiceForm from "./ServiceAddServiceForm";
 import KeywordForm from "./keywordForm";
-import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
-import { storage } from "../../config/firbase";
-import { toast } from "react-toastify";
-import { handleChangeFile } from "../../Utils/handleChangeFileImage";
-import Image from "next/image";
-import Loading from "../Loading/Loading";
 
-const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
+const NewsCreator = ({ newsDetail, handleUpdateNews }) => {
   const [isLoading, setIsLoading] = useState(false);
   const ReactQuill = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
@@ -51,6 +48,7 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
       .required("missing field")
       .default(false)
       .typeError("missing field"),
+    videoUrl: yup.string().required("missing field").typeError("missing field"),
   });
 
   const {
@@ -121,7 +119,7 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
   };
 
   const handleOnSubmit = async (data) => {
-    setLoading(true);
+    setIsLoading(true);
     try {
       const slideImgUrl = await handleUploadSlideImgs(data.sliderImg);
       const mainImgUrl = await handleUploadMainImg(data.mainImage);
@@ -129,7 +127,7 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
       console.log(mainImgUrl, "mainImgUrl");
       console.log(newsDetail);
       const body = {
-        title: data.title,
+        title: data.title.trim(),
         category: data.category,
         description: data.description,
         mainImage: mainImgUrl[0] ? mainImgUrl[0] : newsDetail?.mainImage,
@@ -139,6 +137,7 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
         keywords: keywordList.map((item) => item.title),
         isPublic: data.isPublic,
         topRead: data.topRead,
+        videoUrl: data.videoUrl,
       };
       console.log(body);
       const res = newsDetail
@@ -151,7 +150,7 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
       reset();
       setCreditList([]);
       setKeywordList([]);
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -173,6 +172,7 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
         category: newsDetail.category,
         topRead: newsDetail.topRead,
         isPublic: newsDetail.isPublic,
+        videoUrl: newsDetail.videoUrl,
       };
 
       setKeywordList(
@@ -281,6 +281,20 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
                 />
 
                 <p>{errors.sliderImg?.message}</p>
+              </div>
+
+              <div className={styles.titleEdit}>
+                <h3>Youtube video url</h3>
+                <input
+                  className={styles.inputField}
+                  type={"text"}
+                  name="videoUrl"
+                  multiple
+                  {...register("videoUrl")}
+                  onChange={(e) => {}}
+                />
+
+                <p>{errors.videoUrl?.message}</p>
               </div>
             </div>
 

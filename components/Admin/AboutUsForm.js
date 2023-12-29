@@ -27,14 +27,7 @@ const AboutUsForm = ({
   const [numberAboutUs, setNumberAboutUs] = useState([]);
   const [partnerAboutUs, setPartnerAboutUs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [img1, setImg1] = useState(aboutUsDataImage?.about01?.image);
-  const [img2, setImg2] = useState(aboutUsDataImage?.about02?.image);
-  const [img3, setImg3] = useState(aboutUsDataImage?.video);
-  useEffect(() => {
-    setImg2(aboutUsDataImage?.about02?.image);
-    setImg1(aboutUsDataImage?.about01?.image);
-    setImg3(aboutUsDataImage?.video);
-  }, [aboutUsDataImage]);
+
   const schema = yup.object().shape({
     about01FirstDescription: yup
       .string()
@@ -90,17 +83,7 @@ const AboutUsForm = ({
       aboutUs.aboutImage2,
       aboutUs.aboutVideo,
     ];
-    // arrMedia = await Promise.all(
-    //   arrMedia.map(async (item) => {
-    //     if (item.length === 0) return undefined;
-    //     try {
-    //       let url = await uploadImg(item[0]);
-    //       return url;
-    //     } catch (error) {
-    //       console.log(error);
-    //     }
-    //   })
-    // );
+
     async function uploadMedia() {
       arrMedia = await Promise.all(
         arrMedia.map(async (item) => {

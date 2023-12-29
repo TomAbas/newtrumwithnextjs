@@ -103,7 +103,6 @@ const SwiperListImage = ({
   };
   const handleGetListProject = async () => {
     const res = await getAllProject({ isCategory: 0 });
-    console.log(res);
     setListProject(res);
   };
   useEffect(() => {
