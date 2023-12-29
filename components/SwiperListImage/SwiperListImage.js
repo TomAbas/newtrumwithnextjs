@@ -7,6 +7,7 @@ import { useSwiper } from "swiper/react";
 import { Box } from "@mui/material";
 import imgArrowLeft from "../../public/imgs/arrowLeft.svg";
 import imgArrowRight from "../../public/imgs/arrowRight.svg";
+import { getAllProject } from "../../ApiUrl/projectApi/projectApi";
 
 const BtnLeft = ({ children }) => {
   const swiper = useSwiper();
@@ -43,7 +44,6 @@ const BtnRight = ({ children }) => {
 };
 
 const SwiperListImage = ({
-  imgArr,
   isShowNumPagination,
   breakpoints = {
     375: {
@@ -76,6 +76,7 @@ const SwiperListImage = ({
     },
   },
 }) => {
+  const [listProject, setListProject] = useState([]);
   const pagination = {
     clickable: true,
     type: "custom",
@@ -100,7 +101,14 @@ const SwiperListImage = ({
             </div>`;
     },
   };
-
+  const handleGetListProject = async () => {
+    const res = await getAllProject({ isCategory: 0 });
+    console.log(res);
+    setListProject(res);
+  };
+  useEffect(() => {
+    handleGetListProject();
+  }, []);
   return (
     <>
       <Swiper
@@ -119,15 +127,15 @@ const SwiperListImage = ({
             <Image src={imgArrowRight} width={15} height={15} />
           </BtnRight>
         </div>
-        {imgArr?.map((item, idx) => {
+        {listProject?.map((item, idx) => {
           return (
             <SwiperSlide key={idx}>
               <div className={styles.WrapItem}>
-                <Image width={300} height={300} src={item.img} />
+                <Image width={300} height={300} src={item.mainImage} />
                 <div className={styles.wrapItroduceItem}>
                   <h1 className={styles.titleItem}>{item.title}</h1>
                   <div className={styles.descItem}>
-                    <div dangerouslySetInnerHTML={{ __html: item.content }} />
+                    <div dangerouslySetInnerHTML={{ __html: item.videoAlt }} />
                   </div>
                 </div>
               </div>

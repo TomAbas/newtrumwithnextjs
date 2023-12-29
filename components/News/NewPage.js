@@ -44,6 +44,13 @@ const NewPage = () => {
     setListNewsReaded(data);
   };
 
+  const handleSearchNews = async (search) => {
+    const params = {
+      search: "search",
+    };
+    const data = await getAllPostNews(paramsReaded);
+  };
+
   useEffect(() => {
     handleGetListNewsPublic();
   }, []);

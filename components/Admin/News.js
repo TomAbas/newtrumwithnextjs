@@ -19,7 +19,7 @@ import Image from "next/image";
 import Loading from "../Loading/Loading";
 
 const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const ReactQuill = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
     []
@@ -86,7 +86,7 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
           downloadURL = await new Promise((resolve, reject) => {
             uploadTask.on(
               "state_changed",
-              () => { },
+              () => {},
               (error) => console.log("err ", error),
               async () => {
                 let url = await getDownloadURL(uploadTask.snapshot.ref);
@@ -125,18 +125,22 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
     try {
       const slideImgUrl = await handleUploadSlideImgs(data.sliderImg);
       const mainImgUrl = await handleUploadMainImg(data.mainImage);
+      console.log(slideImgUrl, "slideImgUrl");
+      console.log(mainImgUrl, "mainImgUrl");
+      console.log(newsDetail);
       const body = {
         title: data.title,
         category: data.category,
         description: data.description,
-        mainImage: mainImgUrl ? mainImgUrl[0] : newsDetail.mainImage,
-        sliderImages: slideImgUrl ? slideImgUrl : newsDetail.sliderImg,
+        mainImage: mainImgUrl[0] ? mainImgUrl[0] : newsDetail?.mainImage,
+        sliderImages:
+          slideImgUrl.length > 0 ? slideImgUrl : newsDetail?.sliderImages,
         credits: { creditList },
         keywords: keywordList.map((item) => item.title),
         isPublic: data.isPublic,
         topRead: data.topRead,
       };
-
+      console.log(body);
       const res = newsDetail
         ? await handleUpdateNews(newsDetail._id, body)
         : await handleAddNews(body);
@@ -225,9 +229,7 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
                   name="title"
                   {...register("title")}
                 />
-                <p>
-                  {errors.title?.message}
-                </p>
+                <p>{errors.title?.message}</p>
               </div>
 
               <div className={styles.titleEdit}>
@@ -238,9 +240,7 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
                   name="category"
                   {...register("category")}
                 />
-                <p>
-                  {errors.category?.message}
-                </p>
+                <p>{errors.category?.message}</p>
               </div>
 
               <div className={styles.titleEdit}>
@@ -250,9 +250,7 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
                   value={editorContent}
                   onChange={onEditorStateChange}
                 />
-                <p>
-                  {errors.description?.message}
-                </p>
+                <p>{errors.description?.message}</p>
               </div>
 
               <div className={styles.titleEdit}>
@@ -262,16 +260,11 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
                   type={"file"}
                   {...register("mainImage")}
                   onChange={(e) => {
-                    handleChangeFile(e, setImg1)
+                    handleChangeFile(e, setImg1);
                   }}
                 />
 
-                <Image alt={''} src={img1} width={150} height={150} />
-                <Button>Xóa</Button>
-
-                <p>
-                  {errors.mainImage?.message}
-                </p>
+                <p>{errors.mainImage?.message}</p>
               </div>
               <div className={styles.titleEdit}>
                 <h3>Slider Image</h3>
@@ -282,16 +275,12 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
                   multiple
                   {...register("sliderImg")}
                   onChange={(e) => {
-                    handleChangeFile(e, setImg2)
-                    console.log(img2)
+                    handleChangeFile(e, setImg2);
+                    console.log(img2);
                   }}
                 />
-                <Image alt={''} src={img2} width={150} height={150} />
-                <Button>Xóa</Button>
 
-                <p>
-                  {errors.sliderImg?.message}
-                </p>
+                <p>{errors.sliderImg?.message}</p>
               </div>
             </div>
 
@@ -354,9 +343,7 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
           </form>
         </div>
       </div>
-      {
-        isLoading && <Loading />
-      }
+      {isLoading && <Loading />}
     </>
   );
 };

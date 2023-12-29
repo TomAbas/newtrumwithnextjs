@@ -1,29 +1,29 @@
-import React, { useState } from 'react';
-import styles from '../../styles/Admin.module.css';
+import React, { useState } from "react";
+import styles from "../../styles/Admin.module.css";
 
 //mui
-import { Button } from '@mui/material';
+import { Button } from "@mui/material";
 //form
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-import { useEffect } from 'react';
-import { toast } from 'react-toastify';
-import { updateRatingData } from '../../ApiUrl/rating/ratingApi';
-import { uploadImg } from '../../config/firbase';
+import { useEffect } from "react";
+import { toast } from "react-toastify";
+import { updateRatingData } from "../../ApiUrl/rating/ratingApi";
+import { uploadImg } from "../../config/firbase";
 import { handleChangeFile } from "../../Utils/handleChangeFileImage";
 import Image from "next/image";
-import Loading from '../Loading/Loading';
+import Loading from "../Loading/Loading";
 const schema = yup.object().shape({
-  title: yup.string().required('missing field'),
-  description: yup.string().required('missing field'),
-  rating: yup.number().required('missing field').typeError('invalid rating'),
-  image: yup.mixed().required('missing field').typeError('invalid image'),
+  title: yup.string().required("missing field"),
+  description: yup.string().required("missing field"),
+  rating: yup.number().required("missing field").typeError("invalid rating"),
+  image: yup.mixed().required("missing field").typeError("invalid image"),
 });
 
 const CommentEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const [imgUrl, setImgUrl] = useState(preLoadValue.logo);
   const {
     register,
@@ -34,7 +34,7 @@ const CommentEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
     resolver: yupResolver(schema),
   });
   const submitAddComment = async (data) => {
-    setIsLoading(true)
+    setIsLoading(true);
     console.log(data);
     let imgUrl;
     if (data.image.length > 0) {
@@ -49,13 +49,13 @@ const CommentEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
     };
     try {
       await updateRatingData(newsIdx, body);
-      toast.success('Edit Success');
+      toast.success("Edit Success");
       setTrigger(!trigger);
     } catch (error) {
-      toast.error('Edit Failed');
+      toast.error("Edit Failed");
       console.log(error);
     }
-    setIsLoading(false)
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -75,60 +75,56 @@ const CommentEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
             <div className={styles.titleEdit}>
               <h3>Title </h3>
               <textarea
-                type='text'
+                type="text"
                 className={styles.inputField}
-                name='title'
-                {...register('title')}
+                name="title"
+                {...register("title")}
               />
               <p>{errors.title?.message}</p>
             </div>
             <div className={styles.titleEdit}>
               <h3>Description </h3>
               <textarea
-                type='text'
+                type="text"
                 className={styles.inputField}
-                name='description'
-                {...register('description')}
+                name="description"
+                {...register("description")}
               />
               <p>{errors.description?.message}</p>
             </div>
             <div className={styles.titleEdit}>
               <h3>Rating </h3>
               <input
-                step='0.01'
-                type='number'
+                step="0.01"
+                type="number"
                 className={styles.inputField}
-                name='rating'
-                {...register('rating')}
+                name="rating"
+                {...register("rating")}
               />
               <p>{errors.rating?.message}</p>
             </div>
             <div className={styles.titleEdit}>
               <h3>Image </h3>
               <input
-                type='file'
-                accept='image/*'
+                type="file"
+                accept="image/*"
                 className={styles.inputField}
-                name='image'
-                {...register('image')}
+                name="image"
+                {...register("image")}
                 onChange={(e) => {
-                  handleChangeFile(e, setImgUrl)
+                  handleChangeFile(e, setImgUrl);
                 }}
               />
-              <Image src={imgUrl} width={150} height={150} alt={''} />
-              <Button>Xóa</Button>
 
               <p>{errors.image?.message}</p>
             </div>
           </div>
         </div>
-        <Button variant='outlined' type='submit'>
+        <Button variant="outlined" type="submit">
           submit
         </Button>
       </form>
-      {
-        isLoading && <Loading />
-      }
+      {isLoading && <Loading />}
     </div>
   );
 };
