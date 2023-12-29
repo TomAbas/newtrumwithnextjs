@@ -7,7 +7,7 @@ const ServicesPage3 = ({ dataServices, listCategory }) => {
   const { listService, subTitle } = dataServices;
   const mainTitle = {
     category: "SERVICES",
-    description: subTitle,
+    videoAlt: subTitle,
   };
   const newData = [mainTitle, ...listCategory];
   return (
@@ -16,7 +16,7 @@ const ServicesPage3 = ({ dataServices, listCategory }) => {
         return (
           <ItemService
             key={idx}
-            desc={item.description}
+            desc={item.videoAlt}
             title={item.category}
             subTitle={item.title}
           />

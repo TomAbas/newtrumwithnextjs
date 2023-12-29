@@ -61,6 +61,11 @@ const navConfig = [
     path: "/admin/news",
     icon: getIcon("clarity:deploy-solid"),
   },
+  {
+    title: "Edit News",
+    path: "/admin/editnews",
+    icon: getIcon("clarity:deploy-solid"),
+  },
   // {
   //   title: "Auction",
   //   path: "/admin/step-auction",

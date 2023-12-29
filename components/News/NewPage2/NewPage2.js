@@ -10,8 +10,8 @@ const NewPage2 = ({ data }) => {
 
       <iframe
         className={styles.video}
-        src="https://www.youtube.com/embed/h7cOOfpdEfk?list=RDMMh7cOOfpdEfk"
-        title="KARIK - BẠN ĐỜI (FT. GDUCKY) | OFFICIAL MUSIC VIDEO"
+        src={data.videoUrl}
+        title="YouTube video player"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen

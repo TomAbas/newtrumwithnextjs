@@ -26,6 +26,11 @@ import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import Loading from "../Loading/Loading";
 import Image from "next/image";
+import {
+  createProjectData,
+  updateProjectData,
+} from "../../ApiUrl/projectApi/projectApi";
+import { toast } from "react-toastify";
 
 const schema = yup.object().shape({
   contributorName: yup.string(),
@@ -54,7 +59,6 @@ const NewsEditor = ({
   setDidNotSubmitHeadForm2 = () => {},
   setContributorList,
 }) => {
-  // console.log(isAddContributor);
   const ReactQuill = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
     []
@@ -79,142 +83,107 @@ const NewsEditor = ({
   };
 
   const editorContent = watch("videoAlt");
+  const handleUploadSlideImgs = async (data) => {
+    if (!data) return null;
+    const uploadSlideImg = await Promise.all(
+      Array.from(data).map(async (img) => {
+        try {
+          let downloadURL;
+          if (img.name === undefined) {
+            throw new Error("No file selected");
+          }
+          const id = new Date().getTime();
+          const sotrageRef = ref(storage, `web/${img.name}${id}}`);
+          const uploadTask = uploadBytesResumable(sotrageRef, img);
+          downloadURL = await new Promise((resolve, reject) => {
+            uploadTask.on(
+              "state_changed",
+              () => {},
+              (error) => console.log("err ", error),
+              async () => {
+                let url = await getDownloadURL(uploadTask.snapshot.ref);
+                resolve(url);
+              }
+            );
+          });
+          return downloadURL;
+        } catch (error) {
+          console.log(error);
+        }
+      })
+    );
+    return uploadSlideImg;
+  };
 
   const submitNewsEditor = async (data) => {
-    setIsLoading(true);
-    console.log(data);
-    return;
-    // let arrImg = [
-    //   data.image1[0],
-    //   data.image2[0],
-    //   data.image3[0],
-    //   data.image4[0],
-    //   data.image5[0],
-    // ];
-    // let swiper = await Promise.all(
-    //   arrImg.map(async (img, index) => {
-    //     try {
-    //       let downloadURL;
-    //       if (img.name === undefined) {
-    //         throw new Error("No file selected");
-    //       }
-    //       const id = new Date().getTime();
-    //       const sotrageRef = ref(storage, `web/${img.name}${id}}`);
-    //       const uploadTask = uploadBytesResumable(sotrageRef, img);
-    //       downloadURL = await new Promise((resolve, reject) => {
-    //         uploadTask.on(
-    //           "state_changed",
-    //           () => {},
-    //           (error) => console.log("err ", error),
-    //           async () => {
-    //             let url = await getDownloadURL(uploadTask.snapshot.ref);
-    //             resolve(url);
-    //           }
-    //         );
-    //       });
-    //       return { image: downloadURL };
-    //     } catch (error) {
-    //       console.log(error);
-    //       return { image: preLoadValue.swiper[index].image };
-    //     }
-    //   })
-    // );
-
     try {
-      if (data.mainImage[0].name !== undefined) {
-        console.log("mainImage", data.mainImage[0]);
-        const sotrageRef = ref(storage, `web/${data.mainImage[0].name}`);
-        const uploadTask = uploadBytesResumable(sotrageRef, data.mainImage[0]);
-        data.mainImage = await new Promise((resolve, reject) => {
-          uploadTask.on(
-            "state_changed",
-            () => {},
-            (error) => console.log("err ", error),
-            async () => {
-              let url = await getDownloadURL(uploadTask.snapshot.ref);
-              resolve(url);
-            }
-          );
-        });
+      setIsLoading(true);
+      const mainImage = await handleUploadSlideImgs(data.mainImage);
+      const content1Image = await handleUploadSlideImgs(data.content1Image);
+      const content2Image = await handleUploadSlideImgs(data.content2Image);
+
+      let submitData = {
+        mainImage: mainImage[0] || preLoadValue.mainImage,
+        title: data.title.trim(),
+        category: data.category,
+        videoAlt: data.videoAlt,
+        listContent: [
+          {
+            title: data.content1Title,
+            image:
+              content1Image.length > 0
+                ? content1Image
+                : preLoadValue.listContent[0].image,
+          },
+          {
+            title: data.content2Title,
+            image:
+              content2Image.length > 0
+                ? content2Image
+                : preLoadValue.listContent[1].image,
+          },
+        ],
+        id: data._id,
+        isCategory: data.isCategory,
+      };
+
+      console.log(submitData);
+
+      if (isAddNews) {
+        await addNews(submitData);
+      } else {
+        await updateNews(submitData);
       }
     } catch (error) {
       console.log("error", error);
-    }
-
-    try {
-      if (data.content1Image[0].name !== undefined) {
-        const sotrageRef = ref(storage, `web/${data.content1Image[0].name}`);
-        const uploadTask = uploadBytesResumable(
-          sotrageRef,
-          data.content1Image[0]
-        );
-        data.content1Image = await new Promise((resolve, reject) => {
-          uploadTask.on(
-            "state_changed",
-            () => {},
-            (error) => console.log("err ", error),
-            async () => {
-              let url = await getDownloadURL(uploadTask.snapshot.ref);
-              resolve(url);
-            }
-          );
-        });
-      }
-    } catch (error) {
-      data.content1Image = preLoadValue.listContent[0].image;
-      console.log("error", error);
-    }
-    try {
-      if (data.content2Image && data.content2Image[0].name !== undefined) {
-        const sotrageRef = ref(storage, `web/${data.content2Image[0].name}`);
-        const uploadTask = uploadBytesResumable(
-          sotrageRef,
-          data.content2Image[0]
-        );
-        data.content2Image = await new Promise((resolve, reject) => {
-          uploadTask.on(
-            "state_changed",
-            () => {},
-            (error) => console.log("err ", error),
-            async () => {
-              let url = await getDownloadURL(uploadTask.snapshot.ref);
-              resolve(url);
-            }
-          );
-        });
-      }
-    } catch (error) {
-      data.content2Image = preLoadValue.listContent[1].image;
-      console.log("error", error);
-    }
-
-    let submitData = {
-      mainImage: data.mainImage,
-      mainImageAlt: "data.mainImageAlt",
-      title: data.title.trim(),
-      category: data.category,
-      video: data.video,
-      videoAlt: data.videoAlt,
-      swiper: swiper,
-      listContent: [
-        { title: data.content1Title, image: data.content1Image },
-        { title: "data.content2Title", image: " data.content2Image" },
-      ],
-      id: data._id,
-      isCategory: data.isCategory,
-    };
-
-    console.log(submitData);
-
-    if (isAddNews) {
-      setNewNewsHeadContent(submitData);
-      setDidNotSubmitHeadForm2(false);
-    } else {
-      setNewsHeadContent(submitData);
-      setDidNotSubmitHeadForm(false);
+      toast.error("News added failed,plesae try again");
+    } finally {
+      setIsLoading(false);
+      reset();
     }
     setIsLoading(false);
   };
+
+  const addNews = async (data) => {
+    try {
+      await createProjectData(data);
+      toast.success("News added successfully");
+    } catch (error) {
+      console.log(error);
+      toast.error("News added failed,plesae try again");
+    }
+  };
+
+  const updateNews = async (data) => {
+    try {
+      await updateProjectData(data);
+      toast.success("News updated successfully");
+    } catch (error) {
+      console.log(error);
+      toast.error("News updated failed,plesae try again");
+    }
+  };
+
   const submitAddContributor = async (data) => {
     setIsLoading(true);
     await axios
@@ -264,6 +233,7 @@ const NewsEditor = ({
   useEffect(() => {
     register("videoAlt", { required: true });
   }, [register]);
+
   useEffect(() => {
     console.log(errors);
   }, [errors]);
@@ -425,20 +395,13 @@ const NewsEditor = ({
                 className={styles.inputField}
                 name="mainImage"
                 {...register("mainImage")}
-                onChange={() => {
+                onChange={(e) => {
                   console.log("change");
                   setDidNotSubmitHeadForm2(true);
                   setDidNotSubmitHeadForm(true);
                   handleChangeFile(e, setImg1);
                 }}
               />
-
-              {img1 ? (
-                <Image src={img1} width={150} height={150} />
-              ) : (
-                <Image src={preLoadValue.mainImage} width={150} height={150} />
-              )}
-              <Button>Xóa</Button>
 
               <p>{errors.mainImage?.message}</p>
             </div>

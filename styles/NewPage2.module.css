@@ -13,6 +13,10 @@
   margin-top: 1rem;
   color: #fff;
 }
+
+.NewPage2Text1 span[style] {
+  color: #fff !important;
+}
 .video {
   width: 100%;
   margin: 2rem 0rem;

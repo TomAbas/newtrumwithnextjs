@@ -281,6 +281,19 @@
 .brandName p {
   margin-bottom: 12px;
 }
+
+.brandNameAdmin {
+  font-size: 14px;
+  text-transform: capitalize;
+  text-align: center;
+  flex: 1;
+  color: black;
+}
+.brandNameAdmin p {
+  margin-bottom: 12px;
+  color: black;
+}
+
 .aboutContainer03 {
   margin: 50px auto 100px auto;
 }

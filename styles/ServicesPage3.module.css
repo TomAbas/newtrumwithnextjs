@@ -15,13 +15,16 @@
   padding: 1rem 0;
 }
 .titleCard {
+  text-transform: capitalize;
   font-size: 26px;
 }
 .subTitleCard {
+  text-transform: capitalize;
   font-size: 14px;
   font-weight: 400;
 }
 .desc {
+  text-transform: capitalize;
   font-size: 14px;
 }
 

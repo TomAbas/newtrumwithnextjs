@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import ListJobPage0 from '../components/ListJobPage/ListJobPage';
-import { getAllProject } from '../ApiUrl/projectApi/projectApi';
+import React, { useState, useEffect } from "react";
+import ListJobPage0 from "../components/ListJobPage/ListJobPage";
+import { getAllProject } from "../ApiUrl/projectApi/projectApi";
 
 const ListJobPage = ({ data }) => {
   const [arrayListJob, setArrayListJob] = useState([]);
@@ -19,6 +19,7 @@ const ListJobPage = ({ data }) => {
   useEffect(() => {
     fetchListJob();
   }, []);
+
   return (
     <>
       <ListJobPage0 arrayListJob={arrayListJob} amountJob={amountJob} />

@@ -1,20 +1,38 @@
-import React, { Fragment } from 'react';
-import styles from '../../../../styles/AboutStyles.module.css';
-import Image from 'next/future/image';
-import logo from '../../../../public/imgs/slideImgs/MultiMediaProduction1.webp';
+import Image from "next/future/image";
+import React, { Fragment } from "react";
+import styles from "../../../../styles/AboutStyles.module.css";
 export const Brand = ({ item }) => {
   return (
     <div className={styles.wrapperBrand}>
       <div className={styles.logoBrand}>
         <Image
-          layout='responsive'
+          layout="responsive"
           width={100}
           height={100}
           src={item.image}
-          alt='logo'
+          alt="logo"
         />
       </div>
       <div className={styles.brandName}>
+        <p>{item?.title}</p>
+      </div>
+    </div>
+  );
+};
+
+export const BrandAdmin = ({ item }) => {
+  return (
+    <div className={styles.wrapperBrand}>
+      <div className={styles.logoBrand}>
+        <Image
+          layout="responsive"
+          width={100}
+          height={100}
+          src={item.image}
+          alt="logo"
+        />
+      </div>
+      <div className={styles.brandNameAdmin}>
         <p>{item?.title}</p>
       </div>
     </div>

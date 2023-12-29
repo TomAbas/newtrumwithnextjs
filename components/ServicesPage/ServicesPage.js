@@ -22,9 +22,6 @@ const ServicesPage = ({ data, listAllProject }) => {
   );
   const [listCategory, setListCategory] = useState([]);
   useEffect(() => {
-    getListRatingData().then((res) => {
-      setListCardIndustry(res);
-    });
     setListCategory(getCategoryFromListAllProject(listAllProject));
   }, []);
   useEffect(() => {
@@ -33,49 +30,13 @@ const ServicesPage = ({ data, listAllProject }) => {
     }
   }, [data]);
 
-  const dataTest = [
-    {
-      img: "https://picsum.photos/200",
-      title: "Content Marketing",
-      content: "We help yo",
-    },
-    {
-      img: "https://picsum.photos/200",
-      title: "Content Marketing",
-      content: "We help yo",
-    },
-    {
-      img: "https://picsum.photos/200",
-      title: "Content Marketing",
-      content: "We help yo",
-    },
-    {
-      img: "https://picsum.photos/200",
-      title: "Content Marketing",
-      content: "We help yo",
-    },
-    {
-      img: "https://picsum.photos/200",
-      title: "Content Marketing",
-      content: "We help yo",
-    },
-    {
-      img: "https://picsum.photos/200",
-      title: "Content Marketing",
-      content: "We help yo",
-    },
-  ];
-  
   return (
     <div className={styles.serviceContainer}>
       <ServicesPage1 />
       <ServicesPage2 dataServices={dataServices} />
       <ServicesPage3 dataServices={dataServices} listCategory={listCategory} />
-      {/* <Industry /> */}
-      {/* <ServicesPage4 listCardIndustry={listCardIndustry} /> */}
-      <SwiperListImage imgArr={dataTest}/>
-      <BestProjects />
-      {/*<ServicesPage5 />*/}
+
+      <SwiperListImage />
     </div>
   );
 };

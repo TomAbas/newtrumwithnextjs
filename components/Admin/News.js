@@ -1,25 +1,22 @@
-import React, { useEffect } from "react";
-import styles from "../../styles/Admin.module.css";
-import { Button } from "@mui/material";
-import { get, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Button } from "@mui/material";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import dynamic from "next/dynamic";
+import React, { useEffect, useMemo, useState } from "react";
+import { useForm } from "react-hook-form";
+import "react-quill/dist/quill.snow.css";
+import { toast } from "react-toastify";
 import * as yup from "yup";
 import { addPostNews } from "../../ApiUrl/newsApi/newsApi";
-import "react-quill/dist/quill.snow.css";
-import dynamic from "next/dynamic";
-import { useMemo } from "react";
-import { useState } from "react";
+import { handleChangeFile } from "../../Utils/handleChangeFileImage";
+import { storage } from "../../config/firbase";
+import styles from "../../styles/Admin.module.css";
+import Loading from "../Loading/Loading";
 import ServiceAddServiceForm from "./ServiceAddServiceForm";
 import KeywordForm from "./keywordForm";
-import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
-import { storage } from "../../config/firbase";
-import { toast } from "react-toastify";
-import { handleChangeFile } from "../../Utils/handleChangeFileImage";
-import Image from "next/image";
-import Loading from "../Loading/Loading";
 
-const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
-  const [isLoading, setIsLoading] = useState(false)
+const NewsCreator = ({ newsDetail, handleUpdateNews }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const ReactQuill = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
     []
@@ -51,6 +48,7 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
       .required("missing field")
       .default(false)
       .typeError("missing field"),
+    videoUrl: yup.string().required("missing field").typeError("missing field"),
   });
 
   const {
@@ -86,7 +84,7 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
           downloadURL = await new Promise((resolve, reject) => {
             uploadTask.on(
               "state_changed",
-              () => { },
+              () => {},
               (error) => console.log("err ", error),
               async () => {
                 let url = await getDownloadURL(uploadTask.snapshot.ref);
@@ -121,22 +119,27 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
   };
 
   const handleOnSubmit = async (data) => {
-    setLoading(true);
+    setIsLoading(true);
     try {
       const slideImgUrl = await handleUploadSlideImgs(data.sliderImg);
       const mainImgUrl = await handleUploadMainImg(data.mainImage);
+      console.log(slideImgUrl, "slideImgUrl");
+      console.log(mainImgUrl, "mainImgUrl");
+      console.log(newsDetail);
       const body = {
-        title: data.title,
+        title: data.title.trim(),
         category: data.category,
         description: data.description,
-        mainImage: mainImgUrl ? mainImgUrl[0] : newsDetail.mainImage,
-        sliderImages: slideImgUrl ? slideImgUrl : newsDetail.sliderImg,
+        mainImage: mainImgUrl[0] ? mainImgUrl[0] : newsDetail?.mainImage,
+        sliderImages:
+          slideImgUrl.length > 0 ? slideImgUrl : newsDetail?.sliderImages,
         credits: { creditList },
         keywords: keywordList.map((item) => item.title),
         isPublic: data.isPublic,
         topRead: data.topRead,
+        videoUrl: data.videoUrl,
       };
-
+      console.log(body);
       const res = newsDetail
         ? await handleUpdateNews(newsDetail._id, body)
         : await handleAddNews(body);
@@ -147,7 +150,7 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
       reset();
       setCreditList([]);
       setKeywordList([]);
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -169,6 +172,7 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
         category: newsDetail.category,
         topRead: newsDetail.topRead,
         isPublic: newsDetail.isPublic,
+        videoUrl: newsDetail.videoUrl,
       };
 
       setKeywordList(
@@ -225,9 +229,7 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
                   name="title"
                   {...register("title")}
                 />
-                <p>
-                  {errors.title?.message}
-                </p>
+                <p>{errors.title?.message}</p>
               </div>
 
               <div className={styles.titleEdit}>
@@ -238,9 +240,7 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
                   name="category"
                   {...register("category")}
                 />
-                <p>
-                  {errors.category?.message}
-                </p>
+                <p>{errors.category?.message}</p>
               </div>
 
               <div className={styles.titleEdit}>
@@ -250,9 +250,7 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
                   value={editorContent}
                   onChange={onEditorStateChange}
                 />
-                <p>
-                  {errors.description?.message}
-                </p>
+                <p>{errors.description?.message}</p>
               </div>
 
               <div className={styles.titleEdit}>
@@ -262,16 +260,11 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
                   type={"file"}
                   {...register("mainImage")}
                   onChange={(e) => {
-                    handleChangeFile(e, setImg1)
+                    handleChangeFile(e, setImg1);
                   }}
                 />
 
-                <Image alt={''} src={img1} width={150} height={150} />
-                <Button>Xóa</Button>
-
-                <p>
-                  {errors.mainImage?.message}
-                </p>
+                <p>{errors.mainImage?.message}</p>
               </div>
               <div className={styles.titleEdit}>
                 <h3>Slider Image</h3>
@@ -282,16 +275,26 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
                   multiple
                   {...register("sliderImg")}
                   onChange={(e) => {
-                    handleChangeFile(e, setImg2)
-                    console.log(img2)
+                    handleChangeFile(e, setImg2);
+                    console.log(img2);
                   }}
                 />
-                <Image alt={''} src={img2} width={150} height={150} />
-                <Button>Xóa</Button>
 
-                <p>
-                  {errors.sliderImg?.message}
-                </p>
+                <p>{errors.sliderImg?.message}</p>
+              </div>
+
+              <div className={styles.titleEdit}>
+                <h3>Youtube video url</h3>
+                <input
+                  className={styles.inputField}
+                  type={"text"}
+                  name="videoUrl"
+                  multiple
+                  {...register("videoUrl")}
+                  onChange={(e) => {}}
+                />
+
+                <p>{errors.videoUrl?.message}</p>
               </div>
             </div>
 
@@ -354,9 +357,7 @@ const NewsCreator = ({ arrNews, newsDetail, handleUpdateNews }) => {
           </form>
         </div>
       </div>
-      {
-        isLoading && <Loading />
-      }
+      {isLoading && <Loading />}
     </>
   );
 };
