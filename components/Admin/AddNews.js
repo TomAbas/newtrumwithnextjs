@@ -53,8 +53,7 @@ const AddNews = ({ isAddNews }) => {
 
   const submitNewNewsCKEditor = async (e) => {
     e.preventDefault();
-    console.log(newNewsHeadContent);
-    console.log(newNewsContent1);
+
     let body = {
       ...newNewsHeadContent,
       listContent: [

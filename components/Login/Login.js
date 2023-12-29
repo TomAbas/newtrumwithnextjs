@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import InputField from '../Form/InputField'
 import styles from "../../styles/Login.module.css"
 import * as yup from 'yup';
-import {useForm} from 'react-hook-form';
-import {yupResolver} from '@hookform/resolvers/yup';
-import {loginAdmin} from '../../ApiUrl/login/loginApi';
-import {useRouter} from 'next/router';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { loginAdmin } from '../../ApiUrl/login/loginApi';
+import { useRouter } from 'next/router';
 
 const Login = () => {
     const router = useRouter();
@@ -24,7 +24,7 @@ const Login = () => {
     const {
         register,
         handleSubmit,
-        formState: {errors},
+        formState: { errors },
         reset,
     } = useForm({
         resolver: yupResolver(schema),
@@ -33,7 +33,7 @@ const Login = () => {
     async function handleOnSubmit(data) {
         try {
             const res = await loginAdmin(data)
-            reset({username: '', password: ''})
+            reset({ username: '', password: '' })
             localStorage.setItem('Authorization', res)
             console.log("🚀 ~ file: Login.js:35 ~ res:", res)
             router.push('/admin/landingpage');
@@ -53,11 +53,11 @@ const Login = () => {
                 {/* <form onSubmit={handleSubmit(handleOnSubmit)}> */}
                 <form onSubmit={handleSubmit(handleOnSubmit)}>
                     <div className={styles.Input}>
-                        <InputField register={{...register('username')}} label='Tài khoản'/>
+                        <InputField register={{ ...register('username') }} label='Tài khoản' />
                         {errors && errors.username && <div className={styles.error}>{errors.username.message}</div>}
                     </div>
                     <div className={styles.Input}>
-                        <InputField register={{...register('password')}} label='Mật khẩu'/>
+                        <InputField type='password' register={{ ...register('password') }} label='Mật khẩu' />
                         {errors && errors.password && <div className={styles.error}>{errors.password.message}</div>}
                     </div>
                     <div className={styles.BtnSubmit}>

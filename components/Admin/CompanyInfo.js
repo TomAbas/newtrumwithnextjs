@@ -13,18 +13,20 @@ import { Button } from "@mui/material";
 import { editContactPageData } from "../../ApiUrl/contact/contact";
 import { editTitleRecuiterData } from "../../ApiUrl/recuiter/recuiter";
 import { toast } from "react-toastify";
+import Loading from "../Loading/Loading";
 const schema = yup.object().shape({
-  title1: yup.string(),
-  title2: yup.string(),
-  title3: yup.string(),
-  content1Line1: yup.string(),
-  content1Line2: yup.string(),
-  content1Line3: yup.string(),
-  content1Line4: yup.string(),
-  content1Line5: yup.string(),
-  content1Line6: yup.string(),
+  title1: yup.string().required("missing field"),
+  title2: yup.string().required("missing field"),
+  title3: yup.string().required("missing field"),
+  content1Line1: yup.string().required("missing field"),
+  content1Line2: yup.string().required("missing field"),
+  content1Line3: yup.string().required("missing field"),
+  content1Line4: yup.string().required("missing field"),
+  content1Line5: yup.string().required("missing field"),
+  content1Line6: yup.string().required("missing field"),
 });
 const CompanyInfo = ({ defaultValuesCom }) => {
+  const [isLoading, setIsLoading] = useState(false)
   const {
     register,
     handleSubmit,
@@ -40,6 +42,7 @@ const CompanyInfo = ({ defaultValuesCom }) => {
   // const [editorLoaded, setEditorLoaded] = useState(false);
   // const { CKEditor, ClassicEditor } = editorRef.current || {};
   const submitCompanyInfoEditor = async (data) => {
+    setIsLoading(true)
     const submitData = {
       address: data.title1,
       phone: data.title2,
@@ -61,6 +64,7 @@ const CompanyInfo = ({ defaultValuesCom }) => {
       console.log(error);
       toast.error("Failed to edit, please try again");
     }
+    setIsLoading(false)
   };
 
   useEffect(() => {
@@ -190,6 +194,9 @@ const CompanyInfo = ({ defaultValuesCom }) => {
           </form>
         </div>
       </div>
+      {
+        isLoading && <Loading />
+      }
     </>
   );
 };

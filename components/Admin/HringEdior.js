@@ -24,12 +24,14 @@ import { urlDeleteContributor, urlEditJob } from "../../ApiUrl/Api";
 import { urlAddContributor } from "../../ApiUrl/Api";
 import { editRecuiterData } from "../../ApiUrl/recuiter/recuiter";
 import { toast } from "react-toastify";
+import Loading from "../Loading/Loading";
 const schema = yup.object().shape({
   title1: yup.string().required("missing field"),
   title2: yup.string().required("missing field"),
 });
 
 const HiringEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -41,8 +43,9 @@ const HiringEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
       return preLoadValue;
     }, [preLoadValue]),
   });
+
   const submitNewsEditor = async (data) => {
-    console.log(data);
+    setIsLoading(true)
     const dataSubmit = { title: data.title1, description: data.title2 };
     try {
       await editRecuiterData(dataSubmit, newsIdx);
@@ -62,6 +65,7 @@ const HiringEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
     //   .catch((error) => {
     //     console.log(error);
     //   });
+    setIsLoading(false)
   };
 
   useEffect(() => {
@@ -106,6 +110,9 @@ const HiringEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
           submit
         </Button>
       </form>
+      {
+        isLoading && <Loading />
+      }
     </div>
   );
 };

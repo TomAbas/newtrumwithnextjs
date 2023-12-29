@@ -24,6 +24,7 @@ import { urlDeleteContributor } from "../../ApiUrl/Api";
 import { urlAddContributor, urlListContributorIdPost } from "../../ApiUrl/Api";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
+import Loading from "../Loading/Loading";
 
 const schema = yup.object().shape({
   contributorName: yup.string(),
@@ -260,6 +261,39 @@ const NewsEditor = ({
   useEffect(() => {
     register("videoAlt", { required: true });
   }, [register]);
+  useEffect(() => {
+    console.log(errors);
+  }, [errors]);
+
+  const [img1, setImg1] = useState(preLoadValue.image1);
+  const [img2, setImg2] = useState(preLoadValue.image2);
+  const [img3, setImg3] = useState(preLoadValue.image3);
+  const [img4, setImg4] = useState(preLoadValue.image4);
+  const [img5, setImg5] = useState(preLoadValue.image5);
+  const [img6, setImg6] = useState(preLoadValue.image5);
+  const [img7, setImg7] = useState(preLoadValue.image5);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleChangeFile = (e, setImgSrc) => {
+    let file = e.target.files[0];
+    if (
+      file.type === "image/jpg" ||
+      file.type === "image/gif" ||
+      file.type === "image/png" ||
+      file.type === "image/jpeg"
+    ) {
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+
+      reader.onload = (e) => {
+        setImgSrc(e.target.result);
+      };
+    }
+  };
+
+  useEffect(() => {
+    reset(preLoadValue);
+  }, [preLoadValue]);
   useEffect(() => {
     console.log(errors);
   }, [errors]);
@@ -537,6 +571,7 @@ const NewsEditor = ({
           submit
         </Button>
       </form>
+      {isLoading && <Loading />}
     </div>
   );
 };

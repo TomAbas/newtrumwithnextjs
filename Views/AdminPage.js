@@ -17,6 +17,7 @@ import axios from "axios";
 import { useState } from "react";
 import CompanyInfo from "../components/Admin/CompanyInfo";
 import { getInfoLandingPage } from "../ApiUrl/infoApi/infoApi";
+import Loading from "../components/Loading/Loading";
 // import logo from "../../imgs/logo.png";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -159,7 +160,7 @@ export default function BasicTabs() {
         {defaultValues ? (
           <LandingPageForm preLoadValue={defaultValues} />
         ) : (
-          <div>Loading...</div>
+         <Loading/>
         )}
       </TabPanel>
       <TabPanel value={value} index={1}>
@@ -175,7 +176,7 @@ export default function BasicTabs() {
         {defaultValuesCom ? (
           <CompanyInfo defaultValuesCom={defaultValuesCom} />
         ) : (
-          <div>Loading...</div>
+         <Loading/>
         )}
       </TabPanel>
     </Box>

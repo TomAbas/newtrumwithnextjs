@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { getContactPageData } from "../../../ApiUrl/contact/contact";
 import { getRecuiterData } from "../../../ApiUrl/recuiter/recuiter";
 import CompanyInfo from "../../../components/Admin/CompanyInfo";
+import Loading from "../../../components/Loading/Loading";
 
 const Index = () => {
   const [defaultValuesCom, setDefaultValuesCom] = useState();
@@ -31,9 +32,10 @@ const Index = () => {
     <>
       {" "}
       {defaultValuesCom ? (
+        
         <CompanyInfo defaultValuesCom={defaultValuesCom} />
       ) : (
-        <div>Loading...</div>
+       <Loading/>
       )}
     </>
   );

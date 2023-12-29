@@ -140,6 +140,7 @@ const EditNews = () => {
             {newsDetail ? (
               <>
                 <NewsCreator
+                    arrNews={arrNews}
                   newsDetail={newsDetail}
                   handleUpdateNews={handleUpdateNews}
                 />

@@ -8,7 +8,9 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import ServiceAddServiceForm from './ServiceAddServiceForm';
 import { updateServiceData } from '../../ApiUrl/service/serviceApi';
+import Loading from '../Loading/Loading';
 const ServiceForm = ({ serviceData, serviceListData }) => {
+  const [isLoading,setIsLoading] = useState(false)
   const [service, setService] = useState();
   const [serviceList, setServiceList] = useState([]);
   const schema = yup.object().shape({
@@ -39,9 +41,11 @@ const ServiceForm = ({ serviceData, serviceListData }) => {
     });
   }
   function handleSubmitFc(data) {
+    setIsLoading(true)
     console.log(data);
     setService(data);
     reset({});
+    setIsLoading(false)
   }
   useEffect(() => {
     if (serviceData) {
@@ -111,6 +115,9 @@ const ServiceForm = ({ serviceData, serviceListData }) => {
       >
         Submit Form Update SERVICE Content
       </Button>
+      {
+        isLoading && <Loading />
+      }
     </div>
   );
 };

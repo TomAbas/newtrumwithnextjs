@@ -25,6 +25,9 @@ body {
     margin: 0 auto;
     font-family: 'montserrat', 'Times New Roman', Times, serif;
 }
+.text-danger{
+    color: #ff0000;
+}
 
 a {
     color: inherit;
@@ -42,6 +45,54 @@ a {
     box-sizing: border-box;
     font-family: 'montserrat', 'Times New Roman', Times, serif;
 }
+.wrap-lds-ring{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1200;
+    background: #ffffffc9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #c9c9c9 transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 
 @media (prefers-color-scheme: dark) {
     html {
@@ -117,3 +168,4 @@ a {
 .zoomAble .swiper-slide {
     height: 465px;
 }
+

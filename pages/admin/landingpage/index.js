@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getLandingPageData } from "../../../ApiUrl/landingpageApi/landingApi";
 import LandingPageForm from "../../../components/Admin/LandingPageForm";
+import Loading from "../../../components/Loading/Loading";
 
 const Index = () => {
   const [fullData, setFullData] = useState();
@@ -46,7 +47,7 @@ const Index = () => {
       {defaultValues ? (
         <LandingPageForm preLoadValue={defaultValues} fullData={fullData} />
       ) : (
-        <div>Loading...</div>
+        <Loading/>
       )}
     </>
   );

@@ -17,6 +17,7 @@ import {
   updateProjectData,
 } from "../../ApiUrl/projectApi/projectApi";
 import { toast } from "react-toastify";
+import Loading from "../Loading/Loading";
 
 const NewsForm = () => {
   const [arrNews, setArrNews] = useState([]);
@@ -156,6 +157,7 @@ const NewsForm = () => {
 
   return (
     <>
+
       <div className={styles.landingpageformContainer}>
         <div className={styles.titleForm}>
           <h1>EDIT PROJECT</h1>
@@ -214,6 +216,7 @@ const NewsForm = () => {
           </div>
         </div>
       </div>
+
     </>
   );
 };

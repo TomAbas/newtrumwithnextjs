@@ -42,7 +42,8 @@ const BtnRight = ({ children }) => {
   );
 };
 
-const SwiperListImageForPopup = ({ imgArr, isShowNumPagination }) => {
+const SwiperListImageForPopup = ({ listContent, imgArr, isShowNumPagination }) => {
+  console.log(listContent, 'listContentlistContentlistContent')
   const [currentActiveSlide, setCurrentActiveSlide] = useState(1);
 
   const pagination = {
@@ -72,6 +73,7 @@ const SwiperListImageForPopup = ({ imgArr, isShowNumPagination }) => {
 
   return (
     <>
+
       <Swiper
         pagination={pagination}
         modules={[Pagination]}
@@ -110,6 +112,7 @@ const SwiperListImageForPopup = ({ imgArr, isShowNumPagination }) => {
           );
         })}
       </Swiper>
+
     </>
   );
 };
