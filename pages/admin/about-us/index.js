@@ -19,7 +19,9 @@ const Index = () => {
   const [aboutUsNumber, setAboutUsNumber] = useState([]);
   const [aboutUsPartner, setAboutUsPartner] = useState([]);
   const [aboutUsDataImage, setAboutUsDataImage] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   function getAboutUsData() {
+    setIsLoading(true);
     getAboutData().then((data) => {
       setAboutUsDataImage(data);
       const dataAbout = makeData(data);
@@ -27,8 +29,10 @@ const Index = () => {
       setAboutUsPartner(data.about03.listBrand);
       setAboutUsData(dataAbout);
     });
+    setIsLoading(false);
   }
   useEffect(() => {
+
     getAboutUsData();
   }, []);
   return (
@@ -39,6 +43,9 @@ const Index = () => {
         aboutUsNumber={aboutUsNumber}
         aboutUsPartner={aboutUsPartner}
       />
+      {
+        isLoading && <Loading/>
+      }
     </div>
   );
 };

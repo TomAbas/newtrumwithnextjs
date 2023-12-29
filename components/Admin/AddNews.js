@@ -50,7 +50,6 @@ const AddNews = ({ isAddNews }) => {
   const [newNewsContent1, setNewNewsContent1] = useState();
   const [newNewsContent2, setNewNewsContent2] = useState("");
   const [didNotSubmitHeadForm2, setDidNotSubmitHeadForm2] = useState(true);
-
   const submitNewNewsCKEditor = async (e) => {
     e.preventDefault();
 

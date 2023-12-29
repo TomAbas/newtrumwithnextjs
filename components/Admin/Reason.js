@@ -15,6 +15,7 @@ import { Button } from '@mui/material';
 import ReasonEditor from './ReasonEditor';
 import AddReason from './AddReason';
 import { deleteReasonData, getListReasonData } from '../../ApiUrl/reason/reasonApi';
+import Loading from '../Loading/Loading';
 
 const Reason = () => {
   const [arrReason, setArrReason] = useState([]);
@@ -23,7 +24,7 @@ const Reason = () => {
   const [trigger, setTrigger] = useState(false);
   const [addNewComment, setAddNewComment] = useState(false);
   const [reDelete, setReDelete] = useState(true);
-
+  const [isLoading, setIsLoading] = useState(false);
   const deleteReason = async (id) => {
     try {
       await deleteReasonData(id);
@@ -33,12 +34,14 @@ const Reason = () => {
     }
   };
   const fetchListReason = async () => {
+    setIsLoading(true);
     setArrReason(
       await getListReasonData().then((data) => {
         console.log(data);
         return data;
       })
     );
+    setIsLoading(false);
   };
   const fetchReasonId = async (id) => {
     let reasontEdit = arrReason.find((item) => item._id === id);
@@ -162,6 +165,9 @@ const Reason = () => {
           </div>
         </div>
       </div>
+      {
+        isLoading && <Loading />
+      }
     </>
   );
 };

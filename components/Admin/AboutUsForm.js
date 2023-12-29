@@ -26,9 +26,11 @@ const AboutUsForm = ({ aboutUsDataImage, aboutUsData, aboutUsNumber, aboutUsPart
     const [img2, setImg2] = useState(aboutUsDataImage?.about02?.image);
     const [img3, setImg3] = useState(aboutUsDataImage?.video);
     useEffect(() => {
+        setIsLoading(true)
         setImg2(aboutUsDataImage?.about02?.image)
         setImg1(aboutUsDataImage?.about01?.image)
         setImg3(aboutUsDataImage?.video)
+        setIsLoading(false)
     }, [aboutUsDataImage])
     const schema = yup.object().shape({
         about01FirstDescription: yup
@@ -140,11 +142,14 @@ const AboutUsForm = ({ aboutUsDataImage, aboutUsData, aboutUsNumber, aboutUsPart
     }
 
     useEffect(() => {
+        setIsLoading(true);
+
         if (aboutUsData) {
             reset(aboutUsData);
             setNumberAboutUs(aboutUsNumber);
             setPartnerAboutUs(aboutUsPartner);
         }
+        setIsLoading(false);
     }, [aboutUsData]);
     return (<div className={styles.landingpageformContainer}>
         <div className={styles.titleForm}>

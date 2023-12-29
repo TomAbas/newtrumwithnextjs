@@ -33,7 +33,7 @@ const NewsForm = () => {
   const [reDelete, setReDelete] = useState(true);
   const [contributorList, setContributorList] = useState([0]);
   const [didNotSubmitHeadForm, setDidNotSubmitHeadForm] = useState(true);
-
+  const [isLoading, setIsLoading] = useState(false);
   const deleteNews = async (id) => {
     try {
       await deleteProject(id);
@@ -43,9 +43,11 @@ const NewsForm = () => {
     }
   };
   const fetchListNews = async () => {
+    setIsLoading(true);
     await getAllPosts().then((data) => {
       setArrNews(data);
     });
+    setIsLoading(false);
   };
   const fetchNewsId = async (id) => {
     try {
@@ -215,6 +217,9 @@ const NewsForm = () => {
           </div>
         </div>
       </div>
+      {
+        isLoading && <Loading />
+      }
     </>
   );
 };
