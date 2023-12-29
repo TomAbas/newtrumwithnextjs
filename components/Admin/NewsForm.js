@@ -157,7 +157,6 @@ const NewsForm = () => {
 
   return (
     <>
-
       <div className={styles.landingpageformContainer}>
         <div className={styles.titleForm}>
           <h1>EDIT PROJECT</h1>
@@ -197,7 +196,7 @@ const NewsForm = () => {
                 </div>
               </>
             )}
-            <div
+            {/* <div
               className=""
               style={{
                 display: trigger && !isAddContributor ? "block" : "none",
@@ -212,11 +211,10 @@ const NewsForm = () => {
                 submitNewsCKEditor={submitNewsCKEditor}
                 didNotSubmitHeadForm={didNotSubmitHeadForm}
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
-
     </>
   );
 };

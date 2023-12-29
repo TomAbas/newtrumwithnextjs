@@ -14,8 +14,8 @@ const axiosClient = axios.create({
 
 axiosClient.interceptors.request.use(
   (config) => {
-    if (typeof window !== 'undefined') {
-      const token = localStorage.getItem('Authorization');
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem("Authorization");
       if (token) {
         config.headers = {
           ...config.headers,

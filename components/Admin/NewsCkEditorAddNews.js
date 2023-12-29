@@ -48,43 +48,13 @@ const NewsCkEditorAddNews = ({
                     }}
                     onChange={(event, editor) => {
                       const data = editor.getData();
-
                       setNewNewsContent1(data);
-
-                      // console.log({ event, editor, data });
                     }}
                   />
                 )}
               </div>
             </div>
           </div>
-          {/* <div className={styles.content4Edit}>
-            <div className={styles.bannerBanner}> ADD CONTENT 2</div>
-            <h3>Content 2 - Text : </h3>
-
-            <div className={styles.row1}>
-              <div className={styles.titleEdit}>
-                {editorLoaded && (
-                  <CKEditor
-                    className={styles.ckEditor}
-                    editor={ClassicEditor}
-                    data=""
-                    onReady={(editor) => {
-                      // You can store the "editor" and use when it is needed.
-                      console.log("Editor is ready to use!", editor);
-                    }}
-                    onChange={(event, editor) => {
-                      const data = editor.getData();
-
-                      setNewNewsContent2(data);
-
-                      // console.log({ event, editor, data });
-                    }}
-                  />
-                )}
-              </div>
-            </div>
-          </div> */}
 
           <Button
             variant="outlined"

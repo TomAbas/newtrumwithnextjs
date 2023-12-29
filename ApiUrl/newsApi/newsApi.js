@@ -27,9 +27,9 @@ function addPostNews(data) {
     });
 }
 
-function getAllPostNews() {
+function getAllPostNews(params) {
   return axios
-    .get(`news`)
+    .get(`news`, { params })
     .then(({ data }) => data)
     .catch((error) => {
       console.log(error);

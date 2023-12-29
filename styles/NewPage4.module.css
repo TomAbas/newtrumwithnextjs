@@ -67,6 +67,27 @@
   transition: all 0.5s linear;
 }
 
+.ItemNews:hover .TextItemNews .TextItem2 span[style],
+.WrapContentRight:hover .TextItemRight .TextItem2 span[style] {
+  opacity: 1 !important;
+  position: relative !important;
+  transition: all 0.5s linear;
+}
+
+.ItemNews:hover .TextItemNews .TextItem2 strong[style],
+.WrapContentRight:hover .TextItemRight .TextItem2 strong[style] {
+  opacity: 1 !important;
+  position: relative !important;
+  transition: all 0.5s linear;
+}
+
+.ItemNews:hover .TextItemNews .TextItem2 p[style],
+.WrapContentRight:hover .TextItemRight .TextItem2 p[style] {
+  opacity: 1 !important;
+  position: relative !important;
+  transition: all 0.5s linear;
+}
+
 .HotNews {
   padding: 0.8rem;
   margin-bottom: 0.3rem;
@@ -132,6 +153,12 @@
   padding: 10px;
   transition: all 0.2s linear;
   gap: 10px;
+  text-decoration: none;
+}
+
+.WrapTextHotNewsDetail span[style] {
+  opacity: 0 !important;
+  color: rgba(217, 217, 217, 0.69) !important;
 }
 
 .WrapTextHotNewsDetail p:first-child,
@@ -147,6 +174,35 @@
   opacity: 0;
   position: absolute;
 }
+.TextItemNews .TextItem2 span[style] {
+  opacity: 0 !important;
+  color: rgba(217, 217, 217, 0.69) !important;
+}
+
+.TextItemNews .TextItem2 strong[style] {
+  opacity: 0 !important;
+  color: rgba(217, 217, 217, 0.69) !important;
+}
+
+.TextItemNews .TextItem2 p[style] {
+  opacity: 0 !important;
+  color: rgba(217, 217, 217, 0.69) !important;
+}
+
+.WrapContentRight .TextItemRight .TextItem2 span[style] {
+  opacity: 0 !important;
+  color: rgba(217, 217, 217, 0.69) !important;
+}
+
+.WrapContentRight .TextItemRight .TextItem2 p[style] {
+  opacity: 0 !important;
+  color: rgba(217, 217, 217, 0.69) !important;
+}
+
+.WrapContentRight .TextItemRight .TextItem2 strong[style] {
+  opacity: 0 !important;
+  color: rgba(217, 217, 217, 0.69) !important;
+}
 
 .HotNews:hover .WrapTextHotNewsDetail {
   transform: translateY(-5%);
@@ -159,6 +215,21 @@
 
 .HotNews:hover .WrapTextHotNewsDetail p:last-child {
   opacity: 1;
+  position: relative;
+}
+
+.HotNews:hover .WrapTextHotNewsDetail span[style] {
+  opacity: 1 !important;
+  position: relative;
+}
+
+.HotNews:hover .WrapTextHotNewsDetail p[style] {
+  opacity: 1 !important;
+  position: relative;
+}
+
+.HotNews:hover .WrapTextHotNewsDetail strong[style] {
+  opacity: 1 !important;
   position: relative;
 }
 

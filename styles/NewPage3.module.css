@@ -12,6 +12,16 @@
   object-fit: contain;
 }
 
+.LeftContent span {
+  width: 100% !important;
+}
+
+.imgFluid {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .RightContent {
   font-style: normal;
   display: flex;
@@ -29,7 +39,6 @@
   color: #fff;
 }
 @media (min-width: 768px) {
-  
 }
 @media (min-width: 1024px) {
   .NewPage3Container {

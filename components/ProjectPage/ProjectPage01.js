@@ -90,6 +90,7 @@ const ProjectPage01 = ({
               return (
                 <Fragment key={idx}>
                   <CustomSwiperProjectPage
+                    title={content.title}
                     setIsZoomed={setIsZoomed}
                     isZoomed={isZoomed}
                     breakpoints={{
