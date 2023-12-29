@@ -1,8 +1,8 @@
-import React from 'react';
-import styles from '../../../../styles/AboutStyles.module.css';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import Image from 'next/future/image';
+import React from "react";
+import styles from "../../../../styles/AboutStyles.module.css";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import Image from "next/future/image";
 
 const Page04 = ({ aboutData }) => {
   const { description, image, title } = aboutData.about02;
@@ -14,7 +14,7 @@ const Page04 = ({ aboutData }) => {
   const inViewDescriptionRef2 = useInView(descriptionRef2);
 
   const animationWords = () => {
-    let b = title?.split(' ').map((word, idx) => {
+    let b = title?.split(" ").map((word, idx) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s` };
       return (
         <h1
@@ -36,25 +36,25 @@ const Page04 = ({ aboutData }) => {
   return (
     <>
       <div className={styles.page04Container}>
-        <div className={styles.page04Content00}>
+        {/* <div className={styles.page04Content00}>
           <p
             ref={descriptionRef}
             className={inViewDescriptionRef && `${styles.fadeInUpS}`}
           >
             {aboutData.description01}
           </p>
-        </div>
+        </div> */}
         <div className={styles.page04Content1}>
           <div className={styles.page04ContentText1}>
             <div className={styles.page04Img1}>
               <div className={styles.imgBox}>
                 <Image
-                  layout='responsive'
+                  layout="responsive"
                   width={800}
                   height={800}
                   // src={page4Data[1]?.image}
                   src={image}
-                  alt='weare'
+                  alt="weare"
                 />
               </div>
             </div>
@@ -69,12 +69,12 @@ const Page04 = ({ aboutData }) => {
           </div>
         </div>
         <div className={styles.page04Content2}>
-          <p
+          {/* <p
             ref={descriptionRef2}
             className={inViewDescriptionRef2 && `${styles.fadeInUpS}`}
           >
             {aboutData.description02}
-          </p>
+          </p> */}
         </div>
       </div>
     </>
