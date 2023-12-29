@@ -10,7 +10,7 @@ import ServiceAddServiceForm from './ServiceAddServiceForm';
 import { updateServiceData } from '../../ApiUrl/service/serviceApi';
 import Loading from '../Loading/Loading';
 const ServiceForm = ({ serviceData, serviceListData }) => {
-  const [isLoading,setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [service, setService] = useState();
   const [serviceList, setServiceList] = useState([]);
   const schema = yup.object().shape({
@@ -48,11 +48,13 @@ const ServiceForm = ({ serviceData, serviceListData }) => {
     setIsLoading(false)
   }
   useEffect(() => {
+    setIsLoading(true)
     if (serviceData) {
       setServiceList(serviceListData);
       console.log(serviceData);
       reset(serviceData);
     }
+    setIsLoading(false)
   }, [serviceData]);
   return (
     <div className={styles.landingpageformContainer}>

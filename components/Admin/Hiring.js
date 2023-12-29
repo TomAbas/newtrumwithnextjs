@@ -17,6 +17,7 @@ import {
 } from "../../ApiUrl/recuiter/recuiter";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import { Button } from "@mui/material";
+import Loading from "../Loading/Loading";
 const drawerWidth = 240;
 const Hiring = () => {
   const [arrNews, setArrNews] = useState([]);
@@ -26,7 +27,7 @@ const Hiring = () => {
   const [addNewJob, setAddNewJob] = useState(false);
   const [newsHeadContent, setNewsHeadContent] = useState();
   const [reDelete, setReDelete] = useState(true);
-
+  const [isLoading, setIsLoading] = useState(false);
   const deleteJobs = async (id) => {
     try {
       await deleteRecuiterData(id);
@@ -36,9 +37,13 @@ const Hiring = () => {
     }
   };
   const fetchListJobs = async () => {
+    setIsLoading(true)
     setArrNews(await getRecuiterData().then((data) => data.listJob));
+    setIsLoading(false)
   };
   const fetchJobId = async (id) => {
+    setIsLoading(true)
+
     let jobEdit = arrNews.find((item) => item._id === id);
     let preLoadValue = {
       title1: jobEdit.title,
@@ -46,6 +51,7 @@ const Hiring = () => {
     };
     setDefaultValues(preLoadValue);
     setTrigger(true);
+    setIsLoading(false)
   };
 
   useEffect(() => {
@@ -160,6 +166,7 @@ const Hiring = () => {
           </div>
         </div>
       </div>
+      {isLoading && <Loading />}
     </>
   );
 };

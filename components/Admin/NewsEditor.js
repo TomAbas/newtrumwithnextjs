@@ -161,6 +161,7 @@ const NewsEditor = ({
       setIsLoading(false);
       reset();
     }
+    setIsLoading(false);
   };
 
   const addNews = async (data) => {
@@ -184,6 +185,7 @@ const NewsEditor = ({
   };
 
   const submitAddContributor = async (data) => {
+    setIsLoading(true);
     await axios
       .post(urlAddContributor, {
         contributorName: data.contributorName,
@@ -203,8 +205,10 @@ const NewsEditor = ({
       .catch((error) => {
         console.log(error);
       });
+    setIsLoading(false);
   };
   const deleteContributor = async (id) => {
+    setIsLoading(true);
     await axios.post(`${urlDeleteContributor}/${id}`).then(async (res) => {
       console.log(res);
       await axios
@@ -218,6 +222,7 @@ const NewsEditor = ({
           console.log(error);
         });
     });
+    setIsLoading(false);
   };
 
   useEffect(() => {

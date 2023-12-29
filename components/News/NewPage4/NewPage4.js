@@ -70,7 +70,6 @@ const ListNews2 = [
   },
 ];
 const NewPage4 = ({ listNewsPublic, listNewsReaded }) => {
-  console.log(listNewsPublic);
   return (
     <div className={styles.NewPage4Container}>
       <FieldInput />
