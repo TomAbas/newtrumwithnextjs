@@ -7,7 +7,15 @@ const NewPage3 = ({ data }) => {
   return (
     <div className={styles.NewPage3Container}>
       <div className={styles.LeftContent}>
-        <Image src={data.sliderImages?.[0]} alt="#" />
+        <Image
+          src={data.sliderImages?.[0]}
+          alt="#"
+          objectFit="cover"
+          layout="fixed"
+          width={500}
+          height={500}
+          className={styles.imgFluid}
+        />
       </div>
 
       <div className={styles.RightContent}>

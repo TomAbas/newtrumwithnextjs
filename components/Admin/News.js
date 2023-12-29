@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "../../styles/Admin.module.css";
 import { Button } from "@mui/material";
-import { useForm } from "react-hook-form";
+import { get, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { addPostNews } from "../../ApiUrl/newsApi/newsApi";
@@ -23,6 +23,8 @@ const NewsCreator = ({ newsDetail, handleUpdateNews }) => {
   const [loading, setLoading] = useState(false);
   const [creditList, setCreditList] = useState([]);
   const [keywordList, setKeywordList] = useState([]);
+  const [isPublic, setIsPublic] = useState(false);
+  const [isTopRead, setIsTopRead] = useState(false);
   const schema = yup.object().shape({
     title: yup.string().required("missing field").typeError("missing field"),
     description: yup
@@ -32,6 +34,16 @@ const NewsCreator = ({ newsDetail, handleUpdateNews }) => {
     category: yup.string().required("missing field").typeError("missing field"),
     mainImage: yup.mixed().required("missing field").typeError("missing field"),
     sliderImg: yup.mixed().required("missing field").typeError("missing field"),
+    isPublic: yup
+      .boolean()
+      .required("missing field")
+      .default(false)
+      .typeError("missing field"),
+    topRead: yup
+      .boolean()
+      .required("missing field")
+      .default(false)
+      .typeError("missing field"),
   });
 
   const {
@@ -40,6 +52,7 @@ const NewsCreator = ({ newsDetail, handleUpdateNews }) => {
     reset,
     setValue,
     watch,
+
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -113,6 +126,8 @@ const NewsCreator = ({ newsDetail, handleUpdateNews }) => {
         sliderImages: slideImgUrl ? slideImgUrl : newsDetail.sliderImg,
         credits: { creditList },
         keywords: keywordList.map((item) => item.title),
+        isPublic: data.isPublic,
+        topRead: data.topRead,
       };
 
       const res = newsDetail
@@ -123,6 +138,8 @@ const NewsCreator = ({ newsDetail, handleUpdateNews }) => {
       console.log(error);
     } finally {
       reset();
+      setCreditList([]);
+      setKeywordList([]);
       setLoading(false);
     }
   };
@@ -143,7 +160,10 @@ const NewsCreator = ({ newsDetail, handleUpdateNews }) => {
         title: newsDetail.title,
         description: newsDetail.description,
         category: newsDetail.category,
+        topRead: newsDetail.topRead,
+        isPublic: newsDetail.isPublic,
       };
+
       setKeywordList(
         newsDetail.keywords.map((item) => {
           return { title: item };
@@ -235,6 +255,52 @@ const NewsCreator = ({ newsDetail, handleUpdateNews }) => {
                   name="sliderImg"
                   multiple
                   {...register("sliderImg")}
+                />
+              </div>
+            </div>
+
+            <div className={styles.row1}>
+              <div
+                className={styles.titleEdit}
+                style={{ display: "flex", gap: "20px", alignItems: "center" }}
+              >
+                <h3>Public news :</h3>
+                <input
+                  type="checkbox"
+                  className={styles.checkBox}
+                  {...register("isPublic")}
+                  name="isPublic"
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      setIsPublic(true);
+                    } else {
+                      setIsPublic(false);
+                    }
+                  }}
+                  disabled={isTopRead ? true : false}
+                />
+              </div>
+            </div>
+
+            <div className={styles.row1}>
+              <div
+                className={styles.titleEdit}
+                style={{ display: "flex", gap: "20px", alignItems: "center" }}
+              >
+                <h3>Top readed news :</h3>
+                <input
+                  type="checkbox"
+                  className={styles.checkBox}
+                  name="topRead"
+                  {...register("topRead")}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      setIsTopRead(true);
+                    } else {
+                      setIsTopRead(false);
+                    }
+                  }}
+                  disabled={isPublic ? true : false}
                 />
               </div>
             </div>
