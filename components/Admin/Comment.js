@@ -19,6 +19,7 @@ import {
 } from '../../ApiUrl/rating/ratingApi';
 import CommentEditor from './CommentEditor';
 import AddComment from './AddComment';
+import Loading from '../Loading/Loading.js';
 
 const Comment = () => {
   const [arrComment, setArrComment] = useState([]);
@@ -27,24 +28,30 @@ const Comment = () => {
   const [trigger, setTrigger] = useState(false);
   const [addNewComment, setAddNewComment] = useState(false);
   const [reDelete, setReDelete] = useState(true);
-
+  const [isLoading, setIsLoading] = useState(false);
   const deleteComment = async (id) => {
+    setIsLoading(true);
     try {
       await deleteRatingData(id);
       setReDelete(!reDelete);
     } catch (error) {
       console.log(error);
     }
+    setIsLoading(false);
   };
   const fetchListComment = async () => {
+    setIsLoading(true);
+
     setArrComment(
       await getListRatingData().then((data) => {
         console.log(data);
         return data;
       })
     );
+    setIsLoading(false);
   };
   const fetchCommentId = async (id) => {
+    setIsLoading(true);
     let commentEdit = arrComment.find((item) => item._id === id);
     let preLoadValue = {
       title: commentEdit.title,
@@ -54,10 +61,13 @@ const Comment = () => {
     };
     setDefaultValues(preLoadValue);
     setTrigger(true);
+    setIsLoading(false);
   };
 
   useEffect(() => {
+    setIsLoading(true);
     fetchListComment();
+    setIsLoading(false);
   }, [reDelete, trigger]);
 
   const ListNews = ({ arrComment }) => {
@@ -167,7 +177,12 @@ const Comment = () => {
           </div>
         </div>
       </div>
+      {
+        isLoading && <Loading />
+      }
+
     </>
+
   );
 };
 

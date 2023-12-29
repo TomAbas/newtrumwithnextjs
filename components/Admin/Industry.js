@@ -21,6 +21,7 @@ import {
   deleteIndustryData,
   getListIndustryData,
 } from '../../ApiUrl/industry/industryApi';
+import Loading from '../Loading/Loading.js';
 
 const Industry = () => {
   const [arrIndustry, setIndustry] = useState([]);
@@ -30,24 +31,32 @@ const Industry = () => {
   const [addNewIndustry, setAddNewIndustry] = useState(false);
   const [newsHeadContent, setNewsHeadContent] = useState();
   const [reDelete, setReDelete] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const deleteIndusty = async (id) => {
+    setIsLoading(true);
     try {
       await deleteIndustryData(id);
       setReDelete(!reDelete);
     } catch (error) {
       console.log(error);
     }
+    setIsLoading(false);
   };
   const fetchListIndustry = async () => {
+    setIsLoading(true);
+
     setIndustry(
       await getListIndustryData().then((data) => {
         console.log(data);
         return data;
       })
     );
+    setIsLoading(false);
   };
   const fetchIndustryId = async (id) => {
+    setIsLoading(true);
+
     let industryEdit = arrIndustry.find((item) => item._id === id);
     let preLoadValue = {
       title: industryEdit.title,
@@ -56,6 +65,7 @@ const Industry = () => {
     };
     setDefaultValues(preLoadValue);
     setTrigger(true);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -170,6 +180,9 @@ const Industry = () => {
           </div>
         </div>
       </div>
+      {
+        isLoading && <Loading />
+      }
     </>
   );
 };

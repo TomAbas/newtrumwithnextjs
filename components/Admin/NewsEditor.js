@@ -81,6 +81,7 @@ const NewsEditor = ({
   const editorContent = watch("videoAlt");
 
   const submitNewsEditor = async (data) => {
+    setIsLoading(true);
     console.log(data);
     return;
     // let arrImg = [
@@ -212,8 +213,10 @@ const NewsEditor = ({
       setNewsHeadContent(submitData);
       setDidNotSubmitHeadForm(false);
     }
+    setIsLoading(false);
   };
   const submitAddContributor = async (data) => {
+    setIsLoading(true);
     await axios
       .post(urlAddContributor, {
         contributorName: data.contributorName,
@@ -233,8 +236,10 @@ const NewsEditor = ({
       .catch((error) => {
         console.log(error);
       });
+    setIsLoading(false);
   };
   const deleteContributor = async (id) => {
+    setIsLoading(true);
     await axios.post(`${urlDeleteContributor}/${id}`).then(async (res) => {
       console.log(res);
       await axios
@@ -248,6 +253,7 @@ const NewsEditor = ({
           console.log(error);
         });
     });
+    setIsLoading(false);
   };
 
   useEffect(() => {
