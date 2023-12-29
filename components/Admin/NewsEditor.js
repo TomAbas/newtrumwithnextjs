@@ -25,26 +25,19 @@ import { urlAddContributor, urlListContributorIdPost } from "../../ApiUrl/Api";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import Loading from "../Loading/Loading";
+import Image from "next/image";
 
 const schema = yup.object().shape({
   contributorName: yup.string(),
   contributorRole: yup.string(),
   title: yup.string().required("missing field"),
   category: yup.string().required("missing field"),
-  // video: yup.string().required("missing field"),
   videoAlt: yup.string().required("missing field"),
   mainImage: yup.mixed().required("missing field"),
-  // mainImageAlt: yup.string().required("missing field"),
   content1Title: yup.string().required("missing field"),
   content1Image: yup.mixed().required("missing field"),
   content2Title: yup.string().required("missing field"),
   content2Image: yup.mixed().required("missing field"),
-  // image1: yup.mixed().required("missing field"),
-  // image2: yup.mixed().required("missing field"),
-  // image3: yup.mixed().required("missing field"),
-  // image4: yup.mixed().required("missing field"),
-  // image5: yup.mixed().required("missing field"),
-  // swiper: yup.array().required("missing field").default(new Array(4)),
   isCategory: yup.boolean().default(false).required("missing field"),
 });
 
@@ -84,7 +77,9 @@ const NewsEditor = ({
   const onEditorStateChange = (editorState) => {
     setValue("videoAlt", editorState);
   };
-  const editorContent = watch("description");
+
+  const editorContent = watch("videoAlt");
+
   const submitNewsEditor = async (data) => {
     console.log(data);
     return;
@@ -254,7 +249,9 @@ const NewsEditor = ({
         });
     });
   };
+
   useEffect(() => {
+    console.log(preLoadValue);
     reset(preLoadValue);
   }, [preLoadValue]);
 
@@ -291,9 +288,6 @@ const NewsEditor = ({
     }
   };
 
-  useEffect(() => {
-    reset(preLoadValue);
-  }, [preLoadValue]);
   useEffect(() => {
     console.log(errors);
   }, [errors]);
@@ -429,40 +423,21 @@ const NewsEditor = ({
                   console.log("change");
                   setDidNotSubmitHeadForm2(true);
                   setDidNotSubmitHeadForm(true);
+                  handleChangeFile(e, setImg1);
                 }}
               />
+
+              {img1 ? (
+                <Image src={img1} width={150} height={150} />
+              ) : (
+                <Image src={preLoadValue.mainImage} width={150} height={150} />
+              )}
+              <Button>Xóa</Button>
+
               <p>{errors.mainImage?.message}</p>
             </div>
           </div>
         </div>
-        {/* <div className={styles.content1Edit}>
-          <div className={styles.bannerBanner}> VIDEO :</div>
-          <div className={styles.row1}>
-            <div className={styles.titleEdit}>
-              <h3>Video </h3>
-              <textarea
-                type="text"
-                defaultValue={preLoadValue.video}
-                className={styles.inputField}
-                name="video"
-                {...register("video")}
-              />
-              <p>{errors.video?.message}</p>
-            </div>
-
-            <div className={styles.titleEdit}>
-              <h3>Description : </h3>
-              <textarea
-                type="text"
-                defaultValue={preLoadValue.videoAlt}
-                className={styles.inputField}
-                name="videoAlt"
-                {...register("videoAlt")}
-              />
-              <p>{errors.videoAlt?.message}</p>
-            </div>
-          </div>
-        </div> */}
 
         <div className={styles.content1Edit}>
           <div className={styles.bannerBanner}> Description :</div>
@@ -511,6 +486,7 @@ const NewsEditor = ({
                     setDidNotSubmitHeadForm2(true);
                   }}
                 />
+                <p>{errors.content1Image?.message}</p>
               </div>
             </div>
           </>
@@ -544,6 +520,7 @@ const NewsEditor = ({
                     setDidNotSubmitHeadForm2(true);
                   }}
                 />
+                <p>{errors.content1Image?.message}</p>
               </div>
             </div>
           </>
@@ -563,6 +540,7 @@ const NewsEditor = ({
                   setDidNotSubmitHeadForm2(true);
                 }}
               />
+              <p>{errors.isCategory?.message}</p>
             </div>
           </div>
         </div>

@@ -84,15 +84,6 @@ const AddNews = ({ isAddNews }) => {
               isAddNews={isAddNews}
               setDidNotSubmitHeadForm2={setDidNotSubmitHeadForm2}
             />
-            {/* <div className="">
-              <NewsCkEditorAddNews
-                className={styles.ckForm}
-                setNewNewsContent1={setNewNewsContent1}
-                setNewNewsContent2={setNewNewsContent2}
-                submitNewNewsCKEditor={submitNewNewsCKEditor}
-                didNotSubmitHeadForm2={didNotSubmitHeadForm2}
-              />
-            </div> */}
           </div>
         </div>
       </div>
