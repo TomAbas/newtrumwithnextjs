@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from '../../styles/Admin.module.css';
 
 //mui
@@ -12,6 +12,7 @@ import * as yup from 'yup';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { updateIndustryData } from '../../ApiUrl/industry/industryApi';
+import Loading from '../Loading/Loading';
 const schema = yup.object().shape({
   title: yup.string().required('missing field'),
   description: yup.string().required('missing field'),
@@ -19,6 +20,7 @@ const schema = yup.object().shape({
 });
 
 const IndustryEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
+  const [isLoading, setIsLoading] = useState(false)
   const {
     register,
     handleSubmit,
@@ -28,6 +30,7 @@ const IndustryEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
     resolver: yupResolver(schema),
   });
   const submitNewsEditor = async (data) => {
+    setIsLoading(true)
     console.log(data);
     try {
       await updateIndustryData(newsIdx, data);
@@ -37,6 +40,7 @@ const IndustryEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
       toast.error('Edit Failed');
       console.log(error);
     }
+    setIsLoading(false)
   };
 
   useEffect(() => {
@@ -90,6 +94,9 @@ const IndustryEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
           submit
         </Button>
       </form>
+      {
+        isLoading && <Loading />
+      }
     </div>
   );
 };

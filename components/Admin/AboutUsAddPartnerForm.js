@@ -10,8 +10,11 @@ import { Button } from '@mui/material';
 import { useEffect } from 'react';
 import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
 import { storage } from '../../config/firbase';
-
+import {handleChangeFile} from "../../Utils/handleChangeFileImage";
+import Image from 'next/image';
 const AboutUsAddPartnerForm = ({ partnerAboutUs, setPartnerAboutUs }) => {
+  const [partnerLogo, setPartnerLogo] = useState();
+
   const schema = yup.object().shape({
     title: yup
       .string()
@@ -108,8 +111,14 @@ const AboutUsAddPartnerForm = ({ partnerAboutUs, setPartnerAboutUs }) => {
               className={styles.inputField}
               name='image3'
               {...register('image')}
+                onChange={
+                    (e) => {
+                      handleChangeFile(e, setPartnerLogo);
+                    }
+                }
             />
-            {/* <p>{errors.content3Line2?.message}</p> */}
+              <Image alt={''} src={partnerLogo} height={150} width={150}/>
+             <p>{errors.content3Line2?.message}</p>
           </div>
         </div>
         <Button

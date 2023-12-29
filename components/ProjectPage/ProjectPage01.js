@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import styles from "../../styles/ProjectPage01Styles.module.css";
 import CustomSwiperProjectPage from "./CustomSwiperProjectPage";
 import imgFb from "../../public/imgs/facebook.svg";
@@ -18,7 +18,6 @@ const ProjectPage01 = ({
   listContent,
 }) => {
   const [isZoomed, setIsZoomed] = useState(false);
-
   const animationWords = () => {
     let b = title?.split(" ").map((word, idx) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s` };
@@ -127,19 +126,23 @@ const ProjectPage01 = ({
                     height={300}
                     data={[content.image]}
                   />
-                  <ZoomAble
-                    isZoomed={isZoomed}
-                    setIsZoomed={setIsZoomed}
-                    content={
-                      <SwiperListImageForPopup
-                        isShowNumPagination={true}
-                        imgArr={[content.image]}
-                      />
-                    }
-                  />
+
+
+
+
                 </Fragment>
               );
             })}
+            <ZoomAble
+              isZoomed={isZoomed}
+              setIsZoomed={setIsZoomed}
+              content={
+                <SwiperListImageForPopup
+                  isShowNumPagination={true}
+                  listContent={listContent}
+                />
+              }
+            />
 
             {/* <CustomSwiperProjectPage
               setIsZoomed={setIsZoomed}

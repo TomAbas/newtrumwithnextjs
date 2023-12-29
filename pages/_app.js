@@ -31,6 +31,7 @@ function MyApp({ Component, pageProps, ...appProps }) {
             <LayoutAdmin>
               <ToastContainer />
               <Component {...pageProps} />
+
             </LayoutAdmin>
           );
         }
@@ -39,6 +40,7 @@ function MyApp({ Component, pageProps, ...appProps }) {
       return (
         <Layout>
           <Component {...pageProps} />{" "}
+
         </Layout>
       );
     }
