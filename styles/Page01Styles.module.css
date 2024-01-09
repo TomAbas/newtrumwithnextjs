@@ -1,264 +1,254 @@
 /* effect */
 @keyframes fadeInUp {
-    0% {
-        opacity: 0;
+  0% {
+    opacity: 0;
 
-        -webkit-transform: translateY(7%);
-        -ms-transform: translateY(7%);
-        transform: translateY(7%);
-    }
-    90% {
-        opacity: 0.8;
-    }
-    100% {
-        opacity: 1;
+    -webkit-transform: translateY(7%);
+    -ms-transform: translateY(7%);
+    transform: translateY(7%);
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
 
-        -webkit-transform: translateY(0);
-        -ms-transform: translateY(0);
-        transform: translateY(0);
-        display: block;
-    }
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+    display: block;
+  }
 }
 
 @keyframes scaleIn1 {
-    0% {
-        opacity: 0;
-        transform: scale(1.2);
-    }
+  0% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
 
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .scaleIn1 {
-    animation: scaleIn1 0.8s ease-in-out forwards;
+  animation: scaleIn1 0.8s ease-in-out forwards;
 }
 
 .fadeInUp0 {
-    animation: fadeInUp 0.8s ease forwards;
-    display: block !important;
-    /* border: 2px solid white; */
-    transform: translateY(100%);
-    margin-right: 5px;
+  animation: fadeInUp 0.8s ease forwards;
+  display: block !important;
+  /* border: 2px solid white; */
+  transform: translateY(100%);
+  margin-right: 5px;
 }
 
 .fadeInUp1 {
-    animation: fadeInUp 1.5s ease forwards;
-    display: block !important;
-    /* border: 2px solid white; */
-    transform: translateY(100%);
-    margin-right: 5px;
+  animation: fadeInUp 1.5s ease forwards;
+  display: block !important;
+  /* border: 2px solid white; */
+  transform: translateY(100%);
+  margin-right: 5px;
 }
 
 .h1Word {
-    opacity: 1;
-    font-weight: 400;
-    font-style: normal;
-
+  opacity: 1;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .page01WrapperEffect {
-    /* animation: tst 2s ease-in-out 1s forwards; */
-    display: flex !important;
-    width: fit-content;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    /* border: 2px solid white; */
-    width: fit-content;
+  /* animation: tst 2s ease-in-out 1s forwards; */
+  display: flex !important;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  /* border: 2px solid white; */
+  width: fit-content;
 }
 
 @keyframes tst {
-    0% {
-        text-shadow: 0;
-    }
-    50% {
-        text-shadow: 0 0 5px rgba(240, 240, 240, 0.766),
-        0 0 8px rgba(240, 240, 240, 0.766), 0 0 10px rgba(240, 240, 240, 0.766),
-        0 0 15px #fff, 0 0 20px #fff, 0 0 25px #fff;
-    }
-    100% {
-        text-shadow: 0;
-    }
+  0% {
+    text-shadow: 0;
+  }
+  50% {
+    text-shadow: 0 0 5px rgba(240, 240, 240, 0.766),
+      0 0 8px rgba(240, 240, 240, 0.766), 0 0 10px rgba(240, 240, 240, 0.766),
+      0 0 15px #fff, 0 0 20px #fff, 0 0 25px #fff;
+  }
+  100% {
+    text-shadow: 0;
+  }
 }
 
 .topTextP {
-    text-transform: uppercase;
-    user-select: none;
-    white-space: nowrap;
-    overflow: hidden;
-    font-weight: 500;
-    margin-right: 10px;
-    color: #858585;
-    font-style: normal;
+  text-transform: uppercase;
+  user-select: none;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: 500;
+  margin-right: 10px;
+  color: #858585;
+  font-style: normal;
 }
 
 @keyframes animate {
-    0% {
-        background-position: -500%;
-    }
-    50% {
-        background-position: 100%;
-    }
-    100% {
-        background-position: 500%;
-        -webkit-background-clip: unset;
-        -webkit-text-fill-color: unset;
-        text-shadow: none;
-        filter: none;
-        overflow: hidden;
-        background: none;
-    }
+  0% {
+    background-position: -500%;
+  }
+  50% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 500%;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    text-shadow: none;
+    filter: none;
+    overflow: hidden;
+    background: none;
+  }
 }
 
 /* effect end */
 .page01Container {
-    /* outline: 2px solid white; */
-    height: 40vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  /* outline: 2px solid white; */
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 85%;
+  margin: auto;
 }
 
 .page01Content {
-    /* outline: 2px solid red; */
-    color: #858585;
+  /* outline: 2px solid red; */
+  color: #858585;
 }
 
 .topText {
-    /* outline: 2px solid blue; */
-    text-align: left;
+  /* outline: 2px solid blue; */
+  text-align: left;
 }
 
 .topText h1 {
-    color: #fff;
-    font-size: 1rem;
-    font-style: normal;
-
+  color: #fff;
+  font-size: 1rem;
+  font-style: normal;
 }
 
 .topText p {
-    margin: 10px auto;
-    font-size: 0.7rem;
-    color: #858585;
-
+  margin: 10px auto;
+  font-size: 0.7rem;
+  color: #858585;
 }
 
-
 @media (min-width: 425px) {
-    .page01Container {
-        /* height: 60vh; */
-    }
+  .page01Container {
+    /* height: 60vh; */
+  }
 
-    .topText h1 {
-        font-size: 1.2rem;
-        font-weight: 300;
-        font-style: normal;
+  .topText h1 {
+    font-size: 1.2rem;
+    font-weight: 300;
+    font-style: normal;
+  }
 
-    }
-
-    .topText .h1WordAnim {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: #fff;
-        font-style: normal;
-
-    }
+  .topText .h1WordAnim {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    font-style: normal;
+  }
 }
 
 @media (min-width: 768px) {
-    .page01Container {
-        height: 70vh;
-    }
+  .page01Container {
+    height: 70vh;
+  }
 
-    .topText h1, .h1Word {
-        font-size: 2.3rem;
-    }
+  .topText h1,
+  .h1Word {
+    font-size: 2.3rem;
+  }
 
-    .topText .h1WordAnim {
-        font-size: 2.3rem;
-    }
+  .topText .h1WordAnim {
+    font-size: 2.3rem;
+  }
 
-
-    .topText p {
-        margin: 20px auto;
-        font-size: 1.2rem;
-    }
+  .topText p {
+    margin: 20px auto;
+    font-size: 1.2rem;
+  }
 }
 
 @media (min-width: 1024px) {
+  .fadeInUp0 {
+    animation: fadeInUp 0.8s ease forwards;
+    display: block !important;
+    /* border: 2px solid white; */
+    transform: translateY(100%);
+    margin-right: 13px;
+  }
 
-    .fadeInUp0 {
-        animation: fadeInUp 0.8s ease forwards;
-        display: block !important;
-        /* border: 2px solid white; */
-        transform: translateY(100%);
-        margin-right: 13px;
-    }
+  .fadeInUp1 {
+    animation: fadeInUp 1s ease forwards;
+    display: block !important;
+    /* border: 2px solid white; */
+    transform: translateY(100%);
+    margin-right: 13px;
+  }
 
-    .fadeInUp1 {
-        animation: fadeInUp 1s ease forwards;
-        display: block !important;
-        /* border: 2px solid white; */
-        transform: translateY(100%);
-        margin-right: 13px;
-    }
+  .page01Container {
+    height: 80vh;
+  }
 
-    .page01Container {
-         height: 80vh;
-    }
+  .page01Content {
+    max-width: 1180px;
+    /* margin: 0 auto; */
+  }
 
-    .page01Content {
-        max-width: 1180px;
-        /* margin: 0 auto; */
-    }
+  .topText h1,
+  .topText .h1WordAnim {
+    font-size: 3rem;
+  }
 
-    .topText h1 , .topText .h1WordAnim {
-        font-size: 3rem;
-    }
-
-    .topText p {
-        margin: 15px auto;
-        font-size: 1.35rem;
-    }
-
+  .topText p {
+    margin: 15px auto;
+    font-size: 1.35rem;
+  }
 }
 
 @media (min-width: 1280px) {
-    .page01Container {
-        height: 100vh;
-    }
+  .page01Container {
+    height: 100vh;
+  }
 }
 
 @media (min-width: 1440px) {
+  .topText h1 {
+    font-size: 3.55rem;
+    font-weight: 300;
+    font-style: normal;
+  }
 
+  .topText .h1WordAnim {
+    font-size: 3.55rem;
+    font-weight: 600;
+    color: #fff;
+  }
 
-    .topText h1 {
-        font-size: 3.55rem;
-        font-weight: 300;
-        font-style: normal;
-    }
-
-    .topText .h1WordAnim {
-        font-size: 3.55rem;
-        font-weight: 600;
-        color: #fff;
-    }
-
-    .topText p {
-        margin: 30px auto;
-        font-size: 1.75rem;
-    }
-
+  .topText p {
+    margin: 30px auto;
+    font-size: 1.75rem;
+  }
 }
 
 @media (min-width: 2000px) {
-    .topText h1 {
-        font-size: 3.8rem;
-        font-style: normal;
-
-    }
-
+  .topText h1 {
+    font-size: 3.8rem;
+    font-style: normal;
+  }
 }

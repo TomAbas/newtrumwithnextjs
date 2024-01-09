@@ -22,7 +22,7 @@
 
 .wrapContent {
   width: fit-content;
-  height: 400px;
+  height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,7 +48,8 @@
 .close {
   position: absolute;
   top: 0;
-  transform: translate(150px, 35px);
+  left: 0;
+  transform: translate(200px, 35px);
   z-index: 999999;
   font-size: 20px;
   font-weight: 600;

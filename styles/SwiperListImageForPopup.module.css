@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: end;
-  height: 450px;
+  height: 600px;
   padding-bottom: 2.4rem;
   overflow: hidden;
 }
@@ -13,9 +13,9 @@
 }
 
 .WrapItem img {
-  height: 360px !important;
+  height: 600px !important;
   width: 100%;
-  max-width: 300px;
+  max-width: 600px;
 }
 
 .WrapBtn {

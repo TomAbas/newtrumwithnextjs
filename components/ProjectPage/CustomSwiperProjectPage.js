@@ -104,6 +104,7 @@ const CustomSwiperProjectPage = ({
                 key={idx}
               >
                 <Image
+                  key={idx}
                   onClick={() => {
                     setIsZoomed(!isZoomed);
                   }}
@@ -111,10 +112,7 @@ const CustomSwiperProjectPage = ({
                   style={{
                     borderRadius: "20px",
                   }}
-                  src={
-                    "https://firebasestorage.googleapis.com/v0/b/trum-project.appspot.com/o/web%2Fimg2.webp?alt=media&token=71603e74-bce9-49a4-94b7-f2c6d856b52c"
-                  }
-                  // src={item.image ? item.image : item}
+                  src={item}
                   alt="#"
                   width={width}
                   height={height}

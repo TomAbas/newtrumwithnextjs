@@ -44,28 +44,18 @@
 }
 
 .test {
-  /* outline: 2px solid red; */
   position: relative;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 }
 .landingPageContainer {
-  /* outline: 2px solid white; */
-  /* width: var(--width-containers); */
-  margin: 0 auto;
-  /* height: 25vh; */
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 }
 
 .loganContainer {
-  /* outline: 2px solid red; */
   color: #858585;
   width: 100%;
-  /* margin: 50px auto; */
 }
 .loganContainer h1 {
   margin-bottom: 10px;
@@ -225,6 +215,7 @@
     height: 100vh;
   }
   .landingPageContainer {
+    width: 92%;
     display: flex;
     flex-direction: column;
     justify-content: center;

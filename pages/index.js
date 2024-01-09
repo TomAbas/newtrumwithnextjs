@@ -22,10 +22,15 @@ export default function Home({ res }) {
       <Head>
         <title>Trum Agency</title>
         <link rel="icon" href="/logo300px.ico" />
-        <link
+        {/* <link
           href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,500&display=swap"
           rel="stylesheet"
-        />
+        /> */}
+
+        <link
+          href="https://fonts.googleapis.com/css?family=Inter:ital,wght@100;300;400;700&display=swap"
+          rel="stylesheet"
+        ></link>
         <meta
           name="description"
           content={res.title.map((item) => item.content).join(" ")}

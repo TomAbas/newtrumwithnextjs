@@ -40,7 +40,7 @@
 }
 
 .textContent {
-  font-size: 0.7rem;
+  font-size: 3.5vw;
   display: flex;
   margin-right: 3px;
 }
@@ -79,7 +79,7 @@
 
 @media (min-width: 425px) {
   .textContent {
-    font-size: 0.9rem;
+    font-size: 3.5vw;
     margin-right: 4px;
   }
 }
@@ -88,24 +88,24 @@
     margin: 0;
   }
   .textContent {
-    font-size: 1.2rem;
+    font-size: 3.5vw;
     margin-right: 5px;
   }
 }
 @media (min-width: 1024px) {
   .textContent {
-    font-size: 1.5rem;
+    font-size: 3.5vw;
     margin-right: 6px;
   }
 }
-@media (min-width :1440px){
-  .page03Content{
+@media (min-width: 1440px) {
+  .page03Content {
     height: 50vw;
   }
 }
 @media (min-width: 2000px) {
   .textContent {
-    font-size: 1.9rem;
+    font-size: 3.5vw;
     margin-right: 7px;
   }
 }
