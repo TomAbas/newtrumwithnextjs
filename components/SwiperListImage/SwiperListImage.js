@@ -8,6 +8,7 @@ import { Box } from "@mui/material";
 import imgArrowLeft from "../../public/imgs/arrowLeft.svg";
 import imgArrowRight from "../../public/imgs/arrowRight.svg";
 import { getAllProject } from "../../ApiUrl/projectApi/projectApi";
+import { useRouter } from "next/router";
 
 const BtnLeft = ({ children }) => {
   const swiper = useSwiper();
@@ -76,6 +77,7 @@ const SwiperListImage = ({
     },
   },
 }) => {
+  const router = useRouter();
   const [listProject, setListProject] = useState([]);
   const pagination = {
     clickable: true,
@@ -132,7 +134,12 @@ const SwiperListImage = ({
               <div className={styles.WrapItem}>
                 <Image width={300} height={300} src={item.mainImage} />
                 <div className={styles.wrapItroduceItem}>
-                  <h1 className={styles.titleItem}>{item.title}</h1>
+                  <h1
+                    className={styles.titleItem}
+                    onClick={() => router.push(`/projects/${item.title}`)}
+                  >
+                    {item.title}
+                  </h1>
                   <div className={styles.descItem}>
                     <div dangerouslySetInnerHTML={{ __html: item.videoAlt }} />
                   </div>

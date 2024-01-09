@@ -11,8 +11,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  left: 4%;
-  right: 4%;
+  left: 11.6%;
+  right: 11.6%;
   color: white;
   transition: transform ease-in-out 0.8s;
 }
@@ -79,6 +79,11 @@
     gap: 8px;
     margin-bottom: 0.2rem;
   }
+
+  .navContainer {
+    left: 5%;
+    right: 5%;
+  }
 }
 @media (min-width: 425px) {
   .navBrandLogo img {
@@ -135,17 +140,22 @@
   .navBox ul {
     gap: 50px;
   }
+  .navContainer {
+    left: 5%;
+    right: 5%;
+  }
 }
 
 @media (min-width: 1440px) {
-  /* .container{
-      max-width: ;
-    } */
   .navBrandLogo img {
     width: 125px;
   }
   .projectLogo {
     width: 30px;
+  }
+  .navContainer {
+    left: 11.6%;
+    right: 11.6%;
   }
 }
 

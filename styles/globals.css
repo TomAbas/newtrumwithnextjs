@@ -12,16 +12,13 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Inter", "Times New Roman", Times, serif !important;
-  /* font-family: 'galano', 'Times New Roman', Times, serif; */
   background-color: #131313;
-  font-style: italic;
+  /* font-style: italic; */
 }
 
 .container {
   background-color: #131313;
   width: min(90%, 1600px);
-  /* position: relative; */
-  /* margin-inline: auto; */
   margin: 0 auto;
   font-family: "Inter", "Times New Roman", Times, serif !important;
 }
