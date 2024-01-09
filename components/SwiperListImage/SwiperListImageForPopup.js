@@ -42,8 +42,12 @@ const BtnRight = ({ children }) => {
   );
 };
 
-const SwiperListImageForPopup = ({ listContent, imgArr, isShowNumPagination }) => {
-  console.log(listContent, 'listContentlistContentlistContent')
+const SwiperListImageForPopup = ({
+  listContent,
+  imgArr,
+  isShowNumPagination,
+}) => {
+  console.log(listContent, "listContentlistContentlistContent");
   const [currentActiveSlide, setCurrentActiveSlide] = useState(1);
 
   const pagination = {
@@ -73,7 +77,6 @@ const SwiperListImageForPopup = ({ listContent, imgArr, isShowNumPagination }) =
 
   return (
     <>
-
       <Swiper
         pagination={pagination}
         modules={[Pagination]}
@@ -91,28 +94,21 @@ const SwiperListImageForPopup = ({ listContent, imgArr, isShowNumPagination }) =
             <Image src={imgArrowRight} width={15} height={15} />
           </BtnRight>
         </div>
-        {[
-          "https://firebasestorage.googleapis.com/v0/b/trum-project.appspot.com/o/web%2Fimg2.webp?alt=media&token=71603e74-bce9-49a4-94b7-f2c6d856b52c",
-          "https://firebasestorage.googleapis.com/v0/b/trum-project.appspot.com/o/web%2Fimg2.webp?alt=media&token=71603e74-bce9-49a4-94b7-f2c6d856b52c",
-        ]?.map((item, idx) => {
+        {listContent?.map((item, idx) => {
           return (
             <SwiperSlide key={idx}>
               <div className={styles.WrapItem}>
                 <Image
                   alt="item.image"
-                  width={300}
-                  height={300}
-                  // src={item.image ? item.image : item}
-                  src={
-                    "https://firebasestorage.googleapis.com/v0/b/trum-project.appspot.com/o/web%2Fimg2.webp?alt=media&token=71603e74-bce9-49a4-94b7-f2c6d856b52c"
-                  }
+                  width={500}
+                  height={500}
+                  src={item.image ? item.image : item}
                 />
               </div>
             </SwiperSlide>
           );
         })}
       </Swiper>
-
     </>
   );
 };

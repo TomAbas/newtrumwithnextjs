@@ -125,16 +125,23 @@ const ProjectPage01 = ({
                     }}
                     width={300}
                     height={300}
-                    data={[content.image]}
+                    data={content.image}
                   />
 
-
-
-
+                  <ZoomAble
+                    isZoomed={isZoomed}
+                    setIsZoomed={setIsZoomed}
+                    content={
+                      <SwiperListImageForPopup
+                        isShowNumPagination={true}
+                        listContent={content.image}
+                      />
+                    }
+                  />
                 </Fragment>
               );
             })}
-            <ZoomAble
+            {/* <ZoomAble
               isZoomed={isZoomed}
               setIsZoomed={setIsZoomed}
               content={
@@ -143,7 +150,7 @@ const ProjectPage01 = ({
                   listContent={listContent}
                 />
               }
-            />
+            /> */}
 
             {/* <CustomSwiperProjectPage
               setIsZoomed={setIsZoomed}
