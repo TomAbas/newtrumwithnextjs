@@ -2,48 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import styles from "../../styles/SwiperListImage.module.css";
-import { Pagination } from "swiper";
-import { useSwiper } from "swiper/react";
-import { Box } from "@mui/material";
-import imgArrowLeft from "../../public/imgs/arrowLeft.svg";
-import imgArrowRight from "../../public/imgs/arrowRight.svg";
+import { Pagination } from "swiper"; 
 import { getAllProject } from "../../ApiUrl/projectApi/projectApi";
 import { useRouter } from "next/router";
-
-const BtnLeft = ({ children }) => {
-  const swiper = useSwiper();
-  return (
-    <Box
-      className={styles.BtnLeft}
-      sx={{
-        zIndex: 10000,
-      }}
-      onClick={() => {
-        swiper.slidePrev();
-      }}
-    >
-      {children}
-    </Box>
-  );
-};
-
-const BtnRight = ({ children }) => {
-  const swiper = useSwiper();
-  return (
-    <Box
-      className={styles.BtnRight}
-      sx={{
-        zIndex: 10000,
-      }}
-      onClick={() => {
-        swiper.slideNext();
-      }}
-    >
-      {children}
-    </Box>
-  );
-};
-
+import "swiper/css";
+import "swiper/css/pagination";
 const SwiperListImage = ({
   isShowNumPagination,
   breakpoints = {
@@ -118,36 +81,32 @@ const SwiperListImage = ({
         onSlideChange={(swiper) => {}}
         spaceBetween={50}
         style={{ margin: "0" }}
+        effect="fade"
         breakpoints={breakpoints}
       >
-        <div className={styles.WrapBtn}>
-          <BtnLeft>
-            <Image src={imgArrowLeft} width={15} height={15} />
-          </BtnLeft>
-          <BtnRight>
-            <Image src={imgArrowRight} width={15} height={15} />
-          </BtnRight>
-        </div>
-        {listProject?.map((item, idx) => {
-          return (
-            <SwiperSlide key={idx}>
-              <div className={styles.WrapItem}>
-                <Image width={300} height={300} src={item.mainImage} />
-                <div className={styles.wrapItroduceItem}>
-                  <h1
-                    className={styles.titleItem}
-                    onClick={() => router.push(`/projects/${item.title}`)}
-                  >
-                    {item.title}
-                  </h1>
-                  <div className={styles.descItem}>
-                    <div dangerouslySetInnerHTML={{ __html: item.videoAlt }} />
+        {listProject.length > 0 &&
+          listProject.map((item, idx) => {
+            return (
+              <SwiperSlide key={idx}>
+                <div className={styles.WrapItem}>
+                  <Image width={300} height={300} src={item.mainImage} />
+                  <div className={styles.wrapItroduceItem}>
+                    <h1
+                      className={styles.titleItem}
+                      onClick={() => router.push(`/projects/${item.title}`)}
+                    >
+                      {item.title}
+                    </h1>
+                    <div className={styles.descItem}>
+                      <div
+                        dangerouslySetInnerHTML={{ __html: item.videoAlt }}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          );
-        })}
+              </SwiperSlide>
+            );
+          })}
       </Swiper>
     </>
   );

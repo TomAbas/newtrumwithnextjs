@@ -6,12 +6,15 @@ import Link from "next/link";
 
 const ItemService = ({ title, desc, subTitle }) => {
   return (
-    <Link href={`/projects/${title}`} className={styles.wrapItemService}>
+    <Link href={`/projects/${subTitle}`} className={styles.wrapItemService}>
       <div className={styles.wrapItemService}>
         <div className={styles.wrapTextCard}>
           <h3 className={styles.titleCard}>{title}</h3>
-          <h5 className={styles.subTitleCard}>{subTitle}</h5>
-          <span className={styles.desc}>{desc}</span>
+
+          <span
+            className={styles.desc}
+            dangerouslySetInnerHTML={{ __html: desc }}
+          ></span>
         </div>
         {subTitle && (
           <div className={styles.wrapCircle}>

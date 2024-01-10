@@ -7,7 +7,6 @@ import ServicesPage2 from "./ServicesPage2/ServicesPage2";
 import ServicesPage3 from "./ServicesPage3/ServicesPage3";
 
 const ServicesPage = ({ data, listAllProject }) => {
-  const [listCardIndustry, setListCardIndustry] = useState(null || []);
   const [dataServices, setDataServices] = useState(
     null || {
       listService: [],

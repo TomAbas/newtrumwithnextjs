@@ -1,6 +1,8 @@
 .service3Container {
   color: #fff;
-  margin-bottom: 100px;
+  max-width: 1307px;
+  margin: auto;
+  margin-bottom: 150px;
 }
 .wrapItemService {
   border-bottom: 1px solid #fff;
@@ -20,10 +22,12 @@
 }
 .subTitleCard {
   text-transform: capitalize;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 400;
 }
 .desc {
+  display: inline-block;
+  margin: 18px 0;
   text-transform: capitalize;
   font-size: 14px;
 }

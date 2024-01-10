@@ -106,7 +106,7 @@ a {
 }
 
 .Page02Swiper .swiper-pagination {
-  bottom: -56px !important;
+  bottom: -70px !important;
   border: 1px solid #858585;
   padding: 0.5rem 3rem;
   width: 100%;
@@ -118,9 +118,13 @@ a {
 .swiper-pagination-bullets.swiper-pagination-horizontal,
 .swiper-pagination-custom,
 .swiper-pagination-fraction {
-  /*width: fit-content !important;*/
   left: 50% !important;
   transform: translate(-50%, 10%) !important;
+}
+
+.Page02Swiper .MuiBox-root.css-f2w30l,
+.Page02Swiper .MuiBox-root.css-1x3t1x1 {
+  bottom: -63.5px;
 }
 
 @media screen and (max-width: 428px) {
