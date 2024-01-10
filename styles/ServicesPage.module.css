@@ -1,9 +1,13 @@
 .serviceContainer {
- min-height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
   width: min(90%, 1600px);
   margin: auto;
+}
+
+.swiperService {
+  margin:80px 0px 135px 0px;
 }

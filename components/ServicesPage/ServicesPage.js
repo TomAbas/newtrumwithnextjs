@@ -30,7 +30,9 @@ const ServicesPage = ({ data, listAllProject }) => {
       <ServicesPage2 dataServices={dataServices} />
       <ServicesPage3 dataServices={dataServices} listCategory={listCategory} />
 
-      <SwiperListImage />
+      <div className={styles.swiperService}>
+        <SwiperListImage />
+      </div>
     </div>
   );
 };
