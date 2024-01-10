@@ -31,9 +31,9 @@ const Service = ({ res }) => {
         <title>Service</title>
         <link rel="icon" href="/logo300px.ico" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,500&display=swap"
+          href="https://fonts.googleapis.com/css?family=Inter:ital,wght@100;300;400;700&display=swap"
           rel="stylesheet"
-        />
+        ></link>
         {/* metatag google  */}
         <meta name="description" content="We are hiring" />
         <meta

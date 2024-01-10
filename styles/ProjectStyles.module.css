@@ -36,11 +36,12 @@
   align-items: center;
   font-size: 2.2rem;
   -webkit-text-stroke: 2px white;
+  
 }
 
 .project {
   font-style: normal;
-  font-family: "inter", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .listJobBox {
@@ -138,13 +139,10 @@
 }
 
 .outerMove {
-  /* border: 2px solid white; */
-  /* transform: translateY(60%); */
-  /*transform: translateY(102vh);*/
-  /* transition: transform 1.1s cubic-bezier(0.215, 0.61, 0.355, 1); */
   display: flex;
   flex-direction: column;
   gap: 15px;
+  margin-bottom: 200px;
 }
 
 .innerBox h1 {
@@ -194,7 +192,7 @@
   }
 
   .jobBox {
-    width: 350px;
+    width: 43vw;
     height: 300px;
   }
 
@@ -203,13 +201,12 @@
 }
 
 @media (min-width: 992px) {
-  .jobBox {
-    width: 500px;
-    /* flex: 50%; */
-  }
 }
 
 @media (min-width: 1024px) {
+  .jobBox {
+    width: 44vw;
+  }
   .listJobTitlePage {
     font-size: 3rem;
   }
@@ -237,7 +234,7 @@
   }
 
   .jobBox {
-    width: 600px;
+    width: 37.5vw;
     margin: 0;
   }
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useInView } from "framer-motion";
 import styles from "../../../../styles/Page03Styles.module.css";
 import { useRef } from "react";
-
+import aniStyles from "../../../../styles/Animation.module.css";
 const Page03 = ({ page3Data }) => {
   const spanRef = useRef();
   const inViewSpan = useInView(spanRef);

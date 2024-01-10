@@ -1,6 +1,6 @@
 import { useInView } from "framer-motion";
 import React from "react";
-
+import aniStyles from "../../../../styles/Animation.module.css";
 import { useRef } from "react";
 import styles from "../../../../styles/Page01Styles.module.css";
 
@@ -38,7 +38,7 @@ const Page01 = ({ page1Data }) => {
         <div
           ref={arrWordRef}
           className={
-            isArrWordIn && `${styles.page01Content} ${styles.scaleIn1}`
+            isArrWordIn && `${styles.page01Content} ${aniStyles.fadeInUp}`
           }
         >
           <div className={styles.topText}>{renderAnim()}</div>

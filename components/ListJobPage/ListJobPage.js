@@ -1,10 +1,11 @@
 import React from "react";
 import styles from "../../styles/ProjectStyles.module.css";
 import { ParallaxProvider, Parallax } from "react-scroll-parallax";
-
+import img from "/public/imgs/Projects..svg";
 import Link from "next/link";
 import { useEffect } from "react";
-
+import Image from "next/image";
+import aniStyles from "../../styles/Animation.module.css";
 const ListJobPage = ({ arrayListJob }) => {
   const [deviceWidth, setDeviceWidth] = React.useState(0);
   useEffect(() => {
@@ -65,10 +66,14 @@ const ListJobPage = ({ arrayListJob }) => {
     <>
       <ParallaxProvider>
         <div className={styles.listJobContainer}>
-          <div className={styles.listJobTitlePage}>
-            <h1 className={`${styles.project} ${styles.fadeInUp0}`}>
-              Projects.
-            </h1>
+          <div className={`${styles.listJobTitlePage}`}>
+            <Image
+              src={img}
+              alt="Picture of the author"
+              width={600}
+              height={500}
+              className={aniStyles.fadeInUp}
+            />
           </div>
           <div className={` ${styles.outerMove}`}>{createItem()}</div>
         </div>
