@@ -6,7 +6,10 @@ import Link from "next/link";
 
 const ItemService = ({ title, desc, subTitle }) => {
   return (
-    <Link href={`/projects/${subTitle}`} className={styles.wrapItemService}>
+    <Link
+      href={title !== "SERVICES" ? `/projects/${subTitle}` : ""}
+      className={styles.wrapItemService}
+    >
       <div className={styles.wrapItemService}>
         <div className={styles.wrapTextCard}>
           <h3 className={styles.titleCard}>{title}</h3>
