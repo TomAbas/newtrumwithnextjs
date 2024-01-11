@@ -9,5 +9,9 @@
 }
 
 .swiperService {
-  margin:80px 0px 135px 0px;
+  margin: 80px 0px 135px 0px;
+}
+
+.bannerContainer {
+  width: 100%;
 }

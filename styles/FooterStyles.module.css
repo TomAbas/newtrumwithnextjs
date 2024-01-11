@@ -1,6 +1,7 @@
 .footerContainer {
   width: min(90%, 1600px);
   margin: 0 auto;
+  padding-top: 5rem;
 }
 .landingPageIcon {
   color: #fff;
@@ -76,6 +77,46 @@
   top: 46%;
   right: 0;
   transform: translateY(-50%);
+}
+
+.navBox {
+  padding: 50px 0px;
+  width: 100%;
+  font-size: 17px;
+  text-transform: uppercase;
+}
+.navBox ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+.navBox ul li {
+  list-style: none;
+}
+.navBox a {
+  position: relative;
+}
+.navBox a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 0.1em;
+  background-color: white;
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+}
+.navBox li a::after {
+  opacity: 1;
+  transform: scale(0);
+  transform-origin: center;
+}
+
+.navBox li a:hover::after,
+.navBox li a:focus::after {
+  transform: scale(1);
 }
 @media (min-width: 350px) {
   .footerMedia,
@@ -205,5 +246,126 @@
   }
   .footerInfo {
     margin-bottom: 12px;
+  }
+}
+
+/* nav */
+
+@media (min-width: 350px) {
+  .navBox {
+    font-size: 10px;
+  }
+  .navBox ul {
+    gap: 8px;
+    margin-bottom: 0.2rem;
+  }
+
+  .navContainer {
+    left: 5%;
+    right: 5%;
+  }
+}
+@media (min-width: 425px) {
+  .navBrandLogo img {
+    width: 80px;
+  }
+  .projectLogo {
+    width: 20px;
+  }
+  .navProject {
+    font-size: 10px;
+  }
+  .navBox {
+    font-size: 10px;
+  }
+  .navBox ul {
+    gap: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: min(90%, 1400px);
+  }
+  .navBrandLogo img {
+    width: 90px;
+  }
+  .projectLogo {
+    width: 25px;
+  }
+  .navProject {
+    font-size: 12px;
+  }
+  .navBox {
+    font-size: 15px;
+  }
+  .navBox ul {
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .navBrandLogo img {
+    width: 110px;
+  }
+  .projectLogo {
+    width: 27px;
+  }
+  .navProject {
+    font-size: 15px;
+  }
+  .navBox {
+    font-size: 17px;
+  }
+  .navBox ul {
+    gap: 50px;
+  }
+  .navContainer {
+    left: 5%;
+    right: 5%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .navBrandLogo img {
+    width: 125px;
+  }
+  .projectLogo {
+    width: 30px;
+  }
+  .navContainer {
+    /* left: 11.6%;
+    right: 11.6%; */
+    left: 5.5%;
+    right: 5.5%;
+  }
+}
+
+.language {
+  background: #d9d9d9;
+  width: fit-content;
+  border-radius: 50%;
+  padding: 3.5px;
+  color: #000;
+}
+
+@media (min-width: 1488px) {
+  .navContainer {
+    left: 11.6%;
+    right: 11.6%;
+  }
+}
+
+@media (min-width: 1498px) {
+  .navContainer {
+    left: 5.5%;
+    right: 5.5%;
+  }
+}
+
+@media (min-width: 1500px) {
+  .navContainer {
+    left: 11.6%;
+    right: 11.6%;
   }
 }

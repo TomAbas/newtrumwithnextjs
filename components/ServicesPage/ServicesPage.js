@@ -5,6 +5,9 @@ import SwiperListImage from "../SwiperListImage/SwiperListImage";
 import ServicesPage1 from "./ServicesPage1/ServicesPage1";
 import ServicesPage2 from "./ServicesPage2/ServicesPage2";
 import ServicesPage3 from "./ServicesPage3/ServicesPage3";
+import BestProjects, {
+  Banner,
+} from "../landingpage/LandingPage/BestProjects/BestProjects";
 
 const ServicesPage = ({ data, listAllProject }) => {
   const [dataServices, setDataServices] = useState(
@@ -32,6 +35,9 @@ const ServicesPage = ({ data, listAllProject }) => {
 
       <div className={styles.swiperService}>
         <SwiperListImage />
+      </div>
+      <div className={styles.bannerContainer}>
+        <BestProjects />
       </div>
     </div>
   );

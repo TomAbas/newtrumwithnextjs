@@ -56,12 +56,12 @@
   width: 100%;
   height: 100%;
   /* margin: auto; */
-  margin-top: 1rem;
-  padding: 2.6rem 1rem;
+  margin-top: 3rem;
 }
 
 .ContentLeft {
   margin-top: 1rem;
+  margin-bottom: 1.2rem;
   border-radius: 40px;
 }
 
@@ -74,9 +74,11 @@
 }
 
 .Breadcrumb {
-    display: flex;
-    gap: 0.5rem;
-    font-size:12px;
+  display: flex;
+  gap: 0.5rem;
+  font-size: 12px;
+  margin: 5px 0px;
+  margin-top: 12px;
 }
 
 .Breadcrumb li {
@@ -102,6 +104,10 @@
 
 .DescRight {
   font-size: 14px;
+  border-bottom: 1px solid #393939;
+  padding-bottom: 15px;
+  font-style: italic;
+  font-weight: 400;
 }
 
 .DescRight p {
@@ -151,6 +157,12 @@
   margin: 10px auto;
 }
 
+@media (min-width: 350px) {
+  .headlineNewsBox {
+    padding: 0rem 1rem;
+    max-width: 1307px;
+  }
+}
 @media (min-width: 425px) {
   .headlineContent {
     max-height: 100vh;
@@ -159,11 +171,19 @@
   .headlineWord {
     font-size: 2.4rem;
   }
+  .headlineNewsBox {
+    margin: 4rem auto;
+    width: 93%;
+  }
 }
 
 @media (min-width: 600px) {
   .headlineWord {
     font-size: 3.5rem;
+  }
+  .headlineNewsBox {
+    margin: 4rem auto;
+    width: 93%;
   }
 }
 
@@ -171,12 +191,16 @@
   .headlineWord {
     font-size: 4rem;
   }
+  .headlineNewsBox {
+    margin: 4rem auto;
+    width: 93%;
+  }
 }
 
 @media (min-width: 992px) {
   .ContentLeft {
     width: 40%;
-    height: 60vw;
+    height: 52vw;
     margin: 1.8rem auto;
   }
 
@@ -192,8 +216,9 @@
   .headlineNewsBox {
     flex-direction: row;
     padding-top: 5rem;
-    width: min(92%, 1600px);
-    margin: 0 auto;
+    width: 93%;
+
+    margin: 3rem auto;
   }
 
   .DescRight {
@@ -202,19 +227,26 @@
 }
 
 @media (min-width: 1024px) {
-    .headlineWord {
-        font-size: 4rem;
-    }
+  .headlineWord {
+    font-size: 4rem;
+  }
 
   .fadeInUp0 {
     margin-right: 17px;
   }
+  .ContentLeft {
+    height: 61vw;
+    max-height: 852px;
+  }
 }
 
 @media (min-width: 1224px) {
-    .headlineWord {
-        font-size: 4rem;
-    }
+  .headlineWord {
+    font-size: 4rem;
+  }
+  .ContentLeft {
+    height: 56vw;
+  }
 }
 
 @media (min-width: 1480px) {
@@ -230,15 +262,16 @@
     font-size: 20px;
   }
 
-    .Breadcrumb li a {
-        font-size: 20px;
-
-    }
-
+  .Breadcrumb li a {
+    font-size: 20px;
+  }
+  .ContentLeft {
+    height: 64vw;
+  }
 }
 
 @media (min-width: 1800px) {
-    .headlineWord {
-        font-size: 4rem;
-    }
+  .headlineWord {
+    font-size: 4rem;
+  }
 }
