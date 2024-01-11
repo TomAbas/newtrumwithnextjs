@@ -114,6 +114,14 @@ a {
   border-radius: 20px;
 }
 
+.MiniSwiper .swipser-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+  left: 50% !important;
+  transform: translate(-50%, 10%) !important;
+}
+
 .Page02Swiper .swiper-horizontal > .swiper-pagination-bullets,
 .swiper-pagination-bullets.swiper-pagination-horizontal,
 .swiper-pagination-custom,
@@ -122,6 +130,12 @@ a {
   transform: translate(-50%, 10%) !important;
 }
 
+.ProjectSwiper .swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+  left: 50% !important;
+  transform: translate(-50%, -800%) !important;
+}
 .Page02Swiper .MuiBox-root.css-f2w30l,
 .Page02Swiper .MuiBox-root.css-1x3t1x1 {
   bottom: -63.5px;
@@ -166,5 +180,9 @@ a {
 }
 
 .zoomAble .swiper-slide {
-  height: 465px;
+  height: 780px;
+}
+
+.zoomAble .WrapItem {
+  align-items: unset !important;
 }

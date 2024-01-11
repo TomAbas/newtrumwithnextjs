@@ -24,7 +24,7 @@ const BestProjectItem = ({ project }) => {
   );
 };
 
-const Banner = () => {
+export const Banner = () => {
   return (
     <div className={styles.banner}>
       <div className={styles.bannerContent}>

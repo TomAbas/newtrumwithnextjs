@@ -1,7 +1,6 @@
 .WrapItem {
   display: flex;
   justify-content: center;
-  align-items: end;
   height: 600px;
   padding-bottom: 2.4rem;
   overflow: hidden;
@@ -24,7 +23,7 @@
   align-items: center;
   height: 45px;
   position: absolute;
-  bottom: 0;
+  bottom: 155px;
   left: 50%;
   transform: translateX(-50%);
   gap: 10.5rem;
@@ -95,3 +94,5 @@
     width: unset;
   }
 }
+
+

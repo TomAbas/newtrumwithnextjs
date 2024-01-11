@@ -47,7 +47,6 @@ const SwiperListImageForPopup = ({
   imgArr,
   isShowNumPagination,
 }) => {
-  console.log(listContent, "listContentlistContentlistContent");
   const [currentActiveSlide, setCurrentActiveSlide] = useState(1);
 
   const pagination = {
@@ -76,7 +75,7 @@ const SwiperListImageForPopup = ({
   };
 
   return (
-    <>
+    <div className={"ProjectSwiper"}>
       <Swiper
         pagination={pagination}
         modules={[Pagination]}
@@ -100,8 +99,8 @@ const SwiperListImageForPopup = ({
               <div className={styles.WrapItem}>
                 <Image
                   alt="item.image"
-                  width={500}
-                  height={500}
+                  width={600}
+                  height={600}
                   src={item.image ? item.image : item}
                 />
               </div>
@@ -109,7 +108,7 @@ const SwiperListImageForPopup = ({
           );
         })}
       </Swiper>
-    </>
+    </div>
   );
 };
 
