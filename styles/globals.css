@@ -186,3 +186,16 @@ a {
 .zoomAble .WrapItem {
   align-items: unset !important;
 }
+
+@media (max-width: 475px) {
+  .zoomAble .swiper-slide {
+    height: 400px;
+  }
+
+  .ProjectSwiper .swiper-pagination-bullets.swiper-pagination-horizontal,
+  .swiper-pagination-custom,
+  .swiper-pagination-fraction {
+    left: 50% !important;
+    transform: translate(-50%, -380%) !important;
+  }
+}

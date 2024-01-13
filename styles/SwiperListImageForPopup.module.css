@@ -95,4 +95,17 @@
   }
 }
 
+@media (max-width: 475px) {
+  .WrapItem {
+    height: 300px;
+  }
+  .WrapItem img {
+    height: 300px !important;
 
+    max-width: 300px;
+  }
+
+  .WrapBtn {
+    bottom: 75px;
+  }
+}
