@@ -1,25 +1,25 @@
-import React from 'react';
-import { useState } from 'react';
-import { Fragment } from 'react';
-import styles from '../../styles/Admin.module.css';
+import React from "react";
+import { useState } from "react";
+import { Fragment } from "react";
+import styles from "../../styles/Admin.module.css";
 //hook form
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import { Button } from '@mui/material';
-import { useMemo } from 'react';
-import { useEffect } from 'react';
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { Button } from "@mui/material";
+import { useMemo } from "react";
+import { useEffect } from "react";
 
 const AboutUsAddNumberForm = ({ numberAboutUs, setNumberAboutUs }) => {
   const schema = yup.object().shape({
     number: yup
       .number()
-      .required('Please enter number')
-      .typeError('Please enter number'),
+      .required("Please enter number")
+      .typeError("Please enter number"),
     title: yup
       .string()
-      .required('Please enter title')
-      .typeError('Please enter title'),
+      .required("Please enter title")
+      .typeError("Please enter title"),
   });
   const {
     register,
@@ -32,7 +32,7 @@ const AboutUsAddNumberForm = ({ numberAboutUs, setNumberAboutUs }) => {
   function handleSubmitFc(data) {
     console.log(data);
     setNumberAboutUs([...numberAboutUs, data]);
-    reset({ number: '', title: '' });
+    reset({ number: "", title: "" });
   }
   function handDeleteNumber(idx) {
     const newNumberAboutUs = numberAboutUs.filter((item, index) => {
@@ -61,28 +61,28 @@ const AboutUsAddNumberForm = ({ numberAboutUs, setNumberAboutUs }) => {
           <div className={styles.titleEdit}>
             <h3>About 04 : Number About </h3>
             <input
-              type='number'
+              type="number"
               className={styles.inputField}
-              name='content3Line2'
-              {...register('number')}
+              name="content3Line2"
+              {...register("number")}
             />
             <p>{errors.number?.message}</p>
           </div>
           <div className={styles.titleEdit}>
             <h3>About 04 : Number Description </h3>
             <textarea
-              type='text'
+              type="text"
               className={styles.inputField}
-              name='content3Line2'
-              {...register('title')}
+              name="content3Line2"
+              {...register("title")}
             />
             <p>{errors.title?.message}</p>
           </div>
         </div>
         <Button
-          variant='outlined'
-          type='submit'
-          disabled={numberAboutUs.length === 5}
+          variant="outlined"
+          type="submit"
+          disabled={numberAboutUs.length === 6}
         >
           Add Number
         </Button>

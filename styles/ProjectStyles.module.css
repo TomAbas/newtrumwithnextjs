@@ -36,7 +36,6 @@
   align-items: center;
   font-size: 2.2rem;
   -webkit-text-stroke: 2px white;
-  
 }
 
 .project {
@@ -236,6 +235,7 @@
   .jobBox {
     width: 37.5vw;
     margin: 0;
+    max-width: 640px;
   }
 }
 

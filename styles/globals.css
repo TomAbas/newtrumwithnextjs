@@ -12,12 +12,12 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Inter", "Times New Roman", Times, serif !important;
-  background-color: #131313;
+  background-color: black;
   /* font-style: italic; */
 }
 
 .container {
-  background-color: #131313;
+  background-color: black;
   width: min(90%, 1600px);
   margin: 0 auto;
   font-family: "Inter", "Times New Roman", Times, serif !important;
@@ -32,7 +32,7 @@ a {
 }
 
 #__next {
-  background-color: #131313;
+  background-color: black;
   overflow: hidden;
 }
 
@@ -134,7 +134,7 @@ a {
 .swiper-pagination-custom,
 .swiper-pagination-fraction {
   left: 50% !important;
-  transform: translate(-50%, -800%) !important;
+  transform: translate(-50%, -820%) !important;
 }
 .Page02Swiper .MuiBox-root.css-f2w30l,
 .Page02Swiper .MuiBox-root.css-1x3t1x1 {
@@ -144,6 +144,10 @@ a {
 @media screen and (max-width: 428px) {
   .Page02Swiper .swiper-pagination {
     bottom: -52px !important;
+  }
+  .Page02Swiper .MuiBox-root.css-f2w30l,
+  .Page02Swiper .MuiBox-root.css-1x3t1x1 {
+    bottom: -47px;
   }
 }
 

@@ -215,10 +215,10 @@
 
   .headlineNewsBox {
     flex-direction: row;
-    padding-top: 5rem;
+    padding-top: 6rem;
     padding-left: 0px;
     padding-right: 0px;
-    width: 89%;
+    width: 90%;
 
     margin: 3rem auto;
   }
@@ -278,7 +278,7 @@
 
 @media (min-width: 1489px) {
   .headlineNewsBox {
-    width: 76%;
+    width: 86%;
   }
 }
 

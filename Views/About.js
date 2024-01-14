@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import About01 from "../components/About/AboutPage/About-01/About01";
-import About02 from "../components/About/AboutPage/About-02/About02";
-import Page04 from "../components/About/AboutPage/Page-04/Page04";
-import About03 from "../components/About/AboutPage/About-03/About03";
-import styles from "../styles/Home.module.css";
 import About01v2 from "../components/About/AboutPage/About-01/About01v2";
+import About02 from "../components/About/AboutPage/About-02/About02";
+import About04 from "../components/About/AboutPage/About-04/About04";
+import About05 from "../components/About/AboutPage/About-05/About05";
+import About06 from "../components/About/AboutPage/About-06/About06";
+import About07 from "../components/About/AboutPage/About-07/About07";
+import BestProjects from "../components/landingpage/LandingPage/BestProjects/BestProjects";
 
 const About = ({ data }) => {
   const [aboutData, setAboutData] = useState(
@@ -28,12 +29,12 @@ const About = ({ data }) => {
   return (
     <>
       <About01v2 />
-      {/* <About01 aboutData={aboutData} /> */}
       <About02 aboutData={aboutData} />
-      <div className={styles.container}>
-        <Page04 aboutData={aboutData} />
-        <About03 aboutData={aboutData} />
-      </div>
+      <About04 />
+      <About05 />
+      <About06 />
+      <About07 />
+      <BestProjects />
     </>
   );
 };

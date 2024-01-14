@@ -1,12 +1,12 @@
 .container {
-  background-color: #131313;
+  background-color: black;
   width: min(90%, 1600px);
   margin: 0 auto;
-  font-family: 'galano', 'montserrat';
+  font-family: "galano", "montserrat";
 }
 
 .containerAbout {
-  background-color: #131313;
+  background-color: black;
   margin: 0 auto;
-  font-family: 'galano', 'montserrat';
+  font-family: "galano", "montserrat";
 }
