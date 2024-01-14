@@ -21,7 +21,7 @@
 }
 
 .wrapContent {
-  width: fit-content;
+  width: 315px;
   height: 600px;
   display: flex;
   align-items: center;
@@ -35,23 +35,23 @@
 
 @media (min-width: 768px) {
   .wrapContent {
-    width: 40vw;
+    width: 315px;
   }
 }
 
 @media (min-width: 1024px) {
   .wrapContent {
-    width: 30vw;
+    width: 315px;
   }
 }
 
 .close {
   position: absolute;
-  top: -100px;
-  right: 200px;
+  top: -118px;
+  right: 69px;
   transform: translate(200px, 35px);
   z-index: 999999;
-  font-size: 20px;
+  font-size: 12px;
   font-weight: 600;
   font-style: normal;
   cursor: pointer;

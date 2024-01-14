@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import styles from '../../../../styles/AboutStyles.module.css';
-import { Fragment } from 'react';
-import ItemNumber from './ItemNumber';
+import React, { useEffect, useState } from "react";
+import styles from "../../../../styles/AboutStyles.module.css";
+import { Fragment } from "react";
+import ItemNumber from "./ItemNumber";
 
 const About02 = ({ aboutData }) => {
   const { description, image, list } = aboutData.about01;
@@ -31,7 +31,7 @@ const About02 = ({ aboutData }) => {
               })}
             </div>
             <div className={styles.aboutRow2}>
-              {list?.slice(3, 5).map((item, idx) => {
+              {list?.slice(3, 6).map((item, idx) => {
                 return (
                   <Fragment key={idx}>
                     <ItemNumber
@@ -45,9 +45,9 @@ const About02 = ({ aboutData }) => {
               })}
             </div>
           </div>
-          <div className={styles.aboutContentText}>
+          {/* <div className={styles.aboutContentText}>
             <p>{description}</p>
-          </div>
+          </div> */}
         </div>
         <div className={styles.overlay}></div>
       </div>

@@ -215,8 +215,10 @@
 
   .headlineNewsBox {
     flex-direction: row;
-    padding-top: 5rem;
-    width: 93%;
+    padding-top: 6rem;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 90%;
 
     margin: 3rem auto;
   }
@@ -267,6 +269,16 @@
   }
   .ContentLeft {
     height: 64vw;
+  }
+
+  .headlineNewsBox {
+    width: 88%;
+  }
+}
+
+@media (min-width: 1489px) {
+  .headlineNewsBox {
+    width: 86%;
   }
 }
 

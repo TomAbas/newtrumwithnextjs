@@ -13,4 +13,6 @@
   justify-content: center;
   position: relative;
   margin: 4rem auto;
+  margin-top: 6rem;
+  max-width: 1307px;
 }
