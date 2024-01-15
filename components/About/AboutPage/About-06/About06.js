@@ -16,14 +16,14 @@ const About06 = () => {
         <div className={styles.partnerBox}>
           {partners.map((item, idx) => (
             <div className={styles.partner} key={idx}>
-              <Image src={icon1} alt="icon" width={200} height={100} />
+              <Image src={item} alt="icon" width={200} height={100} />
             </div>
           ))}
         </div>
         <div className={styles.partnerBox}>
-          {partners.map((item, idx) => (
+          {partners.reverse().map((item, idx) => (
             <div className={styles.partner} key={idx}>
-              <Image src={icon1} alt="icon" width={200} height={100} />
+              <Image src={item} alt="icon" width={200} height={100} />
             </div>
           ))}
         </div>

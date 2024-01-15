@@ -3,7 +3,9 @@ import styles from "../../../../styles/AboutV2Styles.module.css";
 import icon from "../../../../public/imgs/HeaderIcon.svg";
 import Image from "next/image";
 
-const About01v2 = () => {
+const About01v2 = ({ aboutData }) => {
+  const { video } = aboutData;
+
   return (
     <div className={styles.about1Container}>
       <div className={styles.about1Bg}>
@@ -21,8 +23,14 @@ const About01v2 = () => {
           </span>
         </div>
 
-
         <div className={styles.overlay}></div>
+        {video && (
+          <div className={styles.about1Video}>
+            <video autoPlay playsInline muted>
+              <source src={video} type="video/mp4" />
+            </video>
+          </div>
+        )}
       </div>
     </div>
   );
