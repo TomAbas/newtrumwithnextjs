@@ -16,7 +16,7 @@ const BtnLeft = ({ children }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        padding: "0.15rem",
+        padding: "5px 6px 5px 5px",
         "&:hover": {
           cursor: "pointer",
           backgroundColor: "#393939",
@@ -41,7 +41,7 @@ const BtnRight = ({ children }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        padding: "0.15rem",
+        padding: "5px 2px 5px 5px",
 
         "&:hover": {
           cursor: "pointer",
