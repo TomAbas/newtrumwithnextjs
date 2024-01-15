@@ -4,8 +4,6 @@ import icon1 from "../../../../public/imgs/logo1.svg";
 import icon2 from "../../../../public/imgs/logo2.svg";
 import icon3 from "../../../../public/imgs/logo3.svg";
 import icon4 from "../../../../public/imgs/logo4.svg";
-import septrung from "../../../../public/imgs/septrung.webp";
-import Image from "next/image";
 const About07 = () => {
   const partners = [icon1, icon2, icon3, icon4];
   return (
