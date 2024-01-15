@@ -119,6 +119,9 @@
 .navBox li a:focus::after {
   transform: scale(1);
 }
+
+.footerNavItem {
+}
 @media (min-width: 350px) {
   .footerMedia,
   .footerNav {
