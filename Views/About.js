@@ -8,6 +8,7 @@ import About07 from "../components/About/AboutPage/About-07/About07";
 import BestProjects from "../components/landingpage/LandingPage/BestProjects/BestProjects";
 
 const About = ({ data }) => {
+  console.log(data);
   const [aboutData, setAboutData] = useState(
     null || {
       about01: {},
@@ -28,7 +29,7 @@ const About = ({ data }) => {
 
   return (
     <>
-      <About01v2 />
+      <About01v2 aboutData={aboutData} />
       <About02 aboutData={aboutData} />
       <About04 />
       <About05 />

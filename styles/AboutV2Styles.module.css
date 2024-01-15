@@ -3,13 +3,28 @@
   height: 100vh;
   color: white;
   padding-top: 100px;
+  position: relative;
+}
+
+.about1Video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about1Video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .about1Bg {
   margin: auto;
   object-fit: contain;
-  background: url("../public/imgs/img-banner-new.webp") no-repeat center
-    center/cover;
+  background: black no-repeat center center/cover;
   height: 100%;
   position: relative;
 }
@@ -20,7 +35,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .about1Content {
@@ -68,6 +83,7 @@
 
 .about4bg {
   background: url("../public/imgs/logo-white.png") no-repeat center center/cover;
+  background-size: 60%;
   height: 100%;
   position: relative;
 }
@@ -174,7 +190,7 @@
   font-weight: 700;
   text-transform: capitalize;
   color: white;
-  margin-bottom: 40px;
+  margin-bottom: 45px;
 }
 
 .partnerBox {
