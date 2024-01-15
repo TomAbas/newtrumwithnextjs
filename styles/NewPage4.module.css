@@ -163,7 +163,12 @@
 
 .WrapTextHotNewsDetail p:first-child,
 .TextItemNews .TextItem1 {
+  text-transform: uppercase;
   font-size: 18px;
+}
+
+.TextItem1 {
+  text-transform: uppercase;
 }
 
 .WrapTextHotNewsDetail p:last-child,
