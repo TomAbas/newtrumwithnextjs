@@ -12,14 +12,18 @@ import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../../config/firbase";
 import { handleChangeFile } from "../../Utils/handleChangeFileImage";
 import Image from "next/image";
-const AboutUsAddPartnerForm = ({ partnerAboutUs, setPartnerAboutUs }) => {
+const AboutUsAddPeopleForm = ({ peopleAboutUs, setPeopleAboutUs }) => {
   const [partnerLogo, setPartnerLogo] = useState();
 
   const schema = yup.object().shape({
-    // title: yup
-    //   .string()
-    //   .required("Please enter brand name")
-    //   .typeError("Please enter brand name"),
+    title: yup
+      .string()
+      .required("Please enter brand name")
+      .typeError("Please enter brand name"),
+    name: yup
+      .string()
+      .required("Please enter brand name")
+      .typeError("Please enter brand name"),
     image: yup
       .mixed()
       .required("Please enter image")
@@ -59,15 +63,18 @@ const AboutUsAddPartnerForm = ({ partnerAboutUs, setPartnerAboutUs }) => {
   }
   async function handleSubmitFc(data) {
     const imgUrl = await uploadImg(data.image[0]);
-    setPartnerAboutUs([...partnerAboutUs, { title: "", image: imgUrl }]);
-    reset({ title: "", image: "" });
+    setPeopleAboutUs([
+      ...peopleAboutUs,
+      { title: data.title, name: data.name, image: imgUrl },
+    ]);
+    reset({ title: "", image: "", name: "" });
   }
 
   function handleDeletePartner(idx) {
-    const newPartnerAboutUs = partnerAboutUs.filter((item, index) => {
+    const newpeopleAboutUs = peopleAboutUs.filter((item, index) => {
       return index !== idx;
     });
-    setPartnerAboutUs(newPartnerAboutUs);
+    setPeopleAboutUs(newpeopleAboutUs);
   }
   useEffect(() => {
     // console.log(errors);
@@ -75,11 +82,17 @@ const AboutUsAddPartnerForm = ({ partnerAboutUs, setPartnerAboutUs }) => {
   return (
     <Fragment>
       <div className={styles.partnerDisplay}>
-        {partnerAboutUs?.map((item, idx) => {
+        {peopleAboutUs?.map((item, idx) => {
           return (
             <div style={{ display: "flex" }} key={idx}>
               <div>
-                <BrandAdmin item={item} />
+                <Image
+                  layout="responsive"
+                  width={100}
+                  height={100}
+                  src={item.image}
+                  alt="logo"
+                />
               </div>
               <Button onClick={() => handleDeletePartner(idx)}>Xóa</Button>
             </div>
@@ -89,12 +102,32 @@ const AboutUsAddPartnerForm = ({ partnerAboutUs, setPartnerAboutUs }) => {
       <form onSubmit={handleSubmit(handleSubmitFc)}>
         <div className={styles.row1}>
           <div className={styles.titleEdit}>
-            <h3>Add Partner Logo </h3>
+            <h3>Member Name </h3>
+            <textarea
+              type="text"
+              className={styles.inputField}
+              name="name"
+              {...register("name")}
+            />
+            <p>{errors.name?.message}</p>
+          </div>
+          <div className={styles.titleEdit}>
+            <h3>Member Title </h3>
+            <textarea
+              type="text"
+              className={styles.inputField}
+              name="title"
+              {...register("title")}
+            />
+            <p>{errors.title?.message}</p>
+          </div>
+          <div className={styles.titleEdit}>
+            <h3> Member Image </h3>
             <input
               type="file"
               accept="image/*"
               className={styles.inputField}
-              name="image3"
+              name="image"
               {...register("image")}
               onChange={(e) => {
                 handleChangeFile(e, setPartnerLogo);
@@ -106,11 +139,11 @@ const AboutUsAddPartnerForm = ({ partnerAboutUs, setPartnerAboutUs }) => {
           </div>
         </div>
         <Button variant="outlined" type="submit">
-          submit partner
+          submit member
         </Button>
       </form>
     </Fragment>
   );
 };
 
-export default AboutUsAddPartnerForm;
+export default AboutUsAddPeopleForm;

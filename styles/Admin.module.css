@@ -35,6 +35,7 @@
 }
 .titleEdit h3 {
   margin-bottom: 20px;
+  font-weight: normal;
 }
 
 .inputField {
@@ -317,6 +318,7 @@
 
 .partnerDisplay {
   /* border: 1px solid black; */
+  margin-bottom: 30px;
 }
 
 .partnerDisplayBox {

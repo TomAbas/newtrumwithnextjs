@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import AboutUsAddPartnerForm from "./AboutUsAddPartnerForm";
 import AboutUsAddNumberForm from "./AboutUsAddNumberForm";
+import AboutUsAddPeopleForm from "./AboutUsAddPeopleForm";
 import { Button } from "@mui/material";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -13,27 +14,23 @@ import { makeData } from "../../pages/admin/about-us";
 import { uploadImg } from "../../config/firbase";
 import { toast } from "react-toastify";
 import { handleChangeFile } from "../../Utils/handleChangeFileImage";
-import Image from "next/image";
+
 import Loading from "../Loading/Loading";
 
-const AboutUsForm = ({
-  aboutUsDataImage,
-  aboutUsData,
-  aboutUsNumber,
-  aboutUsPartner,
-}) => {
+const AboutUsForm = ({ aboutUsData, aboutUsNumber, aboutUsPartner }) => {
   const [loadingPage, setLoadingPage] = useState(false);
   const [aboutUs, setAboutUs] = useState();
   const [numberAboutUs, setNumberAboutUs] = useState([]);
   const [partnerAboutUs, setPartnerAboutUs] = useState([]);
+  const [peopleAboutUs, setPeopleAboutUs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const schema = yup.object().shape({
-    about01FirstDescription: yup
+    about01Title: yup
       .string()
       .required("Please enter content")
       .typeError("Please enter content"),
-    about01SecondDescription: yup
+    about01Description: yup
       .string()
       .required("Please enter content")
       .typeError("Please enter content"),
@@ -49,18 +46,18 @@ const AboutUsForm = ({
       .string()
       .required("Please enter content")
       .typeError("Please enter content"),
+    about02VideoUrl: yup
+      .string()
+      .required("Please enter content")
+      .typeError("Please enter content"),
     about03Title: yup
       .string()
       .required("Please enter content")
       .typeError("Please enter content"),
-    aboutImage1: yup
-      .mixed()
-      .required("Please enter image")
-      .typeError("Please enter image"),
-    aboutImage2: yup
-      .mixed()
-      .required("Please enter image")
-      .typeError("Please enter image"),
+    about04Title: yup
+      .string()
+      .required("Please enter content")
+      .typeError("Please enter content"),
     aboutVideo: yup
       .mixed()
       .required("Please enter video")
@@ -78,11 +75,7 @@ const AboutUsForm = ({
 
   async function handleUpdateAboutUs() {
     setIsLoading(true);
-    const arrMedia = [
-      aboutUs.aboutImage1,
-      aboutUs.aboutImage2,
-      aboutUs.aboutVideo,
-    ];
+    const arrMedia = [aboutUs.aboutVideo];
 
     async function uploadMedia() {
       arrMedia = await Promise.all(
@@ -106,22 +99,27 @@ const AboutUsForm = ({
     console.log(arrMedia);
     const data = {
       about01: {
-        image: arrMedia[0],
         list: numberAboutUs,
-        description: aboutUs.about01FirstDescription,
+        title: {
+          title: aboutUs.about01Title,
+          description: aboutUs.about01Description,
+        },
       },
       about02: {
-        image: arrMedia[1],
         title: aboutUs.about02Title,
-        description: aboutUs.about02FirstDescription,
+        description: aboutUs.about02VideoUrl,
       },
       about03: {
         title: aboutUs.about03Title,
         listBrand: partnerAboutUs,
       },
-      description01: aboutUs.about01SecondDescription,
+      about04: {
+        title: aboutUs.about04Title,
+        people: peopleAboutUs,
+      },
+      description01: aboutUs.about02FirstDescription,
       description02: aboutUs.about02SecondDescription,
-      video: arrMedia[2],
+      video: arrMedia[0],
     };
 
     // console.log(data);
@@ -172,32 +170,32 @@ const AboutUsForm = ({
             <div className={styles.bannerBanner}>EDIT ABOUT 1 :</div>
             <div className={styles.row1}>
               <div className={styles.titleEdit}>
-                <h3>About 01 : First Description </h3>
+                <h3>About 01 : Title </h3>
                 <textarea
                   type="text"
                   className={styles.inputField}
-                  name="about01FirstDescription"
-                  {...register("about01FirstDescription")}
+                  name="about01Title"
+                  {...register("about01Title")}
                 />
-                <p>{errors.about01FirstDescription?.message}</p>
+                <p>{errors.about01Title?.message}</p>
               </div>
             </div>
             <div className={styles.titleEdit}>
-              <h3>About 01 : Second Description </h3>
+              <h3>About 01 : Description </h3>
               <textarea
                 type="text"
                 className={styles.inputField}
-                name="about01SecondDescription"
-                {...register("about01SecondDescription")}
+                name="about01Description"
+                {...register("about01Description")}
               />
-              <p>{errors.about01SecondDescription?.message}</p>
+              <p>{errors.about01Description?.message}</p>
             </div>
           </div>
           <div className={styles.content3Edit}>
             <div className={styles.bannerBanner}>EDIT ABOUT 2 :</div>
             <div className={styles.row1}>
               <div className={styles.titleEdit}>
-                <h3>About 02 : Title</h3>
+                <h3>About 02 : Title Service</h3>
                 <textarea
                   type="text"
                   className={styles.inputField}
@@ -207,7 +205,7 @@ const AboutUsForm = ({
                 <p>{errors.about02Title?.message}</p>
               </div>
               <div className={styles.titleEdit}>
-                <h3>About 02 :First Description </h3>
+                <h3>About 02 :Title video </h3>
                 <textarea
                   type="text"
                   className={styles.inputField}
@@ -217,7 +215,7 @@ const AboutUsForm = ({
                 <p>{errors.about02FirstDescription?.message}</p>
               </div>
               <div className={styles.titleEdit}>
-                <h3>About 02 :Second Description </h3>
+                <h3>About 02 : Description video </h3>
                 <textarea
                   type="text"
                   className={styles.inputField}
@@ -226,13 +224,23 @@ const AboutUsForm = ({
                 />
                 <p>{errors.about02SecondDescription?.message}</p>
               </div>
+              <div className={styles.titleEdit}>
+                <h3>About 02 : Youtube video url </h3>
+                <textarea
+                  type="text"
+                  className={styles.inputField}
+                  name="about02VideoUrl"
+                  {...register("about02VideoUrl")}
+                />
+                <p>{errors.about02VideoUrl?.message}</p>
+              </div>
             </div>
           </div>
           <div className={styles.content3Edit}>
             <div className={styles.bannerBanner}>EDIT ABOUT 3 :</div>
             <div className={styles.row1}>
               <div className={styles.titleEdit}>
-                <h3>About 03 : Title </h3>
+                <h3>About : Partner </h3>
                 <textarea
                   type="text"
                   className={styles.inputField}
@@ -241,12 +249,22 @@ const AboutUsForm = ({
                 />
                 <p>{errors.about03Title?.message}</p>
               </div>
+              <div className={styles.titleEdit}>
+                <h3>About : Our Team </h3>
+                <textarea
+                  type="text"
+                  className={styles.inputField}
+                  name="about03Title"
+                  {...register("about04Title")}
+                />
+                <p>{errors.about04Title?.message}</p>
+              </div>
             </div>
           </div>
           <div className={styles.content3Edit}>
             <div className={styles.bannerBanner}>About Media :</div>
             <div className={styles.row1}>
-              <div className={styles.titleEdit}>
+              {/* <div className={styles.titleEdit}>
                 <h3>About 02 : Image 1 </h3>
                 <input
                   type="file"
@@ -260,8 +278,8 @@ const AboutUsForm = ({
                 />
 
                 <p>{errors.aboutImage1?.message}</p>
-              </div>
-              <div className={styles.titleEdit}>
+              </div> */}
+              {/* <div className={styles.titleEdit}>
                 <h3>About 02 : Image 2 </h3>
                 <input
                   type="file"
@@ -275,7 +293,7 @@ const AboutUsForm = ({
                 />
 
                 <p>{errors.aboutImage2?.message}</p>
-              </div>
+              </div> */}
               <div className={styles.titleEdit}>
                 <h3>About 02 : Video </h3>
                 <input
@@ -297,16 +315,24 @@ const AboutUsForm = ({
             Update content
           </Button>
         </form>
-        <div className={styles.content3Edit}>
-          {/* about01 */}
+
+        <div className={styles.content3Edit} style={{ margin: "50px 0px" }}>
           <div className={styles.bannerBanner}>ADD PARTNER :</div>
           <AboutUsAddPartnerForm
             partnerAboutUs={partnerAboutUs}
             setPartnerAboutUs={setPartnerAboutUs}
           />
         </div>
-        <div className={styles.content3Edit}>
-          {/* about03 */}
+
+        <div className={styles.content3Edit} style={{ margin: "50px 0px" }}>
+          <div className={styles.bannerBanner}>ADD ABOUT MEMBER :</div>
+          <AboutUsAddPeopleForm
+            peopleAboutUs={peopleAboutUs}
+            setPeopleAboutUs={setPeopleAboutUs}
+          />
+        </div>
+
+        <div className={styles.content3Edit} style={{ margin: "50px 0px" }}>
           <div className={styles.bannerBanner}>ADD ABOUT NUMBER :</div>
           <AboutUsAddNumberForm
             numberAboutUs={numberAboutUs}
@@ -314,6 +340,7 @@ const AboutUsForm = ({
           />
         </div>
       </div>
+
       <Button
         onClick={handleUpdateAboutUs}
         variant="contained"

@@ -22,19 +22,20 @@ export const Brand = ({ item }) => {
 
 export const BrandAdmin = ({ item }) => {
   return (
-    <div className={styles.wrapperBrand}>
-      <div className={styles.logoBrand}>
-        <Image
-          layout="responsive"
-          width={100}
-          height={100}
-          src={item.image}
-          alt="logo"
-        />
-      </div>
-      <div className={styles.brandNameAdmin}>
+    <div>
+      {/* <div className={styles.logoBrand}> */}
+
+      <Image
+        layout="responsive"
+        width={100}
+        height={100}
+        src={item.image}
+        alt="logo"
+      />
+      {/* </div> */}
+      {/* <div className={styles.brandNameAdmin}>
         <p>{item?.title}</p>
-      </div>
+      </div> */}
     </div>
   );
 };
