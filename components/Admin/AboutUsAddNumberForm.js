@@ -59,21 +59,21 @@ const AboutUsAddNumberForm = ({ numberAboutUs, setNumberAboutUs }) => {
       <form onSubmit={handleSubmit(handleSubmitFc)}>
         <div className={styles.row1}>
           <div className={styles.titleEdit}>
-            <h3>About 04 : Number About </h3>
+            <h3> Number About </h3>
             <input
               type="number"
               className={styles.inputField}
-              name="content3Line2"
+              name="number"
               {...register("number")}
             />
             <p>{errors.number?.message}</p>
           </div>
           <div className={styles.titleEdit}>
-            <h3>About 04 : Number Description </h3>
+            <h3> Number Description </h3>
             <textarea
               type="text"
               className={styles.inputField}
-              name="content3Line2"
+              name="title"
               {...register("title")}
             />
             <p>{errors.title?.message}</p>

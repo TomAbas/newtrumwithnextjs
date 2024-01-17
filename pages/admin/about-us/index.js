@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
-import AboutUsForm from '../../../components/Admin/AboutUsForm';
-import { useEffect } from 'react';
-import { getAboutData } from '../../../ApiUrl/about/aboutApi';
+import React, { useState } from "react";
+import AboutUsForm from "../../../components/Admin/AboutUsForm";
+import { useEffect } from "react";
+import { getAboutData } from "../../../ApiUrl/about/aboutApi";
 import Loading from "../../../components/Loading/Loading";
 
 export function makeData(data) {
   return {
-    about01FirstDescription: data.about01.description,
-    about01SecondDescription: data.description01,
+    about01Title: data.about01.title.title,
+    about01Description: data.about01.title.description,
     about02Title: data.about02.title,
-    about02FirstDescription: data.about02.description,
+    about02FirstDescription: data.description01,
     about02SecondDescription: data.description02,
+    about02VideoUrl: data.about02.description,
     about03Title: data.about03.title,
+    about04Title: data.about04.title,
   };
 }
 const Index = () => {
@@ -32,20 +34,17 @@ const Index = () => {
     setIsLoading(false);
   }
   useEffect(() => {
-
     getAboutUsData();
   }, []);
   return (
     <div>
       <AboutUsForm
-          aboutUsDataImage={aboutUsDataImage}
+        aboutUsDataImage={aboutUsDataImage}
         aboutUsData={aboutUsData}
         aboutUsNumber={aboutUsNumber}
         aboutUsPartner={aboutUsPartner}
       />
-      {
-        isLoading && <Loading/>
-      }
+      {isLoading && <Loading />}
     </div>
   );
 };

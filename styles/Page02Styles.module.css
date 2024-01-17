@@ -247,6 +247,18 @@
     white-space: nowrap;
     text-align: center;
     border: 1px solid #393939;
+    transition: all 1s ease-in-out;
+    opacity: 0.8;
+  }
+  .btnSeeMore:hover {
+    opacity: 1;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    background: linear-gradient(
+      180deg,
+      #7f7f7f 50%,
+      rgba(97, 94, 94, 0.85) 100%
+    );
   }
 
   .imgSeeMore {

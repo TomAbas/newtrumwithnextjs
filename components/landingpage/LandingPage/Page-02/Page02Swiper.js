@@ -45,8 +45,6 @@ const Page02Swiper = ({ isLandingPage, imgArr, isCategory = false }) => {
   const innerContainerRef = useRef();
   const textRef = useRef();
 
-
-
   return (
     <>
       <Box
