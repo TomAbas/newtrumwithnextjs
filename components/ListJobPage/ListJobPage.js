@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import Image from "next/image";
 import aniStyles from "../../styles/Animation.module.css";
+import icon from "../../public/imgs/fullArrow.svg";
 const ListJobPage = ({ arrayListJob }) => {
   const [deviceWidth, setDeviceWidth] = React.useState(0);
   useEffect(() => {
@@ -33,9 +34,14 @@ const ListJobPage = ({ arrayListJob }) => {
                         style={{
                           backgroundImage: `url(${job.mainImage})`,
                         }}
-                      ></div>
-                      <div className={styles.innerBox2}>
-                        <h3>{job.title}</h3>
+                      >
+                        <div className={styles.innerBox2}>
+                          <h3>{job.title}</h3>
+                          <p className={styles.contentHover}>
+                            READ OUT CASE STUDIES{" "}
+                            <Image src={icon} alt="icon" />
+                          </p>
+                        </div>
                       </div>
                     </Parallax>
                   </Link>
@@ -45,9 +51,14 @@ const ListJobPage = ({ arrayListJob }) => {
                       <div
                         className={styles.innerBox}
                         style={{ backgroundImage: `url(${job.mainImage})` }}
-                      ></div>
-                      <div className={styles.innerBox2}>
-                        <h3>{job.title}</h3>
+                      >
+                        <div className={styles.innerBox2}>
+                          <h3>{job.title}</h3>
+                          <p className={styles.contentHover}>
+                            READ OUT CASE STUDIES{" "}
+                            <Image src={icon} alt="icon" />
+                          </p>
+                        </div>
                       </div>
                     </Parallax>
                   </Link>
