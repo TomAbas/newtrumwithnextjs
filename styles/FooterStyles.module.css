@@ -2,6 +2,7 @@
   width: min(90%, 1600px);
   margin: 0 auto;
   padding-top: 5rem;
+  max-width: 1307px;
 }
 .landingPageIcon {
   color: #fff;
@@ -123,6 +124,7 @@
 .footerNavItem a {
   color: #fff;
   transition: 0.5s;
+  position: relative;
 }
 
 .footerNavItem a::before {

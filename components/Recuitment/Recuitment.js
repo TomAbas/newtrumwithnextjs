@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "../../styles/RecuitmentStyles.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
-import Link from "next/link";
 //mui
 import AddIcon from "@mui/icons-material/Add";
+import {
+  Box,
+  ListItemButton,
+  ListItemIcon,
+  Stack,
+  Typography,
+} from "@mui/material";
+import Collapse from "@mui/material/Collapse";
 import List from "@mui/material/List";
 import ListItemText from "@mui/material/ListItemText";
-import Collapse from "@mui/material/Collapse";
-import { ListItemButton, ListItemIcon, Typography } from "@mui/material";
 import useGetContact from "../../hooks/useGetContect";
-import FormContact from "./FormContact";
-import Reasons from "./Reasons";
-import { Stack, Box } from "@mui/material";
 import BtnSubmit from "../Form/BtnSubmit";
-import Industry from "./Industry/Industry";
 import Loading from "../Loading/Loading";
+import FormContact from "./FormContact";
+import Industry from "./Industry/Industry";
+import Reasons from "./Reasons";
 
 const ListJobItem = ({ job }) => {
   const [activeSelectOption, setActiveSelectOption] = useState(false);
@@ -26,7 +28,7 @@ const ListJobItem = ({ job }) => {
         onClick={(e) => {
           setActiveSelectOption(!activeSelectOption);
         }}
-      // data-idx={idx}
+        // data-idx={idx}
       >
         <ListItemText primary={job.title} className={styles.item} />
         <ListItemIcon>
@@ -37,7 +39,7 @@ const ListJobItem = ({ job }) => {
         <List component="div" disablePadding>
           <ListItemText
             primary={job.description}
-            sx={{ padding: "8px 16px", fontSize: '12px' }}
+            sx={{ padding: "8px 16px", fontSize: "12px" }}
           />
         </List>
       </Collapse>
@@ -70,7 +72,7 @@ const Recuitment = () => {
                 <Reasons />
               </Box>
             </Stack>
-            <BtnSubmit label="BOOK YOUR CALL" sx={{ mt: 4, mb: 2 }} />
+            <BtnSubmit label="BOOK YOUR CALL" sx={{ mt: 5, mb: 2 }} />
             <Typography
               variant="caption"
               sx={{ display: "block", fontWeight: "light" }}
@@ -79,7 +81,6 @@ const Recuitment = () => {
             </Typography>
 
             <Industry />
-
 
             <div className={styles.titleMd}>We're hiring</div>
             <Typography variant="caption">
@@ -97,7 +98,7 @@ const Recuitment = () => {
           </div>
         </>
       ) : (
-       <Loading/>
+        <></>
       )}
     </>
   );
