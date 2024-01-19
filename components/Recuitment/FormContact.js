@@ -8,13 +8,12 @@ import { sendContact } from "../../ApiUrl/contact/contact";
 const FormContact = () => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const initialFormData = {
-    name: '',
-    email: '',
-    phone: '',
-    content: '',
-    budget: '',
+    name: "",
+    email: "",
+    phone: "",
+    content: "",
+    budget: "",
   };
-
 
   const [data, setData] = useState(initialFormData);
 
@@ -80,8 +79,8 @@ const FormContact = () => {
           value={data.budget}
           onChange={handleChange}
         />
-        <Box sx={{ my: "20px", display: 'flex', alignItems: 'center', gap: 1 }}>
-          <BtnSubmit label="Submit" />
+        <Box sx={{ my: "20px", display: "flex", alignItems: "center", gap: 1 }}>
+          <BtnSubmit label="Submit" sx={{ mt: 2, mb: 2 }} />
           {showSuccessMessage && <p>*Success</p>}
         </Box>
       </form>

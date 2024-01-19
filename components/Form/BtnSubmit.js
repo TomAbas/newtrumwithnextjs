@@ -8,7 +8,7 @@ const stylesBtnSubmit = {
   backgroundColor: "#F1F1F1",
   fontWeight: "bold",
   fontSize: "16px",
-  padding: "10px 20px",
+  padding: "10px 30px",
   borderRadius: "10px",
 };
 

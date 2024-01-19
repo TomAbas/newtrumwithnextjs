@@ -135,7 +135,11 @@ const BestProjects = ({ imgArr, isShowButton = true }) => {
           />
           <Button
             onClick={() => router.push("/contact")}
-            style={{ border: "2px solid #393939", minWidth: 250 }}
+            style={{
+              border: "2px solid #393939",
+              minWidth: 250,
+              marginTop: "20px",
+            }}
             btnName={"BOOK YOUR CALL"}
           />
         </div>
