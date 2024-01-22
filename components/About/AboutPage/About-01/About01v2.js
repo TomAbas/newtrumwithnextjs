@@ -4,18 +4,17 @@ import icon from "../../../../public/imgs/HeaderIcon.svg";
 import Image from "next/image";
 
 const About01v2 = ({ aboutData }) => {
-  const { video } = aboutData;
+  console.log(aboutData);
+  const { video, about01 } = aboutData;
+  const { title } = about01;
 
   return (
     <div className={styles.about1Container}>
       <div className={styles.about1Bg}>
         <div className={styles.about1Content}>
-          <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h1>
+          <h1>{title?.title}</h1>
           <div>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do
-            </p>
-            <p> eiusmod tempor incididunt ut.</p>
+            <p style={{ whiteSpace: "pre-line" }}>{title?.description}</p>
           </div>
 
           <span className={styles.btn}>

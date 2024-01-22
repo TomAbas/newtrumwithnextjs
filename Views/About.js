@@ -31,10 +31,10 @@ const About = ({ data }) => {
     <>
       <About01v2 aboutData={aboutData} />
       <About02 aboutData={aboutData} />
-      <About04 />
-      <About05 />
-      <About06 />
-      <About07 />
+      <About04 aboutData={aboutData} />
+      <About05 aboutData={aboutData} />
+      <About06 aboutData={aboutData} />
+      <About07 aboutData={aboutData} />
       <BestProjects />
     </>
   );

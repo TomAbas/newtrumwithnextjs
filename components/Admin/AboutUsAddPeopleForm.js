@@ -40,7 +40,8 @@ const AboutUsAddPeopleForm = ({ peopleAboutUs, setPeopleAboutUs }) => {
   async function uploadImg(img) {
     let downloadURL;
     try {
-      const sotrageRef = ref(storage, `web/${img.name}`);
+      const id = new Date().getTime();
+      const sotrageRef = ref(storage, `web/${img.name}${id}}`);
       if (img.name === undefined) {
         throw new Error("No file selected");
       }

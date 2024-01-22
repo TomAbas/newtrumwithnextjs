@@ -4,41 +4,42 @@ import icon1 from "../../../../public/imgs/logo1.svg";
 import icon2 from "../../../../public/imgs/logo2.svg";
 import icon3 from "../../../../public/imgs/logo3.svg";
 import icon4 from "../../../../public/imgs/logo4.svg";
-const About07 = () => {
+const About07 = ({ aboutData }) => {
   const partners = [icon1, icon2, icon3, icon4];
+  const { about04 } = aboutData;
   return (
     <div className={styles.about06Container}>
       <div className={styles.about06Content}>
-        <h3>Meet our team</h3>
+        <h3>{about04?.title}</h3>
 
         <div className={styles.teamBox}>
-          {partners.map((item, idx) => (
+          {about04?.people?.slice(0, 4).map((item, idx) => (
             <div
               className={styles.memberItem}
               key={idx}
               style={{
-                backgroundImage: `url('https://firebasestorage.googleapis.com/v0/b/trum-project.appspot.com/o/web%2FSepTrung.webp?alt=media&token=0fbec390-5874-44eb-a3d8-65c77eb88d30')`,
+                backgroundImage: `url(${item.image})`,
               }}
             >
               <div className={styles.memberInfo}>
-                <h4>Sếp Trung</h4>
-                <p>CEO</p>
+                <h4>{item.name}</h4>
+                <p>{item.title}</p>
               </div>
             </div>
           ))}
         </div>
         <div className={styles.teamBox}>
-          {partners.map((item, idx) => (
+          {about04?.people?.slice(4, 8).map((item, idx) => (
             <div
               className={styles.memberItem}
               key={idx}
               style={{
-                backgroundImage: `url('https://firebasestorage.googleapis.com/v0/b/trum-project.appspot.com/o/web%2FSepTrung.webp?alt=media&token=0fbec390-5874-44eb-a3d8-65c77eb88d30')`,
+                backgroundImage: `url(${item.image})`,
               }}
             >
               <div className={styles.memberInfo}>
-                <h4>Sếp Trung</h4>
-                <p>CEO</p>
+                <h4>{item.name}</h4>
+                <p>{item.title}</p>
               </div>
             </div>
           ))}

@@ -107,6 +107,7 @@
   font-size: 32px;
   font-weight: 700;
   flex: 1;
+  line-height: 40px;
 }
 
 .about4Left p {
@@ -132,6 +133,7 @@
 .viewAll {
   width: fit-content;
   border-bottom: 1px solid white;
+  cursor: pointer;
 }
 
 .about05Container {
@@ -199,6 +201,9 @@
   align-items: center;
   gap: 20px;
   margin-bottom: 40px;
+}
+.partner img {
+  object-fit: contain;
 }
 
 .teamBox {
