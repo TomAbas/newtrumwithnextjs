@@ -4,16 +4,11 @@ import { Fragment } from "react";
 import ItemNumber from "./ItemNumber";
 
 const About02 = ({ aboutData }) => {
-  const { description, image, list } = aboutData.about01;
-  console.log(aboutData);
+  const { list } = aboutData.about01;
+
   return (
     <div className={styles.aboutNumberContainer}>
-      <div
-        className={styles.aboutPictureContainer}
-        style={{
-          backgroundImage: image && `url(${image})`,
-        }}
-      >
+      <div className={styles.aboutPictureContainer}>
         <div className={styles.aboutWrapper}>
           <div className={styles.aboutContentNumber}>
             <div className={styles.aboutRow1}>
@@ -45,9 +40,6 @@ const About02 = ({ aboutData }) => {
               })}
             </div>
           </div>
-          {/* <div className={styles.aboutContentText}>
-            <p>{description}</p>
-          </div> */}
         </div>
         <div className={styles.overlay}></div>
       </div>

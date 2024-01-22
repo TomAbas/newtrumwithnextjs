@@ -37,10 +37,9 @@ const ListJobItem = ({ job }) => {
       </ListItemButton>
       <Collapse in={activeSelectOption} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <ListItemText
-            primary={job.description}
-            sx={{ padding: "8px 16px", fontSize: "12px" }}
-          />
+          <ListItemText sx={{ padding: "8px 16px", fontSize: "12px" }}>
+            <span style={{ whiteSpace: "pre-line" }}> {job.description}</span>
+          </ListItemText>
         </List>
       </Collapse>
     </>

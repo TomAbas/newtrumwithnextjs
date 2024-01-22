@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "../../../../styles/AboutV2Styles.module.css";
 
-const About05 = () => {
+const About05 = ({ aboutData }) => {
+  const { description01, description02 } = aboutData;
   return (
     <div className={styles.about05Container}>
       <div className={styles.about05Content}>
@@ -18,18 +19,13 @@ const About05 = () => {
           ></iframe>
         </div>
         <div className={styles.about05Right}>
-          <p className={styles.about05RightTitle}>Lorem ipsum dolor sit amet</p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.{" "}
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.{" "}
+          <p className={styles.about05RightTitle}>{description01}</p>
+          <p
+            style={{
+              whiteSpace: "pre-line",
+            }}
+          >
+            {description02}
           </p>
         </div>
       </div>

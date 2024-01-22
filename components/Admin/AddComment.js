@@ -1,22 +1,22 @@
-import React from 'react';
-import styles from '../../styles/Admin.module.css';
+import React from "react";
+import styles from "../../styles/Admin.module.css";
 
 //mui
-import { Button } from '@mui/material';
+import { Button } from "@mui/material";
 //form
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 //editor
-import { toast } from 'react-toastify';
-import { addRatingData } from '../../ApiUrl/rating/ratingApi';
-import { uploadImg } from '../../config/firbase';
+import { toast } from "react-toastify";
+import { addRatingData } from "../../ApiUrl/rating/ratingApi";
+import { uploadImg } from "../../config/firbase";
 
 const schema = yup.object().shape({
-  title: yup.string().required('missing field'),
-  description: yup.string().required('missing field'),
-  rating: yup.number().required('missing field').typeError('invalid rating'),
-  image: yup.mixed().required('missing field').typeError('invalid image'),
+  title: yup.string().required("missing field"),
+  description: yup.string().required("missing field"),
+  rating: yup.number().required("missing field").typeError("invalid rating"),
+  image: yup.mixed().required("missing field").typeError("invalid image"),
 });
 
 const AddComment = ({ setTrigger, trigger }) => {
@@ -31,13 +31,12 @@ const AddComment = ({ setTrigger, trigger }) => {
   });
 
   const submitAddComment = async (data) => {
-    console.log(data);
     if (data.image.length === 0) {
-      setError('image', { message: 'missing field' });
+      setError("image", { message: "missing field" });
       return;
     }
     const imgUrl = await uploadImg(data.image[0]);
-    console.log(imgUrl);
+
     const body = {
       ...data,
       image: imgUrl,
@@ -45,11 +44,11 @@ const AddComment = ({ setTrigger, trigger }) => {
     await addRatingData(body)
       .then((res) => {
         setTrigger(!trigger);
-        toast.success('Add Success');
+        toast.success("Add Success");
         reset({});
       })
       .catch((err) => {
-        toast.error('Add Failed');
+        toast.error("Add Failed");
         console.log(err);
       });
   };
@@ -66,48 +65,48 @@ const AddComment = ({ setTrigger, trigger }) => {
             <div className={styles.titleEdit}>
               <h3>Title </h3>
               <textarea
-                type='text'
+                type="text"
                 className={styles.inputField}
-                name='title'
-                {...register('title')}
+                name="title"
+                {...register("title")}
               />
               <p>{errors.title?.message}</p>
             </div>
             <div className={styles.titleEdit}>
               <h3>Description </h3>
               <textarea
-                type='text'
+                type="text"
                 className={styles.inputField}
-                name='description'
-                {...register('description')}
+                name="description"
+                {...register("description")}
               />
               <p>{errors.description?.message}</p>
             </div>
             <div className={styles.titleEdit}>
               <h3>Rating </h3>
               <input
-                type='number'
+                type="number"
                 max={5}
                 className={styles.inputField}
-                name='rating'
-                {...register('rating')}
+                name="rating"
+                {...register("rating")}
               />
               <p>{errors.rating?.message}</p>
             </div>
             <div className={styles.titleEdit}>
               <h3>image </h3>
               <input
-                type='file'
-                accept='image/*'
+                type="file"
+                accept="image/*"
                 className={styles.inputField}
-                name='image'
-                {...register('image')}
+                name="image"
+                {...register("image")}
               />
               <p>{errors.image?.message}</p>
             </div>
           </div>
         </div>
-        <Button variant='outlined' type='submit'>
+        <Button variant="outlined" type="submit">
           submit
         </Button>
       </form>

@@ -138,7 +138,6 @@ const BestProjects = ({ imgArr, isShowButton = true }) => {
             style={{
               border: "2px solid #393939",
               minWidth: 250,
-              marginTop: "20px",
             }}
             btnName={"BOOK YOUR CALL"}
           />
