@@ -49,7 +49,7 @@ export const Banner = () => {
   );
 };
 
-const BestProjects = ({ imgArr, isShowButton = true }) => {
+const BestProjects = ({ imgArr, isShowButton = true, isShowBanner = true }) => {
   const router = useRouter();
 
   return (
@@ -120,7 +120,9 @@ const BestProjects = ({ imgArr, isShowButton = true }) => {
           </Swiper>
         </div>
       )}
-      <Banner />
+
+      {isShowBanner && <Banner />}
+
       {isShowButton && (
         <div className={styles.WrapBtn}>
           <Button

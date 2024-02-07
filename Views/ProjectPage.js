@@ -7,7 +7,6 @@ import ProjectPage04Swiper from "../components/ProjectPage/ProjectPage04Swiper";
 import { getAllProject } from "../ApiUrl/projectApi/projectApi";
 // img
 const ProjectPage = ({ data }) => {
-  console.log(data);
   const [newsBigTitle, setNewsBigTitle] = useState();
   const [category, setCategory] = useState();
   const [content, setContent] = useState();
