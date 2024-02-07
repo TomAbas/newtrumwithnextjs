@@ -25,16 +25,25 @@ import { urlAddJob, urlDeleteContributor } from "../../ApiUrl/Api";
 import { urlAddContributor } from "../../ApiUrl/Api";
 import { addRecuiterData } from "../../ApiUrl/recuiter/recuiter";
 import { toast } from "react-toastify";
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.snow.css";
+
 const schema = yup.object().shape({
   title1: yup.string().required("missing field"),
   title2: yup.string().required("missing field"),
 });
 
 const AddHiring = ({ newsIdx, preLoadValue, setTrigger, trigger }) => {
+  const ReactQuill = useMemo(
+    () => dynamic(() => import("react-quill"), { ssr: false }),
+    []
+  );
   const {
     register,
     handleSubmit,
     reset,
+    watch,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -42,7 +51,10 @@ const AddHiring = ({ newsIdx, preLoadValue, setTrigger, trigger }) => {
       return preLoadValue;
     }, [preLoadValue]),
   });
-
+  const editorContent = watch("title2");
+  const onEditorStateChange = (editorState) => {
+    setValue("title2", editorState);
+  };
   const submitAddNewsJob = async (data) => {
     console.log(data);
     const dataSubmit = { title: data.title1, description: data.title2 };
@@ -74,10 +86,10 @@ const AddHiring = ({ newsIdx, preLoadValue, setTrigger, trigger }) => {
             <div className={styles.titleEdit}>
               <h3>Position </h3>
               <textarea
-                type='text'
+                type="text"
                 // defaultValue={preLoadValue.title1}
                 className={styles.inputField}
-                name='title1'
+                name="title1"
                 {...register("title1")}
               />
               <p>{errors.title1?.message}</p>
@@ -85,18 +97,17 @@ const AddHiring = ({ newsIdx, preLoadValue, setTrigger, trigger }) => {
 
             <div className={styles.titleEdit}>
               <h3>Description </h3>
-              <textarea
-                type='text'
-                // defaultValue={preLoadValue.title2}
-                className={styles.inputField}
-                name='title2'
-                {...register("title2")}
+              <ReactQuill
+                theme="snow"
+                value={editorContent}
+                onChange={onEditorStateChange}
               />
+
               <p>{errors.title2?.message}</p>
             </div>
           </div>
         </div>
-        <Button variant='outlined' type='submit'>
+        <Button variant="outlined" type="submit">
           submit
         </Button>
       </form>

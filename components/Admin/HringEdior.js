@@ -25,16 +25,24 @@ import { urlAddContributor } from "../../ApiUrl/Api";
 import { editRecuiterData } from "../../ApiUrl/recuiter/recuiter";
 import { toast } from "react-toastify";
 import Loading from "../Loading/Loading";
+import "react-quill/dist/quill.snow.css";
+import dynamic from "next/dynamic";
 const schema = yup.object().shape({
   title1: yup.string().required("missing field"),
   title2: yup.string().required("missing field"),
 });
 
 const HiringEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
+  const ReactQuill = useMemo(
+    () => dynamic(() => import("react-quill"), { ssr: false }),
+    []
+  );
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
+    watch,
+    setValue,
     reset,
     formState: { errors },
   } = useForm({
@@ -43,9 +51,12 @@ const HiringEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
       return preLoadValue;
     }, [preLoadValue]),
   });
-
+  const editorContent = watch("title2");
+  const onEditorStateChange = (editorState) => {
+    setValue("title2", editorState);
+  };
   const submitNewsEditor = async (data) => {
-    setIsLoading(true)
+    setIsLoading(true);
     const dataSubmit = { title: data.title1, description: data.title2 };
     try {
       await editRecuiterData(dataSubmit, newsIdx);
@@ -65,7 +76,7 @@ const HiringEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
     //   .catch((error) => {
     //     console.log(error);
     //   });
-    setIsLoading(false)
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -95,12 +106,18 @@ const HiringEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
 
             <div className={styles.titleEdit}>
               <h3>Description </h3>
-              <textarea
+              {/* <textarea
                 type="text"
                 // defaultValue={preLoadValue.title2}
                 className={styles.inputField}
                 name="title2"
                 {...register("title2")}
+              />
+               */}
+              <ReactQuill
+                theme="snow"
+                value={editorContent}
+                onChange={onEditorStateChange}
               />
               <p>{errors.title2?.message}</p>
             </div>
@@ -110,9 +127,7 @@ const HiringEditor = ({ newsIdx, preLoadValue, trigger, setTrigger }) => {
           submit
         </Button>
       </form>
-      {
-        isLoading && <Loading />
-      }
+      {isLoading && <Loading />}
     </div>
   );
 };
