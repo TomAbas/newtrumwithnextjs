@@ -7,6 +7,7 @@ import imgInsta from "../../public/imgs/Instagram.svg";
 import Image from "next/image";
 import ZoomAble from "../ZoomAble/ZoomAble";
 import SwiperListImageForPopup from "../SwiperListImage/SwiperListImageForPopup";
+import { LinkSocial } from "../../constant/link";
 
 const ProjectPage01 = ({
   title,
@@ -66,23 +67,23 @@ const ProjectPage01 = ({
           <div>
             <ul className={styles.Breadcrumb}>
               <li>
-                <a href="#">
+                <a href={LinkSocial.instagram}>
                   <Image width={15} height={15} src={imgInsta} />
                   Instagram
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href={LinkSocial.facebook}>
                   <Image width={15} height={15} src={imgFb} />
                   Facebook
                 </a>
               </li>
-              <li>
-                <a href="#">
+              {/* <li>
+                <a href={LinkSocial.tiktok}>
                   <Image width={15} height={15} src={imgXlogo} />
                   Twitter
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div className={styles.WrapSwiper}>
@@ -141,64 +142,6 @@ const ProjectPage01 = ({
                 </Fragment>
               );
             })}
-            {/* <ZoomAble
-              isZoomed={isZoomed}
-              setIsZoomed={setIsZoomed}
-              content={
-                <SwiperListImageForPopup
-                  isShowNumPagination={true}
-                  listContent={listContent}
-                />
-              }
-            /> */}
-
-            {/* <CustomSwiperProjectPage
-              setIsZoomed={setIsZoomed}
-              isZoomed={isZoomed}
-              breakpoints={{
-                320: {
-                  slidesPerView: 2,
-                  spaceBetween: 15,
-                },
-                640: {
-                  slidesPerView: 5,
-                  spaceBetween: 15,
-                },
-                768: {
-                  slidesPerView: 5,
-                  spaceBetween: 15,
-                },
-                992: {
-                  slidesPerView: 3,
-                  spaceBetween: 15,
-                },
-                1024: {
-                  slidesPerView: 4,
-                  spaceBetween: 15,
-                },
-                1200: {
-                  slidesPerView: 4,
-                  spaceBetween: 15,
-                },
-                1480: {
-                  slidesPerView: 4,
-                  spaceBetween: 15,
-                },
-              }}
-              width={300}
-              height={300}
-              data={swiper}
-            /> */}
-            {/* <ZoomAble
-              isZoomed={isZoomed}
-              setIsZoomed={setIsZoomed}
-              content={
-                <SwiperListImageForPopup
-                  isShowNumPagination={true}
-                  imgArr={swiper}
-                />
-              }
-            /> */}
           </div>
         </div>
       </div>

@@ -12,6 +12,30 @@
   margin: 80px 0px 135px 0px;
 }
 
+.swiperServiceDetail {
+  margin: 150px 0px 150px 0px;
+}
+
 .bannerContainer {
   width: 100%;
+}
+
+.bannerContainerServiceDetail {
+  margin: 240px 0px 100px 0px;
+}
+
+.serviceHeader {
+  /* border: 1px solid red; */
+  color: #fff;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.serviceHeader h1 {
+  font-size: 85px;
+  text-transform: capitalize;
+  text-align: center;
 }

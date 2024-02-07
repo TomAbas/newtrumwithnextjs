@@ -6,6 +6,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import { useTranslation } from "react-i18next";
+import { LinkSocial } from "../../../constant/link";
 
 const FooterPage01 = () => {
   const { t } = useTranslation("translation");
@@ -37,16 +38,16 @@ const FooterPage01 = () => {
         <div className={styles.navBox}>
           <ul>
             <li>
-              <Link href="/">{t("facebook")}</Link>
+              <Link href={LinkSocial.facebook}>{t("facebook")}</Link>
             </li>
             <li>
-              <Link href="/projects">{t("linkedin")}</Link>
+              <Link href={LinkSocial.linkedin}>{t("linkedin")}</Link>
             </li>
             <li>
-              <Link href="/service">{t("instagram")}</Link>
+              <Link href={LinkSocial.instagram}>{t("instagram")}</Link>
             </li>
             <li>
-              <Link href="/about">{t("tiktok")}</Link>
+              <Link href={LinkSocial.tiktok}>{t("tiktok")}</Link>
             </li>
           </ul>
         </div>

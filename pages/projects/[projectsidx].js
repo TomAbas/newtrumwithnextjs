@@ -1,22 +1,8 @@
-import React from "react";
 import Head from "next/head";
-import ProjectPage from "../../Views/ProjectPage";
 import { useRouter } from "next/router";
-import {
-  getAllProject,
-  getDetailProjectData,
-} from "../../ApiUrl/projectApi/projectApi";
-
-// export async function getStaticPaths() {
-//   const res = await getAllProject().then((data) => {
-//     return data;
-//   });
-
-//   const paths = res.map((item) => ({
-//     params: { projectsidx: item.title },
-//   }));
-//   return { paths, fallback: true };
-// }
+import React from "react";
+import { getDetailProjectData } from "../../ApiUrl/projectApi/projectApi";
+import ProjectPage from "../../Views/ProjectPage";
 
 export async function getServerSideProps({ params }) {
   let res;
@@ -39,10 +25,9 @@ export async function getServerSideProps({ params }) {
   };
 }
 const Projectsidx0 = ({ res }) => {
-  console.log(res);
   const router = useRouter();
   const { projectsidx } = router.query;
-  // console.log(projectsidx);
+
   return (
     <>
       {" "}
