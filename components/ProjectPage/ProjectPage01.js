@@ -19,6 +19,7 @@ const ProjectPage01 = ({
   listContent,
 }) => {
   const [isZoomed, setIsZoomed] = useState(false);
+  const [isZoomed2, setIsZoomed2] = useState(false);
   const animationWords = () => {
     let b = title?.split(" ").map((word, idx) => {
       let delay = { animationDelay: `${idx / 5 + 0.5}s` };
@@ -92,8 +93,8 @@ const ProjectPage01 = ({
                 <Fragment key={idx}>
                   <CustomSwiperProjectPage
                     title={content.title}
-                    setIsZoomed={setIsZoomed}
-                    isZoomed={isZoomed}
+                    isZoomed={idx === 0 ? isZoomed : isZoomed2}
+                    setIsZoomed={idx === 0 ? setIsZoomed : setIsZoomed2}
                     breakpoints={{
                       320: {
                         slidesPerView: 2,
@@ -130,8 +131,8 @@ const ProjectPage01 = ({
                   />
 
                   <ZoomAble
-                    isZoomed={isZoomed}
-                    setIsZoomed={setIsZoomed}
+                    isZoomed={idx === 0 ? isZoomed : isZoomed2}
+                    setIsZoomed={idx === 0 ? setIsZoomed : setIsZoomed2}
                     content={
                       <SwiperListImageForPopup
                         isShowNumPagination={true}
