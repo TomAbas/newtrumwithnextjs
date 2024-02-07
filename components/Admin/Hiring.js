@@ -18,7 +18,7 @@ import {
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import { Button } from "@mui/material";
 import Loading from "../Loading/Loading";
-const drawerWidth = 240;
+
 const Hiring = () => {
   const [arrNews, setArrNews] = useState([]);
   const [newsIdx, setNewsIdx] = useState();
@@ -37,12 +37,12 @@ const Hiring = () => {
     }
   };
   const fetchListJobs = async () => {
-    setIsLoading(true)
+    setIsLoading(true);
     setArrNews(await getRecuiterData().then((data) => data.listJob));
-    setIsLoading(false)
+    setIsLoading(false);
   };
   const fetchJobId = async (id) => {
-    setIsLoading(true)
+    setIsLoading(true);
 
     let jobEdit = arrNews.find((item) => item._id === id);
     let preLoadValue = {
@@ -51,7 +51,7 @@ const Hiring = () => {
     };
     setDefaultValues(preLoadValue);
     setTrigger(true);
-    setIsLoading(false)
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -110,9 +110,9 @@ const Hiring = () => {
                     <div className={styles.btnGroup}>
                       <div>
                         <IconButton
-                          size='small'
+                          size="small"
                           sx={{ flex: "30%" }}
-                          variant='contained'
+                          variant="contained"
                           // className={styles.btnEditNews}
                           onClick={() => {
                             deleteJobs(item._id);
