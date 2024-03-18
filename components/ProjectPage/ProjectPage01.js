@@ -14,9 +14,9 @@ const ProjectPage01 = ({
   category,
   bannerImg,
   isCategory,
-  swiper,
   content,
   listContent,
+  urlSpotify,
 }) => {
   const [isZoomed, setIsZoomed] = useState(false);
   const [isZoomed2, setIsZoomed2] = useState(false);
@@ -146,6 +146,21 @@ const ProjectPage01 = ({
           </div>
         </div>
       </div>
+      {urlSpotify && (
+        <div className={`${styles.headlineNewsBox} ${styles.musicBox}`}>
+          <h3>PlayList</h3>
+          <iframe
+            style={{ borderRadius: "12px" }}
+            src={urlSpotify}
+            width="100%"
+            height="152"
+            frameBorder="0"
+            allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          ></iframe>
+        </div>
+      )}
     </>
   );
 };

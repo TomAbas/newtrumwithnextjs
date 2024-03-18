@@ -44,6 +44,7 @@ const schema = yup.object().shape({
   content2Title: yup.string().required("missing field"),
   content2Image: yup.mixed().required("missing field"),
   isCategory: yup.boolean().default(false).required("missing field"),
+  swiper: yup.string().required("miss field"),
 });
 
 const NewsEditor = ({
@@ -116,6 +117,8 @@ const NewsEditor = ({
   };
 
   const submitNewsEditor = async (data) => {
+    // console.log(data);
+    // return;
     try {
       setIsLoading(true);
       const mainImage = await handleUploadSlideImgs(data.mainImage);
@@ -145,6 +148,7 @@ const NewsEditor = ({
         ],
         id: data._id,
         isCategory: data.isCategory,
+        swiper: [{ image: data.swiper }],
       };
 
       console.log(submitData);
@@ -210,7 +214,6 @@ const NewsEditor = ({
   const deleteContributor = async (id) => {
     setIsLoading(true);
     await axios.post(`${urlDeleteContributor}/${id}`).then(async (res) => {
-      console.log(res);
       await axios
         .get(`${urlListContributorIdPost}/${newsIdx}`)
         .then(({ data }) => {
@@ -226,7 +229,6 @@ const NewsEditor = ({
   };
 
   useEffect(() => {
-    console.log(preLoadValue);
     reset(preLoadValue);
   }, [preLoadValue]);
 
@@ -490,6 +492,21 @@ const NewsEditor = ({
                   }}
                 />
                 <p>{errors.content1Image?.message}</p>
+              </div>
+            </div>
+          </>
+          <>
+            <h2>Embed Spotify Link: </h2>
+            <div className={styles.row1}>
+              <div className={styles.titleEdit}>
+                <textarea
+                  type="text"
+                  defaultValue={preLoadValue?.swiper}
+                  className={styles.inputField}
+                  name="swiper"
+                  {...register("swiper")}
+                />
+                <p>{errors.swiper?.message}</p>
               </div>
             </div>
           </>
