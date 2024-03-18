@@ -1,21 +1,21 @@
-import React from 'react';
-import styles from '../../styles/Admin.module.css';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import { Button } from '@mui/material';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import ServiceAddServiceForm from './ServiceAddServiceForm';
-import { updateServiceData } from '../../ApiUrl/service/serviceApi';
-import Loading from '../Loading/Loading';
+import React from "react";
+import styles from "../../styles/Admin.module.css";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { Button } from "@mui/material";
+import { useState } from "react";
+import { useEffect } from "react";
+import ServiceAddServiceForm from "./ServiceAddServiceForm";
+import { updateServiceData } from "../../ApiUrl/service/serviceApi";
+import Loading from "../Loading/Loading";
 const ServiceForm = ({ serviceData, serviceListData }) => {
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const [service, setService] = useState();
   const [serviceList, setServiceList] = useState([]);
   const schema = yup.object().shape({
-    title: yup.string().required('missing field').typeError('missing field'),
-    subTitle: yup.string().required('missing field').typeError('missing field'),
+    title: yup.string().required("missing field").typeError("missing field"),
+    subTitle: yup.string().required("missing field").typeError("missing field"),
   });
   const {
     register,
@@ -41,20 +41,20 @@ const ServiceForm = ({ serviceData, serviceListData }) => {
     });
   }
   function handleSubmitFc(data) {
-    setIsLoading(true)
+    setIsLoading(true);
     console.log(data);
     setService(data);
     reset({});
-    setIsLoading(false)
+    setIsLoading(false);
   }
   useEffect(() => {
-    setIsLoading(true)
+    setIsLoading(true);
     if (serviceData) {
       setServiceList(serviceListData);
       console.log(serviceData);
       reset(serviceData);
     }
-    setIsLoading(false)
+    setIsLoading(false);
   }, [serviceData]);
   return (
     <div className={styles.landingpageformContainer}>
@@ -69,18 +69,18 @@ const ServiceForm = ({ serviceData, serviceListData }) => {
               <div className={styles.titleEdit}>
                 <h3>BANNER SERVICE </h3>
                 <textarea
-                  type='text'
+                  type="text"
                   className={styles.inputField}
-                  name='title'
-                  {...register('title')}
+                  name="title"
+                  {...register("title")}
                 />
                 <p>{errors.title?.message}</p>
               </div>
             </div>
-            <div className={styles.titleEdit}>
+            {/* <div className={styles.titleEdit}>
               <h3>Check Box Effect</h3>
-              <textarea type='text' className={styles.inputField} />
-            </div>
+              <textarea type="text" className={styles.inputField} />
+            </div> */}
           </div>
           <div className={styles.content3Edit}>
             <div className={styles.bannerBanner}>EDIT SERVICE :</div>
@@ -88,38 +88,36 @@ const ServiceForm = ({ serviceData, serviceListData }) => {
               <div className={styles.titleEdit}>
                 <h3>SERVICE : Title</h3>
                 <textarea
-                  type='text'
+                  type="text"
                   className={styles.inputField}
-                  name='subTitle'
-                  {...register('subTitle')}
+                  name="subTitle"
+                  {...register("subTitle")}
                 />
                 <p>{errors.subTitle?.message}</p>
               </div>
             </div>
           </div>
-          <Button variant='outlined' type='submit'>
+          <Button variant="outlined" type="submit">
             Update content
           </Button>
         </form>
         <div className={styles.content3Edit}>
           {/* ADD SERVICE */}
-          <div className={styles.bannerBanner}>ADD SERVICE :</div>
+          {/* <div className={styles.bannerBanner}>ADD SERVICE :</div>
           <ServiceAddServiceForm
             serviceList={serviceList}
             setServiceList={setServiceList}
-          />
+          /> */}
         </div>
       </div>
       <Button
         onClick={handleService}
-        variant='contained'
+        variant="contained"
         disabled={!service ? true : false}
       >
         Submit Form Update SERVICE Content
       </Button>
-      {
-        isLoading && <Loading />
-      }
+      {isLoading && <Loading />}
     </div>
   );
 };

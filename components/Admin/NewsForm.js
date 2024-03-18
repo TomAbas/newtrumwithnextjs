@@ -52,9 +52,10 @@ const NewsForm = () => {
   const fetchNewsId = async (id) => {
     try {
       let post = await getPost(id);
-      console.log(post);
+
       let preLoadValue = post;
-      setDefaultValues(preLoadValue);
+
+      setDefaultValues({ ...preLoadValue, swiper: post.swiper[0]?.image });
       setCurrentContent1(post.listContent[0].description);
       setCurrentContent2(post.listContent[1].description);
       setTrigger(true);
@@ -217,9 +218,7 @@ const NewsForm = () => {
           </div>
         </div>
       </div>
-      {
-        isLoading && <Loading />
-      }
+      {isLoading && <Loading />}
     </>
   );
 };

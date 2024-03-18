@@ -52,11 +52,20 @@
       center/cover; */
   display: flex;
   flex-direction: column;
-  font-family: "montserrat";
   width: 100%;
   height: 100%;
   /* margin: auto; */
   margin-top: 3rem;
+}
+.musicBox {
+  display: block;
+  color: #fff;
+  margin: 1rem auto;
+  padding-top: 1rem !important;
+}
+
+.musicBox h3 {
+  margin-bottom: 10px;
 }
 
 .ContentLeft {
