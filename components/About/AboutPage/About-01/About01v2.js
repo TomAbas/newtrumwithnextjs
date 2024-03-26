@@ -4,7 +4,6 @@ import icon from "../../../../public/imgs/HeaderIcon.svg";
 import Image from "next/image";
 
 const About01v2 = ({ aboutData }) => {
-  console.log(aboutData);
   const { video, about01 } = aboutData;
   const { title } = about01;
 

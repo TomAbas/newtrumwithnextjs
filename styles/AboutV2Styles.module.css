@@ -19,6 +19,26 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  pointer-events: none;
+}
+
+.about1VideoLoading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.about1VideoLoading video {
+  width: 30%;
+  height: 30%;
+  max-width: 1000px;
+  max-height: 1000px;
+  pointer-events: none;
+  object-fit: contain !important;
 }
 
 .about1Bg {
