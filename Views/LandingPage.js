@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import SwiperListImage from "../components/SwiperListImage/SwiperListImage";
 import BestProjects from "../components/landingpage/LandingPage/BestProjects/BestProjects";
 import LandingPage0 from "../components/landingpage/LandingPage/LandingPage1/LandingPage";
@@ -6,6 +6,7 @@ import Page01 from "../components/landingpage/LandingPage/Page-01/Page01";
 import Page02 from "../components/landingpage/LandingPage/Page-02/Page02Swiper";
 import Page03 from "../components/landingpage/LandingPage/Page-03/Page03";
 import useGetDataLand from "../hooks/useGetDataLand";
+import LoadingHome from "../components/Loading/LoadingHome";
 
 const LandingPage = ({ data }) => {
   const {
@@ -18,8 +19,11 @@ const LandingPage = ({ data }) => {
     projectArr,
   } = useGetDataLand(data);
 
+  if (!data) {
+    return <h1 style={{ color: "blue" }}>loading</h1>;
+  }
   return (
-    <>
+    <Suspense fallback={<LoadingHome />}>
       <LandingPage0 landingPageData={landingPageData} mainImage={mainImage} />
       <Page01 page1Data={page1Data} />
       <Page02 isLandingPage={true} imgArr={imgArr} />
@@ -29,7 +33,7 @@ const LandingPage = ({ data }) => {
       <SwiperListImage imgArr={projectArr} />
 
       <BestProjects />
-    </>
+    </Suspense>
   );
 };
 

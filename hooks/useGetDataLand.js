@@ -45,12 +45,13 @@ const useGetDataLand = (data) => {
             });
         })
       );
-      setData();
     } catch (error) {
       console.log(error);
     }
   };
+
   useEffect(() => {
+    setData();
     getListNews();
   }, []);
   return {

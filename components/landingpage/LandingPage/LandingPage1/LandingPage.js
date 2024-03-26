@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styles from "../../../../styles/LandingPageStyles.module.css";
 import { useRef } from "react";
 const LandingPage = ({ landingPageData, mainImage }) => {
   const refWord0 = useRef();
-  const renderAnim = () => {
+
+  const renderAnim = useMemo(() => {
     return landingPageData?.map((item, oIdx) => {
       return (
         <>
@@ -38,12 +39,12 @@ const LandingPage = ({ landingPageData, mainImage }) => {
         </>
       );
     });
-  };
+  }, [landingPageData]);
   return (
     <>
       <div className={styles.test}>
         <div className={styles.landingPageContainer}>
-          <div className={styles.loganContainer}>{renderAnim()}</div>
+          <div className={styles.loganContainer}>{renderAnim}</div>
         </div>
       </div>
       <div className={styles.picLandingPage}>

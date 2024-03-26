@@ -4,8 +4,12 @@ import Layout from "../components/Layout.js";
 import LayoutAdmin from "../components/LayoutAdmin";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { usePageLoading } from "../hooks/useRouter.js";
+import LoadingHome from "../components/Loading/LoadingHome.js";
 
 function MyApp({ Component, pageProps, ...appProps }) {
+  const { isPageLoading } = usePageLoading();
+  console.log({ isPageLoading });
   const getContent = () => {
     if (
       // [`/admin`].includes(appProps.router.pathname) ||
@@ -31,18 +35,21 @@ function MyApp({ Component, pageProps, ...appProps }) {
             <LayoutAdmin>
               <ToastContainer />
               <Component {...pageProps} />
-
             </LayoutAdmin>
           );
         }
       }
     } else {
-      return (
-        <Layout>
-          <Component {...pageProps} />{" "}
-
-        </Layout>
-      );
+      // return <LoadingHome />;
+      if (isPageLoading) {
+        return <LoadingHome />;
+      } else {
+        return (
+          <Layout>
+            <Component {...pageProps} />{" "}
+          </Layout>
+        );
+      }
     }
   };
   return <>{getContent()}</>;
