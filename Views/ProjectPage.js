@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import styles from "../styles/NavPageStyles.module.css";
 import ProjectPage01 from "../components/ProjectPage/ProjectPage01";
 import ProjectPage02 from "../components/ProjectPage/ProjectPage02";
 import ProjectPage03 from "../components/ProjectPage/ProjectPage03";
 import ProjectPage04Swiper from "../components/ProjectPage/ProjectPage04Swiper";
 import { getAllProject } from "../ApiUrl/projectApi/projectApi";
+import LoadingHome from "../components/Loading/LoadingHome";
 // img
 const ProjectPage = ({ data }) => {
   const [newsBigTitle, setNewsBigTitle] = useState();
@@ -15,9 +16,10 @@ const ProjectPage = ({ data }) => {
   const [isCategory, setIsCategory] = useState(false);
   const [listContent, setListContent] = useState([]);
   const [urlSpotify, setUrlSpotify] = useState();
+  const [loading, setLoading] = useState(false);
   //
   const fetchData = async () => {
-    //1
+    setLoading(true);
     setCategory(data.category);
     setNewsBigTitle(data.title);
     setBannerImg(data.mainImage);
@@ -25,7 +27,7 @@ const ProjectPage = ({ data }) => {
     setIsCategory(data.isCategory);
     setListContent(data.listContent);
     setUrlSpotify(data.swiper[0]?.image);
-    //
+    setLoading(false);
     // if (data.isCategory) {
     //   setSwiper(
     //     await getAllProject().then((project) => {
@@ -73,8 +75,12 @@ const ProjectPage = ({ data }) => {
   useEffect(() => {
     fetchData();
   }, [data]);
+
+  if (!data) {
+    return <LoadingHome />;
+  }
   return (
-    <>
+    <Suspense fallback={<LoadingHome />}>
       <div>
         <ProjectPage01
           isCategory={isCategory}
@@ -87,7 +93,7 @@ const ProjectPage = ({ data }) => {
         />
         <div className={styles.container}></div>
       </div>
-    </>
+    </Suspense>
   );
 };
 

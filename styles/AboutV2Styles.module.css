@@ -23,6 +23,8 @@
 }
 
 .about1VideoLoading {
+  z-index: 999;
+  background-color: black;
   position: absolute;
   top: 0;
   left: 0;

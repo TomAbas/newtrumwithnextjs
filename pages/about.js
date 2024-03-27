@@ -5,7 +5,6 @@ import { getAboutData } from "../ApiUrl/about/aboutApi";
 
 export async function getStaticProps() {
   let res = await getAboutData();
-  console.log(res);
 
   if (!res) {
     return {

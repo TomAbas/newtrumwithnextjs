@@ -9,6 +9,7 @@ const useGetDataLand = (data) => {
   const [imgArr, setImgArr] = useState([]);
   const [projectArr, setProjectArr] = useState([]);
   const [mainImage, setMainImage] = useState([]);
+  const [loading, setLoading] = useState(false);
   const setData = () => {
     setLandingPageData(data.title);
     setPage1Data(data.description);
@@ -18,6 +19,7 @@ const useGetDataLand = (data) => {
   };
   const getListNews = async () => {
     try {
+      setLoading(true);
       const data = await getAllProject();
 
       setProjectArr(
@@ -47,6 +49,8 @@ const useGetDataLand = (data) => {
       );
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -62,6 +66,7 @@ const useGetDataLand = (data) => {
     imgArr,
     mainImage,
     projectArr,
+    loading,
   };
 };
 

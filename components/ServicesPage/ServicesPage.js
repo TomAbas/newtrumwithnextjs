@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { getCategoryFromListAllProject } from "../../services/projectApiSerivces";
 import styles from "../../styles/ServicesPage.module.css";
 import SwiperListImage from "../SwiperListImage/SwiperListImage";
@@ -8,6 +8,7 @@ import ServicesPage3 from "./ServicesPage3/ServicesPage3";
 import BestProjects, {
   Banner,
 } from "../landingpage/LandingPage/BestProjects/BestProjects";
+import LoadingHome from "../Loading/LoadingHome";
 
 const ServicesPage = ({ data, listAllProject }) => {
   const [dataServices, setDataServices] = useState(
@@ -27,19 +28,28 @@ const ServicesPage = ({ data, listAllProject }) => {
     }
   }, [data]);
 
-  return (
-    <div className={styles.serviceContainer}>
-      <ServicesPage1 />
-      <ServicesPage2 dataServices={dataServices} />
-      <ServicesPage3 dataServices={dataServices} listCategory={listCategory} />
+  if (!data) {
+    return <LoadingHome />;
+  }
 
-      <div className={styles.swiperService}>
-        <SwiperListImage />
+  return (
+    <Suspense fallback={<LoadingHome />}>
+      <div className={styles.serviceContainer}>
+        <ServicesPage1 />
+        <ServicesPage2 dataServices={dataServices} />
+        <ServicesPage3
+          dataServices={dataServices}
+          listCategory={listCategory}
+        />
+
+        <div className={styles.swiperService}>
+          <SwiperListImage />
+        </div>
+        <div className={styles.bannerContainer}>
+          <BestProjects />
+        </div>
       </div>
-      <div className={styles.bannerContainer}>
-        <BestProjects />
-      </div>
-    </div>
+    </Suspense>
   );
 };
 

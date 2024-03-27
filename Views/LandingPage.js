@@ -17,10 +17,11 @@ const LandingPage = ({ data }) => {
     imgArr,
     mainImage,
     projectArr,
+    loading,
   } = useGetDataLand(data);
 
-  if (!data) {
-    return <h1 style={{ color: "blue" }}>loading</h1>;
+  if (loading) {
+    return <LoadingHome />;
   }
   return (
     <Suspense fallback={<LoadingHome />}>

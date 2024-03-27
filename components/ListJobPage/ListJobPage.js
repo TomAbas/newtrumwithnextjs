@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import Image from "next/image";
 import aniStyles from "../../styles/Animation.module.css";
 import icon from "../../public/imgs/fullArrow.svg";
+import LoadingHome from "../Loading/LoadingHome";
 const ListJobPage = ({ arrayListJob }) => {
   const [deviceWidth, setDeviceWidth] = React.useState(0);
   useEffect(() => {
@@ -73,6 +74,10 @@ const ListJobPage = ({ arrayListJob }) => {
 
     return b;
   };
+
+  if (arrayListJob.length === 0) {
+    return <LoadingHome />;
+  }
   return (
     <>
       <ParallaxProvider>
